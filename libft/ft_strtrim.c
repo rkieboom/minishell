@@ -5,16 +5,16 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/01 16:34:08 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/25 13:51:14 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/01 16:34:08 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:50:24 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		checkforletter(char const *s1, char const *set, int i)
+static int	checkforletter(char const *s1, char const *set, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (set[j] != '\0')
@@ -26,9 +26,9 @@ static int		checkforletter(char const *s1, char const *set, int i)
 	return (1);
 }
 
-static int		checkforlastletter(char const *s1, char const *set, int i)
+static int	checkforlastletter(char const *s1, char const *set, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (set[j] != '\0')
@@ -40,7 +40,7 @@ static int		checkforlastletter(char const *s1, char const *set, int i)
 	return (1);
 }
 
-static void		getstring(char const *s1, char const *set, int *i, int *j)
+static void	getstring(char const *s1, char const *set, int *i, int *j)
 {
 	while (s1[*i] != '\0')
 	{
@@ -56,7 +56,7 @@ static void		getstring(char const *s1, char const *set, int *i, int *j)
 	}
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	int		slength;
 	int		i;
@@ -65,7 +65,7 @@ char			*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1)
 		return (NULL);
-	slength = ft_strlen((char*)s1);
+	slength = ft_strlen((char *)s1);
 	i = 0;
 	j = slength - 1;
 	k = 0;

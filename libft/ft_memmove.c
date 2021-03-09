@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 17:51:25 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/29 06:38:48 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/10/31 17:51:25 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:53:20 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	if (!dst && !src)
 		return (dst);
 	rdst = dst;
-	rsrc = (char*)src;
+	rsrc = (char *)src;
 	i = 0;
 	if (len > (size_t)rdst - (size_t)rsrc)
 	{

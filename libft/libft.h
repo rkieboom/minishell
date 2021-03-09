@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/11 09:19:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2020/11/15 20:20:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/03/09 15:49:30 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdlib.h>
 
-typedef struct	s_libft
+typedef struct s_libft
 {
 	void			*content;
 	struct s_libft	*next;
@@ -33,7 +33,7 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
-char			*ft_strnstr(const char *haystack,
+char			*ft_strnstr(const char *haystack, \
 				const char *needle, size_t len);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_atoi(const char *str);
@@ -71,7 +71,7 @@ void			ft_lstdelone(t_libft *lst, void (*del)(void*));
 void			ft_lstclear(t_libft **lst, void (*del)(void*));
 
 void			ft_lstiter(t_libft *lst, void (*f)(void *));
-t_libft			*ft_lstmap(t_libft *lst, void *(*f)(void *),
+t_libft			*ft_lstmap(t_libft *lst, void *(*f)(void *), \
 				void (*del)(void *));
 
 #endif

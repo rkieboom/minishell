@@ -5,14 +5,14 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 17:40:56 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/29 06:37:31 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/10/31 17:40:56 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:51:23 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	k;
 

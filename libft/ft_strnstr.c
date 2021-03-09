@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 18:09:13 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/29 16:05:52 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/10/31 18:09:13 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:50:58 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t i;
-	size_t j;
-	size_t needlelength;
+	size_t	i;
+	size_t	j;
+	size_t	needlelength;
 
 	i = 0;
 	j = 0;
@@ -24,7 +24,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	while (needle[needlelength] != '\0')
 		needlelength++;
 	if (needlelength == 0)
-		return ((char*)haystack);
+		return ((char *)haystack);
 	while (haystack[i] && i != len)
 	{
 		j = 0;
@@ -32,7 +32,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 		{
 			j++;
 			if (j == needlelength)
-				return ((char*)haystack + i);
+				return ((char *)haystack + i);
 		}
 		i++;
 	}

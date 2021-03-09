@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 17:45:33 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/15 17:21:25 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/10/31 17:45:33 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:55:53 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	if ((c >= '0' && c <= '9') ||
+	if ((c >= '0' && c <= '9') || \
 	(c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		return (1);
 	return (0);

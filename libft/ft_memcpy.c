@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/02 13:30:29 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/27 12:48:52 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/02 13:30:29 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:53:29 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 	if (!dst && !src)
 		return (dst);
-	rdest = (char*)dst;
-	rsrc = (char*)src;
+	rdest = (char *)dst;
+	rsrc = (char *)src;
 	i = 0;
 	while (i < n)
 	{

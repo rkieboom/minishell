@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/01 15:25:35 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/15 17:23:26 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/01 15:25:35 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:51:52 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	copytoresult(char const *s1, char const *s2, char *result)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -35,14 +35,14 @@ static void	copytoresult(char const *s1, char const *s2, char *result)
 	result[i] = '\0';
 }
 
-char		*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*result;
 	int		stringlength;
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	stringlength = ft_strlen((char*)s1) + ft_strlen((char*)s2);
+	stringlength = ft_strlen((char *)s1) + ft_strlen((char *)s2);
 	result = malloc(sizeof(char) * (stringlength + 1));
 	if (result == NULL)
 		return (NULL);

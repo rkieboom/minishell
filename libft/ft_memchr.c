@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/10/31 17:48:59 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/29 06:10:22 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/10/31 17:48:59 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:53:38 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	char	*src;
 
 	i = 0;
-	src = (char*)s;
+	src = (char *)s;
 	while (i < n)
 	{
 		if (src[i] == c)

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/29 07:25:26 by rkieboom      #+#    #+#                 */
-/*   Updated: 2020/11/15 20:20:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/03/09 15:55:38 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_lstclear(t_libft **lst, void (*del)(void*))
 {
-	t_libft *temp;
-	t_libft *list;
+	t_libft	*temp;
+	t_libft	*list;
 
 	list = *lst;
 	while (list)

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/02 16:04:43 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/27 13:06:07 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/02 16:04:43 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:51:07 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	unsigned char	*str2;
 	size_t			i;
 
-	str1 = (unsigned char*)s1;
-	str2 = (unsigned char*)s2;
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
 	i = 0;
 	if (n == 0)
 		return (0);

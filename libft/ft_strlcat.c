@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/02 15:31:39 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/27 12:57:32 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/02 15:31:39 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:51:35 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = ft_strlen(dst);
 	j = 0;

@@ -5,17 +5,17 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/20 18:33:27 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/27 12:33:30 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/20 18:33:27 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:55:04 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		arraysize(const char *s, char c)
+static int	arraysize(const char *s, char c)
 {
-	int i;
-	int k;
+	int	i;
+	int	k;
 
 	i = 0;
 	k = 0;
@@ -35,7 +35,7 @@ static int		arraysize(const char *s, char c)
 	return (k);
 }
 
-static void		findstart(const char *s, char c, int *i, int *start)
+static void	findstart(const char *s, char c, int *i, int *start)
 {
 	while (s[*i] && s[*i] == c)
 		(*i)++;
@@ -43,7 +43,7 @@ static void		findstart(const char *s, char c, int *i, int *start)
 		*start = *i;
 }
 
-static int		freemem(char **result, int k)
+static int	freemem(char **result, int k)
 {
 	if (!result[k])
 	{
@@ -58,11 +58,11 @@ static int		freemem(char **result, int k)
 	return (0);
 }
 
-static char		**splitter(const char *s, char c, char **result, int i)
+static char	**splitter(const char *s, char c, char **result, int i)
 {
-	int strlength;
-	int arrayindex;
-	int start;
+	int	strlength;
+	int	arrayindex;
+	int	start;
 
 	strlength = 0;
 	arrayindex = 0;
@@ -85,13 +85,13 @@ static char		**splitter(const char *s, char c, char **result, int i)
 	return (result);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **result;
+	char	**result;
 
 	if (!s)
 		return (NULL);
-	result = (char**)malloc((arraysize(s, c) + 1) * sizeof(char *));
+	result = (char **)malloc((arraysize(s, c) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	result = splitter(s, c, result, 0);

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/13 14:24:31 by rkieboom      #+#    #+#                 */
-/*   Updated: 2020/11/15 20:20:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/03/09 14:14:59 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_lstsize(t_libft *lst)
 {
-	int result;
+	int	result;
 
 	result = 0;
 	if (lst == NULL)

@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/02 15:49:58 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/29 06:30:52 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/02 15:49:58 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:50:42 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strrchr(const char *s, int c)
 	char	*str;
 
 	i = 0;
-	str = (char*)s;
+	str = (char *)s;
 	while (str[i] != '\0')
 		i++;
 	while (i >= 0)

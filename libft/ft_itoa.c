@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/11/04 15:32:52 by rkieboom       #+#    #+#                */
-/*   Updated: 2019/11/19 19:37:50 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/11/04 15:32:52 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 15:54:07 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_mallocsize(int n)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (n < 0)
@@ -51,7 +51,7 @@ static void	ft_conversion(char *result, int n, int i)
 	}
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		i;
 	char	*result;
