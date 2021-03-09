@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/03/02 15:29:26 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/03/09 14:47:02 by spelle        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ FLAGS = -Wall -Werror -Wextra
 
 SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c\
 parsing/parse.c ft_error.c main.c freebuf.c ft_skipspaces.c free/ft_free.c\
-execute/execute.c execute/checkcommand.c parsing/parse_split.c print_input.c
+execute/execute.c execute/checkcommand.c parsing/parse_split.c print_input.c\
+env_list/env_lst_new.c env_list/env_lstadd_back.c env_list/env_lstlast.c
 
 O.SRCS = $(SRCS:.c=.o)
 

@@ -3,16 +3,18 @@
 /*                                                        ::::::::            */
 /*   env_lstsize.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/02 16:14:38 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/02 16:17:44 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/03/09 14:52:07 by spelle        #+#    #+#                 */
+/*   Updated: 2021/03/09 14:52:17 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int env_lstsize(s_env *lst)
+#include "env_list.h"
+
+int	env_lstsize(t_env *lst)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (lst->next)

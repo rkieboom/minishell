@@ -3,20 +3,20 @@
 /*                                                        ::::::::            */
 /*   env_lst_new.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/02 16:04:39 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/02 16:07:49 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/03/09 14:53:58 by spelle        #+#    #+#                 */
+/*   Updated: 2021/03/09 14:56:55 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "env_list.h"
 
-s_list	*env_lst_new(void *name, void *content)
+t_env	*env_lst_new(void *name, void *content)
 {
-	s_list *list;
+	t_env	*list;
 
-	list = malloc(sizeof(s_list));
+	list = malloc(sizeof(t_env));
 	if (!list)
 		return (NULL);
 	list->name = name;
