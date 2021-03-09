@@ -6,11 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/08 13:58:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/02 14:59:16 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/03/09 14:36:10 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+void			checkcomma(t_list *list, char *c);
 
 static int		arraysize(const char *s, char c)
 {
@@ -80,18 +82,7 @@ static char		**splitter(t_list *list, char c, char **result, int i)
 		findstart(list->gnl.buf, c, &i, &start);
 		while (list->gnl.buf[i] && (list->gnl.buf[i] != c || (list->parse.comma1 == 1 || list->parse.comma2 == 1)))
 		{
-			if (list->gnl.buf[i] == '\'' || list->gnl.buf[i] == '\"')
-			{
-				if (list->gnl.buf[i] == '\'')
-					if (list->parse.comma1 == 0)
-						list->parse.comma1 = 1;
-					else
-						list->parse.comma1 = 0;
-				else if (list->gnl.buf[i] == '\"')
-					list->parse.comma2 = 1;
-				else
-					list->parse.comma2 = 0;	
-			}
+			checkcomma(list, list->gnl.buf[i]);
 			i++;
 			strlength++;
 		}
