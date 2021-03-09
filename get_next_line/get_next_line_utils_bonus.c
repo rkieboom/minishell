@@ -5,17 +5,17 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/06 16:58:53 by rkieboom       #+#    #+#                */
-/*   Updated: 2020/01/10 12:05:54 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/12/06 16:58:53 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 17:05:32 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 #include <stdlib.h>
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -23,7 +23,7 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-char		*ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
 	int		i;
 	char	*result;
@@ -41,7 +41,7 @@ char		*ft_strdup(const char *s1)
 	return (result);
 }
 
-char		*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	int		i;
 	char	*result;
@@ -52,7 +52,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 		return (ft_strdup(""));
 	i = 0;
 	if (ft_strlen(s) - start < len)
-		result = (char*)malloc(sizeof(char) * (ft_strlen(s) - start + 1));
+		result = (char *)malloc(sizeof(char) * (ft_strlen(s) - start + 1));
 	else
 		result = malloc(sizeof(char) * (len + 1));
 	if (result == NULL)
@@ -68,9 +68,9 @@ char		*ft_substr(char const *s, unsigned int start, size_t len)
 	return (result);
 }
 
-void		resetlist(t_list *list)
+void	resetlist(t_list *list)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (list->result[i] != '\0')

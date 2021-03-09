@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2019/12/06 16:58:51 by rkieboom       #+#    #+#                */
-/*   Updated: 2020/01/10 12:05:37 by rkieboom      ########   odam.nl         */
+/*   Created: 2019/12/06 16:58:51 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/03/09 17:02:39 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <unistd.h>
 #include "get_next_line_bonus.h"
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	static t_list	list;
 	char			*buf;
@@ -41,10 +41,10 @@ int			get_next_line(int fd, char **line)
 	return (0);
 }
 
-void		saveinput(char *result, char *buf)
+void	saveinput(char *result, char *buf)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -58,10 +58,10 @@ void		saveinput(char *result, char *buf)
 	}
 }
 
-void		createresult(char **line, t_list *list)
+void	createresult(char **line, t_list *list)
 {
-	int start;
-	int length;
+	int	start;
+	int	length;
 
 	start = findnewline(list->result, list->j);
 	length = findnewline(list->result, list->j + 1);
@@ -70,10 +70,10 @@ void		createresult(char **line, t_list *list)
 	list->j++;
 }
 
-int			findnewline(char *str, int length)
+int	findnewline(char *str, int length)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
