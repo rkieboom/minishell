@@ -3,20 +3,31 @@
 /*                                                        ::::::::            */
 /*   env_list.h                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/03/02 16:02:21 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/02 16:14:21 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/03/09 14:55:27 by spelle        #+#    #+#                 */
+/*   Updated: 2021/03/09 14:59:59 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct	s_env
+#ifndef ENV_LIST_H
+# define ENV_LIST_H
+
+#include <stdlib.h>
+
+typedef struct s_env
 {
 	char			*name;
 	char			*content;
 	struct s_env	*next;
-}				s_env;
+}				t_env;
 
-s_list	*env_lst_new(void *name, void *content);
-void env_lst_add_front(t_list **lst, t_list *new, void *name, void *content);
-int env_lstsize(t_list *lst);
+void	env_lst_add_front(t_env **lst, t_env *new);
+t_env	*env_lst_new(void *name, void *content);
+void	env_lstadd_back(t_env **lst, t_env *new);
+void	env_lstclear(t_env **lst, void (*del)(void*));
+t_env	*env_lstlast(t_env *lst);
+int	env_lstsize(t_env *lst);
+
+
+#endif
