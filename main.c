@@ -6,16 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 17:01:08 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 21:48:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "header.h"
-#include "env_list/env_list.h"
 
 static void	read_input(t_list *list, int ret)
 {
@@ -32,9 +27,8 @@ static int	loop(t_list *list)
 	{
 		read_input(list, 1);
 		parse(list);
-		// print(list);
 		execute(list);
-		ft_free(list);
+		free_parse_commands(list);
 	}
 }
 

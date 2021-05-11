@@ -6,25 +6,25 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 17:35:41 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 21:40:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		skipspaces(const char *str);
+#include "../commands.h"
 
 static char	*createstring(const char *str)
 {
-	int		i;
-	int		length;
-	char	*newstr;
-	i = 0;
-	while(str[i] && str[i] != '$')
-		i++;
-	if(!str[i])
-		return ((char *)str);
-	length = i++;
-	printf("length = %d, i = %d", length, i);
-	return (NULL);
+	// int		i;
+	// int		length;
+	// char	*newstr;
+	// i = 0;
+	// while(str[i] && str[i] != '$')
+	// 	i++;
+	// if(!str[i])
+	// 	return ((char *)str);
+	// length = i++;
+	// printf("length = %d, i = %d", length, i);
+	// return (NULL);
 }
 static int	checkoption(char *str)
 {

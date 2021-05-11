@@ -6,11 +6,10 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 13:24:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 21:45:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
 #include "parse.h"
 
 char	**parse_split(t_list *list, char c);

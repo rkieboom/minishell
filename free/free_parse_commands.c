@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2020/11/29 10:49:11 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 21:27:19 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void		ft_free(t_list *list)
+void		free_parse_commands(t_list *list)
 {
 	int i;
 

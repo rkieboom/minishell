@@ -6,13 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 13:56:28 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 16:53:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 21:48:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../libft/libft.h"
-#include "../env_list.h"
-#include <stdio.h>
+#include "../../header.h"
 
 static void	set_name_value(char *envp, char **name, char **value)
 {
@@ -47,6 +45,5 @@ t_env	*create_envp(t_env *v, char **envp)
 			env_lstadd_back(&v, env_lst_new(name, value));
 		i++;
 	}
-	// print(v);
 	return (v);
 }

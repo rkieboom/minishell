@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/11 17:03:55 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/05/11 21:47:37 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,42 @@ LIBFT = libft/libft.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c\
-parsing/parse.c main.c freebuf.c ft_skipspaces.c free/ft_free.c\
-execute/execute.c execute/checkcommand.c parsing/parse_split.c\
-env_list/env_lst_new.c env_list/env_lstadd_back.c env_list/env_lstlast.c env_list/functions/functions.c\
-commands/echo/echo.c commands/env/env.c functions.c
+SRCS =					freebuf.c \
+						ft_skipspaces.c \
+						functions.c \
+						main.c \
+						$(SRCS.COMMANDS.ECHO) \
+						$(SRCS.COMMANDS.ENV) \
+						$(SRCS.ENV.LIST) \
+						$(SRCS.ENV.LIST.FUNC) \
+						$(SRCS.EXECUTE) \
+						$(SRCS.FREE) \
+						$(SRCS.GNL) \
+						$(SRCS.PARSING) \
+						
+
+
+SRCS.COMMANDS.ECHO =	commands/echo/echo.c \
+
+SRCS.COMMANDS.ENV =		commands/env/env.c \
+
+SRCS.ENV.LIST =			env_list/env_lst_new.c \
+						env_list/env_lstadd_back.c \
+						env_list/env_lstlast.c \
+						env_list/env_lstsize.c \
+
+SRCS.ENV.LIST.FUNC =	env_list/functions/functions.c \
+
+SRCS.EXECUTE =			execute/checkcommand.c \
+						execute/execute.c \
+
+SRCS.FREE =				free/free_parse_commands.c \
+
+SRCS.GNL =				get_next_line/get_next_line.c \
+						get_next_line/get_next_line_utils.c \
+
+SRCS.PARSING =			parsing/parse.c \
+						parsing/parse_split.c \
 
 O.SRCS = $(SRCS:.c=.o)
 

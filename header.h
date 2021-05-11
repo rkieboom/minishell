@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 16:39:01 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 21:46:51 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ typedef struct	s_list
 	t_env	*env;
 }				t_list;
 
-void			print(t_list *list);
-
 int				get_next_line(int fd, char **line);
 
 int				parse(t_list *list);
 
-void			ft_free(t_list *list);
+void			free_parse_commands(t_list *list);
 
 void			ft_error(char *msg);
 void			freebuf(t_list *list);
