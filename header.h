@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 13:51:54 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 15:50:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int				parse(t_list *list);
 
 void			ft_free(t_list *list);
 
-void			ft_error(char *msg, int ret);
+void			ft_error(char *msg);
 void			freebuf(t_list *list);
 
 void			execute(t_list *list);

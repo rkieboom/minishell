@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 13:56:28 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 14:46:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 15:47:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void print(t_env *v)
 	}
 }
 
-int		create_envp(t_env *v, char **envp)
+t_env	*create_envp(t_env *v, char **envp)
 {
 	int i;
 	char *name;
@@ -56,6 +56,6 @@ int		create_envp(t_env *v, char **envp)
 			env_lstadd_back(&v, env_lst_new(name, value));
 		i++;
 	}
-	print(v);
-	return (0);
+	// print(v);
+	return (v);
 }

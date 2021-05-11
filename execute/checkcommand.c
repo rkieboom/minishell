@@ -6,11 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/02 15:08:04 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 15:55:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
+
+int		ft_echo(const char *str);
 
 static int	findname(const char *str)
 {
@@ -51,7 +53,7 @@ void		checkcommand(t_list *list)
 	while (list->parse.commands[i])
 	{
 		if (checkcommand2(list->parse.commands[i], "echo ", 5))
-			break ;
+			ft_echo(list->parse.commands[i]);
 		else if (checkcommand2(list->parse.commands[i], "cd ", 3))
 			break ;
 		else if (checkcommand2(list->parse.commands[i], "pwd ", 4))

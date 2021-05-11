@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/09 14:55:27 by spelle        #+#    #+#                 */
-/*   Updated: 2021/05/11 14:30:00 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 15:47:39 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ void	env_lstclear(t_env **lst, void (*del)(void*));
 t_env	*env_lstlast(t_env *lst);
 int		env_lstsize(t_env *lst);
 
-int		create_envp(t_env *v, char **envp);
+t_env *create_envp(t_env *v, char **envp);
 
 #endif
