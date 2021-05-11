@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 16:05:26 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 17:01:08 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,11 @@ static int	loop(t_list *list)
 int			main(int argc, char **argv, char **envp)
 {
 	t_list list;
-	t_env	*env = NULL;
-	
 
 	// for(int i = 0; envp[i]; i++)
 	// 	printf("%i.[%s]\n", i, envp[i]);
-	env = create_envp(env, envp);
 	ft_bzero(&list, sizeof(t_list));
+	list.env = create_envp(list.env, envp);
 	loop(&list);
 	return (0);
 }

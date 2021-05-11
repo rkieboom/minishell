@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 15:50:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 16:39:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define HEADER_H
 
 # include "libft/libft.h"
+# include "env_list/env_list.h"
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -37,6 +38,7 @@ typedef struct	s_list
 {
 	t_parse parse;
 	t_gnl	gnl;
+	t_env	*env;
 }				t_list;
 
 void			print(t_list *list);

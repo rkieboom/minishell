@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 15:55:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 16:54:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,19 @@ void		checkcommand(t_list *list)
 	i = 0;
 	while (list->parse.commands[i])
 	{
-		if (checkcommand2(list->parse.commands[i], "echo ", 5))
+		if (checkcommand2(list->parse.commands[i], "echo", 4))
 			ft_echo(list->parse.commands[i]);
-		else if (checkcommand2(list->parse.commands[i], "cd ", 3))
+		else if (checkcommand2(list->parse.commands[i], "cd", 2))
 			break ;
-		else if (checkcommand2(list->parse.commands[i], "pwd ", 4))
+		else if (checkcommand2(list->parse.commands[i], "pwd", 3))
 			break ;
-		else if (checkcommand2(list->parse.commands[i], "export ", 7))
+		else if (checkcommand2(list->parse.commands[i], "export", 6))
 			break ;
-		else if (checkcommand2(list->parse.commands[i], "unset ", 6))
+		else if (checkcommand2(list->parse.commands[i], "unset", 5))
 			break ;
-		else if (checkcommand2(list->parse.commands[i], "env ", 4))
-			break ;
-		else if (checkcommand2(list->parse.commands[i], "exit ", 5))
+		else if (checkcommand2(list->parse.commands[i], "env", 3))
+			env(list->env);
+		else if (checkcommand2(list->parse.commands[i], "exit", 4))
 			exit(0);
 		else
 			printerror(list->parse.commands[i]);

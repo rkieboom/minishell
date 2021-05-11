@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2020/11/29 11:00:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 16:40:56 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define EXECUTE_H
 
 # include "../header.h"
+# include "../commands/commands.h"
 
 void	checkcommand(t_list	*list);
 

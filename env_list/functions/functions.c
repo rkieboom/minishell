@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 13:56:28 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 15:47:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 16:53:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,6 @@ static void	set_name_value(char *envp, char **name, char **value)
 	*name = result;
 	i += 1;
 	*value = ft_strdup(envp + i);
-}
-
-static void print(t_env *v)
-{
-	while (v)
-	{
-		printf("%s=%s\n", v->name, v->content);
-		v = v->next;
-	}
 }
 
 t_env	*create_envp(t_env *v, char **envp)

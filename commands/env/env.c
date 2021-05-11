@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   print_input.c                                      :+:    :+:            */
+/*   env.c                                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/08 14:07:14 by rkieboom      #+#    #+#                 */
-/*   Updated: 2020/12/08 14:09:11 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/05/11 16:34:02 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/05/11 17:02:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../commands.h"
+#include <unistd.h>
 
-void		print(t_list *list)
+int	ft_putstr(char *str);
+
+int	env(t_env *v)
 {
-	int i;
-
-	i = 0;
-	while (list->parse.commands[i])
+	while (v)
 	{
-		printf("%i. [%s]\n", i, list->parse.commands[i]);
-		i++;
+		ft_putstr(v->name);
+		ft_putstr("=");
+		ft_putstr(v->content);
+		ft_putstr("\n");
+		v = v->next;
 	}
+	return (0);
 }
