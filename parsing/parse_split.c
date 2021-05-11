@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/08 13:58:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/09 14:36:10 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:26:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ static char		**splitter(t_list *list, char c, char **result, int i)
 		findstart(list->gnl.buf, c, &i, &start);
 		while (list->gnl.buf[i] && (list->gnl.buf[i] != c || (list->parse.comma1 == 1 || list->parse.comma2 == 1)))
 		{
-			checkcomma(list, list->gnl.buf[i]);
+			checkcomma(list, &list->gnl.buf[i]);
 			i++;
 			strlength++;
 		}

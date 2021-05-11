@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/02 14:20:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 13:51:54 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_gnl
 	int			fd;
 	char		*buf;
 }				t_gnl;
+
 
 typedef struct	s_list
 {

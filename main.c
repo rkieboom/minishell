@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/09 13:47:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/11 14:33:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <stdio.h>
 
 #include "header.h"
+#include "env_list/env_list.h"
 
 static void	read_input(t_list *list, int ret)
 {
@@ -38,17 +39,22 @@ static int	loop(t_list *list)
 	}
 }
 
+
+
 int			main(int argc, char **argv, char **envp)
 {
 	t_list list;
+	t_env	*env = NULL;
+	
 
 	(void)argc;
 	(void)argv;
 	(void)envp;
-	for(int i = 0; envp[i]; i++)
-		printf("%i.[%s]\n", i, envp[i]);
-
-	ft_bzero(&list, sizeof(t_list));
-	loop(&list);
+	(void)list;
+	// for(int i = 0; envp[i]; i++)
+	// 	printf("%i.[%s]\n", i, envp[i]);
+	create_envp(env, envp);
+	// ft_bzero(&list, sizeof(t_list));
+	// loop(&list);
 	return (0);
 }
