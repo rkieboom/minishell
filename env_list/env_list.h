@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/09 14:55:27 by spelle        #+#    #+#                 */
-/*   Updated: 2021/05/11 15:47:39 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/13 14:29:16 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ENV_LIST_H
 
 #include <stdlib.h>
+#include "../libft/libft.h"
 
 typedef struct s_env
 {
@@ -30,5 +31,6 @@ t_env	*env_lstlast(t_env *lst);
 int		env_lstsize(t_env *lst);
 
 t_env *create_envp(t_env *v, char **envp);
+char *search_env(t_env *v, char *name, int length);
 
 #endif
