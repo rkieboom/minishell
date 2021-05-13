@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 21:40:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/13 12:59:47 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../header.h"
 
-int env(t_env *v);
+int	env(t_env *v);
+int	ft_echo(char *str);
 
 #endif
