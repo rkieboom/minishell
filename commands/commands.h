@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/13 14:28:39 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/14 23:36:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,15 @@
 # include "../header.h"
 # include "../libft/libft.h"
 
-int	env(t_env *v);
-int	ft_echo(t_env *v, char *str);
+int		env(t_env *v);
+int		ft_echo(t_env *v, char *str);
+
+/*
+###
+###		Functions
+###
+*/
+
+char	*add_new_line(char *str);
 
 #endif
