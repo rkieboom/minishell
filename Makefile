@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/11 21:47:37 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/05/17 01:19:07 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS =					freebuf.c \
 						main.c \
 						$(SRCS.COMMANDS.ECHO) \
 						$(SRCS.COMMANDS.ENV) \
+						$(SRCS.COMMANDS.PWD) \
 						$(SRCS.ENV.LIST) \
 						$(SRCS.ENV.LIST.FUNC) \
 						$(SRCS.EXECUTE) \
@@ -32,8 +33,11 @@ SRCS =					freebuf.c \
 
 
 SRCS.COMMANDS.ECHO =	commands/echo/echo.c \
+						commands/echo/add_new_line.c \
 
 SRCS.COMMANDS.ENV =		commands/env/env.c \
+
+SRCS.COMMANDS.PWD =		commands/pwd/pwd.c \
 
 SRCS.ENV.LIST =			env_list/env_lst_new.c \
 						env_list/env_lstadd_back.c \
@@ -59,22 +63,25 @@ O.SRCS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(O.SRCS) $(LIBFT)
-	$(CC) -g $(O.SRCS) $(LIBFT) -o $(NAME)
+	@echo "\033[1;30mCompiling files"
+	@echo "Making executable"
+	@$(CC) -g $(O.SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
-	make -C Libft/.
+	@make -C Libft/.
 
 %.o: %.c
-	$(CC) -g -Ilibft -c $< -o $@
+	@$(CC) -g -Ilibft -c $< -o $@
 
 clean:
-	rm -rf $(O.SRCS)
-	make -C Libft/. clean
+	@echo "\033[1;31mCleaning..."
+	@rm -rf $(O.SRCS)
+	@make -C Libft/. clean
 
-fclean:
-	rm -rf $(NAME)
-	rm -rf $(LIBFT)
-	rm -rf $(O.SRCS)
-	make -C Libft/. clean
+fclean: clean
+	@echo "\033[1;31mRemoving minishell"
+	@rm -rf $(NAME)
+	@rm -rf $(LIBFT)
+	@echo "\033[1;31mRemoving libft.a"
 
 re: fclean all

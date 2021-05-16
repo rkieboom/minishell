@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/14 23:49:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/16 23:10:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../commands.h"
 
 int			skipspaces(const char *str);
+// char	*add_new_line(char *str);
 
 static int	checkdollar(char *str)
 {
@@ -75,7 +76,7 @@ static char	*skipecho_checkoption(char *str, int *n)
 	return (str + i);
 }
 
-int	ft_echo(t_env *v, char *str)
+int	ft_echo(t_env *v, char *str) //LEAKS FIXEN
 {
 	int		i;
 	int		newline;
@@ -89,6 +90,6 @@ int	ft_echo(t_env *v, char *str)
 		newstr = createstring(v, str, 0, 0);
 	if (newline == 1)
 		newstr = add_new_line(newstr);
-	// write(1, newstr, ft_strlen(newstr));
+	write(1, newstr, ft_strlen(newstr));
 	return (0);
 }
