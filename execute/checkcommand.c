@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/13 14:29:42 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/16 23:04:45 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		checkcommand(t_list *list)
 		else if (checkcommand2(list->parse.commands[i], "cd", 2))
 			break ;
 		else if (checkcommand2(list->parse.commands[i], "pwd", 3))
-			break ;
+			pwd(list->env);
 		else if (checkcommand2(list->parse.commands[i], "export", 6))
 			break ;
 		else if (checkcommand2(list->parse.commands[i], "unset", 5))
