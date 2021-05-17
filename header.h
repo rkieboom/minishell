@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/17 12:50:26 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/17 16:46:04 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void			ft_error(char *msg);
 
 void			execute(t_list *list);
 int				skipspaces(const char *str);
+
+void	check_quote(t_list *list, char *c);
+char	*add_new_line(char *str);
 
 #endif
