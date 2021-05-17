@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/17 01:19:07 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/05/17 13:30:37 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,9 @@ LIBFT = libft/libft.a
 
 FLAGS = -Wall -Werror -Wextra
 
-SRCS =					freebuf.c \
-						ft_skipspaces.c \
-						functions.c \
+SRCS =					functions.c \
 						main.c \
+						$(FUNCTIONS) \
 						$(SRCS.COMMANDS.ECHO) \
 						$(SRCS.COMMANDS.ENV) \
 						$(SRCS.COMMANDS.PWD) \
@@ -30,10 +29,10 @@ SRCS =					freebuf.c \
 						$(SRCS.GNL) \
 						$(SRCS.PARSING) \
 						
-
+FUNCTIONS =				functions/ft_skipspaces.c \
+						functions/add_new_line.c \
 
 SRCS.COMMANDS.ECHO =	commands/echo/echo.c \
-						commands/echo/add_new_line.c \
 
 SRCS.COMMANDS.ENV =		commands/env/env.c \
 
@@ -44,7 +43,8 @@ SRCS.ENV.LIST =			env_list/env_lst_new.c \
 						env_list/env_lstlast.c \
 						env_list/env_lstsize.c \
 
-SRCS.ENV.LIST.FUNC =	env_list/functions/functions.c \
+SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
+						env_list/functions/search_env.c \
 
 SRCS.EXECUTE =			execute/checkcommand.c \
 						execute/execute.c \
