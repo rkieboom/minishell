@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/17 13:15:48 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/17 16:07:30 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,39 @@ void	read_input(t_list *list, int ret)
 		ft_error("get_next_line failed!");
 }
 
+static void	check_input(t_list *list)
+{
+	char *newstr;
+	int i;
+
+	i = 0;
+	while (1)
+	{
+		list->parse.comma1 = 0;
+		list->parse.comma2 = 0;
+		while (list->gnl.buf[i])
+		{
+			check_quote(list, &list->gnl.buf[i]);
+			i++;
+		}
+		if (list->parse.comma1 == 1 || list->parse.comma2 == 1)
+		{
+			newstr = ft_strdup(list->gnl.buf);
+			read_input(list, 1);
+			list->gnl.buf = ft_strjoin(add_new_line(newstr), list->gnl.buf);
+		}
+		else
+			break ;
+		i = 0;
+	}
+}
+
 static int	loop(t_list *list)
 {
 	while (1)
 	{
 		read_input(list, 1);
+		check_input(list);
 		parse(list);
 		execute(list);
 		free_parse_commands(list);

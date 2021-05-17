@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/16 23:04:45 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/17 16:10:31 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,25 @@ static int	checkcommand2(const char *str1, const char *str2, int i)
 void		checkcommand(t_list *list)
 {
 	int	i;
+	int j;
+	
 	i = 0;
 	while (list->parse.commands[i])
 	{
-		if (checkcommand2(list->parse.commands[i], "echo", 4))
-			ft_echo(list->env, list->parse.commands[i]);
-		else if (checkcommand2(list->parse.commands[i], "cd", 2))
+		j = skipspaces(list->parse.commands[i]);
+		if (checkcommand2(list->parse.commands[i] + j, "echo", 4))
+			ft_echo(list->env, list->parse.commands[i] + j);
+		else if (checkcommand2(list->parse.commands[i] + j, "cd", 2))
 			break ;
-		else if (checkcommand2(list->parse.commands[i], "pwd", 3))
+		else if (checkcommand2(list->parse.commands[i] + j, "pwd", 3))
 			pwd(list->env);
-		else if (checkcommand2(list->parse.commands[i], "export", 6))
+		else if (checkcommand2(list->parse.commands[i] + j, "export", 6))
 			break ;
-		else if (checkcommand2(list->parse.commands[i], "unset", 5))
+		else if (checkcommand2(list->parse.commands[i] + j, "unset", 5))
 			break ;
-		else if (checkcommand2(list->parse.commands[i], "env", 3))
+		else if (checkcommand2(list->parse.commands[i] + j, "env", 3))
 			env(list->env);
-		else if (checkcommand2(list->parse.commands[i], "exit", 4))
+		else if (checkcommand2(list->parse.commands[i] + j, "exit", 4))
 			exit(0);
 		else
 			printerror(list->parse.commands[i]);

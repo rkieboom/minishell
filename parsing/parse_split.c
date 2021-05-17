@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/08 13:58:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/17 14:55:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/17 16:38:42 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,31 @@
 
 void			checkcomma(t_list *list, char *c);
 
-static int		arraysize(const char *s, char c)
+static int		arraysize(const char *s, char c, t_list *list)
 {
 	int i;
 	int k;
-	int comma;
 
-	comma = 0;
+
+
 
 	i = 0;
 	k = 0;
+	i = skipspaces(s);
 	if (s[i] == '\0')
 		return (0);
+	list->parse.comma1 = 0;
+	list->parse.comma2 = 0;
 	while (s[i])
 	{
-		while (s[i] == c && s[i])
+		check_quote(list, (char *)s + i);
+		if (s[i] == c && (list->parse.comma1 == 0 && list->parse.comma2 == 0))
+			k++;
+		while (s[i] && s[i] == c)
 			i++;
-		while (s[i] != c && s[i])
-		{
-			i++;
-			if (s[i] == '\'' || s[i] == '\"')
-			{
-				if (comma > 0)
-					comma--;
-				else
-					comma++;
-			}
-			if ((comma == 1 && s[i] == c) || !s[i])
-				k++;
-		}
+		i++;
 	}
-	return (k);
+	return (k + 1);
 }
 
 static void		findstart(const char *s, char c, int *i, int *start)
@@ -78,7 +72,7 @@ static char		**splitter(t_list *list, char c, char **result, int i)
 
 	strlength = 0;
 	arrayindex = 0;
-	while (arrayindex != arraysize(list->gnl.buf, c))
+	while (arrayindex != arraysize(list->gnl.buf, c, list))
 	{
 		findstart(list->gnl.buf, c, &i, &start);
 		while (list->gnl.buf[i] && (list->gnl.buf[i] != c || (list->parse.comma1 == 1 || list->parse.comma2 == 1)))
@@ -104,9 +98,23 @@ char			**parse_split(t_list *list, char c)
 
 	if (!list->gnl.buf)
 		return (NULL);
-	result = (char**)malloc((arraysize(list->gnl.buf, c) + 1) * sizeof(char *));
+	result = (char**)malloc((arraysize(list->gnl.buf, c, list) + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	result = splitter(list, c, result, 0);
 	return (result);
 }
+
+
+//echo hallo
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
