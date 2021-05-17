@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   add_new_line.c                                     :+:    :+:            */
+/*   search_env.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/05/14 23:34:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/14 23:49:37 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/05/17 12:47:42 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../commands.h"
+#include "../env_list.h"
 
-char	*add_new_line(char *str)
+char *search_env(t_env *v, char *name, int length)
 {
-	int		length;
-	char	*result;
-
-	length = ft_strlen(str);
-	result = malloc(length + 2);
-	ft_strlcpy(result, str, length + 1);
-	result[length] = '\n';
-	result[length + 1] = '\0';
-	free(str);
-	return (result);
+	while (v)
+	{
+		if (ft_strncmp(name, v->name, length) == 0)
+			return (v->content);
+		v = v->next;
+	}
+	return ("");
 }

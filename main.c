@@ -6,13 +6,19 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/13 12:58:43 by spelle        ########   odam.nl         */
+/*   Updated: 2021/05/17 13:15:48 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static void	read_input(t_list *list, int ret)
+static void		freebuf(t_list *list)
+{
+	free(list->gnl.buf);
+	list->gnl.buf = NULL;
+}
+
+void	read_input(t_list *list, int ret)
 {
 	if (list->gnl.buf)
 		freebuf(list);
@@ -31,8 +37,6 @@ static int	loop(t_list *list)
 		free_parse_commands(list);
 	}
 }
-
-
 
 int	main(int argc, char **argv, char **envp)
 {
