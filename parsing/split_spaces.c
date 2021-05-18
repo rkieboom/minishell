@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   parse_split.c                                      :+:    :+:            */
+/*   split_spaces.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/12/08 13:58:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/18 22:07:50 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/05/18 22:52:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
-
-void			checkcomma(t_list *list, char *c);
 
 static int		arraysize(const char *s, char c, t_list *list)
 {
@@ -29,12 +27,12 @@ static int		arraysize(const char *s, char c, t_list *list)
 	while (s[i])
 	{
 		check_quote(list, (char *)s + i);
-		if (s[i] == c && (list->parse.comma1 == 0 && list->parse.comma2 == 0))
+		if (s[i] == c && (list->parse.comma1 == 0 && list->parse.comma2 == 0) && i > 0 && s[i - 1] != c)
 			k++;
-		while (s[i] && s[i] == c)
-			i++;
 		i++;
 	}
+	if (i > 0 && s[i - 1] != ' ')
+		k++;
 	return (k + 1);
 }
 
@@ -61,57 +59,50 @@ static int		freemem(char **result, int k)
 	return (0);
 }
 
-static char		**splitter(t_list *list, char c, char **result, int i)
+static char		**splitter(t_list *list, const char *str, char c, char **result)
 {
-	int strlength;
-	int arrayindex;
-	int start;
+	int i;
+	int k;
+	int length;
 
-	strlength = 0;
-	arrayindex = 0;
-	while (arrayindex != arraysize(list->gnl.buf, c, list))
+	i = 0;
+	k = 0;
+	length = 0;
+	list->parse.comma1 = 0;
+	list->parse.comma2 = 0;
+	while (str[i])
 	{
-		findstart(list->gnl.buf, c, &i, &start);
-		while (list->gnl.buf[i] && (list->gnl.buf[i] != c || (list->parse.comma1 == 1 || list->parse.comma2 == 1)))
+		check_quote(list, (char *)str + i);
+		if (str[i] != ' ' || list->parse.comma1 || list->parse.comma2)
 		{
-			check_quote(list, &list->gnl.buf[i]);
-			i++;
-			strlength++;
+			length++;
 		}
-		result[arrayindex] = ft_substr(list->gnl.buf, start, strlength);
-		if (freemem(result, arrayindex))
-			break ;
-		strlength = 0;
-		arrayindex++;
+		else
+		{
+			if (length != 0)
+			{
+				result[k] = ft_substr(str, i - length, length);
+				k++;
+				length = 0;
+			}
+		}
 		i++;
 	}
-	result[arrayindex] = NULL;
+	result[k] = ft_substr(str, i - length, length);
+	k++;
+	result[k] = NULL;
 	return (result);
 }
 
-char			**parse_split(t_list *list, char c)
+char			**split_spaces(t_list *list, const char *str, char c)
 {
 	char **result;
 
 	if (!list->gnl.buf)
 		return (NULL);
-	result = (char**)malloc((arraysize(list->gnl.buf, c, list) + 1) * sizeof(char *));
+	result = (char**)malloc(arraysize(str, c, list));
 	if (!result)
 		return (NULL);
-	result = splitter(list, c, result, 0);
+	result = splitter(list, str, c, result);
 	return (result);
 }
-
-
-//echo hallo
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//

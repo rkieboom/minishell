@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/17 16:49:17 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/05/18 22:20:24 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ SRCS.GNL =				get_next_line/get_next_line.c \
 SRCS.PARSING =			parsing/parse.c \
 						parsing/parse_split.c \
 						parsing/functions.c \
+						parsing/split_spaces.c \
 
 O.SRCS = $(SRCS:.c=.o)
 
