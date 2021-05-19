@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 14:02:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/19 16:22:45 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,41 @@
 char	**parse_split(t_list *list, char c);
 char	**parse_test(t_list *list);
 
-// static void	p(t_list *list)
-// {
-// 	int i;
-// 	int j;
+static void	p(t_list *list)
+{
+	int i;
+	int j;
+	int k;
 
-// 	i = 0;
-// 	j = 0;
-// 	while (list->parse.commands[i])
-// 	{
-// 		while (list->parse.commands[i][j])
-// 		{
-// 			check_quote(list, &list->parse.commands[i][j]);
-// 			if (list->parse.comma1 || list->parse.comma2 || list->parse.commands[i][j] == '$')
-// 			{
-// 				if (list->parse.comma1)
-// 					list->parse.commands[i] = single_quote(list, list->parse.commands[i]);
-// 				else if (list->parse.comma2)
-// 					list->parse.commands[i] = double_quote(list, list->parse.commands[i]);
-// 				else
-// 					list->parse.commands[i] = dollar(list, list->parse.commands[i]);
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 		j = 0;
-	// }
-// }
+	i = 0;
+	j = 0;
+	k = 0;
+	while (list->parse.commands[i])
+	{
+		while (list->parse.commands[i][j])
+		{
+			while (list->parse.commands[i][j][k])
+			{
+				check_quote(list, &list->parse.commands[i][j][k]);
+				if (list->parse.comma1 || list->parse.comma2 || list->parse.commands[i][j][k] == '$')
+				{
+					if (list->parse.comma1)
+						list->parse.commands[i][j] = single_quote(list, list->parse.commands[i][j]);
+					else if (list->parse.comma2)
+						list->parse.commands[i][j] = double_quote(list, list->parse.commands[i][j]);
+					else
+						list->parse.commands[i][j] = dollar(list, list->parse.commands[i][j]);
+					k = 0;
+				}
+				k++;
+			}
+			k = 0;
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+}
 
 static char *fix_spaces(char *str)
 {
@@ -66,7 +74,7 @@ int	parse(t_list *list)
 		length--;
 		i++;
 	}
-	// p(list);
+	p(list);
 	
 	return (0);
 }
