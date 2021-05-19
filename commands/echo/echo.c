@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 11:55:05 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/19 14:21:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_echo(t_list *v, char **str) //LEAKS FIXEN
 	while (str[i])
 	{
 		ft_putstr_fd(str[i], 1);
+		ft_putchar_fd(' ', 1);
 		i++;	
 	}
 	return (0);
