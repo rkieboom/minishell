@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 16:22:45 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/19 19:46:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	parse(t_list *list)
 	while (splitted[length])
 		length++;
 	list->parse.commands = (char ***)malloc((length + 1) * sizeof(char **));
+	list->parse.commands[length] = 0;
 	while (length)
 	{
 		list->parse.commands[i] = split_spaces(list, splitted[i], ' ');

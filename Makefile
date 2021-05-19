@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/18 22:20:24 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/05/19 17:50:46 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,9 @@ SRCS.PARSING =			parsing/parse.c \
 						parsing/parse_split.c \
 						parsing/functions.c \
 						parsing/split_spaces.c \
+						parsing/functions/double_quote.c \
+						parsing/functions/single_quote.c \
+						parsing/functions/dollar.c \
 
 O.SRCS = $(SRCS:.c=.o)
 
