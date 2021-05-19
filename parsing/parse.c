@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/18 22:22:19 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/19 14:02:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,27 @@ char	**parse_test(t_list *list);
 
 static char *fix_spaces(char *str)
 {
-	
+	return (NULL);
 }
 
 int	parse(t_list *list)
 {
 	int	i;
+	int length;
 	char **splitted;
 
 	i = 0;
-	list->parse.commands = parse_split(list, ';');
-	splitted = split_spaces(list, list->parse.commands[0], ' ');
+	length = 0;
+	splitted = parse_split(list, ';');
+	while (splitted[length])
+		length++;
+	list->parse.commands = (char ***)malloc((length + 1) * sizeof(char **));
+	while (length)
+	{
+		list->parse.commands[i] = split_spaces(list, splitted[i], ' ');
+		length--;
+		i++;
+	}
 	// p(list);
 	
 	return (0);
