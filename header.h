@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/17 16:46:04 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/19 11:26:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct	s_parse
 {
-	char		**commands;
+	char		***commands;
 	int			comma1;
 	int			comma2;
 }				t_parse;

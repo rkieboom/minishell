@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/18 22:52:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/19 13:40:40 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,21 +88,23 @@ static char		**splitter(t_list *list, const char *str, char c, char **result)
 		}
 		i++;
 	}
-	result[k] = ft_substr(str, i - length, length);
-	k++;
-	result[k] = NULL;
+	if (str[i] == '\0')
+		result[k] = ft_substr(str, i - length, length);
 	return (result);
 }
 
 char			**split_spaces(t_list *list, const char *str, char c)
 {
+	int length;
 	char **result;
 
-	if (!list->gnl.buf)
+	if (!str)
 		return (NULL);
-	result = (char**)malloc(arraysize(str, c, list));
+	length = arraysize(str, c, list);
+	result = (char**)malloc(length * sizeof(char *));
 	if (!result)
 		return (NULL);
 	result = splitter(list, str, c, result);
+	result[length - 1] = NULL;
 	return (result);
 }
