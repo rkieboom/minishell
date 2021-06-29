@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/19 17:50:46 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/06/15 14:48:42 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
 
 SRCS.EXECUTE =			execute/checkcommand.c \
 						execute/execute.c \
+						execute/execve.c \
 
 SRCS.FREE =				free/free_parse_commands.c \
 
@@ -56,7 +57,6 @@ SRCS.GNL =				get_next_line/get_next_line.c \
 
 SRCS.PARSING =			parsing/parse.c \
 						parsing/parse_split.c \
-						parsing/functions.c \
 						parsing/split_spaces.c \
 						parsing/functions/double_quote.c \
 						parsing/functions/single_quote.c \

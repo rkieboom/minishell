@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 19:46:01 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/05/25 16:41:59 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	p(t_list *list)
 					else
 						list->parse.commands[i][j] = dollar(list, list->parse.commands[i][j]);
 					k = 0;
+					list->parse.comma1 = 0;
+					list->parse.comma2 = 0;
 				}
 				k++;
 			}

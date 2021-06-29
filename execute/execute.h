@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/11 16:40:56 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/06/15 14:46:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 # include "../commands/commands.h"
 
 void	checkcommand(t_list	*list);
+
+int ft_execve(t_list *list, char **str);
 
 #endif
