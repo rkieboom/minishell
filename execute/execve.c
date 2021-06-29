@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/06/26 15:17:19 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/06/29 15:52:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <errno.h>
 #include <string.h>
 #include <stdio.h>
+#include <fcntl.h>
 
 static char *get_full_env(t_env *env)
 {
@@ -80,6 +81,23 @@ void	free_envp(char **envp)
 	free(envp);
 }
 
+static int check_exist(char *PATH)
+{
+	int fd;
+
+	fd = open(PATH, O_RDONLY);
+	if (fd < 0)
+		return (-1);
+
+
+
+		
+	close(fd);
+	return (1);
+}
+
+
+
 int ft_execve(t_list *list, char **str)
 {
 	int result;
@@ -90,7 +108,7 @@ int ft_execve(t_list *list, char **str)
 	envp = recreate_envp(list->env);
 	result = execve(str[0], str, envp);
 	printf("%s", strerror(errno));
-	fflush(stdout);
+	fflush(NULL);
 	return (0);
 }
 

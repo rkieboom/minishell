@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 11:26:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/06/29 15:13:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <dirent.h>
 
 typedef struct	s_parse
 {
@@ -33,24 +34,31 @@ typedef struct	s_gnl
 	char		*buf;
 }				t_gnl;
 
+typedef struct s_dir
+{
+	DIR			*dir;
+	struct dirent *dp;
+}				t_dir;
+
 
 typedef struct	s_list
 {
 	t_parse parse;
 	t_gnl	gnl;
+	t_dir	dir;
 	t_env	*env;
 }				t_list;
 
-int				get_next_line(int fd, char **line);
+int			get_next_line(int fd, char **line);
 
-int				parse(t_list *list);
+int			parse(t_list *list);
 
-void			free_parse_commands(t_list *list);
+void		free_parse_commands(t_list *list);
 
-void			ft_error(char *msg);
+void		ft_error(char *msg);
 
-void			execute(t_list *list);
-int				skipspaces(const char *str);
+void		execute(t_list *list);
+int			skipspaces(const char *str);
 
 void	check_quote(t_list *list, char *c);
 char	*add_new_line(char *str);

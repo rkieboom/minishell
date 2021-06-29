@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/06/15 14:48:42 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/06/29 16:03:14 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ FLAGS = -Wall -Werror -Wextra
 SRCS =					functions.c \
 						main.c \
 						$(FUNCTIONS) \
+						$(SRCS.COMMANDS.CD) \
 						$(SRCS.COMMANDS.ECHO) \
 						$(SRCS.COMMANDS.ENV) \
 						$(SRCS.COMMANDS.PWD) \
@@ -31,6 +32,8 @@ SRCS =					functions.c \
 						
 FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/add_new_line.c \
+
+SRCS.COMMANDS.CD =		commands/cd/cd.c \
 
 SRCS.COMMANDS.ECHO =	commands/echo/echo.c \
 

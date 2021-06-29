@@ -6,22 +6,19 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 13:54:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/06/29 15:25:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static void		freebuf(t_list *list)
-{
-	free(list->gnl.buf);
-	list->gnl.buf = NULL;
-}
-
 void	read_input(t_list *list, int ret)
 {
 	if (list->gnl.buf)
-		freebuf(list);
+	{
+		free(list->gnl.buf);
+		list->gnl.buf = NULL;
+	}
 	ret = get_next_line(0, &list->gnl.buf);
 	if (ret < 0)
 		ft_error("get_next_line failed!");
@@ -66,14 +63,24 @@ static int	loop(t_list *list)
 	}
 }
 
+static int		open_directory(t_list *list)
+{
+	if (!(list->dir.dir = opendir(".")))
+		return (-1);
+	// if (!(list->dir.dir = opendir(search_env(list->env, "PWD", 3))))
+	// 	if (!(list->dir.dir = opendir(".")))
+	// 		return (-1);
+	return (1);
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_list list;
 
-	// for(int i = 0; envp[i]; i++)
-	// 	printf("%i.[%s]\n", i, envp[i]);
 	ft_bzero(&list, sizeof(t_list));
 	list.env = create_envp(list.env, envp);
+	// if (open_directory(&list) == -1)
+	// 	return (1);
 	loop(&list);
 	return (0);
 }
