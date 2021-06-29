@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"__locale": "cpp",
-		"locale": "cpp"
+		"locale": "cpp",
+		"execute.h": "c",
+		"commands.h": "c"
 	}
 }
