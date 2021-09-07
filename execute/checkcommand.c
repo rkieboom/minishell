@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/06/29 16:04:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/07 09:39:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void		checkcommand(t_list *list)
 		else if (!ft_strncmp(list->parse.commands[i][0], "exit", 5))
 			exit(0);
 		else
-			ft_putendl_fd("werkt nog niet kut!", 1);
-			// ft_execve(list, list->parse.commands[i]);
+			ft_execve(list, list->parse.commands[i]);
+			// ft_putendl_fd("werkt nog niet kut!", 1);
 		i++;
 	}
 }

@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   execute.h                                          :+:    :+:            */
+/*   commands.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/07 09:58:33 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/09/07 10:17:11 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/09/07 12:18:03 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTE_H
-# define EXECUTE_H
+#include "../commands.h"
 
-# include "../header.h"
-# include "../commands/commands.h"
+int check_exist(char *PATH)
+{
+	int fd;
 
-void	checkcommand(t_list	*list);
+	fd = open(PATH, O_RDONLY);
+	if (fd < 0)
+		return (1);
+	close(fd);
+	return (0);
+}
 
-#endif
+int	check_permission(char *PATH)
+{
+	struct stat stats;
+
+	if (stat(PATH, &stats) != 0)
+		return (1);
+	else if (!(stats.st_mode & X_OK))
+		return (1);
+	
+	return (0);
+}
