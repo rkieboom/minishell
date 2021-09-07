@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/12/08 13:58:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 12:01:47 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/07 09:28:13 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ static int		arraysize(const char *s, char c, t_list *list)
 			i++;
 		i++;
 	}
+	list->parse.comma1 = 0;
+	list->parse.comma2 = 0;
 	return (k + 1);
 }
 
