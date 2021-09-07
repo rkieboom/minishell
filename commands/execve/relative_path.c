@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   execute.h                                          :+:    :+:            */
+/*   relative_path.c                                    :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/07 09:58:33 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/09/07 10:02:42 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/09/07 11:07:16 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EXECUTE_H
-# define EXECUTE_H
+#include "../commands.h"
 
-# include "../header.h"
-# include "../commands/commands.h"
+char *relative_path(char *PATH)
+{
+	if (check_exist(PATH))
+		return (NULL);
+	if (check_permission(PATH))
+		return (NULL);
 
-void	checkcommand(t_list	*list);
 
-#endif
+	return (ft_strdup(PATH));
+}
