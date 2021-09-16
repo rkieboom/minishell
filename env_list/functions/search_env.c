@@ -6,11 +6,12 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/16 17:23:22 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/16 18:30:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../env_list.h"
+#include <stdio.h>
 
 void	env_change_content(t_env *v, char *envname, char *envcontent)
 {
@@ -25,12 +26,14 @@ char *search_env(t_env *v, char *name, int length)
 	{
 		if (*name == '$')
 			name++;
-		while (name[length] && (ft_isdigit(name[length]) || ft_isalpha(name[length])))
+		while (name[length] && (ft_isdigit(name[length]) || ft_isalpha(name[length]) || (name[length] == '_')))
 			length++;
 	}
+	// if (v->name[length])
+	// 	return ("");
 	while (v)
 	{
-		if (ft_strncmp(name, v->name, length) == 0)
+		if (ft_strncmp(name, v->name, length) == 0 && v->name[length] == '\0')
 			return (v->content);
 		v = v->next;
 	}

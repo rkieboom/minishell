@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 14:07:09 by spelle        #+#    #+#                 */
-/*   Updated: 2021/09/16 17:22:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/16 17:27:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ static void	set_env_name_and_content(t_env *v, char **str, int i, int j)
 		env_lstadd_back(&v, env_lst_new(envname, envcontent));
 	else
 		env_change_content(v, envname, envcontent);
-	free(envname);
-	free(envcontent);
+	// free(envname);
+	// free(envcontent);
 }
 
 int	export(t_env *v, char **str)
