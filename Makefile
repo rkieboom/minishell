@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/09/16 16:58:40 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/09/16 17:14:19 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS =					functions.c \
 						$(SRCS.COMMANDS.ENV) \
 						$(SRCS.COMMANDS.PWD) \
 						$(SRCS.COMMANDS.EXPORT) \
+						$(SRCS.COMMANDS.UNSET) \
 						$(SRCS.COMMANDS.EXECVE) \
 						$(SRCS.ENV.LIST) \
 						$(SRCS.ENV.LIST.FUNC) \
@@ -44,6 +45,8 @@ SRCS.COMMANDS.ENV =		commands/env/env.c \
 SRCS.COMMANDS.PWD =		commands/pwd/pwd.c \
 
 SRCS.COMMANDS.EXPORT =	commands/export/export.c \
+
+SRCS.COMMANDS.UNSET =	commands/unset/unset.c \
 
 SRCS.COMMANDS.EXECVE =	commands/execve/execve.c \
 						commands/execve/commands.c \
