@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/09/16 17:14:19 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/09/16 17:25:12 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ $(NAME): $(O.SRCS) $(LIBFT)
 	@$(CC) -g $(O.SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
-	@make -C Libft/.
+	@make -C libft/.
 
 %.o: %.c
 	@$(CC) -g -Ilibft -c $< -o $@
@@ -95,7 +95,7 @@ $(LIBFT):
 clean:
 	@echo "\033[1;31mCleaning..."
 	@rm -rf $(O.SRCS)
-	@make -C Libft/. clean
+	@make -C libft/. clean
 
 fclean: clean
 	@echo "\033[1;31mRemoving minishell"
