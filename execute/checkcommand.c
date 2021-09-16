@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/07 09:39:20 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/16 16:57:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void		checkcommand(t_list *list)
 		else if (!ft_strncmp(list->parse.commands[i][0], "pwd", 4))
 			pwd(list->env);
 		else if (!ft_strncmp(list->parse.commands[i][0], "export", 7))
-			break ;
+			export(list->env, list->parse.commands[i]);
 		else if (!ft_strncmp(list->parse.commands[i][0], "unset", 6))
 			break ;
 		else if (!ft_strncmp(list->parse.commands[i][0], "env", 4))
