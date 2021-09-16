@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/09 14:55:27 by spelle        #+#    #+#                 */
-/*   Updated: 2021/05/13 14:29:16 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/16 17:21:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ t_env	*env_lstlast(t_env *lst);
 int		env_lstsize(t_env *lst);
 
 t_env *create_envp(t_env *v, char **envp);
-char *search_env(t_env *v, char *name, int length);
+
+void	env_change_content(t_env *v, char *envname, char *envcontent);
+char	*search_env(t_env *v, char *name, int length);
+t_env	*search_envname(t_env *v, char *envname);
+char	*search_envname_returnenvname(t_env *v, char *envname);
 
 #endif

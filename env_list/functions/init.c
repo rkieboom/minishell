@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   functions.c                                        :+:    :+:            */
+/*   init.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 13:56:28 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/17 12:47:46 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/16 17:20:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	set_name_value(char *envp, char **name, char **value)
 	i += 1;
 	*value = ft_strdup(envp + i);
 }
+
 t_env	*create_envp(t_env *v, char **envp)
 {
 	int i;
