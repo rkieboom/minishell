@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_parse_commands.c                              :+:    :+:            */
+/*   exit.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/20 08:20:51 by rkieboom      ########   odam.nl         */
+/*   Created: 2021/09/20 09:15:36 by rkieboom      #+#    #+#                 */
+/*   Updated: 2021/09/20 09:35:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../header.h"
+#include "../commands.h"
 
-void	free_parse_commands(t_list *list)
+void	ft_exit(int ret)
 {
-	int i;
-
-	i = 0;
-	if (list)
-		i = 0;
-	if (list->parse.commands)
+	if (ret == 1)
 	{
-		while (list->parse.commands[i])
-		{
-			free(list->parse.commands[i]);
-			i++;
-		}
-		free(list->parse.commands);
+		ft_putstr_fd("minishell-1.0$: ", 2);
+		ft_putendl_fd(strerror(errno), 2);
+		exit(1);
 	}
-	if (list->gnl.buf)
-	{
-		free(list->gnl.buf);
-		list->gnl.buf = NULL;
-	}
+	else if (ret == 2)
+		exit(1);
+	else
+		exit(0);
 }

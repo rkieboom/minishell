@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:42 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/07 11:07:16 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/20 10:21:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char *relative_path(char *PATH)
 {
-	if (check_exist(PATH))
+	if (check_exist(PATH + 2))
 		return (NULL);
-	if (check_permission(PATH))
+	if (check_permission(PATH + 2))
 		return (NULL);
 
 

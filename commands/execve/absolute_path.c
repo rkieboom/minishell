@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/07 12:51:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/20 10:41:00 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ char	*absolute_path(char *PATH, t_env *env)
 {
 	char *newpath;
 
-	if (check_fullpath(PATH))
-	{
-		if (check_exist(PATH))
-			return (NULL);
-	}
-	else
+	if (!check_fullpath(PATH))
 		newpath = get_path(PATH, search_env(env, "PATH", 4));
+	if (check_exist(newpath))
+		return (NULL);
+	if (check_permission(newpath))
+		return (NULL);
 	return (newpath);
 }

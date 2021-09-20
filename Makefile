@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/09/16 17:25:12 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/09/20 09:39:25 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =					functions.c \
 						$(SRCS.COMMANDS.EXPORT) \
 						$(SRCS.COMMANDS.UNSET) \
 						$(SRCS.COMMANDS.EXECVE) \
+						$(SRCS.COMMANDS.EXIT) \
 						$(SRCS.ENV.LIST) \
 						$(SRCS.ENV.LIST.FUNC) \
 						$(SRCS.EXECUTE) \
@@ -52,6 +53,8 @@ SRCS.COMMANDS.EXECVE =	commands/execve/execve.c \
 						commands/execve/commands.c \
 						commands/execve/relative_path.c \
 						commands/execve/absolute_path.c \
+
+SRCS.COMMANDS.EXIT = 	commands/exit/exit.c \
 
 SRCS.ENV.LIST =			env_list/env_lst_new.c \
 						env_list/env_lstadd_back.c \
@@ -84,13 +87,13 @@ all: $(NAME)
 $(NAME): $(O.SRCS) $(LIBFT)
 	@echo "\033[1;30mCompiling files"
 	@echo "Making executable"
-	@$(CC) -g $(O.SRCS) $(LIBFT) -o $(NAME)
+	@$(CC) -g -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C libft/.
 
 %.o: %.c
-	@$(CC) -g -Ilibft -c $< -o $@
+	@$(CC) -Ilibft -c $< -o $@
 
 clean:
 	@echo "\033[1;31mCleaning..."
