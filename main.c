@@ -6,22 +6,30 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/06/29 15:25:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/20 09:49:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+#include <stdio.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
-void	read_input(t_list *list, int ret)
+void	read_input(t_list *list, int option)
 {
-	if (list->gnl.buf)
+	if (option == 0)
 	{
-		free(list->gnl.buf);
-		list->gnl.buf = NULL;
+		list->gnl.buf = readline("minishell-1.0$ ");
+		// if (list->gnl.buf == NULL)
+		// 	exit(0);
 	}
-	ret = get_next_line(0, &list->gnl.buf);
-	if (ret < 0)
-		ft_error("get_next_line failed!");
+	else
+	{
+		list->gnl.buf = readline("> ");
+		// if (list->gnl.buf == NULL)
+		// 	exit(0);
+	}
+	
 }
 
 static void	check_input(t_list *list)
@@ -55,8 +63,9 @@ static int	loop(t_list *list)
 {
 	while (1)
 	{
-		read_input(list, 1);
+		read_input(list, 0);
 		check_input(list);
+		add_history(list->gnl.buf);
 		parse(list);
 		execute(list);
 		free_parse_commands(list);

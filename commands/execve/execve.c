@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/16 17:40:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/20 10:15:13 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,36 +68,35 @@ static char **recreate_envp(t_env *env)
 	return (envp);
 }
 
-void	free_envp(char **envp)
-{
-	int i;
-
-	i = 0;
-	while (envp[i])
-	{
-		free(envp[i]);
-		i++;
-	}
-	free(envp);
-}
-
 int ft_execve(t_list *list, char **str)
 {
-	int result;
-	char **envp;
-	char *path;
-	int	i;
+	int		result;
+	char	**envp;
+	char	*path;
+	int		i;
+	pid_t	PID;
 
 	i = 0;
-	envp = recreate_envp(list->env);
-	if (str[0] && str[0][0] == '.' && str[0][1] == '/')
-		path = relative_path(str[0]);
+	PID = fork();
+	if (PID < 0)
+		ft_exit(1);
+	if (PID == 0)
+	{
+		envp = recreate_envp(list->env);
+		if (str[0] && str[0][0] == '.' && str[0][1] == '/')
+			path = relative_path(str[0]);
+		else
+			path = absolute_path(str[0], list->env);
+		if (path)
+			result = execve(path, str, envp);
+		else
+			ft_exit(2);
+		if (result < 0)
+			ft_exit(1);
+		exit(0);
+	}	
 	else
-		path = absolute_path(str[0], list->env);
-	if (path)
-		result = execve(path, str, envp);
-	// printf("%s", strerror(errno));
-	fflush(NULL);
+		wait(NULL);
 	return (0);
 }
 
