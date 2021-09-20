@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/25 16:41:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/20 13:40:15 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,18 @@ static void	p(t_list *list)
 	}
 }
 
-static char *fix_spaces(char *str)
+static void		freemem(char **result)
 {
-	return (NULL);
+	int i;
+
+	i = 0;
+	while (result[i])
+	{
+		free(result[i]);
+		i++;
+	}
+	if (result)
+		free(result);
 }
 
 int	parse(t_list *list)
@@ -78,7 +87,7 @@ int	parse(t_list *list)
 		i++;
 	}
 	p(list);
-	
+	freemem(splitted);
 	return (0);
 }
 
