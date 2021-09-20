@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/09/20 09:39:25 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/09/20 13:37:26 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,7 +93,7 @@ $(LIBFT):
 	@make -C libft/.
 
 %.o: %.c
-	@$(CC) -Ilibft -c $< -o $@
+	@$(CC) -g -Ilibft -c $< -o $@
 
 clean:
 	@echo "\033[1;31mCleaning..."
