@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/16 18:30:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/20 12:20:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@
 void	env_change_content(t_env *v, char *envname, char *envcontent)
 {
 	v = search_envname(v, envname);
-	free(v->content);
-	v->content = ft_strdup(envcontent);
+	if (v)
+	{
+		free(v->content);
+		v->content = ft_strdup(envcontent);
+	}
 }
 
 char *search_env(t_env *v, char *name, int length)
