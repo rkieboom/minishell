@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 17:48:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/25 16:36:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/22 15:57:00 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char *single_quote(t_list *list, char *str)
 
 	length = calc_length(list, str);
 	newstr = create_string(list, str, length);
+	free(str);
 	
 	return (newstr);
 }

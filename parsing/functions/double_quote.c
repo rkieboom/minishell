@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 17:47:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 19:22:15 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/22 15:56:51 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,5 +130,6 @@ char *double_quote(t_list *list, char *str)
 	//echo dit is een tfds"est fdg fdhtfhgf   "dffd gfdgfd
 	//echo dit is een tfds"est fdg fdhtfhgf   "dffd"test"
 	list->parse.comma2 = 0;
+	free(str);
 	return (newstr);
 }
