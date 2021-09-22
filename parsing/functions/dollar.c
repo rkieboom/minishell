@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 17:50:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/16 19:35:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/22 15:56:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ char *dollar(t_list *list, char *str)
 
 	length = calculate_length(list, str);
 	newstr = createstring(list, str, length, 0);
+	free(str);
 	return (newstr);
 }
