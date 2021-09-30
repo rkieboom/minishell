@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/09/20 13:37:26 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/09/30 14:57:02 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,15 +69,13 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 
 SRCS.FREE =				free/free_parse_commands.c \
 
-SRCS.GNL =				get_next_line/get_next_line.c \
-						get_next_line/get_next_line_utils.c \
-
 SRCS.PARSING =			parsing/parse.c \
 						parsing/parse_split.c \
 						parsing/split_spaces.c \
 						parsing/functions/double_quote.c \
 						parsing/functions/single_quote.c \
 						parsing/functions/dollar.c \
+						parsing/tokens.c \
 
 O.SRCS = $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/22 15:11:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/30 13:46:45 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	read_input(t_list *list, int option)
 		// {
 			list->gnl.buf = readline("minishell-1.0$ ");
 			// if (!list->gnl.buf)
-				// write(1, "\n", 1);
+			// 	write(1, "\n", 1);
 		// }
 	}
 	else

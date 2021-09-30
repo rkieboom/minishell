@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/20 13:40:15 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/09/30 18:35:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static void	p(t_list *list)
 	int k;
 
 	i = 0;
-	j = 0;
-	k = 0;
 	while (list->parse.commands[i])
 	{
+		j = 0;
 		while (list->parse.commands[i][j])
 		{
+			k = 0;
 			while (list->parse.commands[i][j][k])
 			{
 				check_quote(list, &list->parse.commands[i][j][k]);
@@ -45,11 +45,9 @@ static void	p(t_list *list)
 				}
 				k++;
 			}
-			k = 0;
 			j++;
 		}
 		i++;
-		j = 0;
 	}
 }
 
@@ -80,32 +78,15 @@ int	parse(t_list *list)
 		length++;
 	list->parse.commands = (char ***)malloc((length + 1) * sizeof(char **));
 	list->parse.commands[length] = 0;
+	list->tokens = malloc(sizeof(list->tokens) * length);
 	while (length)
 	{
 		list->parse.commands[i] = split_spaces(list, splitted[i], ' ');
 		length--;
 		i++;
+		tokens(list, i);
 	}
 	p(list);
 	freemem(splitted);
 	return (0);
 }
-
-
-// int	checkcomma(t_list *list, char *c)
-// {
-// 	if (*c != '\'' && *c != '\"')
-// 	{
-// 		if (list->parse.comma1 == 1 || list->parse.comma2 == 1)
-// 		{
-// 			if (list->parse.comma1 == 1)
-// 				return (1);
-// 			else if (list->parse.comma2 == 1)
-// 				return (2);
-// 			else
-// 				return (0);
-// 		}
-// 	}
-// 		return (0);
-// }
-
