@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:18:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/06/29 14:36:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/02 10:16:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../header.h"
 
 void	read_input(t_list *list, int ret);
+void	tokens(t_list *list, int k);
 
 void	parse_check_quotes(t_list *list);
 void	check_quote(t_list *list, char *c);

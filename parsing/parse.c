@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/30 18:35:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/02 10:19:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int	parse(t_list *list)
 	{
 		list->parse.commands[i] = split_spaces(list, splitted[i], ' ');
 		length--;
-		i++;
 		tokens(list, i);
+		i++;
 	}
 	p(list);
 	freemem(splitted);

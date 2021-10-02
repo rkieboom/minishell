@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/30 18:37:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/02 13:59:30 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ typedef struct s_dir
 
 typedef struct s_tokens
 {
+	int			id;
+	int			total;
 	int			fd;
 	int			stdout_cpy;
 
@@ -74,7 +76,7 @@ void		ft_error(char *msg);
 void		execute(t_list *list);
 int			skipspaces(const char *str);
 
-void	check_quote(t_list *list, char *c);
-char	*add_new_line(char *str);
+void		check_quote(t_list *list, char *c);
+char		*add_new_line(char *str);
 
 #endif
