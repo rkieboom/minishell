@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/30 13:46:45 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/03 20:00:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	main(int argc, char **argv, char **envp)
 	t_list list;
 
 	ft_bzero(&list, sizeof(t_list));
+	// ft_bzero(&list.tokens, sizeof(list.tokens));
 	list.env = create_envp(list.env, envp);
 	// if (open_directory(&list) == -1)
 	// 	return (1);
