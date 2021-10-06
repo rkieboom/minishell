@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/30 14:56:47 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/03 20:14:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/06 22:27:16 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static	int	check_char_str(t_list *list, char *str)
 	while (str[i])
 	{
 		check_quote(list, &str[i]);
-		if ((list->parse.comma1 == 0 && list->parse.comma2 == 0) && ((str[i] == '>' && str[i] == '>') || (str[i] == '<' && str[i] == '<')))
+		if ((list->parse.comma1 == 0 && list->parse.comma2 == 0) && ((str[i] == '>' && str[i + 1] == '>') || (str[i] == '<' && str[i + 1] == '<')))
 			return (2);
-		if ((list->parse.comma1 == 0 && list->parse.comma2 == 0) && ((str[i] == '>' || str[i] == '>') || str[i] == '|'))
+		if ((list->parse.comma1 == 0 && list->parse.comma2 == 0) && ((str[i] == '>' || str[i] == '<') || str[i] == '|'))
 			return (1);
 		i++;
 	}
