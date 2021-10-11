@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 17:50:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/22 15:56:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 16:00:07 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	env_str_length(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '$')
@@ -24,10 +24,10 @@ static int	env_str_length(char *str)
 	return (i);
 }
 
-static int calculate_length(t_list *list, char *str)
+static int	calculate_length(t_list *list, char *str)
 {
-	int i;
-	int length;
+	int	i;
+	int	length;
 
 	i = 0;
 	length = 0;
@@ -47,11 +47,11 @@ static int calculate_length(t_list *list, char *str)
 	return (length);
 }
 
-static char *createstring(t_list *list, char *str, int length, int i)
+static char	*createstring(t_list *list, char *str, int length, int i)
 {
-	int j;
-	int newstr_counter;
-	char *newstr;
+	int		j;
+	int		newstr_counter;
+	char	*newstr;
 
 	j = 0;
 	newstr_counter = 0;
@@ -60,7 +60,9 @@ static char *createstring(t_list *list, char *str, int length, int i)
 	{
 		if (str[i] == '$')
 		{
-			newstr_counter += ft_strlcpy(newstr + i + newstr_counter, search_env(list->env, str + i, 0), ft_strlen(search_env(list->env, str + i, 0)) + 1);
+			newstr_counter += ft_strlcpy(newstr + i + newstr_counter, \
+							search_env(list->env, str + i, 0), \
+						ft_strlen(search_env(list->env, str + i, 0)) + 1);
 			length -= ft_strlen(search_env(list->env, str + i, 0));
 			i += env_str_length(str + i);
 		}
@@ -75,10 +77,10 @@ static char *createstring(t_list *list, char *str, int length, int i)
 	return (newstr);
 }
 
-char *dollar(t_list *list, char *str)
+char	*dollar(t_list *list, char *str)
 {
-	int length;
-	char *newstr;
+	int		length;
+	char	*newstr;
 
 	length = calculate_length(list, str);
 	newstr = createstring(list, str, length, 0);

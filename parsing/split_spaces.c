@@ -6,16 +6,16 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/19 13:40:40 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 16:12:12 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-static int		arraysize(const char *s, char c, t_list *list)
+static int	arraysize(const char *s, char c, t_list *list)
 {
-	int i;
-	int k;
+	int	i;
+	int	k;
 
 	i = 0;
 	k = 0;
@@ -27,7 +27,9 @@ static int		arraysize(const char *s, char c, t_list *list)
 	while (s[i])
 	{
 		check_quote(list, (char *)s + i);
-		if (s[i] == c && (list->parse.comma1 == 0 && list->parse.comma2 == 0) && i > 0 && s[i - 1] != c)
+		if (s[i] == c && \
+			(list->parse.comma1 == 0 && list->parse.comma2 == 0) && \
+			i > 0 && s[i - 1] != c)
 			k++;
 		i++;
 	}
@@ -36,7 +38,7 @@ static int		arraysize(const char *s, char c, t_list *list)
 	return (k + 1);
 }
 
-static void		findstart(const char *s, char c, int *i, int *start)
+static void	findstart(const char *s, char c, int *i, int *start)
 {
 	while (s[*i] && s[*i] == c)
 		(*i)++;
@@ -44,7 +46,7 @@ static void		findstart(const char *s, char c, int *i, int *start)
 		*start = *i;
 }
 
-static int		freemem(char **result, int k)
+static int	freemem(char **result, int k)
 {
 	if (!result[k])
 	{
@@ -59,11 +61,11 @@ static int		freemem(char **result, int k)
 	return (0);
 }
 
-static char		**splitter(t_list *list, const char *str, char c, char **result)
+static char	**splitter(t_list *list, const char *str, char c, char **result)
 {
-	int i;
-	int k;
-	int length;
+	int	i;
+	int	k;
+	int	length;
 
 	i = 0;
 	k = 0;
@@ -93,15 +95,15 @@ static char		**splitter(t_list *list, const char *str, char c, char **result)
 	return (result);
 }
 
-char			**split_spaces(t_list *list, const char *str, char c)
+char	**split_spaces(t_list *list, const char *str, char c)
 {
-	int length;
-	char **result;
+	int		length;
+	char	**result;
 
 	if (!str)
 		return (NULL);
 	length = arraysize(str, c, list);
-	result = (char**)malloc(length * sizeof(char *));
+	result = (char **)malloc(length * sizeof(char *));
 	if (!result)
 		return (NULL);
 	result = splitter(list, str, c, result);

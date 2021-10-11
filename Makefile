@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/09/30 14:57:02 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/10/11 16:22:05 by spelle        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ SRCS.PARSING =			parsing/parse.c \
 						parsing/functions/single_quote.c \
 						parsing/functions/dollar.c \
 						parsing/tokens.c \
+						parsing/tokens_utils.c \
 
 O.SRCS = $(SRCS:.c=.o)
 

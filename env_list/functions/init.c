@@ -6,17 +6,19 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 13:56:28 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/16 17:20:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 15:52:42 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../env_list.h"
 #include <stdio.h>
 #include <unistd.h>
+
 static void	set_name_value(char *envp, char **name, char **value)
 {
-	int i;
-	char *result;
+	int		i;
+	char	*result;
+
 	i = 0;
 	while (envp[i] && envp[i] != '=')
 		i++;
@@ -31,9 +33,10 @@ static void	set_name_value(char *envp, char **name, char **value)
 
 t_env	*create_envp(t_env *v, char **envp)
 {
-	int i;
-	char *name;
-	char *value;
+	int		i;
+	char	*name;
+	char	*value;
+
 	i = 0;
 	while (envp[i])
 	{
@@ -44,6 +47,5 @@ t_env	*create_envp(t_env *v, char **envp)
 			env_lstadd_back(&v, env_lst_new(name, value));
 		i++;
 	}
-	// print(v);
 	return (v);
 }

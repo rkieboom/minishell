@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/20 12:20:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 15:53:11 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@ void	env_change_content(t_env *v, char *envname, char *envcontent)
 	}
 }
 
-char *search_env(t_env *v, char *name, int length)
+char	*search_env(t_env *v, char *name, int length)
 {
 	if (length == 0)
 	{
 		if (*name == '$')
 			name++;
-		while (name[length] && (ft_isdigit(name[length]) || ft_isalpha(name[length]) || (name[length] == '_')))
+		while (name[length] && (ft_isdigit(name[length]) || \
+				ft_isalpha(name[length]) || (name[length] == '_')))
 			length++;
 	}
 	// if (v->name[length])
@@ -42,7 +43,6 @@ char *search_env(t_env *v, char *name, int length)
 	}
 	return ("");
 }
-
 
 t_env	*search_envname(t_env *v, char *envname)
 {

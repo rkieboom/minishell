@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/16 17:14:56 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 15:55:29 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 static void	printerror(const char *str)
 {
 	ft_putstr_fd("zsh: command not found: ", 2);
-	ft_putendl_fd((char*)str, 2);
+	ft_putendl_fd((char *)str, 2);
 }
 
-void		checkcommand(t_list *list)
+void	checkcommand(t_list *list)
 {
 	int	i;
-	int j;
-	
+	int	j;
+
 	i = 0;
 	while (list->parse.commands[i])
 	{
@@ -42,7 +42,6 @@ void		checkcommand(t_list *list)
 			exit(0);
 		else
 			ft_execve(list, list->parse.commands[i]);
-			// ft_putendl_fd("werkt nog niet kut!", 1);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/03 20:00:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 16:28:20 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ void	read_input(t_list *list, int option)
 {
 	if (option == 0)
 	{
-		// while (!list->gnl.buf)
-		// {
-			list->gnl.buf = readline("minishell-1.0$ ");
-			// if (!list->gnl.buf)
-			// 	write(1, "\n", 1);
-		// }
+	// while (!list->gnl.buf)
+	// {
+		list->gnl.buf = readline("minishell-1.0$ ");
+		// if (!list->gnl.buf)
+		// 	write(1, "\n", 1);
+	// }
 	}
 	else
 	{
@@ -32,13 +32,12 @@ void	read_input(t_list *list, int option)
 		// if (list->gnl.buf == NULL)
 		// 	exit(0);
 	}
-	
 }
 
 static void	check_input(t_list *list)
 {
-	char *newstr;
-	int i;
+	char	*newstr;
+	int		i;
 
 	i = 0;
 	while (1)
@@ -75,7 +74,7 @@ static int	loop(t_list *list)
 	}
 }
 
-static int		open_directory(t_list *list)
+static int	open_directory(t_list *list)
 {
 	if (!(list->dir.dir = opendir(".")))
 		return (-1);
@@ -87,7 +86,7 @@ static int		open_directory(t_list *list)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_list list;
+	t_list	list;
 
 	ft_bzero(&list, sizeof(t_list));
 	// ft_bzero(&list.tokens, sizeof(list.tokens));
