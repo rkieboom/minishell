@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/03 20:14:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 16:09:13 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	**parse_test(t_list *list);
 
 static void	p(t_list *list)
 {
-	int i;
-	int j;
-	int k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
 	while (list->parse.commands[i])
@@ -51,9 +51,9 @@ static void	p(t_list *list)
 	}
 }
 
-static void		freemem(char **result)
+static void	freemem(char **result)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (result[i])
@@ -67,9 +67,9 @@ static void		freemem(char **result)
 
 int	parse(t_list *list)
 {
-	int	i;
-	int length;
-	char **splitted;
+	int		i;
+	int		length;
+	char	**splitted;
 
 	i = 0;
 	length = 0;

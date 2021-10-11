@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/20 10:15:13 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 15:49:05 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 #include <stdio.h>
 #include <fcntl.h>
 
-static char *get_full_env(t_env *env)
+static char	*get_full_env(t_env *env)
 {
-	int i;
-	int j;
-	int length;
-	char *str;
+	int		i;
+	int		j;
+	int		length;
+	char	*str;
 
 	i = 0;
 	j = 0;
@@ -43,11 +43,11 @@ static char *get_full_env(t_env *env)
 	return (str);
 }
 
-static char **recreate_envp(t_env *env)
+static char	**recreate_envp(t_env *env)
 {
-	char **envp;
-	t_env *temp;
-	int length;
+	char	**envp;
+	t_env	*temp;
+	int		length;
 
 	length = 0;
 	temp = env;
@@ -68,15 +68,13 @@ static char **recreate_envp(t_env *env)
 	return (envp);
 }
 
-int ft_execve(t_list *list, char **str)
+int	ft_execve(t_list *list, char **str)
 {
 	int		result;
 	char	**envp;
 	char	*path;
-	int		i;
 	pid_t	PID;
 
-	i = 0;
 	PID = fork();
 	if (PID < 0)
 		ft_exit(1);
@@ -99,4 +97,3 @@ int ft_execve(t_list *list, char **str)
 		wait(NULL);
 	return (0);
 }
-

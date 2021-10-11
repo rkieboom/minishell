@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:56:29 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/17 16:45:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 16:27:12 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_error(char *msg)
 	write(2, msg, ft_strlen(msg));
 	exit(1);
 }
-
 
 void	check_quote(t_list *list, char *c)
 {

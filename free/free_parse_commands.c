@@ -6,16 +6,16 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/20 13:33:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 15:55:44 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void free_parse_commands(t_list *list)
+void	free_parse_commands(t_list *list)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

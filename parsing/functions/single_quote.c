@@ -6,17 +6,17 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 17:48:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/22 15:57:00 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 16:05:51 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse.h"
 
-static char *create_string(t_list *list, char *str, int length)
+static char	*create_string(t_list *list, char *str, int length)
 {
-	int i;
-	int j;
-	char *newstr;
+	int		i;
+	int		j;
+	char	*newstr;
 
 	i = 0;
 	j = 0;
@@ -35,28 +35,27 @@ static char *create_string(t_list *list, char *str, int length)
 
 static int	calc_length(t_list *list, char *str)
 {
-		int i;
-		int length;
+	int	i;
+	int	length;
 
-		i = 0;
-		length = 0;
-		while (str[i])
-		{
-			if (str[i] != '\'')
-				length++;
-			i++;
-		}
-		return (length);
+	i = 0;
+	length = 0;
+	while (str[i])
+	{
+		if (str[i] != '\'')
+			length++;
+		i++;
+	}
+	return (length);
 }
 
-char *single_quote(t_list *list, char *str)
+char	*single_quote(t_list *list, char *str)
 {
-	char *newstr;
-	int length;
+	char	*newstr;
+	int		length;
 
 	length = calc_length(list, str);
 	newstr = create_string(list, str, length);
 	free(str);
-	
 	return (newstr);
 }

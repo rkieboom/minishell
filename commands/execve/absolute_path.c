@@ -6,15 +6,15 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/20 10:41:00 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 15:45:20 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-static int check_fullpath(char *str)
+static int	check_fullpath(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -26,12 +26,12 @@ static int check_fullpath(char *str)
 	return (0);
 }
 
-static char *get_path(char *name, char *ENV_PATH)
+static char	*get_path(char *name, char *ENV_PATH)
 {
-	int i;
-	int fd;
-	char **PATHS;
-	char *newpath;
+	int		i;
+	int		fd;
+	char	**PATHS;
+	char	*newpath;
 
 	i = 0;
 	PATHS = ft_split(ENV_PATH, ':');
@@ -54,7 +54,7 @@ static char *get_path(char *name, char *ENV_PATH)
 
 char	*absolute_path(char *PATH, t_env *env)
 {
-	char *newpath;
+	char	*newpath;
 
 	if (!check_fullpath(PATH))
 		newpath = get_path(PATH, search_env(env, "PATH", 4));

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 17:47:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/22 15:56:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/11 16:04:58 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	env_str_length(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (str[i] == '$')
@@ -24,7 +24,7 @@ static int	env_str_length(char *str)
 	return (i);
 }
 
-static int ft_strchr_l(const char *s, int c)
+static int	ft_strchr_l(const char *s, int c)
 {
 	int		i;
 	char	*str;
@@ -44,9 +44,9 @@ static int ft_strchr_l(const char *s, int c)
 
 static int	calc_length(t_list *list, char *str)
 {
-	int i;
-	int length;
-	char *str_dup;
+	int		i;
+	int		length;
+	char	*str_dup;
 
 	i = 0;
 	str_dup = ft_strchr(str, '\"') + 1;
@@ -71,16 +71,19 @@ static int	calc_length(t_list *list, char *str)
 	return (length);
 }
 
-static char *create_string(t_list *list, char *str, int length)
+static char	*create_string(t_list *list, char *str, int length)
 {
-	int i;
-	int k = 0;
-	int newstr_counter = 0;
-	int comma = 2;
-	char *newstr;
-	char *env;
+	int		i;
+	int		k;
+	int		newstr_counter;
+	int		comma;
+	char	*newstr;
+	char	*env;
 
 	i = 0;
+	k = 0;
+	newstr_counter = 0;
+	comma = 2;
 	newstr = malloc(length + 1);
 	if (!newstr)
 		return (NULL);
@@ -90,7 +93,9 @@ static char *create_string(t_list *list, char *str, int length)
 	{
 		if (comma > 0 && str[i] == '$')
 		{
-			newstr_counter += ft_strlcpy(newstr + i + k + newstr_counter, search_env(list->env, str + i, 0), ft_strlen(search_env(list->env, str + i, 0)) + 1); //lenghte van env
+			newstr_counter += ft_strlcpy(newstr + i + k + newstr_counter, \
+							search_env(list->env, str + i, 0), \
+							ft_strlen(search_env(list->env, str + i, 0)) + 1); //lenghte van env
 			newstr_counter -= env_str_length(str + i); //voor normale text na $PWD zodat de counter goed staat
 			length -= ft_strlen(search_env(list->env, str + i, 0)) - 1;
 			i += env_str_length(str + i) - 1;//i moet lengte van $PWD
@@ -109,18 +114,16 @@ static char *create_string(t_list *list, char *str, int length)
 	return (newstr);
 }
 
-char *double_quote(t_list *list, char *str)
+char	*double_quote(t_list *list, char *str)
 {
-	int i;
-	int length;
-	char *newstr;
+	int		i;
+	int		length;
+	char	*newstr;
 
 	i = 0;
-	
 	length = calc_length(list, str);
 	newstr = create_string(list, str, length);
 	// recreate_string(list, str, str_dup, length);
-
 	// ft_putstr_fd("\n", 1);
 	// ft_putendl_fd(newstr, 1);
 	// ft_putendl_fd(search_env(list->env, "PWD", 3), 1);
