@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:55:29 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/15 12:55:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void	printerror(const char *str)
 void	checkcommand(t_list *list)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (list->parse.commands[i])

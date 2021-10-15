@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:55:44 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/12 10:38:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ void	free_parse_commands(t_list *list)
 		free(list->gnl.buf);
 		list->gnl.buf = NULL;
 	}
+	free(list->tokens);
 }
