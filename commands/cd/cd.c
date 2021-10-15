@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:44:41 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/12 10:26:34 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int	cd(t_list *v, char **str)
 		free(buf);
 		ft_exit(1);
 	}
+	free(buf);//ff kijken
 	env_change_content(v->env, "PWD", getcwd(cwd, 255));
 	return (0);
 }

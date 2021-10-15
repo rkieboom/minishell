@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 16:30:54 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/15 12:56:57 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,27 @@ typedef struct s_tokens
 	int			id;
 	int			total;
 	int			fd;
-	int			stdout_cpy;
-	char		token[100][3]; //wat voor token het is
+	char		token[100][3]; //wat voor token het is [k][j==100][i]
 	int			token_pos[100]; //positie van de token, op de hoeveelste argument die staat string[0][H][0]
-	int			token_prev_arg_amount[100]; //hoeveel commands er voor de token zitten
-	char		token_next_arg[100][1024]; //de string na de token
 }				t_tokens;
+
+typedef struct s_cmd
+{
+	char		**cmd;
+	
+	
+}				t_cmd;
+
 
 typedef struct s_list
 {
+	int			stdout_cpy;
 	t_parse		parse;
 	t_gnl		gnl;
 	t_dir		dir;
 	t_env		*env;
 	t_tokens	*tokens;
+	t_cmd		*cmd;
 }				t_list;
 
 int		get_next_line(int fd, char **line);

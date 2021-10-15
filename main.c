@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 16:28:20 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/15 10:56:03 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	read_input(t_list *list, int option)
 {
 	if (option == 0)
 	{
+	
 	// while (!list->gnl.buf)
 	// {
 		list->gnl.buf = readline("minishell-1.0$ ");
@@ -89,10 +90,9 @@ int	main(int argc, char **argv, char **envp)
 	t_list	list;
 
 	ft_bzero(&list, sizeof(t_list));
-	// ft_bzero(&list.tokens, sizeof(list.tokens));
 	list.env = create_envp(list.env, envp);
 	// if (open_directory(&list) == -1)
 	// 	return (1);
 	loop(&list);
 	return (0);
-}
+} // echo yooo > test.txt
