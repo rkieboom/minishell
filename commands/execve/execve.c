@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:49:05 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/15 15:50:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ static char	**recreate_envp(t_env *env)
 
 int	ft_execve(t_list *list, char **str)
 {
+	int ret;
 	int		result;
 	char	**envp;
 	char	*path;
@@ -77,7 +78,7 @@ int	ft_execve(t_list *list, char **str)
 
 	PID = fork();
 	if (PID < 0)
-		ft_exit(1);
+		ft_exit(PID, 1);
 	if (PID == 0)
 	{
 		envp = recreate_envp(list->env);
@@ -85,15 +86,14 @@ int	ft_execve(t_list *list, char **str)
 			path = relative_path(str[0]);
 		else
 			path = absolute_path(str[0], list->env);
-		if (path)
-			result = execve(path, str, envp);
-		else
-			ft_exit(2);
-		if (result < 0)
-			ft_exit(1);
-		exit(0);
+		if (path && execve(path, str, envp) < 0)
+			ft_exit(127, 1);
+		// else
+		// 	ft_exit(result, 0);
 	}	
 	else
-		wait(NULL);
-	return (0);
+		waitpid(PID, &ret, 0);
+	ret = WEXITSTATUS(ret);
+	printf("ret = [%i]\n", ret);
+	return (ret);
 }

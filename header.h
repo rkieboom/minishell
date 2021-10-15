@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/15 12:56:57 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/15 15:07:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_cmd
 typedef struct s_list
 {
 	int			stdout_cpy;
+	int			ret;
 	t_parse		parse;
 	t_gnl		gnl;
 	t_dir		dir;

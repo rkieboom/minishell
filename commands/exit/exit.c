@@ -6,22 +6,18 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/20 09:15:36 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:45:38 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/15 14:59:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-void	ft_exit(int ret)
+void	ft_exit(int ret, int print)
 {
-	if (ret == 1)
+	if (print == 1)
 	{
 		ft_putstr_fd("minishell-1.0$: ", 2);
 		ft_putendl_fd(strerror(errno), 2);
-		exit(1);
 	}
-	else if (ret == 2)
-		exit(1);
-	else
-		exit(0);
+	exit(ret);
 }

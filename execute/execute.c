@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/15 12:51:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/15 14:13:05 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	create_line(t_list *list, int k)
 	list->tokens[k].fd = open(list->parse.commands[k][i + 1], O_CREAT, O_RDWR);
 	if (list->tokens[k].fd < 0)
 		return ;
-	dup2(list->tokens[k].fd, 1);
+	dup2(1, list->tokens[k].fd);
 }
 
 static void	create_cmd(t_list *list)
@@ -53,5 +53,5 @@ void		execute(t_list *list)
 {
 	create_cmd(list);
 	checkcommand(list);
-	// dup2(1, list->stdout_cpy);
+	dup2(list->stdout_cpy, 1);
 }
