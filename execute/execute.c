@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/19 19:31:43 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/19 19:59:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,41 +45,36 @@ static int	create_cmd(t_list *list)
 	return (k);
 }
 
-static void	redirection_single_left(t_list *list, int k)
-{
-	
-}
-static void redirection_double_left(t_list *list, int k)
-{
-	
-}
-
-static void redirection_single_right(t_list *list, int k)
-{
-	int i;
-
-	i = 0;
-	while (ft_strncmp(list->tokens[k].token[i], ">", 2) == 0)
-		i++;
-	i = list->tokens[k].token_pos[i - 1];
-	list->tokens[k].fd = open(list->parse.commands[k][i + 1], O_RDWR | O_TRUNC | O_CREAT, 0644);
-	dup2(list->tokens[k].fd, 1);
-}
-
-static void redirection_double_right(t_list *list, int k)
-{
-	
-}
-
-
 
 static void	set_redirection(t_list *list, int k)
 {
+	int i;
 	int total;
 
+	i = 0;
 	total = list->tokens[k].total;
 	if (total <= 0)
 		return ;
+	while(total)
+	{
+		if (total - 1 == 0)//laatste
+		{
+			list->tokens[k].fd = open(list->parse.commands[k][list->tokens[k].token_pos[i]], O_RDWR | O_APPEND | O_CREAT, 0644);
+			dup2(list->tokens[k].fd, 1);
+		}
+		else if (!ft_strncmp(list->tokens[k].token[i], ">>", 3))
+		{
+			list->tokens[k].fd = open(list->parse.commands[k][], O_RDWR | O_APPEND | O_CREAT, 0644);
+			close(list->tokens[k].fd);
+		}
+		else if (!ft_strncmp(list->tokens[k].token[i], ">", 2))
+		{
+			list->tokens[k].fd = open(list->parse.commands[k][list->tokens[k].token_pos[i]], O_RDWR | O_TRUNC | O_CREAT, 0644);
+			close(list->tokens[k].fd);
+		}
+		i++;
+		total--;
+	}
 	
 
 }
