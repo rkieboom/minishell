@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/07 09:58:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/19 13:49:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "../header.h"
 # include "../commands/commands.h"
 
-void	checkcommand(t_list	*list);
+void	checkcommand(t_list	*list, int k);
 
 #endif
