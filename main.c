@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/19 15:06:05 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/21 19:34:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,34 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+static int check_spaces(t_list *list)
+{
+	int i;
+
+	i = 0;
+	while (list->gnl.buf[i] && (list->gnl.buf[i] == 32 || (list->gnl.buf[i] >= 9 && list->gnl.buf[i] <= 13)))
+		i++;
+	if (list->gnl.buf[i])
+		return (0);
+	return (1);
+}
+
 void	read_input(t_list *list, int option)
 {
 	if (option == 0)
 	{
 	
-	// while (!list->gnl.buf)
-	// {
-		list->gnl.buf = readline("minishell-1.0$ ");
-		// if (!list->gnl.buf)
-		// 	write(1, "\n", 1);
-	// }
+		while (!list->gnl.buf)
+		{
+			list->gnl.buf = readline("minishell-1.0$ ");
+			if (!list->gnl.buf)
+				write(1, "\n", 1);
+			else if (!list->gnl.buf || check_spaces(list))
+			{
+				free(list->gnl.buf);
+				list->gnl.buf = 0;
+			}
+		}
 	}
 	else
 	{
@@ -69,7 +86,11 @@ static int	loop(t_list *list)
 		read_input(list, 0);
 		check_input(list);
 		add_history(list->gnl.buf);
+		printf("Before parse");
+		fflush(NULL);
 		parse(list);
+		printf("hier42");
+		fflush(NULL);
 		execute(list);
 		free_parse_commands(list);
 	}

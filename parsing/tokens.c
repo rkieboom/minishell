@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/30 14:56:47 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 16:23:08 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/21 19:14:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ void	tokens(t_list *list, int k)
 
 	i = 0;
 	j = 0;
-	split(list, arraysize(list->parse.commands[k], list), k);
+	// split(list, arraysize(list->parse.commands[k], list), k);
 	while (list->parse.commands[k][j])
 	{
 		if (check_char(list->parse.commands[k][j]))
