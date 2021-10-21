@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 16:09:13 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/21 19:30:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,22 @@ static void	p(t_list *list)
 	int	k;
 
 	i = 0;
+	printf("5hier\n");
+	fflush(NULL);
 	while (list->parse.commands[i])
 	{
 		j = 0;
 		while (list->parse.commands[i][j])
 		{
 			k = 0;
-			while (list->parse.commands[i][j][k])
+			while (list->parse.commands[i][j][k] != '\0')
 			{
+				// printf("str[%c]-[%i]\n", list->parse.commands[i][j][k], k);
+				// fflush(NULL);
 				check_quote(list, &list->parse.commands[i][j][k]);
 				if (list->parse.comma1 || list->parse.comma2 || list->parse.commands[i][j][k] == '$')
 				{
+					// printf("Kaas\n");
 					if (list->parse.comma1)
 						list->parse.commands[i][j] = single_quote(list, list->parse.commands[i][j]);
 					else if (list->parse.comma2)
@@ -73,12 +78,18 @@ int	parse(t_list *list)
 
 	i = 0;
 	length = 0;
+	printf("1hier\n");
+	fflush(NULL);
 	splitted = parse_split(list, ';');
+	printf("2hier\n");
+	fflush(NULL);
 	while (splitted[length])
 		length++;
 	list->parse.commands = (char ***)malloc((length + 1) * sizeof(char **));
 	list->parse.commands[length] = 0;
 	list->tokens = malloc(sizeof(list->tokens) * length);
+	printf("3hier\n");
+	fflush(NULL);
 	while (length)
 	{
 		list->parse.commands[i] = split_spaces(list, splitted[i], ' ');
@@ -86,6 +97,8 @@ int	parse(t_list *list)
 		tokens(list, i);
 		i++;
 	}
+	printf("4hier\n");
+	fflush(NULL);
 	p(list);
 	freemem(splitted);
 	return (0);
