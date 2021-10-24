@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/15 15:05:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/24 21:42:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,22 +50,14 @@ static int	cd_check_permission(char *PATH)
 int	cd(t_list *v, char **str)
 {
 	int		ret;
-	char	*buf;
 	char	cwd[255];
 
-	buf = malloc(sizeof(char) * ft_strlen(str[1]));
-	if (!buf)
-		return (1);
 	if (cd_check_exist(str[1]) || cd_check_permission(str[1]))
 		return (1);
 	env_change_content(v->env, "OLDPWD", getcwd(cwd, 255));
-	if (buf)
-	{
-		ret = chdir(str[1]);
-		if (ret < 0)
-			ft_exit(ret, 1);
-	}
-	free(buf);//ff kijken
+	ret = chdir(str[1]);
+	if (ret < 0)
+		ft_exit(ret, 1);
 	env_change_content(v->env, "PWD", getcwd(cwd, 255));
 	return (0);
 }
