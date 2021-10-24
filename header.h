@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/15 15:07:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/24 18:59:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef struct s_tokens
 
 typedef struct s_cmd
 {
-	char		**cmd;
-	
-	
+	char		***cmd;
+	int			*free;
+	int			size;
 }				t_cmd;
 
 
@@ -62,11 +62,11 @@ typedef struct s_list
 	int			stdout_cpy;
 	int			ret;
 	t_parse		parse;
+	t_cmd		cmd;
 	t_gnl		gnl;
 	t_dir		dir;
 	t_env		*env;
 	t_tokens	*tokens;
-	t_cmd		*cmd;
 }				t_list;
 
 int		get_next_line(int fd, char **line);
