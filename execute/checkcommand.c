@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/24 19:01:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/10/24 19:48:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ static void	printerror(const char *str)
 void	checkcommand(t_list *list, int i)
 {
 	if (!ft_strncmp(list->cmd.cmd[i][0], "echo", 5))
-		ft_echo(list, list->cmd.cmd[i]);
+		list->ret = echo(list, list->cmd.cmd[i]);
 	else if (!ft_strncmp(list->cmd.cmd[i][0], "cd", 3))
-		cd(list, list->cmd.cmd[i]);
+		list->ret = cd(list, list->cmd.cmd[i]);
 	else if (!ft_strncmp(list->cmd.cmd[i][0], "pwd", 4))
-		pwd(list->env);
+		list->ret = pwd(list->env);
 	else if (!ft_strncmp(list->cmd.cmd[i][0], "export", 7))
-		export(list->env, list->cmd.cmd[i]);
+		list->ret = export(list->env, list->cmd.cmd[i]);
 	else if (!ft_strncmp(list->cmd.cmd[i][0], "unset", 6))
-		unset(list->env, list->cmd.cmd[i]);
+		list->ret = unset(list->env, list->cmd.cmd[i]);
 	else if (!ft_strncmp(list->cmd.cmd[i][0], "env", 4))
-		env(list->env);
+		list->ret = env(list->env);
 	else if (!ft_strncmp(list->cmd.cmd[i][0], "exit", 5))
 		exit(0);
 	else

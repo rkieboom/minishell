@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:53:11 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/24 21:23:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ char	*search_env(t_env *v, char *name, int length)
 				ft_isalpha(name[length]) || (name[length] == '_')))
 			length++;
 	}
-	// if (v->name[length])
-	// 	return ("");
 	while (v)
 	{
 		if (ft_strncmp(name, v->name, length) == 0 && v->name[length] == '\0')

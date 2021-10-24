@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/10/24 19:07:08 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/10/24 22:39:32 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,13 +86,13 @@ all: $(NAME)
 $(NAME): $(O.SRCS) $(LIBFT)
 	@echo "\033[1;30mCompiling files"
 	@echo "Making executable"
-	@$(CC) -g -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
+	@$(CC) -fsanitize=address -fno-omit-frame-pointer -g -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C libft/.
 
 %.o: %.c
-	@$(CC) -g -Ilibft -c $< -o $@
+	@$(CC) -fsanitize=address -fno-omit-frame-pointer -g -Ilibft -c $< -o $@
 
 clean:
 	@echo "\033[1;31mCleaning..."
