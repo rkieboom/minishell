@@ -6,14 +6,14 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/09/22 13:05:30 by spelle        ########   odam.nl         */
+/*   Updated: 2021/10/24 19:45:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "../commands.h"
 
-int	ft_echo(t_list *v, char **str)
+int	echo(t_list *v, char **str)
 {
 	int	i;
 	int	newlineoption;
