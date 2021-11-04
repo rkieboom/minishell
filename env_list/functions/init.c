@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 13:56:28 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:52:42 by spelle        ########   odam.nl         */
+/*   Updated: 2021/11/04 15:47:45 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@ static void	set_name_value(char *envp, char **name, char **value)
 	i = 0;
 	while (envp[i] && envp[i] != '=')
 		i++;
-	result = malloc(i);
+	result = ft_calloc(i + 1, sizeof(char));
 	if (!result)
-		return ;
+		return ; //ft_exit
 	ft_strlcpy(result, envp, i + 1);
 	*name = result;
 	i += 1;
 	*value = ft_strdup(envp + i);
+	if (!(*value))
+		return ;//ft_exit
 }
 
 t_env	*create_envp(t_env *v, char **envp)

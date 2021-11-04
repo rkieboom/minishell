@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/11/03 13:13:36 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/11/04 16:14:25 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS.COMMANDS.ENV =		commands/env/env.c \
 SRCS.COMMANDS.PWD =		commands/pwd/pwd.c \
 
 SRCS.COMMANDS.EXPORT =	commands/export/export.c \
+						commands/export/export_utils.c \
 
 SRCS.COMMANDS.UNSET =	commands/unset/unset.c \
 
@@ -86,13 +87,13 @@ all: $(NAME)
 $(NAME): $(O.SRCS) $(LIBFT)
 	@echo "\033[1;30mCompiling files"
 	@echo "Making executable"
-	@$(CC) -g -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
+	@$(CC) -ggdb3 -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C libft/.
 
 %.o: %.c
-	@$(CC) -g -Ilibft -c $< -o $@
+	@$(CC) -ggdb3 -Ilibft -c $< -o $@
 
 clean:
 	@echo "\033[1;31mCleaning..."
