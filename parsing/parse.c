@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/24 14:31:42 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/04 19:53:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,68 @@ static void	freemem(char **result)
 		free(result);
 }
 
+int		ft_strnstr_i(const char *haystack, const char *needle, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	size_t	needlelength;
+
+	i = 0;
+	j = 0;
+	needlelength = 0;
+	while (needle[needlelength] != '\0')
+		needlelength++;
+	if (needlelength == 0)
+		return (-1);
+	while (haystack[i] && i != len)
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j] && len != j + i)
+		{
+			j++;
+			if (j == needlelength)
+				return (i);
+		}
+		i++;
+	}
+	return (-1);
+}
+
+static void	check_dollar_return_val(t_list *list, char **splitted, char *newstr)
+{
+	int i;
+	int start;
+	char *temp;
+	char *number;
+
+	i = 0;
+	while (splitted[i])
+	{
+		while (1)
+		{
+			start = ft_strnstr_i(splitted[i], "$?", ft_strlen(splitted[i]));
+			if (start < 0)
+				break ;
+			number = ft_itoa(list->ret);
+			if (!number)
+				return ;//ft_exit
+			newstr = ft_substr(splitted[i], 0, ft_strlen(splitted[i]) - ft_strlen(splitted[i] + start));
+			if (!newstr)
+				return ;//ft_exit
+			temp = ft_strjoin(newstr, number);
+			if (!temp)
+				return ;//ft_exit
+			free(newstr);
+			free(number);
+			newstr = ft_strjoin(temp, splitted[i] + start + 2);
+			free(splitted[i]);
+			free(temp);
+			splitted[i] = newstr;
+		}
+		i++;
+	}
+}
+
 int	parse(t_list *list)
 {
 	int		i;
@@ -76,6 +138,7 @@ int	parse(t_list *list)
 	i = 0;
 	length = 0;
 	splitted = parse_split(list, ';');
+	check_dollar_return_val(list, splitted, NULL);
 	while (splitted[length])
 		length++;
 	list->parse.commands = (char ***)malloc((length + 1) * sizeof(char **));
