@@ -6,26 +6,11 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 14:07:09 by spelle        #+#    #+#                 */
-/*   Updated: 2021/09/21 17:19:22 by spelle        ########   odam.nl         */
+/*   Updated: 2021/11/04 16:39:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
-
-static void	print_declare_list(t_env *v)
-{
-	while (v)
-	{
-		ft_putstr_fd("declare -x ", 1);
-		ft_putstr_fd(v->name, 1);
-		ft_putstr_fd("=", 1);
-		ft_putstr_fd("\"", 1);
-		ft_putstr_fd(v->content, 1);
-		ft_putstr_fd("\"", 1);
-		ft_putstr_fd("\n", 1);
-		v = v->next;
-	}
-}
 
 static int	invalid_identifier(char *str)
 {
@@ -57,7 +42,10 @@ static void	set_env_name_and_content(t_env *v, char **str, int i, int j)
 
 	envcontent = NULL;
 	envname = ft_substr(str[i], 0, j);
-	envcontent = ft_strdup(ft_strchr(str[i], '=') + 1);
+	if (ft_strchr(str[i], '=') == NULL)
+		envcontent = ft_strdup("");
+	else
+		envcontent = ft_strdup(ft_strchr(str[i], '=') + 1);
 	if (!ft_strncmp(search_envname_returnenvname(v, envname), "", 1))
 		env_lstadd_back(&v, env_lst_new(envname, envcontent));
 	else
@@ -77,8 +65,7 @@ int	export(t_env *v, char **str)
 	error = 0;
 	if (str[1] == NULL)
 	{
-		print_declare_list(v);
-		return (0);
+		export_declare_list(v);
 	}
 	i = 1;
 	while (str[i] != NULL)

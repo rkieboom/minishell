@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/24 19:46:12 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/04 14:48:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ char	*relative_path(char *PATH);
 char	*absolute_path(char *PATH, t_env *env);
 int		check_exist(char *PATH);
 int		check_permission(char *PATH);
+void	export_declare_list(t_env *v);
 
 #endif
