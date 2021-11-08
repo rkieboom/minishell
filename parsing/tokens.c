@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/30 14:56:47 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/03 15:33:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/08 16:49:05 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,31 @@ static int	arraysize(char **str, t_list *list)
 	return (length);
 }
 
+void	identify_tokens(t_list *list)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (list->parse.commands[i])
+	{
+		j = 0;
+		while (j < list->tokens[i].total)
+		{
+			if (!ft_strncmp(list->tokens[i].token[j], "<<", 3))
+				list->tokens[i].double_redirection_left = 1;
+			else if (!ft_strncmp(list->tokens[i].token[j], ">>", 3))
+				list->tokens[i].double_redirection_right = 1;
+			else if (!ft_strncmp(list->tokens[i].token[j], "<", 2))
+				list->tokens[i].single_redirection_left = 1;
+			else if (!ft_strncmp(list->tokens[i].token[j], ">", 2))
+				list->tokens[i].single_redirection_right = 1;
+			j++;
+		}
+		i++;
+	}
+}
+
 void	tokens(t_list *list, int k)
 {
 	int	i;
@@ -124,4 +149,5 @@ void	tokens(t_list *list, int k)
 	}
 	list->tokens[k].total = list->tokens[k].id;
 	list->tokens[k].id = 0;
+	identify_tokens(list);
 }
