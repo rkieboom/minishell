@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/24 19:14:12 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/08 17:35:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,23 @@ void	free_parse_commands(t_list *list)
 	int	j;
 
 	i = 0;
-	j = 0;
+	while (list->cmd.size >= 0)
+	{
+		if (list->cmd.free[list->cmd.size] == 1)
+			free(list->cmd.cmd[list->cmd.size]);
+		list->cmd.size--;
+	}
+	i = 0;
 	if (list->parse.commands)
 	{
 		while (list->parse.commands[i])
 		{
+			j = 0;
 			while (list->parse.commands[i][j])
 			{
 				free(list->parse.commands[i][j]);
 				j++;
 			}
-			j = 0;
 			free(list->parse.commands[i]);
 			i++;
 		}
@@ -38,13 +44,6 @@ void	free_parse_commands(t_list *list)
 	{
 		free(list->gnl.buf);
 		list->gnl.buf = NULL;
-	}
-	i = 0;
-	while (list->cmd.size >= 0)
-	{
-		if (list->cmd.free[list->cmd.size] == 1)
-			free(list->cmd.cmd[list->cmd.size]);
-		list->cmd.size--;
 	}
 	free(list->cmd.cmd);
 	free(list->cmd.free);

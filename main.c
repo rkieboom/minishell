@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/24 14:31:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/08 17:04:40 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,25 +92,12 @@ static int	loop(t_list *list)
 	}
 }
 
-static int	open_directory(t_list *list)
-{
-	if (!(list->dir.dir = opendir(".")))
-		return (-1);
-	// if (!(list->dir.dir = opendir(search_env(list->env, "PWD", 3))))
-	// 	if (!(list->dir.dir = opendir(".")))
-	// 		return (-1);
-	return (1);
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	list;
 
 	ft_bzero(&list, sizeof(t_list));
 	list.env = create_envp(list.env, envp);
-	// list.stdout_cpy = dup(1);
-	// if (open_directory(&list) == -1)
-	// 	return (1);
 	loop(&list);
 	return (0);
 } // echo yooo > test.txt
