@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 16:12:12 by spelle        ########   odam.nl         */
+/*   Updated: 2021/11/14 19:06:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	arraysize(const char *s, char c, t_list *list)
 	}
 	if (i > 0 && s[i - 1] != ' ')
 		k++;
-	return (k + 1);
+	return (k);
 }
 
 static void	findstart(const char *s, char c, int *i, int *start)
@@ -90,7 +90,7 @@ static char	**splitter(t_list *list, const char *str, char c, char **result)
 		}
 		i++;
 	}
-	if (str[i] == '\0')
+	if (str[i] == '\0' && i > 0 && str[i - 1] != ' ')
 		result[k] = ft_substr(str, i - length, length);
 	return (result);
 }
@@ -103,10 +103,10 @@ char	**split_spaces(t_list *list, const char *str, char c)
 	if (!str)
 		return (NULL);
 	length = arraysize(str, c, list);
-	result = (char **)malloc(length * sizeof(char *));
+	result = malloc((length + 1) * sizeof(char *));
 	if (!result)
 		return (NULL);
 	result = splitter(list, str, c, result);
-	result[length - 1] = NULL;
+	result[length] = NULL;
 	return (result);
 }
