@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:45:20 by spelle        ########   odam.nl         */
+/*   Updated: 2021/11/16 20:12:47 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ static char	*get_path(char *name, char *ENV_PATH)
 {
 	int		i;
 	int		fd;
-	char	**PATHS;
+	char	**paths;
 	char	*newpath;
 
 	i = 0;
-	PATHS = ft_split(ENV_PATH, ':');
-	while (PATHS[i])
+	paths = ft_split(ENV_PATH, ':');
+	while (paths[i])
 	{
-		newpath = ft_strdup(PATHS[i]);
+		newpath = ft_strdup(paths[i]);
 		newpath = ft_strjoin(newpath, "/");
 		newpath = ft_strjoin(newpath, name);
 		fd = open(newpath, O_RDONLY);

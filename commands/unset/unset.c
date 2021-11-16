@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 20:01:05 by spelle        #+#    #+#                 */
-/*   Updated: 2021/11/06 18:15:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/16 20:12:00 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static void	remove_env(t_env *v, char *envname)
 	current = v;
 	prev = v;
 	while (current->next != NULL \
-			&& ft_strncmp(current->name, envname, ft_strlen(envname)))// strncmp() != 0???
+			&& ft_strncmp(current->name, envname, ft_strlen(envname)))
 	{
 		prev = current;
 		current = current->next;
 	}
-	if (!ft_strncmp(current->name, envname, ft_strlen(envname)))// strncmp() == 0
+	if (!ft_strncmp(current->name, envname, ft_strlen(envname)))
 	{
 		prev->next = prev->next->next;
 		free(current->name);

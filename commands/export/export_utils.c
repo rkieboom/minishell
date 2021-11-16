@@ -6,27 +6,18 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 16:07:54 by spelle        #+#    #+#                 */
-/*   Updated: 2021/11/04 18:13:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/16 20:10:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 #include <string.h>
 
-static void	swap(char **s1, char **s2)
-{
-	char *tmp;
-
-	tmp = *s1;
-	*s1 = *s2;
-	*s2 = tmp;
-}
-
 static void	create_declare_list(t_env *v, char **array)
 {
 	int	i;
 
-	i =  0;
+	i = 0;
 	while (v)
 	{
 		array[i] = ft_strdup(v->name);
@@ -38,17 +29,18 @@ static void	create_declare_list(t_env *v, char **array)
 
 static void	sort_list(char **array, size_t length)
 {
-	int i;
-	int j;
-	size_t max;
+	int		i;
+	int		j;
+	size_t	max;
 
 	i = 0;
 	while (i < length)
 	{
 		j = 0;
-		while  (j < length - 1)
+		while (j < length - 1)
 		{
-			if (ft_strncmp(array[j], array[j + 1], ft_strlen(array[j]) + ft_strlen(array[j + 1])) > 0)
+			if (ft_strncmp(array[j], array[j + 1], \
+			ft_strlen(array[j]) + ft_strlen(array[j + 1])) > 0)
 				swap(&array[j], &array[j + 1]);
 			j++;
 		}
@@ -58,8 +50,8 @@ static void	sort_list(char **array, size_t length)
 
 static void	print_declare_list(char **array, t_env *v, size_t length)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	while (array[i])
 	{
@@ -76,7 +68,7 @@ static void	print_declare_list(char **array, t_env *v, size_t length)
 
 static void	free_arr(char **arr)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
