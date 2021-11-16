@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/11/04 16:14:25 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/11/16 20:24:29 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRCS =					functions.c \
 						
 FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/add_new_line.c \
+						functions/ft_swap.c \
 
 SRCS.COMMANDS.CD =		commands/cd/cd.c \
 
@@ -67,6 +68,7 @@ SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
 
 SRCS.EXECUTE =			execute/checkcommand.c \
 						execute/execute.c \
+						execute/redirections.c \
 
 SRCS.FREE =				free/free_parse_commands.c \
 
@@ -85,7 +87,7 @@ O.SRCS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(O.SRCS) $(LIBFT)
-	@echo "\033[1;30mCompiling files"
+	@echo "Compiling files"
 	@echo "Making executable"
 	@$(CC) -ggdb3 -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
 
@@ -96,14 +98,14 @@ $(LIBFT):
 	@$(CC) -ggdb3 -Ilibft -c $< -o $@
 
 clean:
-	@echo "\033[1;31mCleaning..."
+	@echo "Cleaning..."
 	@rm -rf $(O.SRCS)
 	@make -C libft/. clean
 
 fclean: clean
-	@echo "\033[1;31mRemoving minishell"
+	@echo "Removing minishell"
 	@rm -rf $(NAME)
 	@rm -rf $(LIBFT)
-	@echo "\033[1;31mRemoving libft.a"
+	@echo "Removing libft.a"
 
 re: fclean all

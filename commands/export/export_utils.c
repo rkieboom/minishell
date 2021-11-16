@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 16:07:54 by spelle        #+#    #+#                 */
-/*   Updated: 2021/11/16 20:10:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/16 20:14:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	sort_list(char **array, size_t length)
 		{
 			if (ft_strncmp(array[j], array[j + 1], \
 			ft_strlen(array[j]) + ft_strlen(array[j + 1])) > 0)
-				swap(&array[j], &array[j + 1]);
+				ft_swap(&array[j], &array[j + 1]);
 			j++;
 		}
 		i++;

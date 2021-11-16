@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/25 11:00:12 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/05/19 14:02:22 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/11/16 20:14:55 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ O.BONUS = $(BONUS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(O.SRCS)
-	@echo "\033[1;32mCompiling libft"
+	@echo "Compiling libft"
 	@ar rcs $(NAME) $?
 	@echo "Making library"
 
@@ -43,12 +43,12 @@ bonus: $(O.SRCS) $(O.BONUS)
 	ar rcs $(NAME) $?
 
 clean:
-	@echo "\033[1;31mCleaning libft..."
+	@echo "Cleaning libft..."
 	@rm -f $(O.SRCS)
 	@rm -f $(O.BONUS)
 
 fclean: clean
-	@echo "\033[1;31mRemoving libft.a"
+	@echo "Removing libft.a"
 	@rm -f $(NAME)
 
 re: fclean all
