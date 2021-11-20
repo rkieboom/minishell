@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/08 17:04:40 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/20 21:16:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-static int check_spaces(t_list *list)
+static int	check_spaces(t_list *list)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (list->gnl.buf[i] && (list->gnl.buf[i] == 32 || (list->gnl.buf[i] >= 9 && list->gnl.buf[i] <= 13)))
+	while (list->gnl.buf[i] && (list->gnl.buf[i] == 32 \
+	|| (list->gnl.buf[i] >= 9 && list->gnl.buf[i] <= 13)))
 		i++;
 	if (list->gnl.buf[i])
 		return (0);
@@ -31,7 +32,6 @@ void	read_input(t_list *list, int option)
 {
 	if (option == 0)
 	{
-	
 		while (!list->gnl.buf)
 		{
 			list->gnl.buf = readline("minishell-1.0$ ");
@@ -47,8 +47,8 @@ void	read_input(t_list *list, int option)
 	else
 	{
 		list->gnl.buf = readline("> ");
-		// if (list->gnl.buf == NULL)
-		// 	exit(0);
+		if (list->gnl.buf == NULL)
+			ft_exit(1, 1);
 	}
 }
 
@@ -100,4 +100,4 @@ int	main(int argc, char **argv, char **envp)
 	list.env = create_envp(list.env, envp);
 	loop(&list);
 	return (0);
-} // echo yooo > test.txt
+}
