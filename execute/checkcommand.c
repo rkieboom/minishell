@@ -6,17 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/24 19:48:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/17 15:50:26 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
-
-static void	printerror(const char *str)
-{
-	ft_putstr_fd("zsh: command not found: ", 2);
-	ft_putendl_fd((char *)str, 2);
-}
 
 void	checkcommand(t_list *list, int i)
 {

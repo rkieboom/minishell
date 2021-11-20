@@ -6,23 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 17:50:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 16:00:07 by spelle        ########   odam.nl         */
+/*   Updated: 2021/11/17 16:01:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse.h"
-
-static int	env_str_length(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '$')
-		i++;
-	while (str[i] && (ft_isdigit(str[i]) || ft_isalpha(str[i]) || str[i] == '_')) //kijken of laatste klopt '_'
-		i++;
-	return (i);
-}
 
 static int	calculate_length(t_list *list, char *str)
 {

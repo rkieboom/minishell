@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/16 20:23:50 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/17 15:50:04 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,55 +51,7 @@ static int	create_cmd(t_list *list)
 	return (k);
 }
 
-// static void	set_redirection(t_list *list, int k)
-// {
-// 	int	i;
-// 	int	total;
-
-// 	i = 0;
-// 	total = list->tokens[k].total;
-// 	if (total <= 0)
-// 		return ;
-// 	while (total)
-// 	{
-// 		if (i == 0 && (!ft_strncmp(list->tokens[k].token[i], "<", 2)))
-// 		{
-// 			list->stdin_cpy = dup(0);
-// 			close(0);
-// 			list->tokens[k].stdin_fd = open(list->parse.commands[k] \
-// 				[list->tokens[k].token_pos[i] + 1], O_RDONLY);
-// 			dup2(list->tokens[k].stdin_fd, 0);
-// 		}
-// 		else if (total - 1 == 0)
-// 		{
-// 			list->stdout_cpy = dup(1);
-// 			close(1);
-// 			if (!ft_strncmp(list->tokens[k].token[i], ">>", 3))
-// 				list->tokens[k].stdout_fd = open(list->parse.commands[k] \
-// 		[list->tokens[k].token_pos[i] + 1], O_RDWR | O_APPEND | O_CREAT, 0644);
-// 			else if (!ft_strncmp(list->tokens[k].token[i], ">", 2))
-// 				list->tokens[k].stdout_fd = open(list->parse.commands[k] \
-// 		[list->tokens[k].token_pos[i] + 1], O_RDWR | O_TRUNC | O_CREAT, 0644);
-// 			dup2(list->tokens[k].stdout_fd, 1);
-// 		}
-// 		else if (!ft_strncmp(list->tokens[k].token[i], ">>", 3))
-// 		{
-// 			list->tokens[k].stdout_fd = open(list->parse.commands[k] \
-// 		[list->tokens[k].token_pos[i] + 1], O_RDWR | O_APPEND | O_CREAT, 0644);
-// 			close(list->tokens[k].stdout_fd);
-// 		}
-// 		else if (!ft_strncmp(list->tokens[k].token[i], ">", 2))
-// 		{
-// 			list->tokens[k].stdout_fd = open(list->parse.commands[k] \
-// 		[list->tokens[k].token_pos[i] + 1], O_RDWR | O_TRUNC | O_CREAT, 0644);
-// 			close(list->tokens[k].stdout_fd);
-// 		}
-// 		i++;
-// 		total--;
-// 	}
-// }
-
-void		execute(t_list *list)
+void	execute(t_list *list)
 {
 	int	i;
 	int	k;
@@ -128,33 +80,3 @@ void		execute(t_list *list)
 		i++;
 	}
 }
-
-
-// void		execute(t_list *list)
-// {
-// 	int	i;
-// 	int	k;
-
-// 	i = 0;
-// 	k = create_cmd(list);
-// 	while (list->parse.commands[i])
-// 	{
-// 		if (list->tokens[i].total > 0)
-// 			set_redirection(list, i);
-// 		checkcommand(list, i);
-// 		if (list->tokens[i].total > 0)
-// 		{
-// 			if (list->tokens[i].single_redirection_left == 1)
-// 			{
-// 				close(list->tokens[i].stdin_fd);
-// 				dup2(list->stdin_cpy, 0);
-// 			}
-// 			if (list->tokens[i].single_redirection_right == 1 || list->tokens[i].double_redirection_right == 1)
-// 			{
-// 				close(list->tokens[i].stdout_fd);
-// 				dup2(list->stdout_cpy, 1);
-// 			}
-// 		}
-// 		i++;
-// 	}
-// }
