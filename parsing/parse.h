@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:18:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/24 14:27:09 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/17 16:00:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int		check_char(char *c);
 int		check_char_str(t_list *list, char *str);
 void	free_old_and_set(t_list *list, int k, char **str, char **newstr);
 int		split_str_size(char **str, int j);
+int		env_str_length(char *str);
 
 #endif	
