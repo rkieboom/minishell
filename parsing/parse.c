@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 18:54:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/04 19:53:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/20 21:21:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static void	check_dollar_return_val(t_list *list, char **splitted, char *newstr)
 	{
 		while (1)
 		{
-			start = ft_strnstr_i(splitted[i], "$?", ft_strlen(splitted[i]));
+			start = ft_strnstr_i(splitted[i], "$?", ft_strlen(splitted[i])); //moet kijken of in single quote!!!!!!!!
 			if (start < 0)
 				break ;
 			number = ft_itoa(list->ret);
