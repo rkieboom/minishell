@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/11 16:19:25 by spelle        #+#    #+#                 */
-/*   Updated: 2021/10/24 14:27:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/24 14:25:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 int	array_thingy(int *p)
 {
 	if (*p == 1)
-		*p = 0; /*	Normal al	*/
+		*p = 0;
 	else if (*p == 0)
-		*p = 1; /*	Token	*/
+		*p = 1;
 	return (1);
 }
 
