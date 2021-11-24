@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/17 15:50:04 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/24 14:58:19 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	execute(t_list *list)
 	while (list->parse.commands[i])
 	{
 		if (list->tokens[i].total > 0)
-			set_redirection(list, i);
-		checkcommand(list, i);
+			if (set_redirection(list, i) == 0)
+				checkcommand(list, i);
 		if (list->tokens[i].total > 0)
 		{
 			if (list->tokens[i].single_redirection_left == 1)
