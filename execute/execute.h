@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/16 20:24:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/24 14:58:33 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 
 void	checkcommand(t_list	*list, int k);
 
-void	set_redirection(t_list *list, int k);
+int		set_redirection(t_list *list, int k);
 
 #endif
