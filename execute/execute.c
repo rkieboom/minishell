@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/24 14:58:19 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/24 18:25:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,25 @@ void	execute(t_list *list)
 	while (list->parse.commands[i])
 	{
 		if (list->tokens[i].total > 0)
-			if (set_redirection(list, i) == 0)
-				checkcommand(list, i);
-		if (list->tokens[i].total > 0)
 		{
-			if (list->tokens[i].single_redirection_left == 1)
+			if (set_redirection(list, i) == 0)
 			{
-				close(list->tokens[i].stdin_fd);
-				dup2(list->stdin_cpy, 0);
-			}
-			if (list->tokens[i].single_redirection_right == 1 \
-			|| list->tokens[i].double_redirection_right == 1)
-			{
-				close(list->tokens[i].stdout_fd);
-				dup2(list->stdout_cpy, 1);
+				checkcommand(list, i);
+				if (list->tokens[i].single_redirection_left == 1)
+				{
+					close(list->tokens[i].stdin_fd);
+					dup2(list->stdin_cpy, 0);
+				}
+				if (list->tokens[i].single_redirection_right == 1 \
+				|| list->tokens[i].double_redirection_right == 1)
+				{
+					close(list->tokens[i].stdout_fd);
+					dup2(list->stdout_cpy, 1);
+				}
 			}
 		}
+		else
+			checkcommand(list, i);
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/08 16:43:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/24 17:45:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ typedef struct s_tokens
 	int			double_redirection_left;
 	int			double_redirection_right;
 	int			pipe;
+	int			last_l;
+	int			last_r;
 }				t_tokens;
 
 typedef struct s_cmd
