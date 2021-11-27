@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/11/27 14:44:29 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/11/27 18:34:41 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRCS =					functions.c \
 						$(SRCS.EXECUTE) \
 						$(SRCS.FREE) \
 						$(SRCS.GNL) \
-						$(SRCS.PARSING) \
+						$(SRCS.NEW.PARSING) \
+						
 						
 FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/add_new_line.c \
@@ -80,6 +81,10 @@ SRCS.PARSING =			parsing/parse.c \
 						parsing/functions/dollar.c \
 						parsing/tokens.c \
 						parsing/tokens_utils.c \
+
+SRCS.NEW.PARSING = 		newparsing/parse.c \
+						newparsing/parse_split_spaces.c \
+						newparsing/parse_split_commands.c \
 
 O.SRCS = $(SRCS:.c=.o)
 
