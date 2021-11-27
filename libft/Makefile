@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2019/11/25 11:00:12 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/11/16 20:14:55 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/11/27 18:47:09 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(NAME): $(O.SRCS)
 	@echo "Making library"
 
 %.o: %.c
-	@$(CC) $(FLAGS) -c $< -o $@
+	@$(CC) -ggdb3 $(FLAGS) -c $< -o $@
 
 bonus: $(O.SRCS) $(O.BONUS)
 	ar rcs $(NAME) $?

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/27 14:37:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/27 18:33:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static int	loop(t_list *list)
 		read_input(list, 0);
 		check_input(list);
 		add_history(list->gnl.buf);
-		parse(list);
+		new_parse(list);
 		execute(list);
 		free_parse_commands(list);
 	}

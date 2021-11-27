@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/24 17:45:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/27 18:41:58 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_list
 
 int		get_next_line(int fd, char **line);
 
-int		parse(t_list *list);
+void	new_parse(t_list *list);
 
 void	free_parse_commands(t_list *list);
 
