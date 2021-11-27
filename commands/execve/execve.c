@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/16 20:12:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/27 14:48:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*get_full_env(t_env *env)
 	str = malloc(sizeof(char) * length);
 	if (!str)
 		return (0);
-	str[length] = 0;
+	str[length - 1] = 0;
 	while (env->name[i])
 	{
 		str[i] = env->name[i];
@@ -73,7 +73,6 @@ static char	**recreate_envp(t_env *env)
 int	ft_execve(t_list *list, char **str)
 {
 	int		ret;
-	int		result;
 	char	**envp;
 	char	*path;
 	pid_t	pid;
@@ -91,7 +90,7 @@ int	ft_execve(t_list *list, char **str)
 		if (path && execve(path, str, envp) < 0)
 			ft_exit(127, 1);
 		else
-			ft_exit(result, 0);
+			ft_exit(1, 0);
 	}	
 	else
 		waitpid(pid, &ret, 0);
