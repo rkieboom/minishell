@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 16:07:54 by spelle        #+#    #+#                 */
-/*   Updated: 2021/11/16 20:14:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/27 14:38:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	create_declare_list(t_env *v, char **array)
 
 static void	sort_list(char **array, size_t length)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 	size_t	max;
 
 	i = 0;
