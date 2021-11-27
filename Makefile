@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/11/16 20:24:29 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/11/27 14:44:29 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 LIBFT = libft/libft.a
 
-FLAGS = -Wall -Werror -Wextra -fsanitize=address -fno-omit-frame-pointer
+FLAGS = -fsanitize=address
 
 SRCS =					functions.c \
 						main.c \
@@ -89,13 +89,13 @@ all: $(NAME)
 $(NAME): $(O.SRCS) $(LIBFT)
 	@echo "Compiling files"
 	@echo "Making executable"
-	@$(CC) -ggdb3 -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
+	@$(CC) -ggdb3 -lreadline $(FLAGS) $(O.SRCS) $(LIBFT) -o $(NAME)
 
 $(LIBFT):
 	@make -C libft/.
 
 %.o: %.c
-	@$(CC) -ggdb3 -Ilibft -c $< -o $@
+	@$(CC) -ggdb3 $(FLAGS) -Ilibft -c $< -o $@
 
 clean:
 	@echo "Cleaning..."

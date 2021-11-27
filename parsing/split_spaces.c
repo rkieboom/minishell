@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/14 19:06:44 by rkieboom      ########   odam.nl         */
+/*   Updated: 2021/11/27 14:43:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,29 +36,6 @@ static int	arraysize(const char *s, char c, t_list *list)
 	if (i > 0 && s[i - 1] != ' ')
 		k++;
 	return (k);
-}
-
-static void	findstart(const char *s, char c, int *i, int *start)
-{
-	while (s[*i] && s[*i] == c)
-		(*i)++;
-	if (s[*i] != c && s[*i])
-		*start = *i;
-}
-
-static int	freemem(char **result, int k)
-{
-	if (!result[k])
-	{
-		while (k > 0)
-		{
-			k--;
-			free(result[k]);
-		}
-		free(result);
-		return (1);
-	}
-	return (0);
 }
 
 static char	**splitter(t_list *list, const char *str, char c, char **result)
