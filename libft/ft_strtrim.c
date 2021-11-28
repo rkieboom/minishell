@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/01 16:34:08 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/09 15:50:24 by spelle        ########   odam.nl         */
+/*   Updated: 2021/11/28 21:16:08 by jbaren        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int		slength;
 	int		i;
 	int		j;
-	int		k;
 
 	if (!s1)
 		return (NULL);
 	slength = ft_strlen((char *)s1);
 	i = 0;
 	j = slength - 1;
-	k = 0;
 	getstring(s1, set, &i, &j);
 	if (j - i + 1 > 0)
 		return (ft_substr(s1, i, (j - i + 1)));
