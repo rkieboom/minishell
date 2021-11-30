@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/11/28 19:11:49 by rkieboom      ########   odam.nl          #
+#    Updated: 2021/11/30 01:44:51 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,8 +85,10 @@ SRCS.PARSING =			parsing/parse.c \
 SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/parse_split_spaces.c \
 						newparsing/parse_split_commands.c \
+						newparsing/parse_split_tokens.c \
 						newparsing/checkword.c \
 						newparsing/createstring.c \
+						newparsing/tokens.c \
 
 O.SRCS = $(SRCS:.c=.o)
 
@@ -96,13 +98,13 @@ all: $(NAME)
 $(NAME): $(O.SRCS) $(LIBFT)
 	@echo "Compiling files"
 	@echo "Making executable"
-	@$(CC) -ggdb3 $(FLAGS) -lreadline $(O.SRCS) $(LIBFT) -o $(NAME)
+	@$(CC) -g $(FLAGS) $(O.SRCS) $(LIBFT) -o $(NAME) -lreadline
 
 $(LIBFT):
 	@make -C libft/.
 
 %.o: %.c
-	@$(CC) -ggdb3 $(FLAGS) -Ilibft -c $< -o $@
+	@$(CC) -g $(FLAGS) -Ilibft -c $< -o $@
 
 clean:
 	@echo "Cleaning..."
