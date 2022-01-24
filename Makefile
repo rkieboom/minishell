@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2021/11/30 01:44:51 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/01/13 01:58:05 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = minishell
 
 LIBFT = libft/libft.a
 
-FLAGS = -fsanitize=address
+FLAGS = 
 
 SRCS =					functions.c \
 						main.c \
@@ -68,6 +68,7 @@ SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
 						env_list/functions/search_env.c \
 
 SRCS.EXECUTE =			execute/checkcommand.c \
+						execute/checkcommand_pipe.c \
 						execute/execute.c \
 						execute/redirections.c \
 
@@ -105,6 +106,7 @@ $(LIBFT):
 
 %.o: %.c
 	@$(CC) -g $(FLAGS) -Ilibft -c $< -o $@
+
 
 clean:
 	@echo "Cleaning..."

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/30 00:29:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/30 01:50:41 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/13 01:38:50 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,15 @@ static void	identify_tokens(t_list *list)
 		while (j < list->tokens[i].total)
 		{
 			if (!ft_strncmp(list->tokens[i].token[j], "<<", 3))
-				list->tokens[i].double_redirection_left = 1;
+				list->tokens[i].double_redirection_left++;
 			else if (!ft_strncmp(list->tokens[i].token[j], ">>", 3))
-				list->tokens[i].double_redirection_right = 1;
+				list->tokens[i].double_redirection_right++;
 			else if (!ft_strncmp(list->tokens[i].token[j], "<", 2))
-				list->tokens[i].single_redirection_left = 1;
+				list->tokens[i].single_redirection_left++;
 			else if (!ft_strncmp(list->tokens[i].token[j], ">", 2))
-				list->tokens[i].single_redirection_right = 1;
+				list->tokens[i].single_redirection_right++;
+			else if(!ft_strncmp(list->tokens[i].token[j], "|", 2))
+				list->tokens[i].pipe++;
 			j++;
 		}
 		i++;

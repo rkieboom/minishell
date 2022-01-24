@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/30 00:55:34 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/13 23:20:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ typedef struct s_tokens
 	int			stdin_fd;
 	int			stdout_fd;
 	char		**token;
-	// char		token[100][3]; //wat voor token het is [k][j==100][i]
-	// int			token_pos[100]; //positie van de token, op de hoeveelste argument die staat string[0][H][0]
 	int			*token_pos;
 	int			single_redirection_left;
 	int			single_redirection_right;
@@ -65,18 +63,25 @@ typedef struct s_cmd
 	int			size;
 }				t_cmd;
 
+typedef struct	s_pipecommand
+{
+	char					**command;
+	struct s_pipecommand	*next;
+}				t_pipecommand;
+
 
 typedef struct s_list
 {
-	int			stdout_cpy;
-	int			stdin_cpy;
-	int			ret;
-	t_parse		parse;
-	t_cmd		cmd;
-	t_gnl		gnl;
-	t_dir		dir;
-	t_env		*env;
-	t_tokens	*tokens;
+	int				stdout_cpy;
+	int				stdin_cpy;
+	int				ret;
+	t_parse			parse;
+	t_cmd			cmd;
+	t_gnl			gnl;
+	t_dir			dir;
+	t_env			*env;
+	t_tokens		*tokens;
+	t_pipecommand	*pipecommand;
 }				t_list;
 
 int		get_next_line(int fd, char **line);

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/24 14:58:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/13 01:59:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../commands/commands.h"
 
 void	checkcommand(t_list	*list, int k);
+void	checkcommand_pipe(t_list *v, int k);
 
 int		set_redirection(t_list *list, int k);
 

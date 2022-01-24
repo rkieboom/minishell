@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/27 18:33:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/02 22:51:57 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	read_input(t_list *list, int option)
 	{
 		while (!list->gnl.buf)
 		{
-			list->gnl.buf = readline("minishell-1.0$ ");
+			list->gnl.buf = readline("minishell-4.2$ ");
 			if (!list->gnl.buf)
 				write(1, "\n", 1);
 			else if (!list->gnl.buf || check_spaces(list))
