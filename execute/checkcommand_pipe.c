@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/13 00:50:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/14 00:22:05 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/27 21:19:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,51 @@ static	int	get_pipe_pos(t_list *v, int k, int len)
 		}
 		i++;
 	}
+	return (-1);
 }
 
-static void create_command(t_list *v, int k, t_pipecommand *temp, int c)
+static void	create_command(t_list *v, int k, int i, int wordcount, t_pipecommand *temp)
 {
-	int totalcommands;
-	int i;
+	int j;
 
-	i = 0;
-	totalcommands = v->tokens[k].token_pos[c+1];
-	if (totalcommands != 0)
+	j = 0;
+	if (wordcount > 0)
 	{
-		totalcommands -= v->tokens[k].token_pos[c];
-		c = v->tokens[k].token_pos[c] + 1;
-		while (totalcommands)
-		{
-			temp->command[i] = ft_strdup(v->parse.commands[k][c]);
-			totalcommands--;
-			c++;
-			i++;
-		}
+		temp->command = ft_calloc(wordcount + 1, sizeof(char*));
+		if (!temp->command)
+			ft_exit(1, 1);
 	}
+	if (i == 0)		//if i == 0 its the first command so it can begin from the start
+		while (wordcount)
+		{
+			temp->command[i] = ft_strdup(v->parse.commands[k][i]);
+			if (!temp->command[i])
+				ft_exit(1, 1);
+			i++;
+			wordcount--;
+		}
 	else
 	{
-		c = v->tokens[k].token_pos[c] + 1;
-		while (v->parse.commands[k][c])
+		i = get_pipe_pos(v, k, i - 1); //i == first word after pipe
+		if (wordcount == -1)//voor als er geen pipes zijn kijken we gewoon hoeveel worden er na de laatste pipe waren
 		{
-			temp->command[i] = ft_strdup(v->parse.commands[k][c]);
-			c++;
 			i++;
+			wordcount = i;
+			while(v->parse.commands[k][wordcount])
+				wordcount++;
+			wordcount -= i;
+			temp->command = ft_calloc(wordcount + 1, sizeof(char*));
+			if (!temp->command)
+				ft_exit(1, 1);
+		}
+		while (wordcount) //wordcount is the amount of words
+		{
+			temp->command[j] = ft_strdup(v->parse.commands[k][i]);
+			if (!temp->command[i])
+				ft_exit(1, 1);
+			i++;
+			j++;
+			wordcount--;
 		}
 	}
 }
@@ -63,39 +79,38 @@ static void create_command(t_list *v, int k, t_pipecommand *temp, int c)
 static void create_pipe_command(t_list *v, int k)
 {
 	int i;
-	int totalcommands;
-	int totalpipes;
-	int c;
+	int j;
+	int wordcount;
+	int pipes = v->tokens[k].pipe;
 	t_pipecommand *temp;
 
-	i = 0;
-	totalpipes = v->tokens[k].pipe;
 	v->pipecommand = ft_calloc(1, sizeof(t_pipecommand));
 	temp = v->pipecommand;
-	c = 0;
-	if (!temp)
-		ft_exit(1, 1);
-	while (totalpipes)
+
+	i = 0;
+	j = 0;
+	while (pipes + 1)
 	{
-		totalcommands = v->tokens[k].token_pos[c] - 1;//checken of de token == |
-		temp->command = ft_calloc(totalcommands, sizeof(t_pipecommand));
-		if (!temp->command)
-			ft_exit(1, 1);
-		create_command(v, k, temp, c);
-		
-		
+		if (i == 0)
+			wordcount = get_pipe_pos(v, k, i); //getting the amount of words before pipe
+		else if (pipes == 0)
+		{
+			create_command(v, k, i, -1, temp); //nu zijn er geen pipes meer
+			break ;
+		}
+		else
+			wordcount = get_pipe_pos(v, k, i) - get_pipe_pos(v, k, i - 1); //getting the amount of words between pipes
+		create_command(v, k, i, wordcount, temp);// creating the command
+		pipes--;
 		i++;
-		c++;
-		temp->next = ft_calloc(1, sizeof(t_pipecommand));
-		temp = temp->next;
-		totalpipes--;
+		if (pipes + 1 > 0) //allocating next one if needed
+		{
+			temp->next = ft_calloc(1, sizeof(t_pipecommand));
+			temp = temp->next;
+		}
 	}
-	// while (v->parse.commands[k][i])
-	// {
-	// 	temp
-	// 	i++;
-	// }
-	
+
+	while(1);
 }
 
 void	checkcommand_pipe(t_list *v, int k)
