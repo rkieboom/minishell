@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/13 23:20:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/02 19:14:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <dirent.h>
+
+# include <readline/readline.h>
+# include <readline/history.h>
 
 typedef struct s_parse
 {
@@ -63,12 +66,11 @@ typedef struct s_cmd
 	int			size;
 }				t_cmd;
 
-typedef struct	s_pipecommand
+typedef struct s_pipecommand
 {
 	char					**command;
 	struct s_pipecommand	*next;
 }				t_pipecommand;
-
 
 typedef struct s_list
 {
@@ -84,8 +86,6 @@ typedef struct s_list
 	t_pipecommand	*pipecommand;
 }				t_list;
 
-int		get_next_line(int fd, char **line);
-
 void	new_parse(t_list *list);
 
 void	free_parse_commands(t_list *list);
@@ -97,5 +97,9 @@ int		skipspaces(const char *str);
 
 void	check_quote(t_list *list, char *c);
 char	*add_new_line(char *str);
+
+int		check_input(t_list *v);
+void	read_input(t_list *list, int option);
+void	check_input_quotes(t_list *list);
 
 #endif

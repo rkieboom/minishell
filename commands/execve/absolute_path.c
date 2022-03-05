@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/27 14:42:46 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/06 18:03:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	check_fullpath(char *str)
 	return (0);
 }
 
-static char	*get_path(char *name, char *ENV_PATH)
+static char	*get_path(char *name, char *ENV_PATH) //protection and leaks
 {
 	int		i;
 	int		fd;
@@ -59,8 +59,13 @@ char	*absolute_path(char *PATH, t_env *env)
 	newpath = 0;
 	if (!check_fullpath(PATH))
 		newpath = get_path(PATH, search_env(env, "PATH", 4));
-	if (check_exist(newpath))
+	if (!newpath)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(PATH, 2);
+		ft_putendl_fd(": command not found", 2);
 		return (NULL);
+	}
 	if (check_permission(newpath))
 		return (NULL);
 	return (newpath);

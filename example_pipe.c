@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 16:13:39 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/12/12 18:16:48 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/02/06 14:21:43 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,16 @@
 
 void	test(char **envp)
 {
-	int pid;
-	int i = 0;
+	int		pid;
+	int		i = 0;
 
-	int size;
-	int FD_STDIN_CPY = dup(0);
-	int	FD_STDOUT_CPY = dup(1);
+	int		size;
+	int		FD_STDIN_CPY = dup(0);
+	int		FD_STDOUT_CPY = dup(1);
 	
-	int newpipes[2];
-	int oldpipes;
-	char ***cmd;
+	int		newpipes[2];
+	int		oldpipes;
+	char	***cmd;
 
 	cmd = malloc(sizeof(char **) * 6);
 	cmd[5] = 0;
@@ -56,8 +56,6 @@ void	test(char **envp)
 	cmd[4][0] = strdup("/usr/bin/grep");
 	cmd[4][1] = strdup("r");
 	cmd[4][2] = 0;
-
-	
 
 	size = 5;
 
@@ -130,12 +128,9 @@ void	test(char **envp)
 
 }
 
-
-
-
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
 	test(envp);
-	
+
 	return (0);
 }
