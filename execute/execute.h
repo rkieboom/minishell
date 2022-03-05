@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/13 01:59:09 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/01/30 16:42:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,24 @@
 # include "../header.h"
 # include "../commands/commands.h"
 
-void	checkcommand(t_list	*list, int k);
-void	checkcommand_pipe(t_list *v, int k);
+typedef struct s_pipe_command
+{
+	t_pipecommand *temp;
+	int	pid;
+	int	totalcommands;
+	int	i;
+	int	fd_stdin_cpy;
+	int	fd_stdout_cpy;
+	int	newpipes[2];
+	int	oldpipe;
+}				t_pipe_command;
 
+void	checkcommand(t_list	*list, int k);
+void	createcommand_pipe(t_list *v, int k);
+
+int		command_is_builtin(char *str);
 int		set_redirection(t_list *list, int k);
+void	exec_command_pipes(t_list *v, int k);
+void	execute_builtin_pipe_cmd(t_list *v, t_pipe_command *cmd);
 
 #endif

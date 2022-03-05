@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/01/13 01:58:05 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/02/02 17:38:03 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,8 @@ SRCS =					functions.c \
 FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/add_new_line.c \
 						functions/ft_swap.c \
+						functions/check_input.c \
+						functions/read_input.c \
 
 SRCS.COMMANDS.CD =		commands/cd/cd.c \
 
@@ -68,9 +70,10 @@ SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
 						env_list/functions/search_env.c \
 
 SRCS.EXECUTE =			execute/checkcommand.c \
-						execute/checkcommand_pipe.c \
+						execute/createcommand_pipe.c \
 						execute/execute.c \
 						execute/redirections.c \
+						execute/exec_cmd_builtin_pipe.c \
 
 SRCS.FREE =				free/free_parse_commands.c \
 
