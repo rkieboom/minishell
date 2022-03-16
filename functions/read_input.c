@@ -6,11 +6,20 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/06 14:14:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/16 16:47:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+static void sighandler(int sig)
+{
+	printf("\n"); // Move to a new line
+	rl_on_new_line(); // Regenerate the prompt on a newline
+	rl_replace_line("", 0); // Clear the previous text
+	rl_redisplay();
+}
+
 
 static int	check_spaces(t_list *list)
 {
@@ -27,6 +36,7 @@ static int	check_spaces(t_list *list)
 
 void	read_input(t_list *list, int option)
 {
+	signal(SIGINT, sighandler);
 	if (option == 0)
 	{
 		while (!list->gnl.buf)

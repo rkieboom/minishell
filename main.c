@@ -6,12 +6,14 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/03/05 19:12:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/10 19:42:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <stdio.h>
+#include <signal.h>
+
 
 static int	loop(t_list *list)
 {
@@ -29,7 +31,8 @@ static int	loop(t_list *list)
 
 void sighandler(int signum)
 {
-	printf("Signal '[%i]' was received!", signum);
+	printf("Signal '[%i]' was received!\n", signum);
+	exit(0);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -40,9 +43,9 @@ int	main(int argc, char **argv, char **envp)
 	list.env = create_envp(list.env, envp);
 	// signal(SIGABRT, sighandler);
 	// signal(SIGTERM, sighandler);
-	signal(SIGINT, sighandler);
-	while(1)
-		sleep(1);
+	
+	// while(1)
+	// 	sleep(1);
 	loop(&list);
 	return (0);
 }
