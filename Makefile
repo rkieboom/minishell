@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/02/02 17:38:03 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/03/16 16:35:38 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = minishell
 
 LIBFT = libft/libft.a
 
-FLAGS = 
+FLAGS = $(INCLUDES)
+
+INCLUDES = -L/usr/local/Cellar/readline/8.1.2/lib -I/usr/local/Cellar/readline/8.1.2/include
 
 SRCS =					functions.c \
 						main.c \
@@ -102,13 +104,13 @@ all: $(NAME)
 $(NAME): $(O.SRCS) $(LIBFT)
 	@echo "Compiling files"
 	@echo "Making executable"
-	@$(CC) -g $(FLAGS) $(O.SRCS) $(LIBFT) -o $(NAME) -lreadline
+	@$(CC) $(FLAGS) $(O.SRCS) $(LIBFT) -o $(NAME) -lreadline
 
 $(LIBFT):
 	@make -C libft/.
 
 %.o: %.c
-	@$(CC) -g $(FLAGS) -Ilibft -c $< -o $@
+	@$(CC) $(FLAGS) -Ilibft -c $< -o $@
 
 
 clean:
