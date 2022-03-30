@@ -5,34 +5,16 @@
 #                                                      +:+                     #
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/03/17 18:20:49 by rkieboom      ########   odam.nl          #
+#    Created: 2020/11/12 19:17:36 by rkieboom      #+#    #+#                  #
+#    Updated: 2022/03/16 17:58:06 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-# ================================ VARIABLES ================================= #
+NAME = minishell
 
-# The name of your executable
-NAME		= minishell
+LIBFT = libft/libft.a
 
-# Compiler and compiling flags
-CC	= gcc
-CFLAGS	= 
-
-# Debug, use with`make DEBUG=1`
-ifeq ($(DEBUG),1)
-CFLAGS	+= -g3
-endif
-ifeq ($(DEBUG),2)
-CFLAGS	+= -g3 -fsanitize=address
-endif
-
-# Folder name
-SRCDIR	= ./
-OBJDIR	= bin/
-LIBFTDIR = libft/
-
-LIBFTLIB = $(LIBFTDIR)/libft.a
+FLAGS = $(INCLUDES) -g
 
 INCLUDES = -L/usr/local/Cellar/readline/8.1.2/lib -I/usr/local/Cellar/readline/8.1.2/include
 
@@ -49,10 +31,10 @@ SRCS =					functions.c \
 						$(SRCS.COMMANDS.EXIT) \
 						$(SRCS.ENV.LIST) \
 						$(SRCS.ENV.LIST.FUNC) \
+						$(SRCS.EXECUTE) \
 						$(SRCS.FREE) \
 						$(SRCS.GNL) \
 						$(SRCS.NEW.PARSING) \
-						$(SRCS.CREATE.CMD) \
 						
 						
 FUNCTIONS =				functions/ft_skipspaces.c \
@@ -114,67 +96,32 @@ SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/createstring.c \
 						newparsing/tokens.c \
 
-SRCS.CREATE.CMD =		cmd/create_cmd.c \
-						cmd/declaring_values.c \
-						cmd/tokens_cmd.c \
+O.SRCS = $(SRCS:.c=.o)
 
 
-# String manipulation magic
-SRC		:= $(notdir $(SRCS))
-OBJ		:= $(SRC:.c=.o)
-OBJS	:= $(addprefix $(OBJDIR), $(OBJ))
+all: $(NAME)
 
-SRC_B		:= $(notdir $(SRCS.BONUS))
-OBJ_B		:= $(SRC_B:.c=.o)
-OBJS_B	:= $(addprefix $(OBJDIR), $(OBJ_B))
+$(NAME): $(O.SRCS) $(LIBFT)
+	@echo "Compiling files"
+	@echo "Making executable"
+	@$(CC) $(FLAGS) $(O.SRCS) $(LIBFT) -o $(NAME) -lreadline
 
-# Colors
-GR	= \033[32;1m
-RE	= \033[31;1m
-YE	= \033[33;1m
-CY	= \033[36;1m
-RC	= \033[0m
+$(LIBFT):
+	@make -C libft/.
 
-# Implicit rules
-VPATH := $(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
+%.o: %.c
+	@$(CC) $(FLAGS) -Ilibft -c $< -o $@
 
-# ================================== RULES =================================== #
 
-all : $(NAME)
+clean:
+	@echo "Cleaning..."
+	@rm -rf $(O.SRCS)
+	@make -C libft/. clean
 
-# Compiling
-$(OBJDIR)%.o : %.c
-	@mkdir -p $(OBJDIR)
-	@printf "$(GR)+$(RC)"
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+fclean: clean
+	@echo "Removing minishell"
+	@rm -rf $(NAME)
+	@rm -rf $(LIBFT)
+	@echo "Removing libft.a"
 
-# Linking
-$(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS)
-	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
-	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES) -lreadline
-
-$(LIBFTLIB) :
-	make -C $(LIBFTDIR)
-	
-# Cleaning
-clean :
-	@printf "$(RE)--- Removing $(OBJDIR)$(RC)\n"
-	@rm -rf $(OBJDIR)
-	@make -C $(LIBFTDIR) clean
-
-fclean : clean
-	@printf "$(RE)--- Removing $(NAME)$(RC)\n"
-	@rm -f $(NAME)
-	@rm -f $(NAME_BONUS)
-	@make -C $(LIBFTDIR) fclean
-
-# Special rule to force to remake everything
-re : fclean all
-
-# This runs the program
-run : $(NAME)
-	@printf "$(CY)>>> Running $(NAME)$(RC)\n"
-	./$(NAME)
-
-# This specifies the rules that does not correspond to any filename
-.PHONY	= all run clean fclean re bonus
+re: fclean all

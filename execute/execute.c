@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/30 13:34:53 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/17 12:38:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	execute(t_list *list)
 	while (list->parse.commands[i])
 	{
 		if (list->tokens[i].pipe >= 1)
-			createcommand_pipe(list, i);
+			createcommand_pipe(list, i); //
 		else if (list->tokens[i].total > 0)
 		{
 			if (set_redirection(list, i) == 0)

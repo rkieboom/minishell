@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/02 19:14:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/17 17:56:47 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ typedef struct s_cmd
 
 typedef struct s_pipecommand
 {
+	int						id;
 	char					**command;
+	struct s_tokens			*tokens;
 	struct s_pipecommand	*next;
 }				t_pipecommand;
 
@@ -101,5 +103,7 @@ char	*add_new_line(char *str);
 int		check_input(t_list *v);
 void	read_input(t_list *list, int option);
 void	check_input_quotes(t_list *list);
+
+int		create_cmd(t_list *v, int k);
 
 #endif
