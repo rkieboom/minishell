@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/30 16:42:20 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/16 20:07:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_pipe_command
 
 void	checkcommand(t_list	*list, int k);
 void	createcommand_pipe(t_list *v, int k);
+void	here_document(char *cmd, char *end);
 
 int		command_is_builtin(char *str);
 int		set_redirection(t_list *list, int k);

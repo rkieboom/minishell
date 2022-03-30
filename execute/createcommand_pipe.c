@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/13 00:50:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/06 14:24:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/16 17:59:56 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int i, int wordcount, t_pipecommand *temp)
 	}
 	if (i == 0)
 	{
-		while (wordcount)
+		while (wordcount > 0) //wordcount = -1 segfault
 		{
 			temp->command[i] = ft_strdup(v->parse.commands[k][i]);
 			if (!temp->command[i])

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/03/10 19:42:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/17 13:49:33 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,10 @@ static int	loop(t_list *list)
 		add_history(list->gnl.buf);
 		check_input(list);
 		new_parse(list);
-		execute(list);
+		create_cmd(list, 0);
+		// execute(list);
 		free_parse_commands(list);
 	}
-}
-
-void sighandler(int signum)
-{
-	printf("Signal '[%i]' was received!\n", signum);
-	exit(0);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -41,11 +36,6 @@ int	main(int argc, char **argv, char **envp)
 
 	ft_bzero(&list, sizeof(t_list));
 	list.env = create_envp(list.env, envp);
-	// signal(SIGABRT, sighandler);
-	// signal(SIGTERM, sighandler);
-	
-	// while(1)
-	// 	sleep(1);
 	loop(&list);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:51:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/06 14:57:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/03/16 18:06:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	exec_command_pipes(t_list *v, int k)
 	while (s.totalcommands)
 	{
 		// redirections(); //nog doen hier????
+		
 		setting_pipes(&s);
 		if (command_is_builtin(s.temp->command[0]))
 			execute_builtin_pipe_cmd(v, &s);
