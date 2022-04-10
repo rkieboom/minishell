@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 13:14:16 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/03/20 13:32:47 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/10 11:56:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		pipe_location(t_list *v, int k, int token_pos)
 	return (-1);
 }
 
-static void	first_cmd(t_list *v, t_pipecommand *temp, int pipes, int k)
+static void	first_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 {
 	int	i;
 	int	j;
@@ -54,7 +54,7 @@ static void	first_cmd(t_list *v, t_pipecommand *temp, int pipes, int k)
 	}
 }
 
-static void	middle_cmd(t_list *v, t_pipecommand *temp, int pipes, int k)
+static void	middle_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 {
 	int	i;
 	int	j;
@@ -84,7 +84,7 @@ static void	middle_cmd(t_list *v, t_pipecommand *temp, int pipes, int k)
 	
 }
 
-static void	last_cmd(t_list *v, t_pipecommand *temp, int pipes, int k)
+static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 {
 	int i;
 	int	j;
@@ -113,11 +113,11 @@ static void	last_cmd(t_list *v, t_pipecommand *temp, int pipes, int k)
 	}
 }
 
-void	declaring_values(t_list *v, t_pipecommand *pipes_cmd, int pipes, int k)
+void	declaring_values(t_list *v, t_newcommand *pipes_cmd, int pipes, int k)
 {
 	int	i;
 	int j;
-	t_pipecommand *temp;
+	t_newcommand *temp;
 
 	temp = pipes_cmd;
 	i = 0;
@@ -134,11 +134,10 @@ void	declaring_values(t_list *v, t_pipecommand *pipes_cmd, int pipes, int k)
 		pipes--;
 		if (pipes >= 0)
 		{
-			temp->next = ft_calloc(1, sizeof(t_pipecommand));
+			temp->next = ft_calloc(1, sizeof(t_newcommand));
 			if (!temp->next)
 				ft_error("Malloc failed!\n");
 			temp = temp->next;
 		}
 	}
-		// tokens_cmd(v, temp, k);
 }

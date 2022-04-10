@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/03/17 18:20:49 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/04/10 16:22:21 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,14 @@ NAME		= minishell
 
 # Compiler and compiling flags
 CC	= gcc
-CFLAGS	= 
+CFLAGS	=
 
 # Debug, use with`make DEBUG=1`
 ifeq ($(DEBUG),1)
 CFLAGS	+= -g3
 endif
 ifeq ($(DEBUG),2)
-CFLAGS	+= -g3 -fsanitize=address
+CFLAGS	+= -g3 -fsanitize=address -fno-omit-frame-pointer
 endif
 
 # Folder name
@@ -34,7 +34,7 @@ LIBFTDIR = libft/
 
 LIBFTLIB = $(LIBFTDIR)/libft.a
 
-INCLUDES = -L/usr/local/Cellar/readline/8.1.2/lib -I/usr/local/Cellar/readline/8.1.2/include
+INCLUDES = -I/usr/local/Cellar/readline/8.1.2/include
 
 SRCS =					functions.c \
 						main.c \
@@ -151,7 +151,7 @@ $(OBJDIR)%.o : %.c
 # Linking
 $(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
-	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES) -lreadline
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES) -lreadline -L/usr/local/Cellar/readline/8.1.2/lib
 
 $(LIBFTLIB) :
 	make -C $(LIBFTDIR)

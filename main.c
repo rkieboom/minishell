@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/03/17 13:49:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/10 16:43:47 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@ static int	loop(t_list *list)
 		create_cmd(list, 0);
 		// execute(list);
 		free_parse_commands(list);
+		// ft_bzero(&list->gnl, sizeof(t_gnl));
+		// ft_bzero(&list->parse, sizeof(t_parse));
+		// ft_bzero(&list->pipecommand, sizeof(t_newcommand));
+		// ft_bzero(&list->tokens, sizeof(t_tokens));
+		// ft_bzero(list, sizeof(t_list));
+		system("leaks minishell");
+		exit(1);
 	}
 }
 

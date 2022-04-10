@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/03/17 17:56:47 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/10 15:52:58 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <dirent.h>
+# include <signal.h>
 
 # include <readline/readline.h>
 # include <readline/history.h>
@@ -59,20 +60,13 @@ typedef struct s_tokens
 	int			last_r;
 }				t_tokens;
 
-typedef struct s_cmd
-{
-	char		***cmd;
-	int			*free;
-	int			size;
-}				t_cmd;
-
-typedef struct s_pipecommand
+typedef struct s_newcommand
 {
 	int						id;
 	char					**command;
 	struct s_tokens			*tokens;
-	struct s_pipecommand	*next;
-}				t_pipecommand;
+	struct s_newcommand		*next;
+}				t_newcommand;
 
 typedef struct s_list
 {
@@ -80,12 +74,11 @@ typedef struct s_list
 	int				stdin_cpy;
 	int				ret;
 	t_parse			parse;
-	t_cmd			cmd;
 	t_gnl			gnl;
 	t_dir			dir;
 	t_env			*env;
 	t_tokens		*tokens;
-	t_pipecommand	*pipecommand;
+	t_newcommand	*pipecommand;
 }				t_list;
 
 void	new_parse(t_list *list);

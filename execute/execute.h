@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/03/16 20:07:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/03 14:53:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 typedef struct s_pipe_command
 {
-	t_pipecommand *temp;
+	t_newcommand *temp;
 	int	pid;
 	int	totalcommands;
 	int	i;
