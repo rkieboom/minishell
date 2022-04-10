@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/13 00:50:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/03/16 17:59:56 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/03 14:53:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	int	get_pipe_pos(t_list *v, int k, int len)
 }
 
 static void	create_command(t_list *v, int k,
-int i, int wordcount, t_pipecommand *temp)
+int i, int wordcount, t_newcommand *temp)
 {
 	int	j;
 
@@ -84,10 +84,10 @@ static void create_pipe_command(t_list *v, int k)
 	int				j;
 	int				wordcount;
 	int				pipes;
-	t_pipecommand	*temp;
+	t_newcommand	*temp;
 
 	pipes = v->tokens[k].pipe;
-	v->pipecommand = ft_calloc(1, sizeof(t_pipecommand));
+	v->pipecommand = ft_calloc(1, sizeof(t_newcommand));
 	temp = v->pipecommand;
 	i = 0;
 	j = 0;
@@ -107,7 +107,7 @@ static void create_pipe_command(t_list *v, int k)
 		i++;
 		if (pipes + 1 > 0)
 		{
-			temp->next = ft_calloc(1, sizeof(t_pipecommand));
+			temp->next = ft_calloc(1, sizeof(t_newcommand));
 			temp = temp->next;
 		}
 	}
