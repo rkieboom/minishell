@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/04/10 16:22:21 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/04/13 17:17:29 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,7 @@ SRCS =					functions.c \
 						$(SRCS.GNL) \
 						$(SRCS.NEW.PARSING) \
 						$(SRCS.CREATE.CMD) \
+						$(SRCS.NEWEXECUTE)
 						
 						
 FUNCTIONS =				functions/ft_skipspaces.c \
@@ -94,6 +95,10 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 						execute/execute.c \
 						execute/redirections.c \
 						execute/exec_cmd_builtin_pipe.c \
+
+SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_commands.c \
+						newexecute/redirections/redirection_functions.c \
+						newexecute/redirections/redirections.c
 
 SRCS.FREE =				free/free_parse_commands.c \
 
