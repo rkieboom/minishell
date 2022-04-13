@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 16:25:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 15:03:39 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/13 17:48:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ static void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 			temp->tokens->token[token_local_c] = ft_strdup(ret_token(v, pipes, k, token_c));
 			if (!temp->tokens->token[token_local_c])
 				ft_exit(1, 1);
-			temp->tokens->token_pos[token_local_c] = i;
+			temp->tokens->token_pos[token_local_c] = v->tokens[k].token_pos[token_c];
+			// temp->tokens->token_pos[token_local_c] = i;
 			token_c++;
 			token_local_c++;
 			tokens--;

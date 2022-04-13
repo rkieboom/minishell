@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/28 21:19:50 by jbaren        ########   odam.nl         */
+/*   Updated: 2022/04/10 18:31:39 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	ft_execve(t_list *list, char **str)
 	if (pid == 0)
 	{
 		envp = recreate_envp(list->env);
-		if (str[0] && str[0][0] == '.' && str[0][1] == '/')
+		if (str[0] && str[0][0] == '.' && str[0][1] == '/')//wat is relative???? misschien anders
 			path = relative_path(str[0]);
 		else
 			path = absolute_path(str[0], list->env);
