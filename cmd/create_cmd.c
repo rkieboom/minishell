@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 12:47:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 15:41:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:26:58 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		create_cmd(t_list *v, int k)
 {
 	int	i;
 	int	pipes;
-	t_newcommand *temp;
 
 	i = 0;
 	while (v->parse.commands[k])

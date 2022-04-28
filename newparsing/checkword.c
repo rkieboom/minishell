@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/28 19:20:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:26:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ static void		calculate_dollar_length(t_list *list, char *str, int *i, int *lengt
 static int		calculate_length(t_list *list, char *str)
 {
 	int i;
-	int p;
 	int length;
 
 	i = 0;
-	p = 0;
 	length = 0;
 	while (str[i] == ' ' && str[i])
 		i++;
@@ -94,7 +92,6 @@ static int		calculate_length(t_list *list, char *str)
 char	*checkword(t_list *list, char *str)
 {
 	int length;
-	char *newstr;
 	char *temp;
 
 	if (!ft_strchr(str, '$') && !ft_strchr(str, '\'') && !ft_strchr(str, '\"')) //dan hoeft er niks veranderd te worden

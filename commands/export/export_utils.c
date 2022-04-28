@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 16:07:54 by spelle        #+#    #+#                 */
-/*   Updated: 2021/11/27 14:38:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:23:05 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	sort_list(char **array, size_t length)
 {
 	size_t		i;
 	size_t		j;
-	size_t	max;
 
 	i = 0;
 	while (i < length)
@@ -48,7 +47,7 @@ static void	sort_list(char **array, size_t length)
 	}
 }
 
-static void	print_declare_list(char **array, t_env *v, size_t length)
+static void	print_declare_list(char **array, t_env *v)
 {
 	int	i;
 
@@ -88,6 +87,6 @@ void	export_declare_list(t_env *v)
 	array = ft_calloc(length + 1, sizeof(char *));
 	create_declare_list(v, array);
 	sort_list(array, length);
-	print_declare_list(array, v, length);
+	print_declare_list(array, v);
 	free_arr(array);
 }

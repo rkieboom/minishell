@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   no_tokens_exec.c                                   :+:    :+:            */
+/*   run_commands.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:06:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/13 16:41:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/23 16:23:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	run_commands(t_list *list, t_newcommand *v)
 	else if (!ft_strncmp(v->command[0], "cd", 3))
 		list->ret = cd(list, v->command);
 	else if (!ft_strncmp(v->command[0], "pwd", 4))
-		list->ret = pwd(list->env);
+		list->ret = pwd();
 	else if (!ft_strncmp(v->command[0], "export", 7))
 		list->ret = export(list->env, v->command);
 	else if (!ft_strncmp(v->command[0], "unset", 6))

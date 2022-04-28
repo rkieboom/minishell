@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:39:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/13 17:07:53 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:35:39 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,6 @@ void	reset_redirections(t_list *list, t_newcommand *v)
 
 int	redirections(t_list *list, t_newcommand *v)
 {
-	int	i;
-
-	i = 0;
 	if (loop_over(v, 0, v->tokens->total))
 		return (1);
 	if (set_redir(list, v) < 0)

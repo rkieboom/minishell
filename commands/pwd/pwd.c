@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/16 22:47:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/12 10:27:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:21:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-int	pwd(t_env *v)
+int	pwd(void)
 {
 	char	buf[255];
 

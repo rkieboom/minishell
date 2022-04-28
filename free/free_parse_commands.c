@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 16:56:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/23 15:37:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,7 @@ void	free_parse_commands(t_list *list)
 				free(temp->tokens->token_pos);
 				free(temp->tokens);
 			}
-			if (k != 0)
-				free(temp);
+			// free(temp);
 			temp = temp2;
 			k++;
 		}

@@ -1,0 +1,18 @@
+1. fix echo met -n en -nnnnnnne [done]
+2. exit met arguments
+3. bij echo $> = crash
+4. signals
+	- ctrl-C in an empty prompt should display a new line with a new prompt.
+	- ctrl-\ in an empty prompt should not do anything.
+	- ctrl-D in an empty prompt should quit minishell --> RELAUNCH!
+	- ctrl-C in a prompt after you wrote some stuff should display a new line 
+	with a new prompt.
+	- The buffer should be clean too. Press "Enter" to make sure nothing from 
+	the previous line is executed.
+	- ctrl-D in a prompt after you wrote some stuff should not do anything.
+	- ctrl-\ in a prompt after you wrote some stuff should not do anything.
+	- Try ctrl-C after running a blocking command like cat without arguments or grep “something“.
+	- Try ctrl-\ after running a blocking command like cat without arguments or grep “something“.
+	- Try ctrl-D after running a blocking command like cat without arguments or grep “something“.
+	- Repeat multiple times using different commands.
+5.

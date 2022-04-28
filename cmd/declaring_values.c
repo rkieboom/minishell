@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 13:14:16 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 11:56:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:27:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		pipe_location(t_list *v, int k, int token_pos)
 	return (-1);
 }
 
-static void	first_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
+static void	first_cmd(t_list *v, t_newcommand *temp, int k)
 {
 	int	i;
 	int	j;
@@ -116,7 +116,6 @@ static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 void	declaring_values(t_list *v, t_newcommand *pipes_cmd, int pipes, int k)
 {
 	int	i;
-	int j;
 	t_newcommand *temp;
 
 	temp = pipes_cmd;
@@ -125,7 +124,7 @@ void	declaring_values(t_list *v, t_newcommand *pipes_cmd, int pipes, int k)
 	{
 		temp->id = i;
 		if (i == 0)
-			first_cmd(v, temp, pipes, k);
+			first_cmd(v, temp, k);
 		else if (pipes == 0)
 			last_cmd(v, temp, v->tokens[k].pipe - 1, k);
 		else

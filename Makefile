@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/04/13 17:17:29 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/04/23 12:51:35 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ NAME		= minishell
 
 # Compiler and compiling flags
 CC	= gcc
-CFLAGS	=
+CFLAGS	= -Wall -Werror -Wextra
 
 # Debug, use with`make DEBUG=1`
 ifeq ($(DEBUG),1)
@@ -34,7 +34,9 @@ LIBFTDIR = libft/
 
 LIBFTLIB = $(LIBFTDIR)/libft.a
 
-INCLUDES = -I/usr/local/Cellar/readline/8.1.2/include
+INCLUDES_MAC = -I/usr/local/Cellar/readline/8.1.2/include
+
+INCLUDES_L = -L./libft/.
 
 SRCS =					functions.c \
 						main.c \
@@ -147,16 +149,24 @@ VPATH := $(SRCDIR) $(OBJDIR) $(shell find $(SRCDIR) -type d)
 
 all : $(NAME)
 
+linux : $(LIBFTLIB) $(SRCS)  $(OBJS)
+	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
+	@$(CC) $(INCLUDES_L) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) -lreadline -l:libft.a
+
+mac : $(LIBFTLIB) $(SRCS)  $(OBJS)
+	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L/usr/local/Cellar/readline/8.1.2/lib
+	
 # Compiling
 $(OBJDIR)%.o : %.c
 	@mkdir -p $(OBJDIR)
 	@printf "$(GR)+$(RC)"
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES_MAC)
 
 # Linking
 $(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
-	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES) -lreadline -L/usr/local/Cellar/readline/8.1.2/lib
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L/usr/local/Cellar/readline/8.1.2/lib
 
 $(LIBFTLIB) :
 	make -C $(LIBFTDIR)
