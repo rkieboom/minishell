@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 18:08:18 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/21 22:36:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,19 @@ int	echo(char **str)
 	int	i;
 	int	newlineoption;
 
-	i = 1;
 	newlineoption = 0;
-	if (str[i] && !ft_strncmp(str[i], "-n", 3))
+	i = 1;
+	if (str[1][0] == '-')
 	{
-		i++;
-		newlineoption = 1;
+		while (str[1][i] == 'n')
+			i++;
+		if (str[1][i] != '\0')
+			i = 1;
+		else
+		{
+			i = 2;
+			newlineoption = 1;
+		}
 	}
 	while (str[i])
 	{

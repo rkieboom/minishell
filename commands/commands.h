@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 18:08:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:39:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 int		cd(t_list *v, char **str);
 int		env(t_env *v);
-int		pwd(t_env *v);
+int		pwd(void);
 int		echo(char **str);
 int		export(t_env *v, char **str);
 int		unset(t_env *v, char **str);
@@ -36,8 +36,8 @@ void	ft_exit(int ret, int print);
 */
 
 char	*add_new_line(char *str);
-char	*relative_path(char *PATH);
-char	*absolute_path(char *PATH, t_env *env);
+char	*relative_path(char *PATH, t_env *env);
+char	*absolute_path(char *PATH);
 int		check_exist(char *PATH);
 int		check_permission(char *PATH);
 void	export_declare_list(t_env *v);

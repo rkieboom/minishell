@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 21:28:23 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/30 01:35:13 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/14 17:25:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,8 @@ int	array_thingy(int *p)
 void	free_old_and_set(t_list *list, int k, char **str, char **newstr)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
 	if (str)
 	{
 		while (str[i])

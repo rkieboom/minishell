@@ -6,33 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 16:25:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/13 17:48:18 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/23 14:39:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
-static int	get_last_id(t_newcommand *v)
-{
-	while (v->next)
-		v = v->next;
-	return (v->id);
-	
-}
 
-static int	ret_token_pos(t_list *v, t_newcommand *pipes, int k, int *wc)
-{
-	while (1)
-	{
-		if (!v->tokens[k].token[*wc])
-			return (-1);
-		if (ft_strncmp(v->tokens[k].token[*wc], "|", 2))
-			return (v->tokens[k].token_pos[*wc]);
-		(*wc)++;
-	}
-	
-}
-
-static char	*ret_token(t_list *v, t_newcommand *pipes, int k, int token_count)
+static char	*ret_token(t_list *v, int k, int token_count)
 {
 	int	i;
 	int	j;
@@ -57,15 +37,15 @@ static void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 	int				token_local_c;
 
 	token_c = 0;
-	token_local_c = 0; //cat gfnoiesd ndi < fbnudsif > fdiubsfd | hallo hier daar < > ^ | hallooooooooooo poep | doei | doei | poep
-	temp = pipes; //cat gfnoiesd ndi < fbnudsif > fdiubsfd | hallo hier daar < > ^ | hallooooooooooo "<" poep | doei < cat | doei | poep
+	token_local_c = 0;
+	temp = pipes;
 	while (1)
 	{
 		i = 0;
 		tokens = temp->tokens->total;
 		while (tokens)
 		{
-			temp->tokens->token[token_local_c] = ft_strdup(ret_token(v, pipes, k, token_c));
+			temp->tokens->token[token_local_c] = ft_strdup(ret_token(v, k, token_c));
 			if (!temp->tokens->token[token_local_c])
 				ft_exit(1, 1);
 			temp->tokens->token_pos[token_local_c] = v->tokens[k].token_pos[token_c];
@@ -98,7 +78,7 @@ static void	count_tokens(t_list *v, t_newcommand *temp, int k)//cat gfnoiesd ndi
 	i = 0;
 	wc = 0;
 	t = 0;
-	while (temp) //cat < main.c > text.txt | grep # > output.txt | grep @
+	while (temp)
 	{
 		if (v->tokens[k].token[t] && !ft_strncmp(v->tokens[k].token[t], "|", 2))
 			t++;
@@ -131,17 +111,15 @@ static void	count_tokens(t_list *v, t_newcommand *temp, int k)//cat gfnoiesd ndi
 			temp->tokens->double_redirection_right;
 			wc += i;
 			i = 0;
-			temp = temp->next;//cat main.c > output.txt | wc -l < output.txt
+			temp = temp->next;
 			if (t == v->tokens[k].total)
 				break ;
 		}
 	}
 }
 
-static void	init_new_tokens(t_list *v, t_newcommand *cmd, int k)
+static void	init_new_tokens(t_newcommand *cmd)
 {
-	int	i;
-	int	t;
 	t_newcommand *temp; //1. cat main.c > output.txt | wc -l < main.c
 
 	temp = cmd;
@@ -160,26 +138,8 @@ static void	init_new_tokens(t_list *v, t_newcommand *cmd, int k)
 	
 }
 
-	
-	// pipes->tokens[k].total = v->tokens[k].total - get_last_id(&pipes[k]);
-	// temp = pipes->tokens[k].total;
-	// pipes[k].tokens->token = ft_calloc(pipes->tokens[k].total + 1, sizeof(char *));
-	// if (!pipes[k].tokens->token)
-	// 	ft_error("Malloc failed!\n");
-	// pipes[k].tokens->token_pos = ft_calloc(pipes->tokens[k].total + 1, sizeof(int));
-	// if (!pipes[k].tokens->token_pos)
-	// 	ft_error("Malloc failed!\n");
-	// pipes->tokens[k].double_redirection_left = v->tokens[k].double_redirection_left;
-	// pipes->tokens[k].double_redirection_right = v->tokens[k].double_redirection_right;
-	// pipes->tokens[k].single_redirection_left = v->tokens[k].single_redirection_left;
-	// pipes->tokens[k].single_redirection_right =  v->tokens[k].single_redirection_right;
-	
-
 void	tokens_cmd(t_list *v, t_newcommand *cmd, int k)
 {
-	int	i;
-
-	i = 0;
 	t_newcommand *temp;
 
 	temp = cmd;
@@ -192,9 +152,9 @@ void	tokens_cmd(t_list *v, t_newcommand *cmd, int k)
 			ft_exit(1, 1);
 		temp = temp->next;
 	}
-	count_tokens(v, cmd, k); //cat gfnoiesd ndi < fbnudsif > fdiubsfd | hallo hier daar < > ^ | hallooooooooooo "<" poep | doei < cat | doei < dag | poep < poep | poep
+	count_tokens(v, cmd, k);
 	if (cmd->tokens->total == 0)
 		return ;
-	init_new_tokens(v, cmd, k);
+	init_new_tokens(cmd);
 	set_tokens(v, cmd, k);
 }

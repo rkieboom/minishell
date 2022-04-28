@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:55:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/27 15:57:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/04/23 13:35:30 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static int	arraysize(const char *s, char c, t_list *list)
 		check_quote(list, (char *)s + i);
 		if (s[i] == c && (list->parse.comma1 == 0 && list->parse.comma2 == 0))
 			k++;
-		while (s[i] && s[i] == c)
+		while (s[i] && s[i + 1] && s[i] == c)
 			i++;
 		i++;
 	}

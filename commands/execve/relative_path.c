@@ -5,18 +5,81 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/09/07 10:02:42 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/10/11 15:47:42 by spelle        ########   odam.nl         */
+/*   Created: 2021/09/07 10:02:49 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/04/23 13:27:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-char	*relative_path(char *PATH)
+static void free_paths(char **str)
 {
-	if (check_exist(PATH + 2))
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+static char	*get_path(char *name, char *ENV_PATH) //protection and leaks
+{
+	int		i;
+	char	**paths;
+	char	*newpath;
+	char	*temp;
+
+	i = 0;
+	paths = ft_split(ENV_PATH, ':');
+	if (!paths)
+		ft_exit(1, 1);
+	while (paths[i])
+	{
+		newpath = ft_strdup(paths[i]);
+		if (!newpath)
+			ft_exit(1, 1);
+		temp = newpath;
+		newpath = ft_strjoin(newpath, "/");
+		if (!newpath)
+			ft_exit(1, 1);
+		free(temp);
+		temp = newpath;
+		newpath = ft_strjoin(newpath, name);
+		if (!newpath)
+			ft_exit(1, 1);
+		free(temp);
+		temp = newpath;
+		if (!check_exist(newpath))
+		{
+			free_paths(paths);
+			return (newpath);
+		}
+		free(newpath);
+		i++;
+	}
+	free_paths(paths);
+	return (0);
+}
+
+char	*relative_path(char *PATH, t_env *env)
+{
+	char	*newpath;
+
+	newpath = get_path(PATH, search_env(env, "PATH", 4));
+	if (!newpath)
+	{
+		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd(PATH, 2);
+		ft_putendl_fd(": command not found", 2);
 		return (NULL);
-	if (check_permission(PATH + 2))
+	}
+	if (check_permission(newpath))
+	{
+		free(newpath);
 		return (NULL);
-	return (ft_strdup(PATH));
+	}
+	return (newpath);
 }
