@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/05/04 12:28:18 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/05/05 20:17:56 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,7 @@ SRCS.COMMANDS.EXECVE =	commands/execve/execve.c \
 						commands/execve/commands.c \
 						commands/execve/relative_path.c \
 						commands/execve/absolute_path.c \
+						commands/execve/signals.c
 
 SRCS.COMMANDS.EXIT = 	commands/exit/ft_exit.c \
 						commands/exit/ret_exit.c \
@@ -162,12 +163,12 @@ mac : $(LIBFTLIB) $(SRCS)  $(OBJS)
 $(OBJDIR)%.o : %.c
 	@mkdir -p $(OBJDIR)
 	@printf "$(GR)+$(RC)"
-	@$(CC) $(CFLAGS) -c $< -o $@ $(INCLUDES_MAC)
+	@$(CC) $(CFLAGS) -c $< -o $@  -I/Users/$(USER)/.brew/opt/readline/include/
 
 # Linking
 $(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
-	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L/usr/local/Cellar/readline/8.1.2/lib
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 
 $(LIBFTLIB) :
 	make -C $(LIBFTDIR)
