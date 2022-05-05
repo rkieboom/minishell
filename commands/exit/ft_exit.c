@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/04 12:03:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:42:19 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/05 13:31:43 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ static void	print_and_exit(char *str, int ret)
 
 void	check_errors(char **str, int i)
 {
-	printf("in here now [%i]\n", i);
-	fflush(0);
 	if (all_num(str[1]))
 	{
 		ft_putstr_fd("minishell: exit: ", 2);
