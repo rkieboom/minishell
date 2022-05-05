@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/23 12:37:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/05 19:39:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,15 @@ static void	loop(t_list *list)
 	}
 }
 
+static void	increase_shlvl(t_list *list)
+{
+	int shlvl;
+
+	shlvl = ft_atoi(search_env(list->env, "SHLVL", 5));
+	shlvl++;
+	env_change_content(list->env, "SHLVL", ft_itoa(shlvl));
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	list;
@@ -38,6 +47,7 @@ int	main(int argc, char **argv, char **envp)
 	(void)argv;
 	ft_bzero(&list, sizeof(t_list));
 	list.env = create_envp(list.env, envp);
+	increase_shlvl(&list);
 	loop(&list);
 	return (0);
 }

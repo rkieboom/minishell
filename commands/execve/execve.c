@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/05 20:48:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,32 @@ int	is_absolute_path(char *str)
 	return (0);
 }
 
+// void quit_sighandler(int signum)
+// {
+// 	printf("SIG CAUGHT\n");
+// 	if (signum == SIGQUIT)
+// 	{
+// 		ft_putstr_fd("Quit: 3\n", 1);
+// 	}
+// }
+
+// void int_sighandler(int signum)
+// {
+// 	if (signum == SIGINT)
+// 	{
+// 		write(1, "\n", 1);
+// 	}
+// }
+
+// void quit_sighandler(int signum)
+// {
+// 	if (signum == SIGQUIT)
+// 	{
+// 		ft_putstr_fd("Quit: 3\n", 1);
+// 	}
+// }
+
+
 int	ft_execve(t_list *list, char **str)
 {
 	int		ret;
@@ -93,6 +119,7 @@ int	ft_execve(t_list *list, char **str)
 	char	*path;
 	pid_t	pid;
 
+	signals();
 	pid = fork();
 	if (pid < 0)
 		ft_ret_exit(pid, 1);
