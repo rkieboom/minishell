@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 12:47:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/14 17:26:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void	create_command(t_list *v, t_newcommand *pipes_cmd, int k)
 		i++;
 	pipes_cmd->command = ft_calloc(i+1, sizeof(char *));
 	if (!pipes_cmd->command)
-		ft_exit(1, 1);
+		ft_ret_exit(1, 1);
 	i = 0;
 	while (v->parse.commands[k][i])
 	{
 		pipes_cmd->command[i] = ft_strdup(v->parse.commands[k][i]);
 		if (!pipes_cmd->command[i])
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 		i++;
 	}
 }

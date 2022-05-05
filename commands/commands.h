@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/14 17:39:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:04:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int		echo(char **str);
 int		export(t_env *v, char **str);
 int		unset(t_env *v, char **str);
 int		ft_execve(t_list *list, char **str);
-void	ft_exit(int ret, int print);
+void	ft_ret_exit(int ret, int print);
+void	ft_exit(char **str);
 
 /*
 ###

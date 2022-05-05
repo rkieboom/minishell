@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:55:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/23 13:35:30 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static char	**splitter(t_list *list, char c, char **result, int i)
 		}
 		result[arrayindex] = ft_substr(list->gnl.buf, start, strlength);
 		if (!result[arrayindex])
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 		strlength = 0;
 		arrayindex++;
 		i++;

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exit.c                                             :+:    :+:            */
+/*   ret_exit.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/20 09:15:36 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/01/30 13:15:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-void	ft_exit(int ret, int print)
+void	ft_ret_exit(int ret, int print)
 {
 	if (print == 1)
 	{

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   functions.c                                        :+:    :+:            */
+/*   redirection_functions.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:45:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/13 17:07:40 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	single_redirection_right(t_newcommand *v, int i)
 {
 	v->tokens->stdout_fd = open(v->command[v->tokens->token_pos[i] + 1],  O_RDWR | O_TRUNC | O_CREAT, 0644);
 	if (v->tokens->stdout_fd < 0)
-		ft_exit(1, 1);
+		ft_ret_exit(1, 1);
 	close(v->tokens->stdout_fd);
 	v->tokens->last_r = v->tokens->token_pos[i];
 }
@@ -25,7 +25,7 @@ void	double_redirection_right(t_newcommand *v, int i)
 {
 	v->tokens->stdout_fd = open(v->command[v->tokens->token_pos[i] + 1],  O_RDWR | O_APPEND | O_CREAT, 0644);
 	if (v->tokens->stdout_fd < 0)
-		ft_exit(1, 1);
+		ft_ret_exit(1, 1);
 	close(v->tokens->stdout_fd);
 	v->tokens->last_r = v->tokens->token_pos[i];
 }

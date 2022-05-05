@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:03:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/28 19:00:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/05 13:30:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static void return_dollar_value(t_list *list, struct vars *vars)
 	{
 		temp = ft_itoa(list->ret);
 		if (!temp)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 		ft_memcpy(vars->newstr + vars->x, temp, ft_strlen(temp));
-		vars->length += ft_strlen(vars->newstr);
-		vars->length--;
+		vars->length -= ft_strlen(vars->newstr);
+		vars->length++;
 		while (vars->newstr[vars->x])
 			vars->x++;
 		vars->x--;
@@ -49,7 +49,7 @@ static void return_dollar_value(t_list *list, struct vars *vars)
 		vars->length++;
 		temp = ft_strdup(search_env(list->env, vars->str + vars->i, 0));
 		if (!temp)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 		ft_memcpy(vars->newstr + vars->x, temp, ft_strlen(temp));
 		while (vars->newstr[vars->x]) //kijken of niet 0?
 			vars->x++;
@@ -73,7 +73,7 @@ char *createstring(t_list *list, char *str, int length)
 	vars.str = str;
 	vars.newstr = ft_calloc(vars.length + 1, sizeof(char));
 	if (!vars.newstr)
-		return (0);
+		ft_ret_exit(1, 1);
 	list->parse.comma1 = 0;
 	list->parse.comma2 = 0;
 	vars.i = -1;

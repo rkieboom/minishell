@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/02 16:28:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	cd(t_list *v, char **str)
 			env_change_content(v->env, "OLDPWD", getcwd(cwd, 255));
 			ret = chdir(search_env(v->env, "HOME", 0));
 			if (ret < 0)
-				ft_exit(ret, 1);
+				ft_ret_exit(ret, 1);
 			env_change_content(v->env, "PWD", getcwd(cwd, 255));
 		}
 		return (0);
@@ -74,7 +74,7 @@ int	cd(t_list *v, char **str)
 	env_change_content(v->env, "OLDPWD", getcwd(cwd, 255));
 	ret = chdir(str[1]);
 	if (ret < 0)
-		ft_exit(ret, 1);
+		ft_ret_exit(ret, 1);
 	env_change_content(v->env, "PWD", getcwd(cwd, 255));
 	return (0);
 }
