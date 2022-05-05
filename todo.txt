@@ -1,5 +1,5 @@
 1. fix echo met -n en -nnnnnnne [done]
-2. exit met arguments
+2. exit met arguments [done] - nog even goed checken
 3. bij echo $> = crash
 4. signals
 	- ctrl-C in an empty prompt should display a new line with a new prompt.
@@ -15,4 +15,6 @@
 	- Try ctrl-\ after running a blocking command like cat without arguments or grep “something“.
 	- Try ctrl-D after running a blocking command like cat without arguments or grep “something“.
 	- Repeat multiple times using different commands.
-5.
+5. ls -la > output.txt
+6. in execve met tokens string kleiner maken
+7. heredoc maken

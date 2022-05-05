@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:06:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/23 16:23:07 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:33:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	run_commands(t_list *list, t_newcommand *v)
 	else if (!ft_strncmp(v->command[0], "env", 4))
 		list->ret = env(list->env);
 	else if (!ft_strncmp(v->command[0], "exit", 5))
-		exit(0);
+		ft_exit(v->command);
 	else
 		list->ret = ft_execve(list, v->command);
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/14 17:26:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void		calculate_dollar_length(t_list *list, char *str, int *i, int *lengt
 	{
 		temp = ft_itoa(list->ret);
 		if (!temp)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 		(*length) += ft_strlen(temp);
 		free(temp);
 		(*i)++;
@@ -107,7 +107,7 @@ char	*checkword(t_list *list, char *str)
 	// printf("It should be %lu Bytes\n", 38 + ft_strlen(search_env(list->env, "$USER", 0)) + ft_strlen(search_env(list->env, "$HOME", 0)) + 1);
 	// ft_calloc(length + 1, sizeof(char));
 	// if (!newstr)
-		// ft_exit(1, 1);
+		// ft_ret_exit(1, 1);
 	temp = createstring(list, str, length);
 	// printf("Creating string went correct!\n");
 	// printf("Str = [%s]-[%zu]\n", temp, ft_strlen(temp));

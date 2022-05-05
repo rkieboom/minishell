@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/04/23 12:51:35 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/05/04 12:28:18 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,8 @@ SRCS.COMMANDS.EXECVE =	commands/execve/execve.c \
 						commands/execve/relative_path.c \
 						commands/execve/absolute_path.c \
 
-SRCS.COMMANDS.EXIT = 	commands/exit/exit.c \
+SRCS.COMMANDS.EXIT = 	commands/exit/ft_exit.c \
+						commands/exit/ret_exit.c \
 
 SRCS.ENV.LIST =			env_list/env_lst_new.c \
 						env_list/env_lstadd_back.c \

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/23 12:53:50 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	read_input(t_list *list, int option)
 	{
 		list->gnl.buf = readline("> ");
 		if (list->gnl.buf == NULL)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 	}
 }

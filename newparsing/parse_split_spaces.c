@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/14 17:24:46 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	**splitter(t_list *list, const char *str, char **result)
 			{
 				result[k] = ft_substr(str, i - length, length);
 				if (!result[k])
-					ft_exit(1, 1);
+					ft_ret_exit(1, 1);
 				k++;
 				length = 0;
 			}
@@ -84,7 +84,7 @@ char	**parse_split_spaces(t_list *list, const char *str, char c)
 	length = arraysize(str, c, list);
 	result = malloc((length + 1) * sizeof(char *));
 	if (!result)
-		ft_exit(1, 1);
+		ft_ret_exit(1, 1);
 	result = splitter(list, str, result);
 	result[length] = NULL;
 	return (result);

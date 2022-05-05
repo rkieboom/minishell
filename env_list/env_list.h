@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/09 14:55:27 by spelle        #+#    #+#                 */
-/*   Updated: 2021/11/20 21:12:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	env_change_content(t_env *v, char *envname, char *envcontent);
 char	*search_env(t_env *v, char *name, int length);
 char	*search_envname_returnenvname(t_env *v, char *envname);
 
-void	ft_exit(int ret, int print);
+void	ft_ret_exit(int ret, int print);
 
 #endif

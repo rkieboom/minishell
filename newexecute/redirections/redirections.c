@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:39:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/14 17:35:39 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ static int	set_redir(t_list *list, t_newcommand *v)
 		}
 		list->stdin_cpy = dup(0);
 		if (list->stdin_cpy < 0)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 		close(0);
 		if (dup2(v->tokens->stdin_fd, 0) < 0)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 	}
 	if (v->tokens->last_r > 0)
 	{
@@ -58,9 +58,9 @@ static int	set_redir(t_list *list, t_newcommand *v)
 		else
 			v->tokens->stdout_fd = open(v->command[v->tokens->last_r + 1], O_RDWR | O_TRUNC | O_CREAT, 0644);
 		if (v->tokens->stdout_fd < 0)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 		if (dup2(v->tokens->stdout_fd, 1) < 0)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 	}
 	return (0);
 }
@@ -71,14 +71,14 @@ void	reset_redirections(t_list *list, t_newcommand *v)
 	{
 		close(v->tokens->stdin_fd);
 		if (dup2(list->stdin_cpy, 0) < 0)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 	}
 	if (v->tokens->single_redirection_right > 0 \
 	|| v->tokens->double_redirection_right > 0)
 	{
 		close(v->tokens->stdout_fd);
 		if (dup2(list->stdout_cpy, 1) < 0)
-			ft_exit(1, 1);
+			ft_ret_exit(1, 1);
 	}
 }
 
