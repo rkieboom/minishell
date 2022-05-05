@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/05 18:11:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ static void sighandler(int sig)
 	}
 	else if (sig == SIGQUIT)
 	{
+		// rl_on_new_line();
+		// rl_replace_line("", 0);
+		// rl_redisplay();
+		// ft_putstr_fd("minishell-4.2$ ", 1);
+
 		ft_putchar_fd('\r', 1);
 		rl_on_new_line();
 		rl_redisplay();

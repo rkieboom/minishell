@@ -16,5 +16,5 @@
 	- Try ctrl-D after running a blocking command like cat without arguments or grep “something“.
 	- Repeat multiple times using different commands.
 5. ls -la > output.txt
-6. in execve met tokens string kleiner maken
+6. in execve met tokens string kleiner maken | cat main.c > output.txt, ">" moet nullptr worden
 7. heredoc maken
