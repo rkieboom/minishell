@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/13 17:02:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/07 15:59:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int		single_redirection_left(t_newcommand *v, int i);
 void	double_redirection_right(t_newcommand *v, int i);
 
 void	run_commands(t_list *list, t_newcommand *v);
+void	run_cmd_redir(t_list *list, t_newcommand *cmd);
 
 #endif
