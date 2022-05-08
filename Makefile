@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/05/05 20:17:56 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/05/07 16:00:18 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,6 +101,7 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 						execute/exec_cmd_builtin_pipe.c \
 
 SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_commands.c \
+						newexecute/run_cmd_redir.c \
 						newexecute/redirections/redirection_functions.c \
 						newexecute/redirections/redirections.c
 

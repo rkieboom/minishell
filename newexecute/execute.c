@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:05:03 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/23 16:23:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/07 16:00:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	execute(t_list *list, t_newcommand *v, int k)
 		else if (!temp->next)//single command - with redirections only
 		{
 			if (!redirections(list, temp))
-				run_commands(list, temp);
+				run_cmd_redir(list, temp);
 			reset_redirections(list, temp);
 		}
 		else

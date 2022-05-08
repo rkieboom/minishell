@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/05 20:17:31 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/05 20:51:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/07 16:01:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 void int_sighandler(int signum)
 {
-	if (signum == SIGINT)
-	{
-		write(1, "\n", 1);
-	}
+	(void)signum;
+	ft_putchar_fd('\n', 1);
 }
 
 void quit_sighandler(int signum)
 {
-	if (signum == SIGQUIT)
-	{
-		ft_putstr_fd("Quit: 3\n", 1);
-	}
+	(void)signum;
+	ft_putstr_fd("Quit: 3\n", 1);
 }
 
-void	signals()
+void	signals()//return status???
 {
 	signal(SIGINT, int_sighandler);
 	signal(SIGQUIT, quit_sighandler);
