@@ -6,19 +6,35 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/07 16:25:31 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/11 17:32:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-char **set_cmd(t_newcommand *cmd)
+static char **init_newcmd(char **cmd, int k)
 {
 	char **newcmd;
 	int	i;
+	
+	i = 0;
+	newcmd = ft_calloc(i, sizeof(char *));
+	if (!newcmd)
+		ft_ret_exit(1, 1);
+	while (i < k)
+	{
+		newcmd[i] = cmd[i];//heap overflow on linux????????
+		i++;
+	}
+	newcmd[i] = 0;
+	return (newcmd);
+}
+
+char **set_cmd(t_newcommand *cmd)
+{
+	int	i;
 
 	i = 0;
-	newcmd = cmd->command;
 	while (cmd->tokens->total < i)
 	{
 		if (cmd->tokens->token_pos[i] && (ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], "<", 2) \
@@ -29,15 +45,7 @@ char **set_cmd(t_newcommand *cmd)
 		i++;
 	}
 	i = cmd->tokens->token_pos[i];
-	newcmd[i] = 0;
-	i = 0;
-	while (newcmd[i])
-	{
-		printf("%i. [%s]", i, newcmd[i]);
-		i++;
-	}
-	exit(1);
-	return (cmd);
+	return (init_newcmd(cmd->command, i));
 }
 
 void	run_cmd_redir(t_list *list, t_newcommand *v)
@@ -45,7 +53,9 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 	char	**newcmd;
 
 	newcmd = set_cmd(v);
-		if (!ft_strncmp(newcmd[0], "echo", 5))
+	if (!newcmd)
+	ft_ret_exit(0, 1);
+	if (!ft_strncmp(newcmd[0], "echo", 5))
 		list->ret = echo(newcmd);
 	else if (!ft_strncmp(newcmd[0], "cd", 3))
 		list->ret = cd(list, newcmd);
@@ -61,4 +71,5 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 		ft_exit(newcmd);
 	else
 		list->ret = ft_execve(list, newcmd);
+	free(newcmd);
 }

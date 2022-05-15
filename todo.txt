@@ -18,3 +18,4 @@
 5. ls -la > output.txt
 6. in execve met tokens string kleiner maken | cat main.c > output.txt, ">" moet nullptr worden
 7. heredoc maken
+8. ;;;;;;; = crash ||    ;   ;   ;   = crash
