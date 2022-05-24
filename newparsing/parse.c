@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/24 19:48:26 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/24 13:51:54 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,53 @@ int	parse_arraysize(char **str, t_list *list)
 	return (length);
 }
 
+
+static void heredoc_allocation(t_list *list, int k)
+{
+	int	i;
+
+	i = 0;
+	while (i < k)
+	{
+		if (list->tokens[i].double_redirection_left)
+		{
+			list->tokens[i].heredoc_q = ft_calloc(sizeof(int), list->tokens[i].double_redirection_left);
+			if (!list->tokens[i].heredoc_q)
+				ft_ret_exit(1, 1);
+		}
+		i++;
+	}
+}
+
+static void set_heredoc(t_list *list, int k)
+{
+	int	i;
+	int current;
+	int	pos;
+	int	loop;
+
+	loop = 0;
+
+	heredoc_allocation(list, k);
+	while (loop < k)
+	{
+		i = 0;
+		current = 0;
+		while (i < list->tokens[loop].total)
+		{
+			if (!ft_strncmp(list->tokens[loop].token[i], "<<", 3))
+			{
+				pos = list->tokens[loop].token_pos[i] + 1;
+				if (list->parse.commands[loop][pos][0] == '\"' || list->parse.commands[loop][pos][0] == '\'') // cat << [EOF   <------]
+					list->tokens[loop].heredoc_q[current] = 1;
+				current++;
+			}
+			i++;
+		}
+		loop++;
+	}
+}
+
 void	new_parse(t_list *list)
 {
 	int i;
@@ -111,14 +158,15 @@ void	new_parse(t_list *list)
 		parse_split_tokens(list, parse_arraysize(list->parse.commands[i], list), i);// gaat wss goed
 		while (list->parse.commands[i][j])
 			j++;
-
 		j = 0;
-		//hier tokens herkennen en in struct aangeven. Nog een nieuwe dynamische struct maken ook eerst!
 		length--;
 		i++;
 	}
 	freemem(splitted);
 	tokens(list);
+	while (splitted[length])
+		length++; 
+	set_heredoc(list, length);
 	// for(int j = 0; list->parse.commands[j]; j++)
 	// 	for(int k = 0; list->parse.commands[j][k]; k++)
 	// 		printf("%i. %s\n", k, list->parse.commands[j][k]);

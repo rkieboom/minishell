@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/19 16:14:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/24 13:46:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_tokens
 	int			pipe;
 	int			last_l;
 	int			last_r;
+	int			*heredoc_q;
 }				t_tokens;
 
 typedef struct s_newcommand
