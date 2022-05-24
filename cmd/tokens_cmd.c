@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 16:25:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/21 19:48:04 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@ static char	*ret_token(t_list *v, int k, int token_count)
 			j++;
 		i++;
 	}
+	if (token_count == 0)
+		while (1)
+		{
+			if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
+				j++;
+			else
+				return (v->tokens[k].token[i]);
+			i++;
+		}
 	return (v->tokens[k].token[i]);
 }
 
@@ -37,7 +46,7 @@ static void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 	int				token_local_c;
 
 	token_c = 0;
-	token_local_c = 0;
+	token_local_c = 0;													// cat main.c | > output.txt
 	temp = pipes;
 	while (1)
 	{
@@ -45,11 +54,13 @@ static void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 		tokens = temp->tokens->total;
 		while (tokens)
 		{
-			temp->tokens->token[token_local_c] = ft_strdup(ret_token(v, k, token_c));
+			temp->tokens->token[token_local_c] = ft_strdup(ret_token(v, k, token_c));//hier gaat iets fout
 			if (!temp->tokens->token[token_local_c])
 				ft_ret_exit(1, 1);
-			temp->tokens->token_pos[token_local_c] = v->tokens[k].token_pos[token_c];
-			// temp->tokens->token_pos[token_local_c] = i;
+			temp->tokens->token_pos[token_local_c] = v->tokens[k].token_pos[token_c];//klopt niks van
+			// printf("cmd = %s\n", temp->command[0]);
+			// printf("token = [%s]\n", temp->tokens->token[0]);
+			// printf("token_pos = [%i]\n\n\n", temp->tokens->token_pos[0]);
 			token_c++;
 			token_local_c++;
 			tokens--;
@@ -120,22 +131,24 @@ static void	count_tokens(t_list *v, t_newcommand *temp, int k)//cat gfnoiesd ndi
 
 static void	init_new_tokens(t_newcommand *cmd)
 {
-	t_newcommand *temp; //1. cat main.c > output.txt | wc -l < main.c
+	t_newcommand *temp;
 
 	temp = cmd;
 	while (temp)
 	{
-		temp->tokens->token = ft_calloc(temp->tokens->total + 1, sizeof(char *));
-		if (!temp->tokens->token)
-			ft_error("Malloc failed!\n");
-		temp->tokens->token[temp->tokens->total] = 0;
-		temp->tokens->token_pos = ft_calloc(temp->tokens->total + 1, sizeof(int));
-		if (!temp->tokens->token_pos)
-			ft_error("Malloc failed!\n");
-		temp->tokens->token_pos[temp->tokens->total] = 0;
+		if (temp->tokens && temp->tokens->total > 0)
+		{
+			temp->tokens->token = ft_calloc(temp->tokens->total + 1, sizeof(char *));
+			if (!temp->tokens->token)
+				ft_ret_exit(1, 1);
+			temp->tokens->token[temp->tokens->total] = 0;
+			temp->tokens->token_pos = ft_calloc(temp->tokens->total + 1, sizeof(int));
+			if (!temp->tokens->token_pos)
+				ft_ret_exit(1, 1);
+			temp->tokens->token_pos[temp->tokens->total] = 0;
+		}
 		temp = temp->next;
 	}
-	
 }
 
 void	tokens_cmd(t_list *v, t_newcommand *cmd, int k)
@@ -153,8 +166,7 @@ void	tokens_cmd(t_list *v, t_newcommand *cmd, int k)
 		temp = temp->next;
 	}
 	count_tokens(v, cmd, k);
-	if (cmd->tokens->total == 0)
-		return ;
+	
 	init_new_tokens(cmd);
 	set_tokens(v, cmd, k);
 }

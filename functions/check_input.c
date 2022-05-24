@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:32:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/02/06 13:57:47 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/19 15:06:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,38 @@ void	check_input_quotes(t_list *list)
 
 int	check_input(t_list *v)
 {
+	int		i;
 	char	*str;
 
+	i = 0;
 	str = v->gnl.buf;
-	str += skipspaces(str);
-	if (!(*str))
+	i += skipspaces(str);
+	if (!str[i])
 		return (1);
-	else if (*str == ';')
+	if (str[i] == ';')
+	{
+		ft_putendl_fd("minishell-4.2$: syntax error near unexpected token ;", 2);	
+		free(v->gnl.buf);
+		v->gnl.buf = 0;
 		return (1);
+	}
+	while (str[i])
+	{
+		i += skipspaces(str + i);
+		if (str[i] == ';')
+		{
+			i++;
+			i += skipspaces(str + i);
+			if (str[i] == ';' || !str[i])
+			{
+				ft_putendl_fd("minishell-4.2$: syntax error near unexpected token ;", 2);	
+				free(v->gnl.buf);
+				v->gnl.buf = 0;
+				return (1);
+			}
+		}
+		while (str[i] && str[i] != ' ' && str[i] != ';')
+			i++;
+	}
 	return (0);
 }

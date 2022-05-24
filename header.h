@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 18:13:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/19 16:14:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct s_list
 	t_dir			dir;
 	t_env			*env;
 	t_tokens		*tokens;
-	t_newcommand	*pipecommand;
+	t_newcommand	*cmd;
 }				t_list;
 
 void	new_parse(t_list *list);
@@ -86,6 +86,7 @@ void	new_parse(t_list *list);
 void	free_parse_commands(t_list *list);
 
 void	ft_error(char *msg);
+int		syntax_error(t_newcommand *cmd);
 
 void	execute(t_list *list, t_newcommand *v, int k);
 int		skipspaces(const char *str);

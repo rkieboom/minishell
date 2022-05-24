@@ -1,21 +1,25 @@
-1. fix echo met -n en -nnnnnnne [done]
-2. exit met arguments [done] - nog even goed checken
-3. bij echo $> = crash
+1. fix echo met -n en -nnnnnnne 																	[done]
+2. exit met arguments [done] - nog even goed checken												[done]
+3. bij echo $> = crash [fixed] 																		[done]
 4. signals
-	- ctrl-C in an empty prompt should display a new line with a new prompt.
-	- ctrl-\ in an empty prompt should not do anything.
-	- ctrl-D in an empty prompt should quit minishell --> RELAUNCH!
-	- ctrl-C in a prompt after you wrote some stuff should display a new line 
+	- ctrl-C in an empty prompt should display a new line with a new prompt. 						[done]
+	- ctrl-\ in an empty prompt should not do anything.												[done]
+	- ctrl-D in an empty prompt should quit minishell --> RELAUNCH!									[done]
+	- ctrl-C in a prompt after you wrote some stuff should display a new line 						[done]
 	with a new prompt.
-	- The buffer should be clean too. Press "Enter" to make sure nothing from 
+	- The buffer should be clean too. Press "Enter" to make sure nothing from 						[done]
 	the previous line is executed.
-	- ctrl-D in a prompt after you wrote some stuff should not do anything.
-	- ctrl-\ in a prompt after you wrote some stuff should not do anything.
-	- Try ctrl-C after running a blocking command like cat without arguments or grep “something“.
-	- Try ctrl-\ after running a blocking command like cat without arguments or grep “something“.
-	- Try ctrl-D after running a blocking command like cat without arguments or grep “something“.
-	- Repeat multiple times using different commands.
-5. ls -la > output.txt
-6. in execve met tokens string kleiner maken | cat main.c > output.txt, ">" moet nullptr worden
-7. heredoc maken
-8. ;;;;;;; = crash ||    ;   ;   ;   = crash
+	- ctrl-D in a prompt after you wrote some stuff should not do anything.							[done]
+	- ctrl-\ in a prompt after you wrote some stuff should not do anything.							[done]
+	- Try ctrl-C after running a blocking command like cat without arguments or grep “something“.	[done]
+	- Try ctrl-\ after running a blocking command like cat without arguments or grep “something“.	[done]
+	- Try ctrl-D after running a blocking command like cat without arguments or grep “something“.	[done]
+	- Repeat multiple times using different commands.												[done]
+5. ls -la > output.txt																				[done]														
+6. in execve met tokens string kleiner maken | cat main.c > output.txt, ">" moet nullptr worden		[done]
+7. heredoc maken																					
+8. ;;;;;;; = crash ||    ;   ;   ;   = crash  														[done]
+9. cat main.c | cat todo.txt >> test.txt															
+10. cat main.c | > output.txt mag wel
+	cat main.c > > output.txt mag niet
+	syntax_error aanpassen!

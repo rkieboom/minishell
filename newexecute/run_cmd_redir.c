@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/11 17:32:07 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/21 19:06:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ static char **init_newcmd(char **cmd, int k)
 	int	i;
 	
 	i = 0;
-	newcmd = ft_calloc(i, sizeof(char *));
+	newcmd = ft_calloc(k+1, sizeof(char *));
 	if (!newcmd)
 		ft_ret_exit(1, 1);
 	while (i < k)
 	{
-		newcmd[i] = cmd[i];//heap overflow on linux????????
+		newcmd[i] = cmd[i];
 		i++;
 	}
 	newcmd[i] = 0;
@@ -35,6 +35,8 @@ char **set_cmd(t_newcommand *cmd)
 	int	i;
 
 	i = 0;
+	if (!cmd->tokens || cmd->tokens->total == 0)
+		return (cmd->command);
 	while (cmd->tokens->total < i)
 	{
 		if (cmd->tokens->token_pos[i] && (ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], "<", 2) \
@@ -54,7 +56,13 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 
 	newcmd = set_cmd(v);
 	if (!newcmd)
-	ft_ret_exit(0, 1);
+		ft_ret_exit(1, 0);
+	if (!newcmd[0])
+	{
+		if (v->tokens && v->tokens->total > 0)
+			free(newcmd);
+		return ;
+	}
 	if (!ft_strncmp(newcmd[0], "echo", 5))
 		list->ret = echo(newcmd);
 	else if (!ft_strncmp(newcmd[0], "cd", 3))
@@ -71,5 +79,6 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 		ft_exit(newcmd);
 	else
 		list->ret = ft_execve(list, newcmd);
-	free(newcmd);
+	if (v->tokens && v->tokens->total > 0)
+		free(newcmd);
 }

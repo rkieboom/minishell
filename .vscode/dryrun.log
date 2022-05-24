@@ -1,0 +1,150 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/rkieboom/Documents/minishell'
+make -C libft/
+ 
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c functions.c -o bin/functions.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c main.c -o bin/main.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//functions/ft_skipspaces.c -o bin/ft_skipspaces.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//functions/add_new_line.c -o bin/add_new_line.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//functions/ft_swap.c -o bin/ft_swap.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//functions/check_input.c -o bin/check_input.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//functions/read_input.c -o bin/read_input.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//functions/syntax_error.c -o bin/syntax_error.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/cd/cd.c -o bin/cd.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/echo/echo.c -o bin/echo.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/env/env.c -o bin/env.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/pwd/pwd.c -o bin/pwd.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/export/export.c -o bin/export.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/export/export_utils.c -o bin/export_utils.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/unset/unset.c -o bin/unset.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/execve/execve.c -o bin/execve.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/execve/commands.c -o bin/commands.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/execve/relative_path.c -o bin/relative_path.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/execve/absolute_path.c -o bin/absolute_path.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/execve/signals.c -o bin/signals.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/exit/ft_exit.c -o bin/ft_exit.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//commands/exit/ret_exit.c -o bin/ret_exit.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//env_list/env_lst_new.c -o bin/env_lst_new.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//env_list/env_lstadd_back.c -o bin/env_lstadd_back.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//env_list/env_lstlast.c -o bin/env_lstlast.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//env_list/env_lstsize.c -o bin/env_lstsize.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//env_list/functions/init.c -o bin/init.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//env_list/functions/search_env.c -o bin/search_env.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//free/free_parse_commands.c -o bin/free_parse_commands.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newparsing/parse.c -o bin/parse.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newparsing/parse_split_spaces.c -o bin/parse_split_spaces.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newparsing/parse_split_commands.c -o bin/parse_split_commands.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newparsing/parse_split_tokens.c -o bin/parse_split_tokens.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newparsing/checkword.c -o bin/checkword.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newparsing/createstring.c -o bin/createstring.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newparsing/tokens.c -o bin/tokens.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//cmd/create_cmd.c -o bin/create_cmd.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//cmd/declaring_values.c -o bin/declaring_values.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//cmd/tokens_cmd.c -o bin/tokens_cmd.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+ 
+gcc -Wall -Werror -Wextra -c .//newexecute/execute.c -o bin/execute.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newexecute/run_commands.c -o bin/run_commands.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newexecute/run_cmd_redir.c -o bin/run_cmd_redir.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newexecute/redirections/redirection_functions.c -o bin/redirection_functions.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newexecute/redirections/redirections.c -o bin/redirections.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newexecute/pipes/pipes.c -o bin/pipes.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newexecute/pipes/setup_pipes.c -o bin/setup_pipes.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+mkdir -p bin/
+printf "\033[32;1m+\033[0m"
+gcc -Wall -Werror -Wextra -c .//newexecute/pipes/clear_pipes.c -o bin/clear_pipes.o  -I/usr/local/Cellar/readline/8.1.2/include -I/Users/rkieboom/.brew/opt/readline/include/
+printf "\n\033[32;1m=== Compiled [gcc -Wall -Werror -Wextra] ===\n--- functions.c main.c ft_skipspaces.c add_new_line.c ft_swap.c check_input.c read_input.c syntax_error.c cd.c echo.c env.c pwd.c export.c export_utils.c unset.c execve.c commands.c relative_path.c absolute_path.c signals.c ft_exit.c ret_exit.c env_lst_new.c env_lstadd_back.c env_lstlast.c env_lstsize.c init.c search_env.c free_parse_commands.c parse.c parse_split_spaces.c parse_split_commands.c parse_split_tokens.c checkword.c createstring.c tokens.c create_cmd.c declaring_values.c tokens_cmd.c execute.c run_commands.c run_cmd_redir.c redirection_functions.c redirections.c pipes.c setup_pipes.c clear_pipes.c\033[0m\n"
+gcc -Wall -Werror -Wextra libft//libft.a bin/functions.o bin/main.o bin/ft_skipspaces.o bin/add_new_line.o bin/ft_swap.o bin/check_input.o bin/read_input.o bin/syntax_error.o bin/cd.o bin/echo.o bin/env.o bin/pwd.o bin/export.o bin/export_utils.o bin/unset.o bin/execve.o bin/commands.o bin/relative_path.o bin/absolute_path.o bin/signals.o bin/ft_exit.o bin/ret_exit.o bin/env_lst_new.o bin/env_lstadd_back.o bin/env_lstlast.o bin/env_lstsize.o bin/init.o bin/search_env.o bin/free_parse_commands.o bin/parse.o bin/parse_split_spaces.o bin/parse_split_commands.o bin/parse_split_tokens.o bin/checkword.o bin/createstring.o bin/tokens.o bin/create_cmd.o bin/declaring_values.o bin/tokens_cmd.o bin/execute.o bin/run_commands.o bin/run_cmd_redir.o bin/redirection_functions.o bin/redirections.o bin/pipes.o bin/setup_pipes.o bin/clear_pipes.o -o minishell -lreadline -L/Users/rkieboom/.brew/opt/readline/lib
+make: Leaving directory `/Users/rkieboom/Documents/minishell'
+ 

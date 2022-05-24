@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/07 15:47:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/21 19:14:12 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ static void	loop(t_list *list)
 		read_input(list, 0);
 		check_input_quotes(list);
 		add_history(list->gnl.buf);
-		check_input(list);
+		if (check_input(list))
+			continue ;
 		new_parse(list);
 		create_cmd(list, 0);
-		execute(list, list->pipecommand, 0);
+		if (!syntax_error(list->cmd))
+			execute(list, list->cmd, 0);
 		free_parse_commands(list);
 		list->ret = (unsigned char)list->ret;
 	}

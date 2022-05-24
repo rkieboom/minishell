@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/11 16:13:39 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/10 17:52:54 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/19 16:12:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	test(char **envp)
 	int		size;
 	int		FD_STDIN_CPY = dup(0);
 	int		FD_STDOUT_CPY = dup(1);
-	
+
 	int		newpipes[2];
 	int		oldpipes;
 	char	***cmd;

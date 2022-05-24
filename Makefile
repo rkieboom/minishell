@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/05/07 16:00:18 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/05/19 19:59:18 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,9 @@ CFLAGS	+= -g3
 endif
 ifeq ($(DEBUG),2)
 CFLAGS	+= -g3 -fsanitize=address -fno-omit-frame-pointer
+endif
+ifeq ($(DEBUG),3)
+CFLAGS	+= -g3 -fsanitize=leak
 endif
 
 # Folder name
@@ -63,6 +66,7 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/ft_swap.c \
 						functions/check_input.c \
 						functions/read_input.c \
+						functions/syntax_error.c \
 
 SRCS.COMMANDS.CD =		commands/cd/cd.c \
 
@@ -103,7 +107,10 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_commands.c \
 						newexecute/run_cmd_redir.c \
 						newexecute/redirections/redirection_functions.c \
-						newexecute/redirections/redirections.c
+						newexecute/redirections/redirections.c \
+						newexecute/pipes/pipes.c \
+						newexecute/pipes/setup_pipes.c \
+						newexecute/pipes/clear_pipes.c \
 
 SRCS.FREE =				free/free_parse_commands.c \
 
@@ -158,13 +165,13 @@ linux : $(LIBFTLIB) $(SRCS)  $(OBJS)
 
 mac : $(LIBFTLIB) $(SRCS)  $(OBJS)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
-	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L/usr/local/Cellar/readline/8.1.2/lib
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L /usr/local/Cellar/readline/8.1.2/lib
 	
 # Compiling
 $(OBJDIR)%.o : %.c
 	@mkdir -p $(OBJDIR)
 	@printf "$(GR)+$(RC)"
-	@$(CC) $(CFLAGS) -c $< -o $@  -I/Users/$(USER)/.brew/opt/readline/include/
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
 
 # Linking
 $(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS)
