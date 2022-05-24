@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 15:03:34 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/24 13:12:42 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/24 16:00:23 by spelle        ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ static char	*read_data(char *delimiter)
 		ft_ret_exit(1, 1);
 	while (ft_strncmp(delimiter, buf, ft_strlen(delimiter) + 1))
 	{
-		if (ft_strchr(buf, '$'))
-			cunt_function(buf);
+		// if (ft_strchr(buf, '$'))
+		// 	cunt_function(buf);
 		buf = add_new_line(buf);
 		tmp = total;
 		total = ft_strjoin(total, buf);
@@ -75,13 +75,49 @@ static char	*read_data(char *delimiter)
 }
 
 
-char *heredoc(char *cmd, char *delimiter)
+int	here_count_adj(t_list *v, char *str)
+{
+	int i;
+	int	count = 0;
+
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] && str[i] != '$')
+			i++;
+		count += i;
+		if (!str[i])
+			break;
+		count += ft_strlen(search_env(v->env, str + i, 0));
+		i++;
+		while (str[i] && (ft_isdigit(str[i]) || \
+					ft_isalpha(str[i]) || (str[i] == '_')))
+			i++;
+		str = str + i;
+		i = 0;
+	}
+	return (0);
+}
+
+char	*here_adj(t_list *v, char *str, int length)
+{
+	
+}
+
+char *heredoc(t_list *v, char *cmd, char *delimiter)
 {
 	char *str;
 
 	str = read_data(delimiter);
-	
+	//DFuncite hier
+	/*
+		Als er een $WORD in zit omzetten naar ENV Variable.
+		Als er een $(WORD) zoeken in PATH Variable of WORD bestaat en dan die funcitie uitvoeren.
+	*/
+	here_adj(v, str, here_count_adj(v, str));
 	return (0);
 }
+
+
 
 //Dit is een test $(whoami)
