@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:05:03 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/07 16:00:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/21 17:24:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,16 @@ void	execute(t_list *list, t_newcommand *v, int k)
 	while (k)
 	{
 		temp = &v[i];
-		if (!temp->next && (!temp->tokens || temp->tokens->total == 0))//single command - no tokens
+		if ((!temp->next && (!temp->tokens || temp->tokens->total == 0)) && temp->command)
 			run_commands(list, temp);
-		else if (!temp->next)//single command - with redirections only
+		else if (!temp->next)
 		{
-			if (!redirections(list, temp))
+			if (!redirections(list, temp) && v->command)
 				run_cmd_redir(list, temp);
 			reset_redirections(list, temp);
 		}
 		else
-			while (temp)//pipes command
-			{
-				if (!temp->tokens || temp->tokens->total == 0)
-					run_commands(list, temp); //als iets fout gaat break en naar volgende command in pipes
-				temp = temp->next;
-			}
+			ft_pipes(list, temp);
 		i++;
 		k--;
 	}

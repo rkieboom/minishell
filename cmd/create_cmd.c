@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 12:47:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/21 14:53:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,24 @@ int		create_cmd(t_list *v, int k)
 	i = 0;
 	while (v->parse.commands[k])
 		k++;
-	v->pipecommand = ft_calloc(k, sizeof(t_newcommand)); //plus 1???
-	if (!v->pipecommand)
+	v->cmd = ft_calloc(k, sizeof(t_newcommand));
+	if (!v->cmd)
 		ft_error("Malloc failed!\n");
 	while (i < k)
 	{
 		pipes = v->tokens[i].pipe;
 		if (pipes == 0)
-			create_command(v, &v->pipecommand[i], i);
+			create_command(v, &v->cmd[i], i);
 		else
-			declaring_values(v, &v->pipecommand[i], pipes, i);//positie nodig k
+			declaring_values(v, &v->cmd[i], pipes, i);
 		if (v->tokens[i].total)
-			tokens_cmd(v, &v->pipecommand[i], i);//positie k
+			tokens_cmd(v, &v->cmd[i], i);
 		i++;
 	}
 	// i = 0;
 	// while (i < k)
 	// {
-	// 	temp = &v->pipecommand[i];
+	// 	temp = &v->cmd[i];
 	// 	while (temp)
 	// 	{
 	// 		int j = 0;

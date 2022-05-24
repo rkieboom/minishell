@@ -4,6 +4,7 @@
 		"locale": "cpp",
 		"execute.h": "c",
 		"commands.h": "c",
-		"cmd.h": "c"
+		"cmd.h": "c",
+		"pipes.h": "c"
 	}
 }
