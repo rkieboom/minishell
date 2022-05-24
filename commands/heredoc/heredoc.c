@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 15:03:34 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/19 15:37:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/05/24 13:12:42 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,23 @@ static char *add_newline(char *str)
 	return (newstr);
 }
 
-static char	*read_data(char *eof)
+static char *cunt_function(char *buf)
+{
+	size_t	size;
+	int		i;
+
+	size = 0;
+	i = 0;
+	while (buf[i])
+	{
+		if (buf[i] == '$')   			//$LOGNAME = env variable || $(whoami) = functie
+			
+		i++;
+		size++;
+	}
+}
+
+static char	*read_data(char *delimiter)
 {
 	char *buf;
 	char *total;
@@ -39,8 +55,10 @@ static char	*read_data(char *eof)
 	buf = readline("> ");
 	if (!buf)
 		ft_ret_exit(1, 1);
-	while (ft_strncmp(eof, buf, ft_strlen(eof)))
+	while (ft_strncmp(delimiter, buf, ft_strlen(delimiter) + 1))
 	{
+		if (ft_strchr(buf, '$'))
+			cunt_function(buf);
 		buf = add_new_line(buf);
 		tmp = total;
 		total = ft_strjoin(total, buf);
@@ -57,11 +75,13 @@ static char	*read_data(char *eof)
 }
 
 
-char *heredoc(char *cmd, char *eof)
+char *heredoc(char *cmd, char *delimiter)
 {
 	char *str;
 
-	str = read_data(eof);
+	str = read_data(delimiter);
 	
 	return (0);
 }
+
+//Dit is een test $(whoami)
