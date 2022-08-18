@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/21 14:56:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/06/21 21:34:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	free_parse_commands(t_list *list)
 	t_newcommand *temp2;
 	while (totalcommands)
 	{
+		k = 0;
 		temp = &list->cmd[i];
 		while (temp)
 		{

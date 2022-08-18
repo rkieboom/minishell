@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Tue May 24 12:30:44 2022
+# Make data base, printed on Thu Aug 18 03:48:09 2022
 
 # Variables
 
@@ -21,8 +21,6 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 OBJ := functions.o main.o ft_skipspaces.o add_new_line.o ft_swap.o check_input.o read_input.o syntax_error.o cd.o echo.o env.o pwd.o export.o export_utils.o unset.o execve.o commands.o relative_path.o absolute_path.o signals.o ft_exit.o ret_exit.o env_lst_new.o env_lstadd_back.o env_lstlast.o env_lstsize.o init.o search_env.o free_parse_commands.o parse.o parse_split_spaces.o parse_split_commands.o parse_split_tokens.o checkword.o createstring.o tokens.o create_cmd.o declaring_values.o tokens_cmd.o execute.o run_commands.o run_cmd_redir.o redirection_functions.o redirections.o pipes.o setup_pipes.o clear_pipes.o
 # makefile (from `Makefile', line 140)
 SRC := functions.c main.c ft_skipspaces.c add_new_line.c ft_swap.c check_input.c read_input.c syntax_error.c cd.c echo.c env.c pwd.c export.c export_utils.c unset.c execve.c commands.c relative_path.c absolute_path.c signals.c ft_exit.c ret_exit.c env_lst_new.c env_lstadd_back.c env_lstlast.c env_lstsize.c init.c search_env.c free_parse_commands.c parse.c parse_split_spaces.c parse_split_commands.c parse_split_tokens.c checkword.c createstring.c tokens.c create_cmd.c declaring_values.c tokens_cmd.c execute.c run_commands.c run_cmd_redir.c redirection_functions.c redirections.c pipes.c setup_pipes.c clear_pipes.c
-# environment
-VSCODE_LOG_NATIVE = false
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -47,16 +45,10 @@ MAKEFILE_LIST :=  Makefile
 .PHONY = all run clean fclean re bonus
 # makefile (from `Makefile', line 75)
 SRCS.COMMANDS.ENV = commands/env/env.c 
-# environment
-VSCODE_VERBOSE_LOGGING = true
 # makefile (from `Makefile', line 36)
 LIBFTDIR = libft/
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
-# environment
-P9K_SSH = 0
-# environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/gp/3s088w0x5sg_tqkzg7_t96b40000gn/T/vscode-ipc-15a83bc4-080d-40b8-90c2-d947fef2a8a5.sock
 # makefile (from `Makefile', line 77)
 SRCS.COMMANDS.PWD = commands/pwd/pwd.c 
 # makefile (from `Makefile', line 71)
@@ -64,7 +56,7 @@ SRCS.COMMANDS.CD = commands/cd/cd.c
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+PATH = /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 38)
@@ -72,11 +64,7 @@ LIBFTLIB = $(LIBFTDIR)/libft.a
 # makefile (from `Makefile', line 146)
 OBJS_B := 
 # makefile (from `Makefile', line 156)
-VPATH := ./ bin/ ./ .//cmd .//env_list .//env_list/functions .//newparsing .//free .//newexecute .//newexecute/redirections .//newexecute/pipes .//libft .//functions .//commands .//commands/execve .//commands/unset .//commands/echo .//commands/pwd .//commands/heredoc .//commands/env .//commands/exit .//commands/cd .//commands/export .//.git .//.git/objects .//.git/objects/61 .//.git/objects/0d .//.git/objects/95 .//.git/objects/0c .//.git/objects/66 .//.git/objects/3e .//.git/objects/68 .//.git/objects/6f .//.git/objects/03 .//.git/objects/9b .//.git/objects/9e .//.git/objects/6a .//.git/objects/56 .//.git/objects/51 .//.git/objects/3d .//.git/objects/58 .//.git/objects/67 .//.git/objects/93 .//.git/objects/0e .//.git/objects/60 .//.git/objects/05 .//.git/objects/9d .//.git/objects/9c .//.git/objects/02 .//.git/objects/a4 .//.git/objects/a3 .//.git/objects/b5 .//.git/objects/b2 .//.git/objects/d9 .//.git/objects/ac .//.git/objects/bb .//.git/objects/d7 .//.git/objects/d0 .//.git/objects/be .//.git/objects/b3 .//.git/objects/df .//.git/objects/da .//.git/objects/b4 .//.git/objects/a2 .//.git/objects/a5 .//.git/objects/d1 .//.git/objects/d6 .//.git/objects/ae .//.git/objects/ab .//.git/objects/e5 .//.git/objects/e2 .//.git/objects/f3 .//.git/objects/c7 .//.git/objects/c9 .//.git/objects/fc .//.git/objects/f2 .//.git/objects/f5 .//.git/objects/cf .//.git/objects/e4 .//.git/objects/c8 .//.git/objects/fb .//.git/objects/c6 .//.git/objects/4e .//.git/objects/20 .//.git/objects/pack .//.git/objects/11 .//.git/objects/29 .//.git/objects/16 .//.git/objects/42 .//.git/objects/45 .//.git/objects/1a .//.git/objects/28 .//.git/objects/17 .//.git/objects/7b .//.git/objects/8f .//.git/objects/8a .//.git/objects/7e .//.git/objects/10 .//.git/objects/19 .//.git/objects/4c .//.git/objects/26 .//.git/objects/4d .//.git/objects/75 .//.git/objects/81 .//.git/objects/72 .//.git/objects/2a .//.git/objects/2f .//.git/objects/9f .//.git/objects/6b .//.git/objects/07 .//.git/objects/00 .//.git/objects/6e .//.git/objects/9a .//.git/objects/36 .//.git/objects/5c .//.git/objects/31 .//.git/objects/info .//.git/objects/65 .//.git/objects/62 .//.git/objects/96 .//.git/objects/3a .//.git/objects/98 .//.git/objects/53 .//.git/objects/30 .//.git/objects/5b .//.git/objects/37 .//.git/objects/08 .//.git/objects/6d .//.git/objects/01 .//.git/objects/06 .//.git/objects/39 .//.git/objects/55 .//.git/objects/97 .//.git/objects/0f .//.git/objects/64 .//.git/objects/d4 .//.git/objects/ba .//.git/objects/b8 .//.git/objects/b1 .//.git/objects/dd .//.git/objects/b6 .//.git/objects/a9 .//.git/objects/d5 .//.git/objects/d2 .//.git/objects/a8 .//.git/objects/de .//.git/objects/a1 .//.git/objects/ef .//.git/objects/c3 .//.git/objects/ea .//.git/objects/e6 .//.git/objects/fa .//.git/objects/ff .//.git/objects/c5 .//.git/objects/f6 .//.git/objects/e9 .//.git/objects/e7 .//.git/objects/cb .//.git/objects/f8 .//.git/objects/ce .//.git/objects/46 .//.git/objects/2c .//.git/objects/79 .//.git/objects/41 .//.git/objects/83 .//.git/objects/1b .//.git/objects/1e .//.git/objects/84 .//.git/objects/24 .//.git/objects/23 .//.git/objects/8d .//.git/objects/15 .//.git/objects/85 .//.git/objects/1d .//.git/objects/71 .//.git/objects/1c .//.git/objects/82 .//.git/objects/49 .//.git/objects/78 .//.git/objects/8b .//.git/objects/13 .//.git/objects/7f .//.git/objects/7a .//.git/objects/14 .//.git/objects/8e .//.git/objects/25 .//.git/info .//.git/logs .//.git/logs/refs .//.git/logs/refs/heads .//.git/logs/refs/remotes .//.git/logs/refs/remotes/origin .//.git/hooks .//.git/refs .//.git/refs/heads .//.git/refs/tags .//.git/refs/remotes .//.git/refs/remotes/origin .//.git/branches .//.vscode
-# environment
-LaunchInstanceID = B60B695F-C81A-46DB-9516-89C0929352B3
-# environment
-VSCODE_LOG_STACK = false
+VPATH := ./ bin/ ./ .//cmd .//env_list .//env_list/functions .//newparsing .//free .//newexecute .//newexecute/redirections .//newexecute/pipes .//libft .//functions .//commands .//commands/execve .//commands/unset .//commands/echo .//commands/pwd .//commands/heredoc .//commands/env .//commands/exit .//commands/cd .//commands/export .//.git .//.git/objects .//.git/objects/pack .//.git/objects/info .//.git/info .//.git/logs .//.git/logs/refs .//.git/logs/refs/heads .//.git/logs/refs/remotes .//.git/logs/refs/remotes/origin .//.git/hooks .//.git/refs .//.git/refs/heads .//.git/refs/tags .//.git/refs/remotes .//.git/refs/remotes/origin .//.vscode
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
@@ -84,7 +72,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 149)
 GR = \033[32;1m
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.MHx5HjpzOC/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.OJqWeHPNc0/Listeners
 # makefile (from `Makefile', line 34)
 SRCDIR = ./
 # automatic
@@ -93,10 +81,9 @@ SRCDIR = ./
 SRC_B := 
 # makefile (from `Makefile', line 98)
 SRCS.ENV.LIST.FUNC = env_list/functions/init.c env_list/functions/search_env.c 
-# environment
-VSCODE_PIPE_LOGGING = true
+# makefile (from `Makefile', line 153)
+RC = \033[0m
 # makefile (from `Makefile', line 142)
- 
 OBJS := bin/functions.o bin/main.o bin/ft_skipspaces.o bin/add_new_line.o bin/ft_swap.o bin/check_input.o bin/read_input.o bin/syntax_error.o bin/cd.o bin/echo.o bin/env.o bin/pwd.o bin/export.o bin/export_utils.o bin/unset.o bin/execve.o bin/commands.o bin/relative_path.o bin/absolute_path.o bin/signals.o bin/ft_exit.o bin/ret_exit.o bin/env_lst_new.o bin/env_lstadd_back.o bin/env_lstlast.o bin/env_lstsize.o bin/init.o bin/search_env.o bin/free_parse_commands.o bin/parse.o bin/parse_split_spaces.o bin/parse_split_commands.o bin/parse_split_tokens.o bin/checkword.o bin/createstring.o bin/tokens.o bin/create_cmd.o bin/declaring_values.o bin/tokens_cmd.o bin/execute.o bin/run_commands.o bin/run_cmd_redir.o bin/redirection_functions.o bin/redirections.o bin/pipes.o bin/setup_pipes.o bin/clear_pipes.o
 # makefile (from `Makefile', line 115)
 SRCS.FREE = free/free_parse_commands.c 
@@ -111,7 +98,7 @@ HOME = /Users/rkieboom
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
-VSCODE_CODE_CACHE_PATH = /Users/rkieboom/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
+VSCODE_CODE_CACHE_PATH = /Users/rkieboom/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
 LOGNAME = rkieboom
 # environment
@@ -169,15 +156,16 @@ MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/gp/3s088w0x5sg_tqkzg7_t96b40000gn/T/
+TMPDIR = /var/folders/tq/ldhs6m6n56g95gkdczmsym8h0000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
-VSCODE_IPC_HOOK = /Users/rkieboom/Library/Application Support/Code/1.67.2-main.sock
+ 
+VSCODE_IPC_HOOK = /Users/rkieboom/Library/Application Support/Code/1.70.2-main.sock
 # makefile (from `Makefile', line 40)
 INCLUDES_MAC = -I/usr/local/Cellar/readline/8.1.2/include
-# makefile (from `Makefile', line 153)
-RC = \033[0m
+# environment
+MallocNanoZone = 0
 # makefile
 MAKEFLAGS = Rrqp
 # environment
@@ -185,7 +173,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.12567803.12567809
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.8165275.8165283
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 145)
@@ -195,7 +183,7 @@ SRCS.ENV.LIST = env_list/env_lst_new.c env_list/env_lstadd_back.c env_list/env_l
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x2
 # environment
 COMMAND_MODE = unix2003
 # default
@@ -210,8 +198,6 @@ YE = \033[33;1m
 PAGER = less
 # environment
 LC_ALL = C
-# environment
-SECURITYSESSIONID = 186a6
 # automatic
 ^F = $(notdir $^)
 # makefile (from `Makefile', line 79)
@@ -231,9 +217,9 @@ SRCS.NEW.PARSING = newparsing/parse.c newparsing/parse_split_spaces.c newparsing
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1552
+VSCODE_PID = 1686
 # variable set hash-table stats:
-# Load=109/1024=11%, Rehash=0, Collisions=22/234=9%
+# Load=102/1024=10%, Rehash=0, Collisions=23/227=10%
 
 # Pattern-specific Variable Values
 
@@ -241,408 +227,84 @@ VSCODE_PID = 1552
 
 # Directories
 
-# .//.git/branches/libft/: could not be stat'd.
-# .//.git/objects/49/libft/: could not be stat'd.
-# .//.git/objects/c9/libft/: could not be stat'd.
-# .//functions (device 16777220, inode 2603102): 8 files, no impossibilities.
-# .//.git (device 16777220, inode 2602977): 16 files, no impossibilities.
-# .//.git/objects/dd/libft/: could not be stat'd.
-# .//.git/objects/pack (device 16777220, inode 2603010): 4 files, no impossibilities.
-# .//.git/objects/65 (device 16777220, inode 6613613): 3 files, no impossibilities.
-# .//.git/objects/36/libft/: could not be stat'd.
- 
-# .//.git/objects/b1/libft/: could not be stat'd.
-# .//.git/objects/6d/libft/: could not be stat'd.
-# .//commands/unset (device 16777220, inode 2603251): 3 files, no impossibilities.
-# .//.git/objects/3e/libft/: could not be stat'd.
-# .//.git/objects/26 (device 16777220, inode 3966466): 3 files, no impossibilities.
-# .//.git/objects/6a (device 16777220, inode 5953789): 3 files, no impossibilities.
-# .//newparsing (device 16777220, inode 2603270): 10 files, no impossibilities.
-# .//.git/objects/00 (device 16777220, inode 5953840): 3 files, no impossibilities.
-# .//.git/objects/31/libft/: could not be stat'd.
-# .//.git/objects/e9/libft/: could not be stat'd.
-# .//.git/objects/0e (device 16777220, inode 10007641): 3 files, no impossibilities.
-# .//.git/objects/75 (device 16777220, inode 3966432): 5 files, no impossibilities.
-# .//.git/objects/83/libft/: could not be stat'd.
-# .//.git/objects/19 (device 16777220, inode 10007562): 4 files, no impossibilities.
-# .//.git/objects/10 (device 16777220, inode 3966448): 4 files, no impossibilities.
-# .//.git/objects/1c/libft/: could not be stat'd.
-# .//.git/objects (device 16777220, inode 2603009): 163 files, no impossibilities.
-# .//.git/objects/7f/libft/: could not be stat'd.
-# .//.git/logs/refs/heads (device 16777220, inode 2603068): 4 files, no impossibilities.
-# .//.git/objects/cf (device 16777220, inode 11138976): 3 files, no impossibilities.
-# .//.git/objects/71/libft/: could not be stat'd.
-# .//.git/objects/a4 (device 16777220, inode 11303397): 3 files, no impossibilities.
-# .//.git/logs/refs (device 16777220, inode 2603060): 4 files, no impossibilities.
-# .//commands/env (device 16777220, inode 2603082): 3 files, no impossibilities.
-# .//.git/objects/9f (device 16777220, inode 5953809): 5 files, no impossibilities.
-# .//.git/objects/0d/libft/: could not be stat'd.
-# .//.git/objects/60 (device 16777220, inode 10007616): 5 files, no impossibilities.
-# .//.git/objects/60/libft/: could not be stat'd.
-# . (device 16777220, inode 2602976): 19 files, no impossibilities.
-# .//.git/objects/02/libft/: could not be stat'd.
-# .//.git/objects/7a/libft/: could not be stat'd.
-# .//.git/objects/2c (device 16777220, inode 11138912): 4 files, no impossibilities.
-# .//.git/objects/c8 (device 16777220, inode 8972043): 3 files, no impossibilities.
-# .//.git/objects/07/libft/: could not be stat'd.
-# .//commands/exit (device 16777220, inode 2603245): 4 files, no impossibilities.
-# .//.git/objects/a5 (device 16777220, inode 11303468): 3 files, no impossibilities.
-# .//.git/objects/84 (device 16777220, inode 5953793): 3 files, no impossibilities.
-# .//.git/objects/e5 (device 16777220, inode 8219569): 6 files, no impossibilities.
-# .//.git/objects/97 (device 16777220, inode 11303447): 3 files, no impossibilities.
-# .//.git/objects/78 (device 16777220, inode 5953836): 3 files, no impossibilities.
-# .//.git/logs/libft/: could not be stat'd.
-# .//.git/objects/7b (device 16777220, inode 10007629): 3 files, no impossibilities.
-# .//.git/libft/: could not be stat'd.
-# .//.git/objects/01 (device 16777220, inode 10735338): 4 files, no impossibilities.
-# .//.git/objects/1b (device 16777220, inode 8219528): 3 files, no impossibilities.
-# .//.git/objects/c3 (device 16777220, inode 10735512): 3 files, no impossibilities.
-# .//.git/objects/4e (device 16777220, inode 11138893): 3 files, no impossibilities.
-# .//.git/objects/7e (device 16777220, inode 5953785): 4 files, no impossibilities.
-# .//.git/objects/45/libft/: could not be stat'd.
-# .//.git/objects/11/libft/: could not be stat'd.
-# .//env_list (device 16777220, inode 2603086): 8 files, no impossibilities.
-# .//.git/objects/62 (device 16777220, inode 11303393): 3 files, no impossibilities.
-# .//.git/objects/08/libft/: could not be stat'd.
-# .//commands/heredoc (device 16777220, inode 12530495): 3 files, no impossibilities.
-# .//commands/unset/libft/: could not be stat'd.
-# .//.git/objects/4d/libft/: could not be stat'd.
-# .//commands/pwd (device 16777220, inode 2603084): 3 files, no impossibilities.
-# .//.git/objects/62/libft/: could not be stat'd.
-# .//.git/objects/9a (device 16777220, inode 8219581): 4 files, no impossibilities.
-# .//.git/objects/16 (device 16777220, inode 3966471): 4 files, no impossibilities.
-# .//.git/objects/2f/libft/: could not be stat'd.
-# .//.git/hooks (device 16777220, inode 2602981): 15 files, no impossibilities.
-# .//newexecute/pipes (device 16777220, inode 12559363): 6 files, no impossibilities.
-# .//commands/cd (device 16777220, inode 2603236): 3 files, no impossibilities.
-# .//.git/objects/ea/libft/: could not be stat'd.
-# .//.git/logs/refs/heads/libft/: could not be stat'd.
-# .//commands/cd/libft/: could not be stat'd.
-# .//.git/objects/6a/libft/: could not be stat'd.
-# .//.git/objects/ae (device 16777220, inode 10007588): 4 files, no impossibilities.
-# .//commands/env/libft/: could not be stat'd.
-# .//.git/objects/0e/libft/: could not be stat'd.
-# .//.git/objects/1e (device 16777220, inode 5953805): 3 files, no impossibilities.
-# .//.git/objects/8d (device 16777220, inode 6613633): 3 files, no impossibilities.
-# .//.git/objects/6e (device 16777220, inode 10735334): 3 files, no impossibilities.
-# .//.git/objects/c3/libft/: could not be stat'd.
-# bin: could not be stat'd.
-# .//.git/objects/cf/libft/: could not be stat'd.
-# .//.git/objects/fa (device 16777220, inode 8972062): 6 files, no impossibilities.
-# .//.git/objects/b8/libft/: could not be stat'd.
-# .//.git/objects/1e/libft/: could not be stat'd.
-# .//.git/objects/5c (device 16777220, inode 11138941): 3 files, no impossibilities.
-# .//.git/objects/11 (device 16777220, inode 8219636): 7 files, no impossibilities.
-# .//.git/objects/dd (device 16777220, inode 10007652): 5 files, no impossibilities.
-# .//.git/objects/4c (device 16777220, inode 11150263): 3 files, no impossibilities.
-# .//.git/objects/b8 (device 16777220, inode 5953934): 4 files, no impossibilities.
-# .//.git/objects/29 (device 16777220, inode 5953801): 3 files, no impossibilities.
-# .//.git/objects/67 (device 16777220, inode 10007648): 3 files, no impossibilities.
-# .//.git/objects/9e/libft/: could not be stat'd.
-# .//.git/objects/6b (device 16777220, inode 11138900): 3 files, no impossibilities.
-# .//.git/objects/51/libft/: could not be stat'd.
-# .//.git/logs/refs/remotes/origin/libft/: could not be stat'd.
-# .//.git/objects/2c/libft/: could not be stat'd.
-# .//.git/objects/0f (device 16777220, inode 11138998): 3 files, no impossibilities.
-# .//.git/objects/8d/libft/: could not be stat'd.
-# .//.git/objects/be/libft/: could not be stat'd.
-# .//.git/objects/65/libft/: could not be stat'd.
-# .//env_list/libft/: could not be stat'd.
-# .//.git/objects/2a/libft/: could not be stat'd.
-# .//.git/objects/a9 (device 16777220, inode 8219543): 3 files, no impossibilities.
-# .//.git/objects/ea (device 16777220, inode 10735327): 3 files, no impossibilities.
-# .//.git/objects/3d (device 16777220, inode 11303352): 3 files, no impossibilities.
-# .//.git/objects/a3/libft/: could not be stat'd.
-# .//.git/objects/b4 (device 16777220, inode 11138980): 3 files, no impossibilities.
-# .//.git/objects/19/libft/: could not be stat'd.
-# .//.git/objects/00/libft/: could not be stat'd.
-# .//.git/objects/7e/libft/: could not be stat'd.
-# .//.git/objects/17 (device 16777220, inode 10007580): 3 files, no impossibilities.
-# .//.git/objects/5b (device 16777220, inode 8219632): 4 files, no impossibilities.
-# .//.git/hooks/libft/: could not be stat'd.
-# .//.git/objects/58 (device 16777220, inode 10735497): 3 files, no impossibilities.
-# .//free (device 16777220, inode 2603099): 3 files, no impossibilities.
-# .//free/libft/: could not be stat'd.
-# .//.git/info/libft/: could not be stat'd.
-# .//.git/objects/f6/libft/: could not be stat'd.
-# .//commands/heredoc/libft/: could not be stat'd.
-# .//.git/objects/20 (device 16777220, inode 10735395): 3 files, no impossibilities.
-# .//commands/pwd/libft/: could not be stat'd.
-# .//.git/objects/02 (device 16777220, inode 5953813): 3 files, no impossibilities.
-# .//.git/objects/f3 (device 16777220, inode 3966428): 3 files, no impossibilities.
-# .//.git/objects/a4/libft/: could not be stat'd.
- 
-# .//.git/objects/9a/libft/: could not be stat'd.
-# .//.git/objects/97/libft/: could not be stat'd.
-# .//.git/objects/03/libft/: could not be stat'd.
-# .//cmd (device 16777220, inode 6647319): 6 files, no impossibilities.
-# .//.git/objects/49 (device 16777220, inode 10007603): 4 files, no impossibilities.
-# .//.git/objects/46 (device 16777220, inode 3966436): 3 files, no impossibilities.
-# .//.git/objects/c8/libft/: could not be stat'd.
-# .//.git/objects/41/libft/: could not be stat'd.
-# .//.git/objects/4e/libft/: could not be stat'd.
-# .//.git/objects/b6/libft/: could not be stat'd.
-# .//.git/objects/c7 (device 16777220, inode 8219555): 3 files, no impossibilities.
-# .//.git/objects/e6/libft/: could not be stat'd.
-# .//.git/objects/b5 (device 16777220, inode 11303443): 3 files, no impossibilities.
-# .//functions/libft/: could not be stat'd.
-# .//.git/objects/e5/libft/: could not be stat'd.
-# .//.git/objects/28 (device 16777220, inode 11303404): 3 files, no impossibilities.
-# .//.git/objects/20/libft/: could not be stat'd.
-# .//.git/logs (device 16777220, inode 2603059): 4 files, no impossibilities.
-# .//.git/objects/98 (device 16777220, inode 10735376): 3 files, no impossibilities.
-# .//.git/objects/51 (device 16777220, inode 11138945): 3 files, no impossibilities.
-# .//.git/objects/46/libft/: could not be stat'd.
-# .//.git/objects/64/libft/: could not be stat'd.
-# .//.git/objects/58/libft/: could not be stat'd.
-# .//.git/objects/fa/libft/: could not be stat'd.
-# .//commands (device 16777220, inode 2603078): 12 files, no impossibilities.
-# .//.git/objects/c9 (device 16777220, inode 10735380): 3 files, no impossibilities.
-# .//.git/objects/4c/libft/: could not be stat'd.
-# .//.git/objects/1b/libft/: could not be stat'd.
-# .//commands/echo (device 16777220, inode 2603080): 3 files, no impossibilities.
-# .//.git/objects/9b (device 16777220, inode 10735520): 3 files, no impossibilities.
-# .//.vscode (device 16777220, inode 2603074): 8 files, no impossibilities.
-# .//.git/objects/25/libft/: could not be stat'd.
-# .//.git/objects/6b/libft/: could not be stat'd.
-# .//.git/objects/da (device 16777220, inode 11138934): 4 files, no impossibilities.
-# .//.git/objects/13/libft/: could not be stat'd.
-# .//.git/objects/cb/libft/: could not be stat'd.
-# .//.git/objects/a1 (device 16777220, inode 8219624): 4 files, no impossibilities.
-# .//.git/objects/fc (device 16777220, inode 5953828): 3 files, no impossibilities.
-# .//.git/objects/64 (device 16777220, inode 10007662): 4 files, no impossibilities.
-# .//.git/objects/95 (device 16777220, inode 10007633): 3 files, no impossibilities.
-# .//.git/objects/e6 (device 16777220, inode 8972058): 5 files, no impossibilities.
-# .//.git/objects/96/libft/: could not be stat'd.
-# .//newexecute (device 16777220, inode 8975452): 8 files, no impossibilities.
-# .//.git/objects/3d/libft/: could not be stat'd.
-# .//.git/objects/1a (device 16777220, inode 10735508): 4 files, no impossibilities.
-# .//.git/objects/ba/libft/: could not be stat'd.
-# .//newexecute/redirections (device 16777220, inode 8977472): 4 files, no impossibilities.
-# .//.git/objects/b3/libft/: could not be stat'd.
-# .//.git/objects/be (device 16777220, inode 8219547): 4 files, no impossibilities.
-# .//.git/objects/05 (device 16777220, inode 5953797): 3 files, no impossibilities.
-# .//.git/objects/d4 (device 16777220, inode 3966462): 5 files, no impossibilities.
-# .//.git/refs/remotes/origin/libft/: could not be stat'd.
-# .//.git/objects/95/libft/: could not be stat'd.
-# .//newexecute/pipes/libft/: could not be stat'd.
-# .//.git/objects/d7 (device 16777220, inode 4933408): 4 files, no impossibilities.
-# .//.git/objects/de/libft/: could not be stat'd.
-# .//.git/objects/17/libft/: could not be stat'd.
-# .//.git/objects/ff (device 16777220, inode 11138984): 3 files, no impossibilities.
-# .//.git/objects/05/libft/: could not be stat'd.
-# .//.git/objects/d4/libft/: could not be stat'd.
-# .//.git/objects/93 (device 16777220, inode 10007599): 4 files, no impossibilities.
-# .//.git/objects/29/libft/: could not be stat'd.
-# .//.git/objects/f8 (device 16777220, inode 11138908): 3 files, no impossibilities.
-# .//.git/objects/b6 (device 16777220, inode 11138991): 3 files, no impossibilities.
-# .//.git/objects/67/libft/: could not be stat'd.
-# .//libft (device 16777220, inode 2603113): 48 files, no impossibilities.
-# .//.git/objects/53/libft/: could not be stat'd.
-# .//.git/objects/66 (device 16777220, inode 6613609): 3 files, no impossibilities.
-# .//cmd/libft/: could not be stat'd.
-# .//.git/objects/37 (device 16777220, inode 8219520): 3 files, no impossibilities.
-# .//.git/objects/08 (device 16777220, inode 8219628): 4 files, no impossibilities.
-# .//.git/refs/tags (device 16777220, inode 2602998): 2 files, no impossibilities.
-# .//.git/objects/25 (device 16777220, inode 8219524): 3 files, no impossibilities.
-# .//.git/objects/ae/libft/: could not be stat'd.
-# .//.git/refs/remotes (device 16777220, inode 2603056): 3 files, no impossibilities.
-# .//.git/objects/8f (device 16777220, inode 10735486): 3 files, no impossibilities.
-# .//.git/objects/2a (device 16777220, inode 11139009): 4 files, no impossibilities.
-# .//.git/objects/bb/libft/: could not be stat'd.
-# .//.git/objects/a2/libft/: could not be stat'd.
-# .//.git/objects/d0 (device 16777220, inode 10007637): 3 files, no impossibilities.
-# .//.git/objects/9e (device 16777220, inode 10007573): 7 files, no impossibilities.
-# .//.git/objects/ef (device 16777220, inode 8219559): 3 files, no impossibilities.
-# .//.git/objects/f5/libft/: could not be stat'd.
-# .//.git/objects/75/libft/: could not be stat'd.
-# .//.git/objects/41 (device 16777220, inode 11303433): 3 files, no impossibilities.
-# .//.git/objects/f2 (device 16777220, inode 3966424): 4 files, no impossibilities.
-# .//.git/objects/10/libft/: could not be stat'd.
-# .//.git/objects/8a/libft/: could not be stat'd.
+# .//functions (device 16777220, inode 5346376): 8 files, no impossibilities.
+# .//.git (device 16777220, inode 5345910): 12 files, no impossibilities.
 # .//commands/libft/: could not be stat'd.
-# .//.git/objects/b4/libft/: could not be stat'd.
-# .//.git/refs/heads/libft/: could not be stat'd.
-# .//commands/export (device 16777220, inode 2603247): 4 files, no impossibilities.
-# .//.git/objects/0d (device 16777220, inode 4933440): 4 files, no impossibilities.
-# .//.git/objects/3e (device 16777220, inode 11138927): 3 files, no impossibilities.
-# .//.git/objects/a8 (device 16777220, inode 10735342): 3 files, no impossibilities.
-# .//.git/objects/9b/libft/: could not be stat'd.
-# .//.git/objects/3a (device 16777220, inode 8972047): 3 files, no impossibilities.
-# .//.git/objects/a3 (device 16777220, inode 8219640): 4 files, no impossibilities.
-# .//.git/objects/55/libft/: could not be stat'd.
-# .//.git/objects/1a/libft/: could not be stat'd.
-# .//.git/objects/ff/libft/: could not be stat'd.
+# .//.git/objects/pack (device 16777220, inode 5345942): 4 files, no impossibilities.
+# .//commands/echo/libft/: could not be stat'd.
+# .//newparsing (device 16777220, inode 5346445): 10 files, no impossibilities.
+# .//env_list/functions/libft/: could not be stat'd.
+# .//.git/logs/refs/heads (device 16777220, inode 5346318): 3 files, no impossibilities.
 # .//newexecute/redirections/libft/: could not be stat'd.
-# .//commands/execve (device 16777220, inode 2603240): 7 files, no impossibilities.
-# .//.git/objects/81 (device 16777220, inode 8219573): 3 files, no impossibilities.
-# .//.git/objects/14 (device 16777220, inode 11138880): 3 files, no impossibilities.
-# .//.git/objects/d9/libft/: could not be stat'd.
-# .//.git/objects/45 (device 16777220, inode 11303366): 3 files, no impossibilities.
-# .//.git/objects/6f (device 16777220, inode 3966440): 5 files, no impossibilities.
+# .//newexecute/pipes/libft/: could not be stat'd.
+# .//.git/logs/refs (device 16777220, inode 5346310): 4 files, no impossibilities.
+# .//commands/env (device 16777220, inode 5346343): 3 files, no impossibilities.
 # .//newexecute/libft/: could not be stat'd.
-# .//.git/objects/d7/libft/: could not be stat'd.
-# .//.git/objects/c7/libft/: could not be stat'd.
-# .//.git/objects/81/libft/: could not be stat'd.
-# .//.git/objects/df/libft/: could not be stat'd.
-# .//.git/objects/b5/libft/: could not be stat'd.
-# .//.git/objects/b1 (device 16777220, inode 11139005): 3 files, no impossibilities.
-# .//.git/objects/f3/libft/: could not be stat'd.
+# . (device 16777220, inode 5345909): 19 files, no impossibilities.
+# .//commands/exit (device 16777220, inode 5346351): 4 files, no impossibilities.
 # .//libft/libft/: could not be stat'd.
 # .//commands/export/libft/: could not be stat'd.
-# .//.git/refs/remotes/origin (device 16777220, inode 2603057): 4 files, no impossibilities.
-# .//.git/objects/fc/libft/: could not be stat'd.
-# .//.git/objects/c6/libft/: could not be stat'd.
-# .//.git/objects/79 (device 16777220, inode 11303451): 3 files, no impossibilities.
-# .//.git/objects/fb (device 16777220, inode 10735504): 3 files, no impossibilities.
- 
-# .//.git/objects/53 (device 16777220, inode 11303348): 3 files, no impossibilities.
-# .//.git/objects/e4/libft/: could not be stat'd.
-# .//.git/objects/84/libft/: could not be stat'd.
-# .//.git/objects/fb/libft/: could not be stat'd.
-# .//.git/objects/26/libft/: could not be stat'd.
-# .//.git/objects/a5/libft/: could not be stat'd.
-# .//.git/objects/37/libft/: could not be stat'd.
-# .//.git/objects/9d/libft/: could not be stat'd.
-# .//.git/objects/56 (device 16777220, inode 11303417): 3 files, no impossibilities.
-# .//.git/objects/6f/libft/: could not be stat'd.
-# .//.git/objects/ac (device 16777220, inode 8972033): 4 files, no impossibilities.
-# .//.git/objects/78/libft/: could not be stat'd.
-# .//.git/objects/b2/libft/: could not be stat'd.
-# .//.git/objects/8a (device 16777220, inode 11303386): 3 files, no impossibilities.
-# .//.git/objects/1d (device 16777220, inode 11150249): 3 files, no impossibilities.
-# .//.git/objects/56/libft/: could not be stat'd.
-# .//.git/objects/5b/libft/: could not be stat'd.
-# .//.git/objects/de (device 16777220, inode 5953954): 4 files, no impossibilities.
-# .//.git/objects/01/libft/: could not be stat'd.
-# .//.git/logs/refs/remotes/libft/: could not be stat'd.
-# .//.git/objects/d0/libft/: could not be stat'd.
-# .//.git/objects/30 (device 16777220, inode 6613605): 3 files, no impossibilities.
-# .//.git/objects/a1/libft/: could not be stat'd.
-# .//.git/objects/9c/libft/: could not be stat'd.
+# .//.git/refs/remotes/origin (device 16777220, inode 5346307): 3 files, no impossibilities.
+# .//.git/logs/libft/: could not be stat'd.
+# .//commands/execve (device 16777220, inode 5346345): 7 files, no impossibilities.
+# .//functions/libft/: could not be stat'd.
+# .//.git/logs/refs/remotes/origin/libft/: could not be stat'd.
+# .//env_list (device 16777220, inode 5346363): 8 files, no impossibilities.
 # .//.git/objects/pack/libft/: could not be stat'd.
-# .//.git/objects/72 (device 16777220, inode 11150274): 3 files, no impossibilities.
-# .//.git/objects/ba (device 16777220, inode 8972070): 4 files, no impossibilities.
-# .//.git/objects/03 (device 16777220, inode 11138966): 4 files, no impossibilities.
-# .//.git/objects/e4 (device 16777220, inode 8972082): 3 files, no impossibilities.
-# .//.git/objects/06 (device 16777220, inode 5953938): 3 files, no impossibilities.
-# .//.git/refs/heads (device 16777220, inode 2602997): 4 files, no impossibilities.
-# .//newparsing/libft/: could not be stat'd.
-# .//.git/objects/d1 (device 16777220, inode 11138904): 3 files, no impossibilities.
-# .//env_list/functions/libft/: could not be stat'd.
-# .//.git/refs (device 16777220, inode 2602996): 5 files, no impossibilities.
-# .//.git/objects/info (device 16777220, inode 2603011): 2 files, no impossibilities.
-# .//.git/logs/refs/libft/: could not be stat'd.
-# .//.git/objects/42 (device 16777220, inode 3966444): 3 files, no impossibilities.
-# .//.git/objects/66/libft/: could not be stat'd.
-# .//.git/objects/9d (device 16777220, inode 4933432): 3 files, no impossibilities.
-# .//.git/objects/0f/libft/: could not be stat'd.
-# .//.git/objects/c6 (device 16777220, inode 11138919): 3 files, no impossibilities.
-# .//.git/objects/68 (device 16777220, inode 5953942): 3 files, no impossibilities.
-# .//.git/objects/e7 (device 16777220, inode 5953946): 3 files, no impossibilities.
-# .//.git/objects/ab/libft/: could not be stat'd.
-# .//.git/info (device 16777220, inode 2602978): 3 files, no impossibilities.
-# .//.git/objects/e7/libft/: could not be stat'd.
-# .//.git/objects/b3 (device 16777220, inode 11303379): 3 files, no impossibilities.
-# .//.git/objects/7b/libft/: could not be stat'd.
-# .//.git/objects/ac/libft/: could not be stat'd.
-# .//.git/objects/ce/libft/: could not be stat'd.
-# .//.git/objects/f6 (device 16777220, inode 10735323): 4 files, no impossibilities.
-# .//commands/execve/libft/: could not be stat'd.
-# .//.git/objects/f2/libft/: could not be stat'd.
-# .//.git/objects/c5 (device 16777220, inode 8219532): 3 files, no impossibilities.
-# .//.git/objects/31 (device 16777220, inode 8972089): 3 files, no impossibilities.
-# .//.git/objects/24 (device 16777220, inode 5953950): 6 files, no impossibilities.
-# .//.git/objects/a8/libft/: could not be stat'd.
-# .//.git/objects/0c (device 16777220, inode 10735388): 3 files, no impossibilities.
-# .//.git/objects/39 (device 16777220, inode 10735359): 3 files, no impossibilities.
-# .//.git/objects/a2 (device 16777220, inode 11303425): 3 files, no impossibilities.
-# .//.git/objects/15/libft/: could not be stat'd.
-# .//.git/objects/e9 (device 16777220, inode 8972051): 3 files, no impossibilities.
-# .//.git/objects/24/libft/: could not be stat'd.
-# .//.git/objects/23 (device 16777220, inode 8219551): 4 files, no impossibilities.
-# .//.git/objects/13 (device 16777220, inode 8972066): 5 files, no impossibilities.
-# .//.git/objects/42/libft/: could not be stat'd.
-# .//.git/objects/16/libft/: could not be stat'd.
-# .//.git/objects/39/libft/: could not be stat'd.
-# .//.git/objects/71 (device 16777220, inode 10735363): 3 files, no impossibilities.
-# .//.git/objects/8e/libft/: could not be stat'd.
-# .//.git/objects/1d/libft/: could not be stat'd.
-# .//.git/objects/55 (device 16777220, inode 10007595): 4 files, no impossibilities.
-# .//.git/objects/6d (device 16777220, inode 10735490): 3 files, no impossibilities.
-# .//.git/objects/61/libft/: could not be stat'd.
-# .//.git/objects/9f/libft/: could not be stat'd.
-# .//.git/objects/d6 (device 16777220, inode 10735349): 4 files, no impossibilities.
-# .//.git/objects/e2/libft/: could not be stat'd.
-# .//.git/objects/bb (device 16777220, inode 8972099): 4 files, no impossibilities.
-# .//.git/objects/9c (device 16777220, inode 8219577): 4 files, no impossibilities.
-# .//.git/objects/e2 (device 16777220, inode 10735384): 3 files, no impossibilities.
-# .//.git/objects/8b/libft/: could not be stat'd.
-# .//.git/objects/f8/libft/: could not be stat'd.
-# .//.git/objects/83 (device 16777220, inode 10007584): 3 files, no impossibilities.
-# .//.git/refs/remotes/libft/: could not be stat'd.
-# .//.git/objects/d6/libft/: could not be stat'd.
-# .//.git/objects/info/libft/: could not be stat'd.
-# .//.git/objects/d9 (device 16777220, inode 11150259): 3 files, no impossibilities.
-# .//.git/objects/85 (device 16777220, inode 5953832): 3 files, no impossibilities.
-# .//.git/objects/79/libft/: could not be stat'd.
-# .//.git/logs/refs/remotes (device 16777220, inode 2603061): 3 files, no impossibilities.
-# .//.git/objects/d1/libft/: could not be stat'd.
-# .//.git/objects/14/libft/: could not be stat'd.
-# .//.git/objects/98/libft/: could not be stat'd.
-# .//.git/objects/5c/libft/: could not be stat'd.
-# .//.git/objects/ce (device 16777220, inode 10735402): 3 files, no impossibilities.
-# .//.git/branches (device 16777220, inode 2602995): 2 files, no impossibilities.
-# .//.git/objects/8b (device 16777220, inode 10007566): 4 files, no impossibilities.
-# .//.git/objects/4d (device 16777220, inode 6613629): 3 files, no impossibilities.
-# .//.git/objects/ab (device 16777220, inode 10735313): 4 files, no impossibilities.
-# .//.git/objects/a9/libft/: could not be stat'd.
-# .//.git/objects/libft/: could not be stat'd.
-# .//.git/objects/1c (device 16777220, inode 11303356): 3 files, no impossibilities.
-# .//.git/objects/d5/libft/: could not be stat'd.
-# .//.git/objects/d2 (device 16777220, inode 8219536): 4 files, no impossibilities.
-# .//.git/objects/15 (device 16777220, inode 8972029): 3 files, no impossibilities.
-# .//.git/refs/libft/: could not be stat'd.
-# .//.git/objects/7a (device 16777220, inode 10735516): 3 files, no impossibilities.
-# .//.git/objects/85/libft/: could not be stat'd.
-# .//.git/objects/c5/libft/: could not be stat'd.
-# .//.git/objects/f5 (device 16777220, inode 5953930): 4 files, no impossibilities.
-# .//.git/objects/96 (device 16777220, inode 3966458): 3 files, no impossibilities.
-# .//.git/objects/df (device 16777220, inode 11138876): 3 files, no impossibilities.
-# .//env_list/functions (device 16777220, inode 2603092): 4 files, no impossibilities.
-# .//.vscode/libft/: could not be stat'd.
-# .//.git/objects/ef/libft/: could not be stat'd.
-# .//.git/objects/61 (device 16777220, inode 11138872): 3 files, no impossibilities.
-# .//.git/objects/30/libft/: could not be stat'd.
-# .//.git/objects/2f (device 16777220, inode 8219516): 4 files, no impossibilities.
-# .//.git/objects/23/libft/: could not be stat'd.
-# .//.git/objects/0c/libft/: could not be stat'd.
+# .//commands/heredoc (device 16777220, inode 5346357): 3 files, no impossibilities.
+# .//commands/unset/libft/: could not be stat'd.
 # .//.git/refs/tags/libft/: could not be stat'd.
- 
-# .//.git/objects/d5 (device 16777220, inode 11150270): 3 files, no impossibilities.
-# .//.git/objects/8e (device 16777220, inode 4933436): 4 files, no impossibilities.
-# .//.git/objects/07 (device 16777220, inode 5953821): 6 files, no impossibilities.
-# .//.git/objects/7f (device 16777220, inode 5953926): 4 files, no impossibilities.
-# .//.git/objects/cb (device 16777220, inode 10735473): 3 files, no impossibilities.
+# .//commands/pwd (device 16777220, inode 5346359): 3 files, no impossibilities.
+# .//.vscode (device 16777220, inode 5346324): 8 files, no impossibilities.
+# .//.git/hooks (device 16777220, inode 5345914): 15 files, no impossibilities.
+# .//.git/libft/: could not be stat'd.
+# .//commands/cd (device 16777220, inode 5346338): 3 files, no impossibilities.
+# .//.git/logs/refs/heads/libft/: could not be stat'd.
+# .//commands/env/libft/: could not be stat'd.
+# .//.git/refs/remotes/origin/libft/: could not be stat'd.
+# .//.git/logs/refs/libft/: could not be stat'd.
+# .//.git/refs/heads (device 16777220, inode 5345929): 3 files, no impossibilities.
+# .//newparsing/libft/: could not be stat'd.
+# bin: could not be stat'd.
+# .//.git/refs (device 16777220, inode 5345928): 5 files, no impossibilities.
+# .//.git/objects/info (device 16777220, inode 5345943): 2 files, no impossibilities.
 # .//commands/exit/libft/: could not be stat'd.
-# .//.git/objects/da/libft/: could not be stat'd.
-# .//.git/objects/06/libft/: could not be stat'd.
-# .//.git/objects/82 (device 16777220, inode 11138923): 4 files, no impossibilities.
-# .//.git/objects/36 (device 16777220, inode 5953817): 4 files, no impossibilities.
-# .//.git/objects/6e/libft/: could not be stat'd.
-# .//.git/objects/82/libft/: could not be stat'd.
-# .//.git/objects/d2/libft/: could not be stat'd.
-# .//.git/objects/68/libft/: could not be stat'd.
-# .//commands/echo/libft/: could not be stat'd.
-# .//.git/objects/28/libft/: could not be stat'd.
-# .//.git/objects/b2 (device 16777220, inode 6613625): 3 files, no impossibilities.
-# .//.git/objects/3a/libft/: could not be stat'd.
-# .//.git/objects/8f/libft/: could not be stat'd.
-# .//.git/objects/72/libft/: could not be stat'd.
-# .//.git/logs/refs/remotes/origin (device 16777220, inode 2603062): 4 files, no impossibilities.
-# .//.git/objects/93/libft/: could not be stat'd.
+# .//.git/refs/remotes/libft/: could not be stat'd.
+# .//.git/info (device 16777220, inode 5345911): 3 files, no impossibilities.
+# .//env_list/libft/: could not be stat'd.
+# .//commands/execve/libft/: could not be stat'd.
+# .//.git/logs/refs/remotes (device 16777220, inode 5346311): 3 files, no impossibilities.
+# .//.git/hooks/libft/: could not be stat'd.
+# .//free (device 16777220, inode 5346373): 3 files, no impossibilities.
+# .//commands/heredoc/libft/: could not be stat'd.
+# .//commands/pwd/libft/: could not be stat'd.
+# .//.git/refs/heads/libft/: could not be stat'd.
+# .//newexecute/pipes (device 16777220, inode 5346435): 6 files, no impossibilities.
+# .//cmd (device 16777220, inode 5346332): 6 files, no impossibilities.
+# .//commands/cd/libft/: could not be stat'd.
+# .//.git/refs/libft/: could not be stat'd.
+# .//.git/refs/remotes (device 16777220, inode 5346306): 3 files, no impossibilities.
+# .//.git/objects/info/libft/: could not be stat'd.
+# .//.git/logs (device 16777220, inode 5346309): 4 files, no impossibilities.
+# .//.git/logs/refs/remotes/libft/: could not be stat'd.
+# .//.git/info/libft/: could not be stat'd.
+# .//commands (device 16777220, inode 5346337): 12 files, no impossibilities.
+# .//commands/unset (device 16777220, inode 5346361): 3 files, no impossibilities.
+# .//commands/echo (device 16777220, inode 5346341): 3 files, no impossibilities.
+# .//.git/objects/libft/: could not be stat'd.
+# .//env_list/functions (device 16777220, inode 5346369): 4 files, no impossibilities.
+# .//newexecute (device 16777220, inode 5346432): 8 files, no impossibilities.
+# .//.vscode/libft/: could not be stat'd.
+# .//newexecute/redirections (device 16777220, inode 5346440): 4 files, no impossibilities.
+# .//free/libft/: could not be stat'd.
+# .//.git/logs/refs/remotes/origin (device 16777220, inode 5346312): 3 files, no impossibilities.
+# .//.git/objects (device 16777220, inode 5345941): 4 files, no impossibilities.
+# .//libft (device 16777220, inode 5346384): 48 files, no impossibilities.
+# .//commands/export (device 16777220, inode 5346354): 4 files, no impossibilities.
+# .//cmd/libft/: could not be stat'd.
+# .//.git/refs/tags (device 16777220, inode 5345930): 2 files, no impossibilities.
 
-# 974 files, no impossibilities in 396 directories.
+# 250 files, no impossibilities in 76 directories.
 
 # Implicit Rules
 
@@ -657,6 +319,7 @@ bin/%.o: %.c
 
 # Files
 
+ 
 # Not a target:
 bin/absolute_path.o:
 #  Implicit rule search has not been done.
@@ -828,7 +491,6 @@ bin/create_cmd.o:
 # Not a target:
 functions/syntax_error.c:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -838,6 +500,7 @@ bin/run_cmd_redir.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+ 
 # Not a target:
 bin/parse.o:
 #  Implicit rule search has not been done.
@@ -889,7 +552,7 @@ bin/clear_pipes.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-19 19:59:25
+#  Last modified 2022-06-21 21:20:21
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -979,6 +642,7 @@ minishell: libft//libft.a functions.c main.c functions/ft_skipspaces.c functions
 	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 	
 
+ 
 # Not a target:
 commands/execve/execve.c:
 #  Implicit rule search has not been done.
@@ -1035,7 +699,6 @@ newexecute/pipes/pipes.c:
 newparsing/parse_split_commands.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
@@ -1213,6 +876,7 @@ newexecute/pipes/setup_pipes.c:
 
 # Not a target:
 newexecute/run_commands.c:
+ 
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -1253,7 +917,6 @@ newexecute/pipes/clear_pipes.c:
 # Not a target:
 newparsing/createstring.c:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 
@@ -1348,19 +1011,19 @@ commands/cd/cd.c:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=106/1024=10%, Rehash=0, Collisions=86/1004=9%
+# Load=106/1024=10%, Rehash=0, Collisions=37/524=7%
 # VPATH Search Paths
 
 # No `vpath' search paths.
 
 # General (`VPATH' variable) search path:
-# .//cmd:.//env_list:.//env_list/functions:.//newparsing:.//free:.//newexecute:.//newexecute/redirections:.//newexecute/pipes:.//libft:.//functions:.//commands:.//commands/execve:.//commands/unset:.//commands/echo:.//commands/pwd:.//commands/heredoc:.//commands/env:.//commands/exit:.//commands/cd:.//commands/export:.//.git:.//.git/objects:.//.git/objects/61:.//.git/objects/0d:.//.git/objects/95:.//.git/objects/0c:.//.git/objects/66:.//.git/objects/3e:.//.git/objects/68:.//.git/objects/6f:.//.git/objects/03:.//.git/objects/9b:.//.git/objects/9e:.//.git/objects/6a:.//.git/objects/56:.//.git/objects/51:.//.git/objects/3d:.//.git/objects/58:.//.git/objects/67:.//.git/objects/93:.//.git/objects/0e:.//.git/objects/60:.//.git/objects/05:.//.git/objects/9d:.//.git/objects/9c:.//.git/objects/02:.//.git/objects/a4:.//.git/objects/a3:.//.git/objects/b5:.//.git/objects/b2:.//.git/objects/d9:.//.git/objects/ac:.//.git/objects/bb:.//.git/objects/d7:.//.git/objects/d0:.//.git/objects/be:.//.git/objects/b3:.//.git/objects/df:.//.git/objects/da:.//.git/objects/b4:.//.git/objects/a2:.//.git/objects/a5:.//.git/objects/d1:.//.git/objects/d6:.//.git/objects/ae:.//.git/objects/ab:.//.git/objects/e5:.//.git/objects/e2:.//.git/objects/f3:.//.git/objects/c7:.//.git/objects/c9:.//.git/objects/fc:.//.git/objects/f2:.//.git/objects/f5:.//.git/objects/cf:.//.git/objects/e4:.//.git/objects/c8:.//.git/objects/fb:.//.git/objects/c6:.//.git/objects/4e:.//.git/objects/20:.//.git/objects/pack:.//.git/objects/11:.//.git/objects/29:.//.git/objects/16:.//.git/objects/42:.//.git/objects/45:.//.git/objects/1a:.//.git/objects/28:.//.git/objects/17:.//.git/objects/7b:.//.git/objects/8f:.//.git/objects/8a:.//.git/objects/7e:.//.git/objects/10:.//.git/objects/19:.//.git/objects/4c:.//.git/objects/26:.//.git/objects/4d:.//.git/objects/75:.//.git/objects/81:.//.git/objects/72:.//.git/objects/2a:.//.git/objects/2f:.//.git/objects/9f:.//.git/objects/6b:.//.git/objects/07:.//.git/objects/00:.//.git/objects/6e:.//.git/objects/9a:.//.git/objects/36:.//.git/objects/5c:.//.git/objects/31:.//.git/objects/info:.//.git/objects/65:.//.git/objects/62:.//.git/objects/96:.//.git/objects/3a:.//.git/objects/98:.//.git/objects/53:.//.git/objects/30:.//.git/objects/5b:.//.git/objects/37:.//.git/objects/08:.//.git/objects/6d:.//.git/objects/01:.//.git/objects/06:.//.git/objects/39:.//.git/objects/55:.//.git/objects/97:.//.git/objects/0f:.//.git/objects/64:.//.git/objects/d4:.//.git/objects/ba:.//.git/objects/b8:.//.git/objects/b1:.//.git/objects/dd:.//.git/objects/b6:.//.git/objects/a9:.//.git/objects/d5:.//.git/objects/d2:.//.git/objects/a8:.//.git/objects/de:.//.git/objects/a1:.//.git/objects/ef:.//.git/objects/c3:.//.git/objects/ea:.//.git/objects/e6:.//.git/objects/fa:.//.git/objects/ff:.//.git/objects/c5:.//.git/objects/f6:.//.git/objects/e9:.//.git/objects/e7:.//.git/objects/cb:.//.git/objects/f8:.//.git/objects/ce:.//.git/objects/46:.//.git/objects/2c:.//.git/objects/79:.//.git/objects/41:.//.git/objects/83:.//.git/objects/1b:.//.git/objects/1e:.//.git/objects/84:.//.git/objects/24:.//.git/objects/23:.//.git/objects/8d:.//.git/objects/15:.//.git/objects/85:.//.git/objects/1d:.//.git/objects/71:.//.git/objects/1c:.//.git/objects/82:.//.git/objects/49:.//.git/objects/78:.//.git/objects/8b:.//.git/objects/13:.//.git/objects/7f:.//.git/objects/7a:.//.git/objects/14:.//.git/objects/8e:.//.git/objects/25:.//.git/info:.//.git/logs:.//.git/logs/refs:.//.git/logs/refs/heads:.//.git/logs/refs/remotes:.//.git/logs/refs/remotes/origin:.//.git/hooks:.//.git/refs:.//.git/refs/heads:.//.git/refs/tags:.//.git/refs/remotes:.//.git/refs/remotes/origin:.//.git/branches:.//.vscode
+# .//cmd:.//env_list:.//env_list/functions:.//newparsing:.//free:.//newexecute:.//newexecute/redirections:.//newexecute/pipes:.//libft:.//functions:.//commands:.//commands/execve:.//commands/unset:.//commands/echo:.//commands/pwd:.//commands/heredoc:.//commands/env:.//commands/exit:.//commands/cd:.//commands/export:.//.git:.//.git/objects:.//.git/objects/pack:.//.git/objects/info:.//.git/info:.//.git/logs:.//.git/logs/refs:.//.git/logs/refs/heads:.//.git/logs/refs/remotes:.//.git/logs/refs/remotes/origin:.//.git/hooks:.//.git/refs:.//.git/refs/heads:.//.git/refs/tags:.//.git/refs/remotes:.//.git/refs/remotes/origin:.//.vscode
 
 # # of strings in strcache: 1
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Tue May 24 12:30:44 2022
+# Finished Make data base on Thu Aug 18 03:48:09 2022
 
  

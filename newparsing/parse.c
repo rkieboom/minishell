@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/24 13:51:54 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/06/17 01:15:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,11 +162,11 @@ void	new_parse(t_list *list)
 		length--;
 		i++;
 	}
-	freemem(splitted);
 	tokens(list);
 	while (splitted[length])
 		length++; 
 	set_heredoc(list, length);
+	freemem(splitted);
 	// for(int j = 0; list->parse.commands[j]; j++)
 	// 	for(int k = 0; list->parse.commands[j][k]; k++)
 	// 		printf("%i. %s\n", k, list->parse.commands[j][k]);
