@@ -19,7 +19,10 @@
 6. in execve met tokens string kleiner maken | cat main.c > output.txt, ">" moet nullptr worden		[done]
 7. heredoc maken																					
 8. ;;;;;;; = crash ||    ;   ;   ;   = crash  														[done]
-9. cat main.c | cat todo.txt >> test.txt															
-10. cat main.c | > output.txt mag wel
+9. cat main.c | cat todo.txt >> test.txt															[works]														
+10. cat main.c | > output.txt mag wel																[not done not needed]
 	cat main.c > > output.txt mag niet
 	syntax_error aanpassen!
+
+11. Attempting free on not allocated space  = ][;ht[h;[ptrl,hp[ krhpt[ rkhtr						[fixed]
+12. Heap buffer overflow = cat main.c | > out.txt

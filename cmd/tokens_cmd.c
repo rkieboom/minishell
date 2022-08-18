@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 16:25:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/24 13:23:43 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/08/18 03:50:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,31 @@ static char	*ret_token(t_list *v, int k, int token_count)
 	return (v->tokens[k].token[i]);
 }
 
+static int get_token_pos(t_list *v, int k, int token_count)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (i - j != token_count)
+	{
+		if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
+			j++;
+		i++;
+	}
+	if (token_count == 0)
+		while (1)
+		{
+			if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
+				j++;
+			else
+				return (v->tokens[k].token_pos[i]);
+			i++;
+		}
+	return (v->tokens[k].token_pos[i]);
+}
+
 static void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 {
 	t_newcommand	*temp;	
@@ -57,10 +82,15 @@ static void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 			temp->tokens->token[token_local_c] = ft_strdup(ret_token(v, k, token_c));
 			if (!temp->tokens->token[token_local_c])
 				ft_ret_exit(1, 1);
-			temp->tokens->token_pos[token_local_c] = v->tokens[k].token_pos[token_c];//klopt niks van
-			// printf("cmd = %s\n", temp->command[0]);
-			// printf("token = [%s]\n", temp->tokens->token[0]);
-			// printf("token_pos = [%i]\n\n\n", temp->tokens->token_pos[0]);
+
+			
+			// temp->tokens->token_pos[token_local_c] = v->tokens[k].token_pos[token_c];//klopt niks van
+			temp->tokens->token_pos[token_local_c] = get_token_pos(v, k, token_c);
+			// get_token_pos(v, token_c, k);   //klopt nog niet
+			
+			printf("cmd = %s\n", temp->command[0]);
+			printf("token = [%s]\n", temp->tokens->token[0]);
+			printf("token_pos = [%i]\n\n\n", temp->tokens->token_pos[0]);
 			token_c++;
 			token_local_c++;
 			tokens--;
@@ -166,7 +196,6 @@ void	tokens_cmd(t_list *v, t_newcommand *cmd, int k)
 		temp = temp->next;
 	}
 	count_tokens(v, cmd, k);
-	
 	init_new_tokens(cmd);
 	set_tokens(v, cmd, k);
 }
