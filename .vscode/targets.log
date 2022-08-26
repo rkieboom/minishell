@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu Aug 18 03:48:09 2022
+# Make data base, printed on Fri Aug 26 23:58:39 2022
 
 # Variables
 
@@ -17,10 +17,10 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # makefile (from `Makefile', line 141)
- 
 OBJ := functions.o main.o ft_skipspaces.o add_new_line.o ft_swap.o check_input.o read_input.o syntax_error.o cd.o echo.o env.o pwd.o export.o export_utils.o unset.o execve.o commands.o relative_path.o absolute_path.o signals.o ft_exit.o ret_exit.o env_lst_new.o env_lstadd_back.o env_lstlast.o env_lstsize.o init.o search_env.o free_parse_commands.o parse.o parse_split_spaces.o parse_split_commands.o parse_split_tokens.o checkword.o createstring.o tokens.o create_cmd.o declaring_values.o tokens_cmd.o execute.o run_commands.o run_cmd_redir.o redirection_functions.o redirections.o pipes.o setup_pipes.o clear_pipes.o
 # makefile (from `Makefile', line 140)
 SRC := functions.c main.c ft_skipspaces.c add_new_line.c ft_swap.c check_input.c read_input.c syntax_error.c cd.c echo.c env.c pwd.c export.c export_utils.c unset.c execve.c commands.c relative_path.c absolute_path.c signals.c ft_exit.c ret_exit.c env_lst_new.c env_lstadd_back.c env_lstlast.c env_lstsize.c init.c search_env.c free_parse_commands.c parse.c parse_split_spaces.c parse_split_commands.c parse_split_tokens.c checkword.c createstring.c tokens.c create_cmd.c declaring_values.c tokens_cmd.c execute.c run_commands.c run_cmd_redir.c redirection_functions.c redirections.c pipes.c setup_pipes.c clear_pipes.c
+ 
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -28,7 +28,7 @@ SRC := functions.c main.c ft_skipspaces.c add_new_line.c ft_swap.c check_input.c
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/rkieboom/Documents/minishell
+CURDIR := /Users/rkieboom/Documents/Projects/minishell
 # makefile
 SHELL = /bin/sh
 # makefile (from `Makefile', line 134)
@@ -56,7 +56,7 @@ SRCS.COMMANDS.CD = commands/cd/cd.c
 # environment
 VSCODE_CWD = /
 # environment
-PATH = /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin
+PATH = /usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # makefile (from `Makefile', line 38)
@@ -64,7 +64,7 @@ LIBFTLIB = $(LIBFTDIR)/libft.a
 # makefile (from `Makefile', line 146)
 OBJS_B := 
 # makefile (from `Makefile', line 156)
-VPATH := ./ bin/ ./ .//cmd .//env_list .//env_list/functions .//newparsing .//free .//newexecute .//newexecute/redirections .//newexecute/pipes .//libft .//functions .//commands .//commands/execve .//commands/unset .//commands/echo .//commands/pwd .//commands/heredoc .//commands/env .//commands/exit .//commands/cd .//commands/export .//.git .//.git/objects .//.git/objects/pack .//.git/objects/info .//.git/info .//.git/logs .//.git/logs/refs .//.git/logs/refs/heads .//.git/logs/refs/remotes .//.git/logs/refs/remotes/origin .//.git/hooks .//.git/refs .//.git/refs/heads .//.git/refs/tags .//.git/refs/remotes .//.git/refs/remotes/origin .//.vscode
+VPATH := ./ bin/ ./ .//cmd .//env_list .//env_list/functions .//bin .//newparsing .//free .//newexecute .//newexecute/redirections .//newexecute/pipes .//libft .//functions .//commands .//commands/execve .//commands/unset .//commands/echo .//commands/pwd .//commands/heredoc .//commands/env .//commands/exit .//commands/cd .//commands/export .//.git .//.git/objects .//.git/objects/pack .//.git/objects/info .//.git/info .//.git/logs .//.git/logs/refs .//.git/logs/refs/heads .//.git/logs/refs/remotes .//.git/logs/refs/remotes/origin .//.git/hooks .//.git/refs .//.git/refs/heads .//.git/refs/tags .//.git/refs/remotes .//.git/refs/remotes/origin .//.vscode
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
@@ -72,7 +72,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 149)
 GR = \033[32;1m
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.OJqWeHPNc0/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.HODRqMU11t/Listeners
 # makefile (from `Makefile', line 34)
 SRCDIR = ./
 # automatic
@@ -88,7 +88,7 @@ OBJS := bin/functions.o bin/main.o bin/ft_skipspaces.o bin/add_new_line.o bin/ft
 # makefile (from `Makefile', line 115)
 SRCS.FREE = free/free_parse_commands.c 
 # environment
-PWD = /Users/rkieboom/Documents/minishell
+PWD = /Users/rkieboom/Documents/Projects/minishell
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
@@ -96,7 +96,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /Users/rkieboom
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/rkieboom/Library/Application Support/Code/CachedData/e4503b30fc78200f846c62cf8091b76ff5547662
 # environment
@@ -152,11 +152,11 @@ SRCS.COMMANDS.EXIT = commands/exit/ft_exit.c commands/exit/ret_exit.c
 # makefile (from `Makefile', line 84)
 SRCS.COMMANDS.EXECVE = commands/execve/execve.c commands/execve/commands.c commands/execve/relative_path.c commands/execve/absolute_path.c commands/execve/signals.c
 # default
-MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
 # default
 .VARIABLES := 
 # environment
-TMPDIR = /var/folders/tq/ldhs6m6n56g95gkdczmsym8h0000gn/T/
+TMPDIR = /var/folders/zl/nnb__gs17bld24nnybj_q5c40000gn/T/
 # automatic
 *F = $(notdir $*)
 # environment
@@ -173,7 +173,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.8165275.8165283
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.99664.99672
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # makefile (from `Makefile', line 145)
@@ -183,7 +183,7 @@ SRCS.ENV.LIST = env_list/env_lst_new.c env_list/env_lstadd_back.c env_list/env_l
 # automatic
 +F = $(notdir $+)
 # environment
-__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x2
+__CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x0
 # environment
 COMMAND_MODE = unix2003
 # default
@@ -217,9 +217,9 @@ SRCS.NEW.PARSING = newparsing/parse.c newparsing/parse_split_spaces.c newparsing
 # environment
 LANG = C
 # environment
-VSCODE_PID = 1686
+VSCODE_PID = 1086
 # variable set hash-table stats:
-# Load=102/1024=10%, Rehash=0, Collisions=23/227=10%
+# Load=102/1024=10%, Rehash=0, Collisions=24/233=10%
 
 # Pattern-specific Variable Values
 
@@ -227,84 +227,49 @@ VSCODE_PID = 1686
 
 # Directories
 
-# .//functions (device 16777220, inode 5346376): 8 files, no impossibilities.
-# .//.git (device 16777220, inode 5345910): 12 files, no impossibilities.
-# .//commands/libft/: could not be stat'd.
-# .//.git/objects/pack (device 16777220, inode 5345942): 4 files, no impossibilities.
-# .//commands/echo/libft/: could not be stat'd.
-# .//newparsing (device 16777220, inode 5346445): 10 files, no impossibilities.
-# .//env_list/functions/libft/: could not be stat'd.
-# .//.git/logs/refs/heads (device 16777220, inode 5346318): 3 files, no impossibilities.
-# .//newexecute/redirections/libft/: could not be stat'd.
-# .//newexecute/pipes/libft/: could not be stat'd.
-# .//.git/logs/refs (device 16777220, inode 5346310): 4 files, no impossibilities.
-# .//commands/env (device 16777220, inode 5346343): 3 files, no impossibilities.
-# .//newexecute/libft/: could not be stat'd.
-# . (device 16777220, inode 5345909): 19 files, no impossibilities.
-# .//commands/exit (device 16777220, inode 5346351): 4 files, no impossibilities.
-# .//libft/libft/: could not be stat'd.
-# .//commands/export/libft/: could not be stat'd.
-# .//.git/refs/remotes/origin (device 16777220, inode 5346307): 3 files, no impossibilities.
-# .//.git/logs/libft/: could not be stat'd.
-# .//commands/execve (device 16777220, inode 5346345): 7 files, no impossibilities.
-# .//functions/libft/: could not be stat'd.
-# .//.git/logs/refs/remotes/origin/libft/: could not be stat'd.
-# .//env_list (device 16777220, inode 5346363): 8 files, no impossibilities.
-# .//.git/objects/pack/libft/: could not be stat'd.
-# .//commands/heredoc (device 16777220, inode 5346357): 3 files, no impossibilities.
-# .//commands/unset/libft/: could not be stat'd.
-# .//.git/refs/tags/libft/: could not be stat'd.
-# .//commands/pwd (device 16777220, inode 5346359): 3 files, no impossibilities.
-# .//.vscode (device 16777220, inode 5346324): 8 files, no impossibilities.
-# .//.git/hooks (device 16777220, inode 5345914): 15 files, no impossibilities.
-# .//.git/libft/: could not be stat'd.
-# .//commands/cd (device 16777220, inode 5346338): 3 files, no impossibilities.
-# .//.git/logs/refs/heads/libft/: could not be stat'd.
-# .//commands/env/libft/: could not be stat'd.
-# .//.git/refs/remotes/origin/libft/: could not be stat'd.
-# .//.git/logs/refs/libft/: could not be stat'd.
-# .//.git/refs/heads (device 16777220, inode 5345929): 3 files, no impossibilities.
-# .//newparsing/libft/: could not be stat'd.
-# bin: could not be stat'd.
-# .//.git/refs (device 16777220, inode 5345928): 5 files, no impossibilities.
-# .//.git/objects/info (device 16777220, inode 5345943): 2 files, no impossibilities.
-# .//commands/exit/libft/: could not be stat'd.
-# .//.git/refs/remotes/libft/: could not be stat'd.
-# .//.git/info (device 16777220, inode 5345911): 3 files, no impossibilities.
-# .//env_list/libft/: could not be stat'd.
-# .//commands/execve/libft/: could not be stat'd.
-# .//.git/logs/refs/remotes (device 16777220, inode 5346311): 3 files, no impossibilities.
-# .//.git/hooks/libft/: could not be stat'd.
-# .//free (device 16777220, inode 5346373): 3 files, no impossibilities.
-# .//commands/heredoc/libft/: could not be stat'd.
-# .//commands/pwd/libft/: could not be stat'd.
-# .//.git/refs/heads/libft/: could not be stat'd.
-# .//newexecute/pipes (device 16777220, inode 5346435): 6 files, no impossibilities.
-# .//cmd (device 16777220, inode 5346332): 6 files, no impossibilities.
-# .//commands/cd/libft/: could not be stat'd.
-# .//.git/refs/libft/: could not be stat'd.
-# .//.git/refs/remotes (device 16777220, inode 5346306): 3 files, no impossibilities.
-# .//.git/objects/info/libft/: could not be stat'd.
-# .//.git/logs (device 16777220, inode 5346309): 4 files, no impossibilities.
-# .//.git/logs/refs/remotes/libft/: could not be stat'd.
-# .//.git/info/libft/: could not be stat'd.
-# .//commands (device 16777220, inode 5346337): 12 files, no impossibilities.
-# .//commands/unset (device 16777220, inode 5346361): 3 files, no impossibilities.
-# .//commands/echo (device 16777220, inode 5346341): 3 files, no impossibilities.
-# .//.git/objects/libft/: could not be stat'd.
-# .//env_list/functions (device 16777220, inode 5346369): 4 files, no impossibilities.
-# .//newexecute (device 16777220, inode 5346432): 8 files, no impossibilities.
-# .//.vscode/libft/: could not be stat'd.
-# .//newexecute/redirections (device 16777220, inode 5346440): 4 files, no impossibilities.
-# .//free/libft/: could not be stat'd.
-# .//.git/logs/refs/remotes/origin (device 16777220, inode 5346312): 3 files, no impossibilities.
-# .//.git/objects (device 16777220, inode 5345941): 4 files, no impossibilities.
-# .//libft (device 16777220, inode 5346384): 48 files, no impossibilities.
-# .//commands/export (device 16777220, inode 5346354): 4 files, no impossibilities.
-# .//cmd/libft/: could not be stat'd.
-# .//.git/refs/tags (device 16777220, inode 5345930): 2 files, no impossibilities.
+# .//functions (device 16777220, inode 528136): 8 files, no impossibilities.
+# .//.git (device 16777220, inode 504602): 12 files, no impossibilities.
+# .//.git/objects/pack (device 16777220, inode 504634): 4 files, no impossibilities.
+# .//newparsing (device 16777220, inode 528206): 10 files, no impossibilities.
+# .//.git/logs/refs/heads (device 16777220, inode 528077): 3 files, no impossibilities.
+# .//.git/logs/refs (device 16777220, inode 528061): 4 files, no impossibilities.
+# .//commands/env (device 16777220, inode 528103): 3 files, no impossibilities.
+# .//bin (device 16777220, inode 1346376): 49 files, no impossibilities.
+# . (device 16777220, inode 504601): 23 files, no impossibilities.
+# .//commands/exit (device 16777220, inode 528111): 4 files, no impossibilities.
+# .//.git/refs/remotes/origin (device 16777220, inode 528058): 3 files, no impossibilities.
+# .//commands/execve (device 16777220, inode 528105): 7 files, no impossibilities.
+# .//env_list (device 16777220, inode 528123): 8 files, no impossibilities.
+# .//commands/heredoc (device 16777220, inode 528117): 3 files, no impossibilities.
+# .//commands/pwd (device 16777220, inode 528119): 3 files, no impossibilities.
+# .//.vscode (device 16777220, inode 1276305): 6 files, no impossibilities.
+# .//.git/hooks (device 16777220, inode 504606): 15 files, no impossibilities.
+# .//commands/cd (device 16777220, inode 528098): 3 files, no impossibilities.
+# .//.git/refs/heads (device 16777220, inode 504621): 3 files, no impossibilities.
+# bin (device 16777220, inode 1346376): 49 files, no impossibilities.
+# .//.git/refs (device 16777220, inode 504620): 5 files, no impossibilities.
+# .//.git/objects/info (device 16777220, inode 504635): 2 files, no impossibilities.
+# .//.git/info (device 16777220, inode 504603): 3 files, no impossibilities.
+# .//.git/logs/refs/remotes (device 16777220, inode 528062): 3 files, no impossibilities.
+# .//free (device 16777220, inode 528133): 3 files, no impossibilities.
+# .//newexecute/pipes (device 16777220, inode 528196): 6 files, no impossibilities.
+# .//cmd (device 16777220, inode 528092): 6 files, no impossibilities.
+# .//.git/refs/remotes (device 16777220, inode 528057): 3 files, no impossibilities.
+# .//.git/logs (device 16777220, inode 528060): 4 files, no impossibilities.
+# .//commands (device 16777220, inode 528097): 12 files, no impossibilities.
+# .//commands/unset (device 16777220, inode 528121): 3 files, no impossibilities.
+# .//commands/echo (device 16777220, inode 528101): 3 files, no impossibilities.
+# .//env_list/functions (device 16777220, inode 528129): 4 files, no impossibilities.
+# .//newexecute (device 16777220, inode 528193): 8 files, no impossibilities.
+# .//newexecute/redirections (device 16777220, inode 528201): 4 files, no impossibilities.
+ 
+# .//.git/logs/refs/remotes/origin (device 16777220, inode 528063): 3 files, no impossibilities.
+# .//.git/objects (device 16777220, inode 504633): 4 files, no impossibilities.
+# .//libft (device 16777220, inode 528144): 83 files, no impossibilities.
+# .//commands/export (device 16777220, inode 528114): 4 files, no impossibilities.
+# .//.git/refs/tags (device 16777220, inode 504622): 2 files, no impossibilities.
 
-# 250 files, no impossibilities in 76 directories.
+# 385 files, no impossibilities in 40 directories.
 
 # Implicit Rules
 
@@ -319,36 +284,88 @@ bin/%.o: %.c
 
 # Files
 
- 
-# Not a target:
-bin/absolute_path.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/absolute_path.o: .//commands/execve/absolute_path.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `absolute_path'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 functions/check_input.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/pwd.o: .//commands/pwd/pwd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `pwd'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/cd.o: .//commands/cd/cd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `cd'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/pwd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//env_list/env_lstadd_back.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/cd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//newparsing/parse.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/tokens.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/tokens.o: .//newparsing/tokens.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `tokens'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 mac: libft//libft.a functions.c main.c functions/ft_skipspaces.c functions/add_new_line.c functions/ft_swap.c functions/check_input.c functions/read_input.c functions/syntax_error.c commands/cd/cd.c commands/echo/echo.c commands/env/env.c commands/pwd/pwd.c commands/export/export.c commands/export/export_utils.c commands/unset/unset.c commands/execve/execve.c commands/execve/commands.c commands/execve/relative_path.c commands/execve/absolute_path.c commands/execve/signals.c commands/exit/ft_exit.c commands/exit/ret_exit.c env_list/env_lst_new.c env_list/env_lstadd_back.c env_list/env_lstlast.c env_list/env_lstsize.c env_list/functions/init.c env_list/functions/search_env.c free/free_parse_commands.c newparsing/parse.c newparsing/parse_split_spaces.c newparsing/parse_split_commands.c newparsing/parse_split_tokens.c newparsing/checkword.c newparsing/createstring.c newparsing/tokens.c cmd/create_cmd.c cmd/declaring_values.c cmd/tokens_cmd.c newexecute/execute.c newexecute/run_commands.c newexecute/run_cmd_redir.c newexecute/redirections/redirection_functions.c newexecute/redirections/redirections.c newexecute/pipes/pipes.c newexecute/pipes/setup_pipes.c newexecute/pipes/clear_pipes.c bin/functions.o bin/main.o bin/ft_skipspaces.o bin/add_new_line.o bin/ft_swap.o bin/check_input.o bin/read_input.o bin/syntax_error.o bin/cd.o bin/echo.o bin/env.o bin/pwd.o bin/export.o bin/export_utils.o bin/unset.o bin/execve.o bin/commands.o bin/relative_path.o bin/absolute_path.o bin/signals.o bin/ft_exit.o bin/ret_exit.o bin/env_lst_new.o bin/env_lstadd_back.o bin/env_lstlast.o bin/env_lstsize.o bin/init.o bin/search_env.o bin/free_parse_commands.o bin/parse.o bin/parse_split_spaces.o bin/parse_split_commands.o bin/parse_split_tokens.o bin/checkword.o bin/createstring.o bin/tokens.o bin/create_cmd.o bin/declaring_values.o bin/tokens_cmd.o bin/execute.o bin/run_commands.o bin/run_cmd_redir.o bin/redirection_functions.o bin/redirections.o bin/pipes.o bin/setup_pipes.o bin/clear_pipes.o
 #  Implicit rule search has not been done.
@@ -360,28 +377,83 @@ mac: libft//libft.a functions.c main.c functions/ft_skipspaces.c functions/add_n
 	
 
 # Not a target:
-bin/ft_swap.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//commands/exit/ret_exit.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+ 
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/declaring_values.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//functions/read_input.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/ft_exit.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/ft_swap.o: .//functions/ft_swap.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_swap'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/declaring_values.o: .//cmd/declaring_values.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `declaring_values'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/ft_exit.o: .//commands/exit/ft_exit.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_exit'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 newexecute/redirections/redirection_functions.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//newexecute/redirections/redirection_functions.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 all: minishell
 #  Command-line target.
@@ -390,146 +462,345 @@ all: minishell
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
+
+bin/echo.o: .//commands/echo/echo.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `echo'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/echo.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//newparsing/tokens.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newparsing/checkword.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newexecute/redirections/redirections.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:58:36
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/search_env.o: .//env_list/functions/search_env.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `search_env'
+#  Last modified 2022-08-25 15:50:53
+ 
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/redirection_functions.o: .//newexecute/redirections/redirection_functions.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `redirection_functions'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/search_env.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/redirection_functions.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//cmd/declaring_values.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 cmd/declaring_values.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//newexecute/run_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 env_list/env_lstsize.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/env_lst_new.o: .//env_list/env_lst_new.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `env_lst_new'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/export.o: .//commands/export/export.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `export'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/env_lst_new.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/export.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//env_list/env_lstlast.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 main.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-25 15:38:40
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/echo/echo.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/parse_split_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/parse_split_commands.o: .//newparsing/parse_split_commands.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parse_split_commands'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
-# Not a target:
-bin/commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/commands.o: .//commands/execve/commands.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `commands'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 commands/execve/absolute_path.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/check_input.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//free/free_parse_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/create_cmd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/check_input.o: .//functions/check_input.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `check_input'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/create_cmd.o: .//cmd/create_cmd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `create_cmd'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 functions/syntax_error.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/run_cmd_redir.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//commands/execve/relative_path.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
+bin/run_cmd_redir.o: .//newexecute/run_cmd_redir.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `run_cmd_redir'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+# Not a target:
+.//commands/env/env.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/parse.o: .//newparsing/parse.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parse'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/execve.o: .//commands/execve/execve.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `execve'
  
-# Not a target:
-bin/parse.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
-# Not a target:
-bin/execve.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/init.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/init.o: .//env_list/functions/init.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `init'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 free/free_parse_commands.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 cmd/create_cmd.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .SUFFIXES:
@@ -539,9 +810,21 @@ cmd/create_cmd.c:
 
 # Not a target:
 commands/export/export.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//commands/export/export_utils.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 bin/clear_pipes.o:
@@ -552,160 +835,326 @@ bin/clear_pipes.o:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-21 21:20:21
+#  Last modified 2022-08-18 18:51:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/ret_exit.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//commands/exit/ft_exit.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/ret_exit.o: .//commands/exit/ret_exit.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ret_exit'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+# Not a target:
+ 
+.//newparsing/checkword.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 functions/read_input.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/run_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/run_commands.o: .//newexecute/run_commands.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `run_commands'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 newparsing/tokens.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/env_lstsize.o: .//env_list/env_lstsize.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `env_lstsize'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/env_lstsize.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//commands/pwd/pwd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/execve/signals.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 env_list/functions/search_env.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//commands/cd/cd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newexecute/execute.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/execve/commands.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//newexecute/run_cmd_redir.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 15:15:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/unset/unset.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/syntax_error.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//newparsing/parse_split_tokens.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/parse_split_tokens.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//functions/syntax_error.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/syntax_error.o: .//functions/syntax_error.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `syntax_error'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+# Not a target:
+.//newparsing/parse_split_spaces.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+ 
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/parse_split_tokens.o: .//newparsing/parse_split_tokens.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parse_split_tokens'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 minishell: libft//libft.a functions.c main.c functions/ft_skipspaces.c functions/add_new_line.c functions/ft_swap.c functions/check_input.c functions/read_input.c functions/syntax_error.c commands/cd/cd.c commands/echo/echo.c commands/env/env.c commands/pwd/pwd.c commands/export/export.c commands/export/export_utils.c commands/unset/unset.c commands/execve/execve.c commands/execve/commands.c commands/execve/relative_path.c commands/execve/absolute_path.c commands/execve/signals.c commands/exit/ft_exit.c commands/exit/ret_exit.c env_list/env_lst_new.c env_list/env_lstadd_back.c env_list/env_lstlast.c env_list/env_lstsize.c env_list/functions/init.c env_list/functions/search_env.c free/free_parse_commands.c newparsing/parse.c newparsing/parse_split_spaces.c newparsing/parse_split_commands.c newparsing/parse_split_tokens.c newparsing/checkword.c newparsing/createstring.c newparsing/tokens.c cmd/create_cmd.c cmd/declaring_values.c cmd/tokens_cmd.c newexecute/execute.c newexecute/run_commands.c newexecute/run_cmd_redir.c newexecute/redirections/redirection_functions.c newexecute/redirections/redirections.c newexecute/pipes/pipes.c newexecute/pipes/setup_pipes.c newexecute/pipes/clear_pipes.c bin/functions.o bin/main.o bin/ft_skipspaces.o bin/add_new_line.o bin/ft_swap.o bin/check_input.o bin/read_input.o bin/syntax_error.o bin/cd.o bin/echo.o bin/env.o bin/pwd.o bin/export.o bin/export_utils.o bin/unset.o bin/execve.o bin/commands.o bin/relative_path.o bin/absolute_path.o bin/signals.o bin/ft_exit.o bin/ret_exit.o bin/env_lst_new.o bin/env_lstadd_back.o bin/env_lstlast.o bin/env_lstsize.o bin/init.o bin/search_env.o bin/free_parse_commands.o bin/parse.o bin/parse_split_spaces.o bin/parse_split_commands.o bin/parse_split_tokens.o bin/checkword.o bin/createstring.o bin/tokens.o bin/create_cmd.o bin/declaring_values.o bin/tokens_cmd.o bin/execute.o bin/run_commands.o bin/run_cmd_redir.o bin/redirection_functions.o bin/redirections.o bin/pipes.o bin/setup_pipes.o bin/clear_pipes.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-08-25 15:50:55
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/9=0%
 #  commands to execute (from `Makefile', line 178):
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
 	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 	
 
- 
 # Not a target:
 commands/execve/execve.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/signals.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//cmd/tokens_cmd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 14:58:26
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/signals.o: .//commands/execve/signals.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `signals'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 libft//libft.a:
 #  Implicit rule search has not been done.
-#  Implicit/static pattern stem: `'
-#  File does not exist.
+#  Last modified 2022-08-25 15:50:51
 #  File has been updated.
-#  Needs to be updated (-q is set).
-# automatic
-# @ := libft//libft.a
-# automatic
-# % := 
-# automatic
-# * := 
-# automatic
-# + := 
-# automatic
-# | := 
-# automatic
-# < := 
-# automatic
-# ^ := 
-# automatic
-# ? := 
-# variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  Successfully updated.
 #  commands to execute (from `Makefile', line 182):
 	make -C $(LIBFTDIR)
 	
 
-# Not a target:
-bin/parse_split_spaces.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/parse_split_spaces.o: .//newparsing/parse_split_spaces.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `parse_split_spaces'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 newexecute/pipes/pipes.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-25 15:25:00
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newparsing/parse_split_commands.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/env.o: .//commands/env/env.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `env'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/env.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//env_list/env_lst_new.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 fclean: clean
 #  Implicit rule search has not been done.
@@ -720,39 +1169,91 @@ fclean: clean
 
 # Not a target:
 env_list/functions/init.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+ 
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/tokens_cmd.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/tokens_cmd.o: .//cmd/tokens_cmd.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `tokens_cmd'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
-# Not a target:
-bin/functions.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/functions.o: functions.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `functions'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 newparsing/parse.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/read_input.o: .//functions/read_input.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `read_input'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/read_input.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//functions/add_new_line.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//commands/unset/unset.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 cmd/tokens_cmd.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 14:58:26
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 bin/pipes.o:
@@ -760,23 +1261,65 @@ bin/pipes.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-bin/createstring.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/createstring.o: .//newparsing/createstring.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `createstring'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 env_list/env_lstadd_back.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//commands/execve/absolute_path.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//functions/ft_skipspaces.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 functions/add_new_line.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//newparsing/createstring.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+ 
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -784,29 +1327,99 @@ functions/add_new_line.c:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-bin/redirections.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/redirections.o: .//newexecute/redirections/redirections.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `redirections'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bin/redirections.o
+# automatic
+# % := 
+# automatic
+# * := redirections
+# automatic
+# + := .//newexecute/redirections/redirections.c
+# automatic
+# | := 
+# automatic
+# < := .//newexecute/redirections/redirections.c
+# automatic
+# ^ := .//newexecute/redirections/redirections.c
+# automatic
+# ? := .//newexecute/redirections/redirections.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/19=5%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/unset.o: .//commands/unset/unset.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `unset'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/unset.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//env_list/env_lstsize.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//cmd/create_cmd.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 functions/ft_skipspaces.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/relative_path.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//commands/export/export.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/relative_path.o: .//commands/execve/relative_path.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `relative_path'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 re: fclean all
 #  Implicit rule search has not been done.
@@ -834,70 +1447,151 @@ clean:
 
 # Not a target:
 newparsing/parse_split_tokens.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newexecute/run_cmd_redir.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-19 15:15:59
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 env_list/env_lstlast.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+ 
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newparsing/parse_split_spaces.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/exit/ret_exit.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/env_lstadd_back.o: .//env_list/env_lstadd_back.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `env_lstadd_back'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/env_lstadd_back.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//commands/execve/signals.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//commands/execve/commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newexecute/pipes/setup_pipes.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newexecute/run_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/add_new_line.o: .//functions/add_new_line.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `add_new_line'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/free_parse_commands.o: .//free/free_parse_commands.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `free_parse_commands'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
  
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
+
+bin/export_utils.o: .//commands/export/export_utils.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `export_utils'
+#  Last modified 2022-08-25 15:50:52
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/add_new_line.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/free_parse_commands.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-# Not a target:
-bin/export_utils.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//commands/execve/execve.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 linux: libft//libft.a functions.c main.c functions/ft_skipspaces.c functions/add_new_line.c functions/ft_swap.c functions/check_input.c functions/read_input.c functions/syntax_error.c commands/cd/cd.c commands/echo/echo.c commands/env/env.c commands/pwd/pwd.c commands/export/export.c commands/export/export_utils.c commands/unset/unset.c commands/execve/execve.c commands/execve/commands.c commands/execve/relative_path.c commands/execve/absolute_path.c commands/execve/signals.c commands/exit/ft_exit.c commands/exit/ret_exit.c env_list/env_lst_new.c env_list/env_lstadd_back.c env_list/env_lstlast.c env_list/env_lstsize.c env_list/functions/init.c env_list/functions/search_env.c free/free_parse_commands.c newparsing/parse.c newparsing/parse_split_spaces.c newparsing/parse_split_commands.c newparsing/parse_split_tokens.c newparsing/checkword.c newparsing/createstring.c newparsing/tokens.c cmd/create_cmd.c cmd/declaring_values.c cmd/tokens_cmd.c newexecute/execute.c newexecute/run_commands.c newexecute/run_cmd_redir.c newexecute/redirections/redirection_functions.c newexecute/redirections/redirections.c newexecute/pipes/pipes.c newexecute/pipes/setup_pipes.c newexecute/pipes/clear_pipes.c bin/functions.o bin/main.o bin/ft_skipspaces.o bin/add_new_line.o bin/ft_swap.o bin/check_input.o bin/read_input.o bin/syntax_error.o bin/cd.o bin/echo.o bin/env.o bin/pwd.o bin/export.o bin/export_utils.o bin/unset.o bin/execve.o bin/commands.o bin/relative_path.o bin/absolute_path.o bin/signals.o bin/ft_exit.o bin/ret_exit.o bin/env_lst_new.o bin/env_lstadd_back.o bin/env_lstlast.o bin/env_lstsize.o bin/init.o bin/search_env.o bin/free_parse_commands.o bin/parse.o bin/parse_split_spaces.o bin/parse_split_commands.o bin/parse_split_tokens.o bin/checkword.o bin/createstring.o bin/tokens.o bin/create_cmd.o bin/declaring_values.o bin/tokens_cmd.o bin/execute.o bin/run_commands.o bin/run_cmd_redir.o bin/redirection_functions.o bin/redirections.o bin/pipes.o bin/setup_pipes.o bin/clear_pipes.o
 #  Implicit rule search has not been done.
@@ -909,52 +1603,124 @@ linux: libft//libft.a functions.c main.c functions/ft_skipspaces.c functions/add
 	
 
 # Not a target:
+.//newexecute/redirections/redirections.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-26 23:58:36
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
 newexecute/pipes/clear_pipes.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 newparsing/createstring.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/main.o: main.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `main'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
-bin/main.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//functions/ft_swap.c:
+#  Implicit rule search has been done.
+ 
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
-bin/ft_skipspaces.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+.//env_list/functions/search_env.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+bin/ft_skipspaces.o: .//functions/ft_skipspaces.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `ft_skipspaces'
+#  Last modified 2022-08-25 15:50:51
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 commands/execve/relative_path.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/checkword.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/checkword.o: .//newparsing/checkword.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `checkword'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 commands/env/env.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/env_lstlast.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+bin/env_lstlast.o: .//env_list/env_lstlast.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `env_lstlast'
+#  Last modified 2022-08-25 15:50:53
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 bin/setup_pipes.o:
@@ -964,66 +1730,141 @@ bin/setup_pipes.o:
 
 # Not a target:
 functions/ft_swap.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 functions.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/export/export_utils.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
-# Not a target:
-bin/execute.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+ 
+bin/execute.o: .//newexecute/execute.c
+#  Implicit rule search has been done.
+#  Implicit/static pattern stem: `execute'
+#  Last modified 2022-08-25 15:50:54
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+#  commands to execute (from `Makefile', line 172):
+	@mkdir -p $(OBJDIR)
+	@printf "$(GR)+$(RC)"
+	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
+	
 
 # Not a target:
 commands/exit/ft_exit.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//commands/echo/echo.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//functions/check_input.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//env_list/functions/init.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//newexecute/execute.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.//newparsing/parse_split_commands.c:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/pwd/pwd.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 env_list/env_lst_new.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 commands/cd/cd.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 18:51:30
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # files hash-table stats:
-# Load=106/1024=10%, Rehash=0, Collisions=37/524=7%
+# Load=148/1024=14%, Rehash=0, Collisions=205/1653=12%
 # VPATH Search Paths
 
 # No `vpath' search paths.
 
 # General (`VPATH' variable) search path:
-# .//cmd:.//env_list:.//env_list/functions:.//newparsing:.//free:.//newexecute:.//newexecute/redirections:.//newexecute/pipes:.//libft:.//functions:.//commands:.//commands/execve:.//commands/unset:.//commands/echo:.//commands/pwd:.//commands/heredoc:.//commands/env:.//commands/exit:.//commands/cd:.//commands/export:.//.git:.//.git/objects:.//.git/objects/pack:.//.git/objects/info:.//.git/info:.//.git/logs:.//.git/logs/refs:.//.git/logs/refs/heads:.//.git/logs/refs/remotes:.//.git/logs/refs/remotes/origin:.//.git/hooks:.//.git/refs:.//.git/refs/heads:.//.git/refs/tags:.//.git/refs/remotes:.//.git/refs/remotes/origin:.//.vscode
+# bin:.//cmd:.//env_list:.//env_list/functions:.//bin:.//newparsing:.//free:.//newexecute:.//newexecute/redirections:.//newexecute/pipes:.//libft:.//functions:.//commands:.//commands/execve:.//commands/unset:.//commands/echo:.//commands/pwd:.//commands/heredoc:.//commands/env:.//commands/exit:.//commands/cd:.//commands/export:.//.git:.//.git/objects:.//.git/objects/pack:.//.git/objects/info:.//.git/info:.//.git/logs:.//.git/logs/refs:.//.git/logs/refs/heads:.//.git/logs/refs/remotes:.//.git/logs/refs/remotes/origin:.//.git/hooks:.//.git/refs:.//.git/refs/heads:.//.git/refs/tags:.//.git/refs/remotes:.//.git/refs/remotes/origin:.//.vscode
 
 # # of strings in strcache: 1
 # # of strcache buffers: 1
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Aug 18 03:48:09 2022
+# Finished Make data base on Fri Aug 26 23:58:39 2022
 
  
