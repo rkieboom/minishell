@@ -25,4 +25,5 @@
 	syntax_error aanpassen!
 
 11. Attempting free on not allocated space  = ][;ht[h;[ptrl,hp[ krhpt[ rkhtr						[fixed]
-12. Heap buffer overflow = cat main.c | > out.txt
+12. Heap buffer overflow = cat main.c | > out.txt and pipes fucking up stdin and stdout???			[fixed]
+13. c;lear		
