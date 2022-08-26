@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 16:25:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/18 03:50:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/08/19 14:58:26 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,25 +41,33 @@ static int get_token_pos(t_list *v, int k, int token_count)
 {
 	int	i;
 	int	j;
+	int	resetter;
 
 	i = 0;
 	j = 0;
+	resetter = 0;
 	while (i - j != token_count)
 	{
 		if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
+		{
+			resetter = v->tokens[k].token_pos[i] + 1;
 			j++;
+		}
 		i++;
 	}
 	if (token_count == 0)
 		while (1)
 		{
 			if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
+			{
+				resetter = v->tokens[k].token_pos[i] + 1;
 				j++;
+			}
 			else
-				return (v->tokens[k].token_pos[i]);
+				return (v->tokens[k].token_pos[i] - resetter);
 			i++;
 		}
-	return (v->tokens[k].token_pos[i]);
+	return (v->tokens[k].token_pos[i] - resetter);
 }
 
 static void	set_tokens(t_list *v, t_newcommand *pipes, int k)
