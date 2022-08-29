@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   cmd.h                                              :+:    :+:            */
+/*   tokens_cmd.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/03/17 13:45:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/27 03:23:56 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/03/17 16:25:48 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/08/29 14:23:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CMD_H
-# define CMD_H
+#include "tokens.h"
 
-# include "../header.h"
+void	tokens_cmd(t_list *v, t_newcommand *cmd, int k)
+{
+	t_newcommand	*temp;
 
-void	declaring_values(t_list *v, t_newcommand *temp, int pipes, int k);
-void	tokens_cmd(t_list *v, t_newcommand *pipes, int k);
-
-#endif
+	temp = cmd;
+	if (v->tokens[k].total == 0)
+		return ;
+	while (temp)
+	{
+		temp->tokens = ft_calloc(1, sizeof(t_tokens));
+		if (!temp->tokens)
+			ft_ret_exit(1, 1);
+		temp = temp->next;
+	}
+	count_tokens(v, cmd, k);
+	init_new_tokens(cmd);
+	set_tokens(v, cmd, k);
+}

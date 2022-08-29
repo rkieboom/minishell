@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 12:47:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/21 14:53:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/08/27 03:24:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	create_command(t_list *v, t_newcommand *pipes_cmd, int k)
 	i = 0;
 	while (v->parse.commands[k][i])
 		i++;
-	pipes_cmd->command = ft_calloc(i+1, sizeof(char *));
+	pipes_cmd->command = ft_calloc(i + 1, sizeof(char *));
 	if (!pipes_cmd->command)
 		ft_ret_exit(1, 1);
 	i = 0;
@@ -32,7 +32,7 @@ static void	create_command(t_list *v, t_newcommand *pipes_cmd, int k)
 	}
 }
 
-int		create_cmd(t_list *v, int k)
+int	create_cmd(t_list *v, int k)
 {
 	int	i;
 	int	pipes;
@@ -54,23 +54,5 @@ int		create_cmd(t_list *v, int k)
 			tokens_cmd(v, &v->cmd[i], i);
 		i++;
 	}
-	// i = 0;
-	// while (i < k)
-	// {
-	// 	temp = &v->cmd[i];
-	// 	while (temp)
-	// 	{
-	// 		int j = 0;
-	// 		while (temp->command[j])
-	// 		{
-	// 			printf("%i-id=[%i] [%s]\n", i, temp->id ,temp->command[j]);
-	// 			j++;
-	// 		}
-	// 		printf("tokenstotal=[%i]\n---\n", temp->tokens->total);
-	// 		temp = temp->next;
-	// 	}
-	// 	i++;
-	// }
-	// exit(1);
 	return (0);
 }

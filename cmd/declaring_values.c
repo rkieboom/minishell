@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 13:14:16 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/21 12:54:42 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/08/27 03:24:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
-int		pipe_location(t_list *v, int k, int token_pos)
+int	pipe_location(t_list *v, int k, int token_pos)
 {
 	int	i;
 	int	len;
@@ -81,15 +81,14 @@ static void	middle_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 		i++;
 		j--;
 	}
-	
 }
 
 static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 {
-	int i;
+	int	i;
 	int	j;
-	int l;
-	
+	int	l;
+
 	i = 0;
 	j = pipe_location(v, k, pipes);
 	if (!j)
@@ -115,8 +114,8 @@ static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 
 void	declaring_values(t_list *v, t_newcommand *pipes_cmd, int pipes, int k)
 {
-	int	i;
-	t_newcommand *temp;
+	int				i;
+	t_newcommand	*temp;
 
 	temp = pipes_cmd;
 	i = 0;
