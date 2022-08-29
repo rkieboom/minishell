@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/06/17 01:12:32 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/08/29 14:25:00 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -133,8 +133,10 @@ SRCS.NEW.PARSING = 		newparsing/parse.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
 						cmd/declaring_values.c \
-						cmd/tokens_cmd.c \
-
+						cmd/tokens_cmd/tokens_cmd.c \
+						cmd/tokens_cmd/set_tokens.c \
+						cmd/tokens_cmd/init_new_tokens.c \
+						cmd/tokens_cmd/count_tokens.c \
 
 # String manipulation magic
 SRC		:= $(notdir $(SRCS))
