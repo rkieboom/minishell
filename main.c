@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/25 15:38:40 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/08/27 03:22:42 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void	loop(t_list *list)
 
 static void	increase_shlvl(t_list *list)
 {
-	int shlvl;
-	char *newnum;
+	int		shlvl;
+	char	*newnum;
 
 	shlvl = ft_atoi(search_env(list->env, "SHLVL", 5));
 	shlvl++;
