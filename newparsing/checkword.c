@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 17:09:34 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void		calculate_dollar_length(t_list *list, char *str, int *i, int *lengt
 	}
 	else
 	{
-		temp = ft_itoa(list->ret);
+		temp = ft_itoa(g_ret);
 		if (!temp)
 			ft_ret_exit(1, 1);
 		(*length) += ft_strlen(temp);

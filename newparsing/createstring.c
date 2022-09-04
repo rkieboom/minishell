@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:03:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/05 13:30:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 17:09:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void return_dollar_value(t_list *list, struct vars *vars)
 
 	if (vars->str[vars->i + 1] == '?')
 	{
-		temp = ft_itoa(list->ret);
+		temp = ft_itoa(g_ret);
 		if (!temp)
 			ft_ret_exit(1, 1);
 		ft_memcpy(vars->newstr + vars->x, temp, ft_strlen(temp));
