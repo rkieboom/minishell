@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/24 13:46:53 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 16:50:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # include <readline/readline.h>
 # include <readline/history.h>
+
+unsigned char	g_ret;
 
 typedef struct s_parse
 {
@@ -73,7 +75,6 @@ typedef struct s_list
 {
 	int				stdout_cpy;
 	int				stdin_cpy;
-	int				ret;
 	t_parse			parse;
 	t_gnl			gnl;
 	t_dir			dir;
