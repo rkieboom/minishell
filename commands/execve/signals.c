@@ -6,25 +6,27 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/05 20:17:31 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/07 16:01:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 17:08:33 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-void int_sighandler(int signum)
+void	int_sighandler(int signum)
 {
 	(void)signum;
 	ft_putchar_fd('\n', 1);
+	g_ret = 130;
 }
 
-void quit_sighandler(int signum)
+void	quit_sighandler(int signum)
 {
 	(void)signum;
 	ft_putstr_fd("Quit: 3\n", 1);
+	g_ret = 131;
 }
 
-void	signals()//return status???
+void	signals(void)
 {
 	signal(SIGINT, int_sighandler);
 	signal(SIGQUIT, quit_sighandler);
