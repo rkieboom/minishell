@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   free_parse_commands.c                              :+:    :+:            */
+/*   free_all.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/06/21 21:34:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 20:10:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void	free_parse_commands(t_list *list)
+static void	free_tokens(t_list *list)
 {
 	int	i;
-	int	j;
-	int totalcommands;
 
 	i = 0;
 	while (list->parse.commands[i])
-		i++;
-	totalcommands = i;
-	i = 0;
-	while (list->parse.commands[i])
 	{
-		while(list->tokens[i].total)
+		while (list->tokens[i].total)
 		{
 			free(list->tokens[i].token[list->tokens[i].total - 1]);
 			list->tokens[i].total--;
@@ -34,6 +28,14 @@ void	free_parse_commands(t_list *list)
 		free(list->tokens[i].token_pos);
 		i++;
 	}
+	free(list->tokens);
+}
+
+static void	free_parse_commands(t_list *list)
+{
+	int	i;
+	int	j;
+
 	i = 0;
 	if (list->parse.commands)
 	{
@@ -50,54 +52,26 @@ void	free_parse_commands(t_list *list)
 		}
 		free(list->parse.commands);
 	}
+}
+
+static void	free_gnl_buf(t_list *list)
+{
 	if (list->gnl.buf)
 	{
 		free(list->gnl.buf);
 		list->gnl.buf = NULL;
 	}
-	free(list->tokens);
-	//freeing new tokens
-	i = 0;
-	int k = 0;
-	t_newcommand *temp;
-	t_newcommand *temp2;
-	while (totalcommands)
-	{
-		k = 0;
-		temp = &list->cmd[i];
-		while (temp)
-		{
-			temp2 = temp->next;
-			//freeing commands
-			j = 0;
-			while (temp->command[j])
-			{
-				free(temp->command[j]);
-				j++;
-			}
-			free(temp->command);
-			//freeing commands
-			if (temp->tokens && temp->tokens->total == 0)
-				free(temp->tokens);
-			else if (temp->tokens)
-			{	
-				j = 0;
-				while (temp->tokens->token[j])
-				{
-					free(temp->tokens->token[j]);
-					j++;
-				}
-				free(temp->tokens->token);
-				free(temp->tokens->token_pos);
-				free(temp->tokens);
-			}
-			if (k != 0)
-				free(temp);
-			temp = temp2;
-			k++;
-		}
-		i++;
-		totalcommands--;
-	}
-	free(list->cmd);
+}
+
+void	free_all(t_list *list)
+{
+	int	totalcommands;
+
+	totalcommands = 0;
+	while (list->parse.commands[totalcommands])
+		totalcommands++;
+	free_tokens(list);
+	free_parse_commands(list);
+	free_gnl_buf(list);
+	free_commands(list, 0, 0, totalcommands);
 }
