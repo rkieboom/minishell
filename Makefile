@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/08/29 14:25:00 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/09/04 19:55:54 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,7 +112,8 @@ SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_commands.c \
 						newexecute/pipes/setup_pipes.c \
 						newexecute/pipes/clear_pipes.c \
 
-SRCS.FREE =				free/free_parse_commands.c \
+SRCS.FREE =				free/free_all.c \
+						free/free_commands.c \
 
 SRCS.PARSING =			parsing/parse.c \
 						parsing/parse_split.c \
