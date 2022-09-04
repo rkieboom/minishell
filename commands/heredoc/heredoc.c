@@ -6,16 +6,16 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 15:03:34 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/24 16:00:23 by spelle        ########   odam.nl         */
+/*   Updated: 2022/09/04 16:08:30 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-static char *add_newline(char *str)
+static char	*add_newline(char *str)
 {
-	char *newstr;
-	int length;
+	char	*newstr;
+	int		length;
 
 	if (!str)
 		return (ft_strdup("\n"));
@@ -29,7 +29,7 @@ static char *add_newline(char *str)
 	return (newstr);
 }
 
-static char *cunt_function(char *buf)
+static char	*cunt_function(char *buf)
 {
 	size_t	size;
 	int		i;
@@ -47,9 +47,9 @@ static char *cunt_function(char *buf)
 
 static char	*read_data(char *delimiter)
 {
-	char *buf;
-	char *total;
-	char *tmp;
+	char	*buf;
+	char	*total;
+	char	*tmp;
 
 	total = ft_strdup("");
 	buf = readline("> ");
@@ -77,17 +77,18 @@ static char	*read_data(char *delimiter)
 
 int	here_count_adj(t_list *v, char *str)
 {
-	int i;
-	int	count = 0;
+	int	i;
+	int	count;
 
 	i = 0;
+	count = 0;
 	while (str[i])
 	{
 		while (str[i] && str[i] != '$')
 			i++;
 		count += i;
 		if (!str[i])
-			break;
+			break ;
 		count += ft_strlen(search_env(v->env, str + i, 0));
 		i++;
 		while (str[i] && (ft_isdigit(str[i]) || \
