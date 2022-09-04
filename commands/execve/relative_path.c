@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 16:22:43 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-static void free_paths(char **str)
+static void	free_paths(char **str)
 {
 	int	i;
 
@@ -25,33 +25,41 @@ static void free_paths(char **str)
 	free(str);
 }
 
-static char	*get_path(char *name, char *ENV_PATH) //protection and leaks
+static char	*create_path(char **paths, char *newpath, int i, char *name)
+{
+	char	*temp;
+
+	newpath = ft_strdup(paths[i]);
+	if (!newpath)
+		ft_ret_exit(1, 1);
+	temp = newpath;
+	newpath = ft_strjoin(newpath, "/");
+	if (!newpath)
+		ft_ret_exit(1, 1);
+	free(temp);
+	temp = newpath;
+	newpath = ft_strjoin(newpath, name);
+	if (!newpath)
+		ft_ret_exit(1, 1);
+	free(temp);
+	temp = newpath;
+	return (newpath);
+}
+
+static char	*get_path(char *name, char *ENV_PATH)
 {
 	int		i;
 	char	**paths;
 	char	*newpath;
-	char	*temp;
 
 	i = 0;
+	newpath = 0;
 	paths = ft_split(ENV_PATH, ':');
 	if (!paths)
 		ft_ret_exit(1, 1);
 	while (paths[i])
 	{
-		newpath = ft_strdup(paths[i]);
-		if (!newpath)
-			ft_ret_exit(1, 1);
-		temp = newpath;
-		newpath = ft_strjoin(newpath, "/");
-		if (!newpath)
-			ft_ret_exit(1, 1);
-		free(temp);
-		temp = newpath;
-		newpath = ft_strjoin(newpath, name);
-		if (!newpath)
-			ft_ret_exit(1, 1);
-		free(temp);
-		temp = newpath;
+		newpath = create_path(paths, newpath, i, name);
 		if (!check_exist(newpath))
 		{
 			free_paths(paths);
