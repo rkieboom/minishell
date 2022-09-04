@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 15:26:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 15:50:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static int	cd_check_permission(char *PATH)
 	return (0);
 }
 
-static int	cd_1_arg(t_list *v, char **str)
+static int	cd_1_arg(t_list *v)
 {
 	int		ret;
 	char	cwd[255];
@@ -74,7 +74,7 @@ int	cd(t_list *v, char **str)
 	char	cwd[255];
 
 	if (!str[1])
-		return (cd_1_arg(v, str));
+		return (cd_1_arg(v));
 	if (cd_check_exist(str[1]) || cd_check_permission(str[1]))
 		return (1);
 	env_change_content(v->env, "OLDPWD", getcwd(cwd, 255));
