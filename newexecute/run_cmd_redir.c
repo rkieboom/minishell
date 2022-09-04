@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/19 15:15:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 17:07:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static char **init_newcmd(char **cmd, int k)
 {
 	char **newcmd;
 	int	i;
-	
+
 	i = 0;
 	newcmd = ft_calloc(k+1, sizeof(char *));
 	if (!newcmd)
@@ -64,21 +64,21 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 		return ;
 	}
 	if (!ft_strncmp(newcmd[0], "echo", 5))
-		list->ret = echo(newcmd);
+		g_ret = echo(newcmd);
 	else if (!ft_strncmp(newcmd[0], "cd", 3))
-		list->ret = cd(list, newcmd);
+		g_ret = cd(list, newcmd);
 	else if (!ft_strncmp(newcmd[0], "pwd", 4))
-		list->ret = pwd();
+		g_ret = pwd();
 	else if (!ft_strncmp(newcmd[0], "export", 7))
-		list->ret = export(list->env, newcmd);
+		g_ret = export(list->env, newcmd);
 	else if (!ft_strncmp(newcmd[0], "unset", 6))
-		list->ret = unset(list->env, newcmd);
+		g_ret = unset(list->env, newcmd);
 	else if (!ft_strncmp(newcmd[0], "env", 4))
-		list->ret = env(list->env);
+		g_ret = env(list->env);
 	else if (!ft_strncmp(newcmd[0], "exit", 5))
 		ft_exit(newcmd);
 	else
-		list->ret = ft_execve(list, newcmd);
+		g_ret = ft_execve(list, newcmd, 0);
 	if (v->tokens && v->tokens->total > 0)
 		free(newcmd);
 }
