@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/07 15:52:10 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 17:07:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,8 @@ int	is_absolute_path(char *str)
 	return (0);
 }
 
-int	ft_execve(t_list *list, char **str)
+int	ft_execve(t_list *list, char **str, int ret)
 {
-	int		ret;
 	char	**envp;
 	char	*path;
 	pid_t	pid;
@@ -108,9 +107,10 @@ int	ft_execve(t_list *list, char **str)
 			ft_ret_exit(127, 1);
 		else
 			ft_ret_exit(1, 0);
-	}	
+	}
 	else
 		waitpid(pid, &ret, 0);
-	ret = WEXITSTATUS(ret);
-	return (ret);
+	if (g_ret == 130 || g_ret == 131)
+		return (g_ret);
+	return (WEXITSTATUS(ret));
 }
