@@ -6,32 +6,37 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/21 22:36:18 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 15:40:51 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "../commands.h"
 
+static void	ft_newlineoption(int *i, int *newlineoption, char **str)
+{
+	*newlineoption = 0;
+	*i = 1;
+	if (str[1][0] == '-')
+	{
+		while (str[1][*i] == 'n')
+			(*i)++;
+		if (str[1][*i] != '\0')
+			*i = 1;
+		else
+		{
+			*i = 2;
+			*newlineoption = 1;
+		}
+	}
+}
+
 int	echo(char **str)
 {
 	int	i;
 	int	newlineoption;
 
-	newlineoption = 0;
-	i = 1;
-	if (str[1][0] == '-')
-	{
-		while (str[1][i] == 'n')
-			i++;
-		if (str[1][i] != '\0')
-			i = 1;
-		else
-		{
-			i = 2;
-			newlineoption = 1;
-		}
-	}
+	ft_newlineoption(&i, &newlineoption, str);
 	while (str[i])
 	{
 		ft_putstr_fd(str[i], 1);
