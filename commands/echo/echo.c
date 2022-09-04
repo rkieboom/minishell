@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 15:40:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 16:19:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ int	echo(char **str)
 	int	i;
 	int	newlineoption;
 
+	if (!str[1])
+	{
+		ft_putchar_fd('\n', 1);
+		return (0);
+	}
 	ft_newlineoption(&i, &newlineoption, str);
 	while (str[i])
 	{
