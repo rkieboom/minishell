@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 16:50:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/04 20:03:10 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,9 @@ typedef struct s_list
 
 void	new_parse(t_list *list);
 
-void	free_parse_commands(t_list *list);
+void	free_all(t_list *list);
+void	free_commands(t_list *list, t_newcommand *temp, \
+						t_newcommand *temp2, int totalcommands);
 
 void	ft_error(char *msg);
 int		syntax_error(t_newcommand *cmd);
