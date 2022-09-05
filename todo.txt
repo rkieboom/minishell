@@ -28,3 +28,5 @@
 12. Heap buffer overflow = cat main.c | > out.txt and pipes fucking up stdin and stdout???			[fixed]
 13. c;lear																							[fixed]
 14. Control + D exit status == 1 should be 0
+15.      f ; gdfgfdgfd;   bad acces
+16.       f;   g;          ˆˆˆˆˆˆˆ
