@@ -6,19 +6,19 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 17:07:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 14:05:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-static char **init_newcmd(char **cmd, int k)
+static char	**init_newcmd(char **cmd, int k)
 {
-	char **newcmd;
-	int	i;
+	char	**newcmd;
+	int		i;
 
 	i = 0;
-	newcmd = ft_calloc(k+1, sizeof(char *));
+	newcmd = ft_calloc(k + 1, sizeof(char *));
 	if (!newcmd)
 		ft_ret_exit(1, 1);
 	while (i < k)
@@ -30,7 +30,7 @@ static char **init_newcmd(char **cmd, int k)
 	return (newcmd);
 }
 
-char **set_cmd(t_newcommand *cmd)
+char	**set_cmd(t_newcommand *cmd)
 {
 	int	i;
 
@@ -39,10 +39,11 @@ char **set_cmd(t_newcommand *cmd)
 		return (cmd->command);
 	while (cmd->tokens->total < i)
 	{
-		if (cmd->tokens->token_pos[i] && (ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], "<", 2) \
+		if (cmd->tokens->token_pos[i] && \
+		(ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], "<", 2) \
 		|| ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], ">", 2) \
 		|| ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], "<<", 3) \
-		|| ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], ">>", 3))) \
+		|| ft_strncmp(cmd->tokens->token[cmd->tokens->token_pos[i]], ">>", 3)))
 			break ;
 		i++;
 	}
@@ -59,8 +60,8 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 		ft_ret_exit(1, 0);
 	if (!newcmd[0])
 	{
-		if (v->tokens && v->tokens->total > 0)
-			free(newcmd);
+		// if (v->tokens && v->tokens->total > 0)//miss niet weghalen ff kijken
+		free(newcmd);
 		return ;
 	}
 	if (!ft_strncmp(newcmd[0], "echo", 5))

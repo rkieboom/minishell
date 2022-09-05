@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:31:29 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/19 17:12:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 13:33:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ typedef struct s_vars
 	int				size;
 	int				oldpipes;
 	int				newpipes[2];
-	int				FD_STDIN_CPY;
-	int				FD_STDOUT_CPY;
+	int				fd_stdin_cpy;
+	int				fd_stdout_cpy;
 
 	t_newcommand	*temp;
 }				t_vars;
 
 void	setup_pipes(t_vars *vars);
 void	clear_pipes(t_vars *vars);
-
 
 #endif

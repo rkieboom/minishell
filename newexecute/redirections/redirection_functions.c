@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:45:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 13:34:58 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	single_redirection_right(t_newcommand *v, int i)
 {
-	v->tokens->stdout_fd = open(v->command[v->tokens->token_pos[i] + 1],  O_RDWR | O_TRUNC | O_CREAT, 0644);
+	v->tokens->stdout_fd = open(\
+	v->command[v->tokens->token_pos[i] + 1] \
+	, O_RDWR | O_TRUNC | O_CREAT, 0644);
 	if (v->tokens->stdout_fd < 0)
 		ft_ret_exit(1, 1);
 	close(v->tokens->stdout_fd);
@@ -23,7 +25,9 @@ void	single_redirection_right(t_newcommand *v, int i)
 
 void	double_redirection_right(t_newcommand *v, int i)
 {
-	v->tokens->stdout_fd = open(v->command[v->tokens->token_pos[i] + 1],  O_RDWR | O_APPEND | O_CREAT, 0644);
+	v->tokens->stdout_fd = open(\
+	v->command[v->tokens->token_pos[i] + 1] \
+	, O_RDWR | O_APPEND | O_CREAT, 0644);
 	if (v->tokens->stdout_fd < 0)
 		ft_ret_exit(1, 1);
 	close(v->tokens->stdout_fd);
@@ -32,7 +36,8 @@ void	double_redirection_right(t_newcommand *v, int i)
 
 int	single_redirection_left(t_newcommand *v, int i)
 {
-	v->tokens->stdin_fd = open(v->command[v->tokens->token_pos[i] + 1], O_RDONLY);
+	v->tokens->stdin_fd = open(\
+	v->command[v->tokens->token_pos[i] + 1], O_RDONLY);
 	if (v->tokens->stdin_fd < 0)
 	{
 		ft_putstr_fd("no such file or directory: ", 2);

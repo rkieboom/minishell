@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:03:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 17:09:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 14:55:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 struct vars
 {
-	int i;
-	int x;
-	int length;
-	char *str;
-	char *newstr;
+	int		i;
+	int		x;
+	int		length;
+	char	*str;
+	char	*newstr;
 };
 
-static void return_dollar_value(t_list *list, struct vars *vars)
+static void	return_dollar_value(t_list *list, struct vars *vars)
 {
-	char *temp;
+	char	*temp;
 
 	if (vars->str[vars->i + 1] == '?')
 	{
@@ -38,7 +38,9 @@ static void return_dollar_value(t_list *list, struct vars *vars)
 		vars->x--;
 		vars->i++;
 	}
-	else if (vars->str[vars->i + 1] == '\0' || (!ft_isdigit(vars->str[vars->i + 1]) && !ft_isalpha(vars->str[vars->i + 1]) && vars->str[vars->i + 1] != '_'))
+	else if (vars->str[vars->i + 1] == '\0' || \
+	(!ft_isdigit(vars->str[vars->i + 1]) && \
+	!ft_isalpha(vars->str[vars->i + 1]) && vars->str[vars->i + 1] != '_'))
 	{
 		vars->newstr[vars->x] = '$';
 		return ;
@@ -92,7 +94,5 @@ char *createstring(t_list *list, char *str, int length)
 		vars.length--;
 		vars.x++;
 	}
-	// vars.newstr[length] = 0;
-	// free(str);
 	return (vars.newstr);
 }

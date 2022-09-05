@@ -6,15 +6,15 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/05 18:32:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 10:47:25 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
-# include <readline/readline.h>
-# include <readline/history.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
-static void sighandler(int sig)
+static void	sighandler(int sig)
 {
 	if (sig == SIGINT)
 	{

@@ -6,15 +6,16 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 17:09:34 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 14:52:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-static void		calculate_dollar_length(t_list *list, char *str, int *i, int *length)
+static void	calculate_dollar_length(\
+t_list *list, char *str, int *i, int *length)
 {
-	char *temp;
+	char	*temp;
 
 	if (str[*i + 1] != '?')
 	{
@@ -36,16 +37,36 @@ static void		calculate_dollar_length(t_list *list, char *str, int *i, int *lengt
 		(*i)++;
 		(*length)--;
 	}
-	
 }
 
-static int		calculate_length(t_list *list, char *str)
+static void	double_quote(t_list *list, char *str, int *i, int *length)
 {
-	int i;
-	int length;
+	(*i)++;
+	while (str[*i] && str[*i] != '\"')
+	{
+		if (str[*i] == '$')
+			calculate_dollar_length(list, str, i, length);
+		(*i)++;
+		(*length)++;
+		list->parse.comma2 = 0;
+	}
+	(*length)--;
+}
 
-	i = 0;
-	length = 0;
+static void	single_quote(t_list *list, char *str, int *i, int *length)
+{
+	(*i)++;
+	while (str[*i] && str[*i] != '\'')
+	{
+		(*i)++;
+		(*length)++;
+		list->parse.comma1 = 0;
+	}
+	(*length)--;
+}
+
+static int	calculate_length(t_list *list, char *str, int i, int length)
+{
 	while (str[i] == ' ' && str[i])
 		i++;
 	while (str[i])
@@ -56,33 +77,15 @@ static int		calculate_length(t_list *list, char *str)
 			i++;
 		if (str[i] == '$')
 		{
-			if (!(!ft_isdigit(str[i + 1]) && !ft_isalpha(str[i + 1]) && str[i + 1] != '_' && str[i + 1] != '?'))
+			if (!(!ft_isdigit(str[i + 1]) \
+			&& !ft_isalpha(str[i + 1]) \
+			&& str[i + 1] != '_' && str[i + 1] != '?'))
 				calculate_dollar_length(list, str, &i, &length);
 		}
 		else if (str[i] == '\"')
-		{
-			i++;
-			while (str[i] && str[i] != '\"')
-			{
-				if (str[i] == '$')
-					calculate_dollar_length(list, str, &i, &length);
-				i++;
-				length++;
-				list->parse.comma2 = 0;
-			}
-			length--;
-		}
+			double_quote(list, str, &i, &length);
 		else if (str[i] == '\'')
-		{
-			i++;
-			while (str[i] && str[i] != '\'')
-			{
-				i++;
-				length++;
-				list->parse.comma1 = 0;
-			}
-			length--;
-		}
+			single_quote(list, str, &i, &length);
 		i++;
 		length++;
 	}
@@ -91,26 +94,18 @@ static int		calculate_length(t_list *list, char *str)
 
 char	*checkword(t_list *list, char *str)
 {
-	int length;
-	char *temp;
+	int		length;
+	char	*temp;
 
-	if (!ft_strchr(str, '$') && !ft_strchr(str, '\'') && !ft_strchr(str, '\"')) //dan hoeft er niks veranderd te worden
+	if (!ft_strchr(str, '$') && !ft_strchr(str, '\'') && !ft_strchr(str, '\"'))
 		return (str);
-	length = calculate_length(list, str);
-	// printf("Calculating lenght went correct!\n");
+	length = calculate_length(list, str, 0, 0);
 	if (length == 0)
 	{
 		free(str);
-		return (ft_strdup("")); //miss lege string returnen
+		return (ft_strdup(""));
 	}
-	// printf("Allocated %i Bytes\n", length + 1);
-	// printf("It should be %lu Bytes\n", 38 + ft_strlen(search_env(list->env, "$USER", 0)) + ft_strlen(search_env(list->env, "$HOME", 0)) + 1);
-	// ft_calloc(length + 1, sizeof(char));
-	// if (!newstr)
-		// ft_ret_exit(1, 1);
 	temp = createstring(list, str, length);
-	// printf("Creating string went correct!\n");
-	// printf("Str = [%s]-[%zu]\n", temp, ft_strlen(temp));
 	free(str);
 	return (temp);
 }

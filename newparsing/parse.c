@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/06/17 01:15:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 10:41:58 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void	new_parse(t_list *list)
 	length = 0;
 	splitted = parse_split_commands(list, ';');
 	while (splitted[length])
-		length++; 
+		length++;
 	list->parse.commands = (char ***)malloc((length + 1) * sizeof(char **));
 	list->parse.commands[length] = 0;
 	list->tokens = calloc(length, sizeof(t_tokens));
@@ -164,12 +164,8 @@ void	new_parse(t_list *list)
 	}
 	tokens(list);
 	while (splitted[length])
-		length++; 
+		length++;
 	set_heredoc(list, length);
 	freemem(splitted);
-	// for(int j = 0; list->parse.commands[j]; j++)
-	// 	for(int k = 0; list->parse.commands[j][k]; k++)
-	// 		printf("%i. %s\n", k, list->parse.commands[j][k]);
-	// while(1);
 	parsing(list);
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:59:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/19 16:53:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 13:53:43 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	ft_pipes(t_list *list, t_newcommand *v);
 
 int		redirections(t_list *list, t_newcommand *v);
+int		set_redir(t_list *list, t_newcommand *v);
 void	reset_redirections(t_list *list, t_newcommand *v);
 
 void	single_redirection_right(t_newcommand *v, int i);

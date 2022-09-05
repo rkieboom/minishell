@@ -6,11 +6,21 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 21:28:23 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/14 17:25:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 15:11:54 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
+
+typedef struct s_vars
+{
+	int		i;
+	int		j;
+	int		p;
+	int		x;
+	int		start;
+	char	**newstr;
+}				t_vars;
 
 int	array_thingy(int *p)
 {
@@ -67,56 +77,56 @@ int	check_char_str(t_list *list, char *str)
 	return (0);
 }
 
+static void	init_vars(t_vars *vars, int size)
+{
+	vars->i = 0;
+	vars->j = 0;
+	vars->x = 0;
+	vars->newstr = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!vars->newstr)
+		ft_ret_exit(1, 1);
+	vars->newstr[size] = 0;
+}
+
 char	**parse_split_tokens(t_list *list, int size, int k)
 {
-	int		i;
-	int		j;
-	int		p;
-	int		x;
-	int		start;
-	char	**newstr;
+	t_vars	vars;
 
-	i = 0;
-	j = 0;
-	x = 0;
-	newstr = (char **)malloc(sizeof(char *) * (size + 1));
-	if (!newstr)
-		return (NULL);
-	newstr[size] = 0;
-	while (j < size && list->parse.commands[k][j])
+	init_vars(&vars, size);
+	while (vars.j < size && list->parse.commands[k][vars.j])
 	{
-		if (!check_char_str(list, list->parse.commands[k][j]))
-			newstr[j + x] = ft_strdup(list->parse.commands[k][j]);
+		if (!check_char_str(list, list->parse.commands[k][vars.j]))
+			vars.newstr[vars.j + vars.x] = ft_strdup(list->parse.commands[k][vars.j]);
 		else
 		{
-			if (check_char(&list->parse.commands[k][j][i]))
-				p = 1;
+			if (check_char(&list->parse.commands[k][vars.j][vars.i]))
+				vars.p = 1;
 			else
-				p = 0;
-			start = i;
-			while (i < (int)ft_strlen(list->parse.commands[k][j]) && list->parse.commands[k][j][i])
+				vars.p = 0;
+			vars.start = vars.i;
+			while (vars.i < (int)ft_strlen(list->parse.commands[k][vars.j]) && list->parse.commands[k][vars.j][vars.i])
 			{
-				if (list->parse.comma1 == 0 && list->parse.comma2 == 0 && ((p == 1 && !check_char(&list->parse.commands[k][j][i + 1]) && array_thingy(&p)) || (!list->parse.commands[k][j][i + 1] && array_thingy(&p))))
+				if (list->parse.comma1 == 0 && list->parse.comma2 == 0 && ((vars.p == 1 && !check_char(&list->parse.commands[k][vars.j][vars.i + 1]) && array_thingy(&vars.p)) || (!list->parse.commands[k][vars.j][vars.i + 1] && array_thingy(&vars.p))))
 				{
-					if (!list->parse.commands[k][j][i + 1] && ft_strlen(list->parse.commands[k][j]) == 1)
-						i++;
-					newstr[j + x] = ft_substr(list->parse.commands[k][j], start, i - start + 1);
-					start = i + 1;
-					x++;	
+					if (!list->parse.commands[k][vars.j][vars.i + 1] && ft_strlen(list->parse.commands[k][vars.j]) == 1)
+						vars.i++;
+					vars.newstr[vars.j + vars.x] = ft_substr(list->parse.commands[k][vars.j], vars.start, vars.i - vars.start + 1);
+					vars.start = vars.i + 1;
+					vars.x++;	
 				}
-				else if (list->parse.comma1 == 0 && list->parse.comma2 == 0 && (((p == 0 && check_char(&list->parse.commands[k][j][i + 1]) && array_thingy(&p)))))
+				else if (list->parse.comma1 == 0 && list->parse.comma2 == 0 && (((vars.p == 0 && check_char(&list->parse.commands[k][vars.j][vars.i + 1]) && array_thingy(&vars.p)))))
 				{
-					newstr[j + x] = ft_substr(list->parse.commands[k][j], start, i - start + 1);
-					start = i + 1;
-					x++;
+					vars.newstr[vars.j + vars.x] = ft_substr(list->parse.commands[k][vars.j], vars.start, vars.i - vars.start + 1);
+					vars.start = vars.i + 1;
+					vars.x++;
 				}
-				i++;
+				vars.i++;
 			}
-			x -= 1;
+			vars.x -= 1;
 		}
-		i = 0;
-		j++;
+		vars.i = 0;
+		vars.j++;
 	}
-	free_old_and_set(list, k, list->parse.commands[k], newstr);
+	free_old_and_set(list, k, list->parse.commands[k], vars.newstr);
 	return (NULL);
 }

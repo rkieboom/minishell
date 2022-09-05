@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:16:07 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/19 16:44:26 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 13:33:31 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	setup_pipes(t_vars *vars)
 		close(1);
 		dup2(vars->newpipes[1], 1);
 	}
-	else if (vars->size == 1) //de laatste keer, alleen lezen uit pipes
+	else if (vars->size == 1)
 	{
 		close(0);
 		dup2(vars->oldpipes, 0);
 	}
-	else //tussenin allebei lezen en schrijven uit pipes
+	else
 	{
 		close(1);
 		close(0);

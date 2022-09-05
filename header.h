@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 20:03:10 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 14:12:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-unsigned char	g_ret;
+int	g_ret;
 
 typedef struct s_parse
 {
@@ -90,7 +90,7 @@ void	free_commands(t_list *list, t_newcommand *temp, \
 						t_newcommand *temp2, int totalcommands);
 
 void	ft_error(char *msg);
-int		syntax_error(t_newcommand *cmd);
+int		syntax_error(t_newcommand *cmd, int i);
 
 void	execute(t_list *list, t_newcommand *v, int k);
 int		skipspaces(const char *str);

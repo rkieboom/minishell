@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 10:21:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/18 13:15:46 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 14:11:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,28 +22,26 @@ int	cmd_len(char **str)
 	return (i);
 }
 
-int	syntax_error(t_newcommand *cmd)
+int	syntax_error(t_newcommand *cmd, int i)
 {
-	int	i;
-
-	i = 0;
 	if (!cmd->tokens || cmd->tokens->total == 0)
 		return (0);
 	while (i < cmd->tokens->total)
 	{
-		if (i + 1 == cmd->tokens->total)//laatste
+		if (i + 1 == cmd->tokens->total)
 		{
-			if (cmd->tokens->token_pos[i] == cmd_len(cmd->command) - 1) //cat main.c >            laatste arg is een token
+			if (cmd->tokens->token_pos[i] == cmd_len(cmd->command) - 1)
 			{
 				ft_putendl_fd("minishell-4.2$: syntax error near newline", 2);
+				g_ret = 258;
 				return (1);
 			}
-			return (0);
 		}
-		else if (cmd->tokens->token_pos[i] + 1 == cmd->tokens->token_pos[i + 1])//als 2 tokens naast elkaar zitten
+		else if (cmd->tokens->token_pos[i] + 1 == cmd->tokens->token_pos[i + 1])
 		{
 			ft_putstr_fd("minishell-4.2$: syntax error near token ", 2);
-			ft_putendl_fd(cmd->tokens->token[i + 1], 2);//token zelf 
+			ft_putendl_fd(cmd->tokens->token[i + 1], 2);
+			g_ret = 258;
 			return (1);
 		}
 		i++;
