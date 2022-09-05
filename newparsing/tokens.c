@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/30 00:29:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/04/23 16:11:11 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 14:07:57 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	set_tokens(t_list *list)
 	int	k;
 
 	k = 0;
-	while(list->parse.commands[k])
+	while (list->parse.commands[k])
 	{
 		i = 0;
 		j = 0;
@@ -52,7 +52,8 @@ static void	set_tokens(t_list *list)
 		{
 			if (check_char(list->parse.commands[k][j]))
 			{
-				list->tokens[k].token[i] = ft_strdup(list->parse.commands[k][j]);
+				list->tokens[k].token[i] = \
+				ft_strdup(list->parse.commands[k][j]);
 				list->tokens[k].token_pos[i] = j;
 				i++;
 			}
@@ -81,7 +82,7 @@ static void	identify_tokens(t_list *list)
 				list->tokens[i].single_redirection_left++;
 			else if (!ft_strncmp(list->tokens[i].token[j], ">", 2))
 				list->tokens[i].single_redirection_right++;
-			else if(!ft_strncmp(list->tokens[i].token[j], "|", 2))
+			else if (!ft_strncmp(list->tokens[i].token[j], "|", 2))
 				list->tokens[i].pipe++;
 			j++;
 		}

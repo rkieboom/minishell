@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:17:04 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/25 15:25:00 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/05 13:32:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipes.h"
 
-static void init_vars(t_vars *var, t_newcommand *v)
+static void	init_vars(t_vars *var, t_newcommand *v)
 {
 	var->temp = v;
 	var->i = 0;
@@ -23,13 +23,13 @@ static void init_vars(t_vars *var, t_newcommand *v)
 	}
 	var->size = var->i;
 	var->i = 0;
-	var->FD_STDIN_CPY = dup(0);
-	var->FD_STDOUT_CPY = dup(1);
+	var->fd_stdin_cpy = dup(0);
+	var->fd_stdout_cpy = dup(1);
 }
 
 void	ft_pipes(t_list *list, t_newcommand *v)
 {
-	t_vars var;
+	t_vars	var;
 
 	init_vars(&var, v);
 	while (var.temp)
