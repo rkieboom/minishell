@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 14:12:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/08 00:32:49 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,19 @@ typedef struct s_dir
 	struct dirent	*dp;
 }					t_dir;
 
+typedef struct s_heredoc_data
+{
+	char					*str;
+	struct s_heredoc_data	*next;
+}				t_heredoc_data;
+
+typedef struct s_heredoc
+{
+	int				heredoc_q;
+	char			*eof;
+	t_heredoc_data	*data;
+}				t_heredoc;
+
 typedef struct s_tokens
 {
 	int			total;
@@ -60,7 +73,7 @@ typedef struct s_tokens
 	int			pipe;
 	int			last_l;
 	int			last_r;
-	int			*heredoc_q;
+	t_heredoc	*heredoc;
 }				t_tokens;
 
 typedef struct s_newcommand
