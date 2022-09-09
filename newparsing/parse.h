@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:01:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/07 00:34:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/09 12:18:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		check_char_str(t_list *list, char *str);
 int		check_char(char *c);
 
 void	set_heredoc(t_list *list, int k);
+void	heredoc_parse(t_list *list, int k);
 
 int		array_thingy(int *p);
 
