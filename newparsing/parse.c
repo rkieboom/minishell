@@ -6,13 +6,19 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 10:41:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/07 02:00:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-//echo $test        $?$?$"Dit is   een test'$USER  '   "'$PWD   '"$HOME    " doei
-
 #include "parse.h"
+
+typedef struct s_vars
+{
+	int		i;
+	int		j;
+	int		length;
+	char	**splitted;
+}				t_vars;
 
 static void	freemem(char **result)
 {
@@ -28,11 +34,11 @@ static void	freemem(char **result)
 		free(result);
 }
 
-void	parsing(t_list *list)
+static void	parsing(t_list *list)
 {
-	int i;
-	int j;
-	int x;
+	int	i;
+	int	j;
+	int	x;
 
 	j = 0;
 	x = 0;
@@ -42,7 +48,8 @@ void	parsing(t_list *list)
 		x = 0;
 		while (list->parse.commands[j][i] != NULL)
 		{
-			list->parse.commands[j][i - x] = checkword(list, list->parse.commands[j][i]);
+			list->parse.commands[j][i - x] = \
+			checkword(list, list->parse.commands[j][i]);
 			if (!list->parse.commands[j][i])
 				x++;
 			i++;
@@ -51,121 +58,43 @@ void	parsing(t_list *list)
 	}
 }
 
-int	parse_arraysize(char **str, t_list *list)
+static void	init_allocate(t_list *list, t_vars *vars)
 {
-	int	i;
-	int	j;
-	int	p;
-	int	length;
-
-	i = 0;
-	j = 0;
-	p = 0;
-	length = 0;
-	while (str[j])
-	{
-		if (check_char_str(list, str[j]) == 0)
-			length++;
-		else
-		{
-			length++;
-			if (check_char(&str[j][i]))
-				p = 1;
-			else
-				p = 0;
-			while (str[j][i])
-			{	
-				check_quote(list, &str[j][i]);
-				if (list->parse.comma1 == 0 && list->parse.comma2 == 0 && ((p == 1 && !check_char(&str[j][i]) && array_thingy(&p))))
-					length++;
-				else if (list->parse.comma1 == 0 && list->parse.comma2 == 0 && (((p == 0 && check_char(&str[j][i]) && array_thingy(&p)))))
-					length++;
-				i++;
-			}
-		}
-		i = 0;
-		j++;
-	}
-	return (length);
-}
-
-
-static void heredoc_allocation(t_list *list, int k)
-{
-	int	i;
-
-	i = 0;
-	while (i < k)
-	{
-		if (list->tokens[i].double_redirection_left)
-		{
-			list->tokens[i].heredoc_q = ft_calloc(sizeof(int), list->tokens[i].double_redirection_left);
-			if (!list->tokens[i].heredoc_q)
-				ft_ret_exit(1, 1);
-		}
-		i++;
-	}
-}
-
-static void set_heredoc(t_list *list, int k)
-{
-	int	i;
-	int current;
-	int	pos;
-	int	loop;
-
-	loop = 0;
-
-	heredoc_allocation(list, k);
-	while (loop < k)
-	{
-		i = 0;
-		current = 0;
-		while (i < list->tokens[loop].total)
-		{
-			if (!ft_strncmp(list->tokens[loop].token[i], "<<", 3))
-			{
-				pos = list->tokens[loop].token_pos[i] + 1;
-				if (list->parse.commands[loop][pos][0] == '\"' || list->parse.commands[loop][pos][0] == '\'') // cat << [EOF   <------]
-					list->tokens[loop].heredoc_q[current] = 1;
-				current++;
-			}
-			i++;
-		}
-		loop++;
-	}
+	ft_bzero(vars, sizeof(t_vars));
+	vars->splitted = parse_split_commands(list, ';');
+	while (vars->splitted[vars->length])
+		vars->length++;
+	list->parse.commands = \
+	(char ***)malloc((vars->length + 1) * sizeof(char **));
+	if (!list->parse.commands)
+		ft_ret_exit(1, 1);
+	list->parse.commands[vars->length] = 0;
+	list->tokens = calloc(vars->length, sizeof(t_tokens));
+	if (!list->tokens)
+		ft_ret_exit(1, 1);
 }
 
 void	new_parse(t_list *list)
 {
-	int i;
-	int j;
-	int length;
-	char **splitted;
+	t_vars	vars;
 
-	i = 0;
-	j = 0;
-	length = 0;
-	splitted = parse_split_commands(list, ';');
-	while (splitted[length])
-		length++;
-	list->parse.commands = (char ***)malloc((length + 1) * sizeof(char **));
-	list->parse.commands[length] = 0;
-	list->tokens = calloc(length, sizeof(t_tokens));
-	while (length)
+	init_allocate(list, &vars);
+	while (vars.length)
 	{
-		list->parse.commands[i] = parse_split_spaces(list, splitted[i], ' ');
-		parse_split_tokens(list, parse_arraysize(list->parse.commands[i], list), i);// gaat wss goed
-		while (list->parse.commands[i][j])
-			j++;
-		j = 0;
-		length--;
-		i++;
+		list->parse.commands[vars.i] = \
+		parse_split_spaces(list, vars.splitted[vars.i], ' ');
+		parse_split_tokens(list, \
+		parse_arraysize(list->parse.commands[vars.i], list), vars.i);
+		while (list->parse.commands[vars.i][vars.j])
+			vars.j++;
+		vars.j = 0;
+		vars.length--;
+		vars.i++;
 	}
 	tokens(list);
-	while (splitted[length])
-		length++;
-	set_heredoc(list, length);
-	freemem(splitted);
+	while (vars.splitted[vars.length])
+		vars.length++;
+	set_heredoc(list, vars.length);
+	freemem(vars.splitted);
 	parsing(list);
 }
