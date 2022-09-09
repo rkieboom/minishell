@@ -6,11 +6,18 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/05/04 12:03:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/07 00:57:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parse.h"
+#include "../parse.h"
+
+typedef struct s_vars
+{
+	int	i;
+	int	k;
+	int	length;
+}				t_vars;
 
 static int	arraysize(const char *s, char c, t_list *list)
 {
@@ -38,39 +45,39 @@ static int	arraysize(const char *s, char c, t_list *list)
 	return (k);
 }
 
-static char	**splitter(t_list *list, const char *str, char **result)
+static void	init_vars(t_list *list, t_vars *vars)
 {
-	int	i;
-	int	k;
-	int	length;
-
-	i = 0;
-	k = 0;
-	length = 0;
+	ft_bzero(vars, sizeof(t_vars));
 	list->parse.comma1 = 0;
 	list->parse.comma2 = 0;
-	while (str[i])
+}
+
+static char	**splitter(t_list *list, const char *str, char **result)
+{
+	t_vars	vars;
+
+	init_vars(list, &vars);
+	while (str[vars.i])
 	{
-		check_quote(list, (char *)str + i);
-		if (str[i] != ' ' || list->parse.comma1 || list->parse.comma2)
-		{
-			length++;
-		}
+		check_quote(list, (char *)str + vars.i);
+		if (str[vars.i] != ' ' || list->parse.comma1 || list->parse.comma2)
+			vars.length++;
 		else
 		{
-			if (length != 0)
+			if (vars.length != 0)
 			{
-				result[k] = ft_substr(str, i - length, length);
-				if (!result[k])
+				result[vars.k] = ft_substr \
+				(str, vars.i - vars.length, vars.length);
+				if (!result[vars.k])
 					ft_ret_exit(1, 1);
-				k++;
-				length = 0;
+				vars.k++;
+				vars.length = 0;
 			}
 		}
-		i++;
+		vars.i++;
 	}
-	if (str[i] == '\0' && i > 0 && str[i - 1] != ' ')
-		result[k] = ft_substr(str, i - length, length);
+	if (str[vars.i] == '\0' && vars.i > 0 && str[vars.i - 1] != ' ')
+		result[vars.k] = ft_substr(str, vars.i - vars.length, vars.length);
 	return (result);
 }
 
