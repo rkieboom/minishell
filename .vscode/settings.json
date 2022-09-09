@@ -4,5 +4,6 @@
 		"header.h": "c",
 		"libft.h": "c",
 		"execute.h": "c"
-	}
+	},
+	"C_Cpp.errorSquiggles": "Disabled"
 }
