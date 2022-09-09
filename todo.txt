@@ -17,7 +17,7 @@
 	- Repeat multiple times using different commands.												[done]
 5. ls -la > output.txt																				[done]														
 6. in execve met tokens string kleiner maken | cat main.c > output.txt, ">" moet nullptr worden		[done]
-7. heredoc maken																					
+7. heredoc maken																					      <------
 8. ;;;;;;; = crash ||    ;   ;   ;   = crash  														[done]
 9. cat main.c | cat todo.txt >> test.txt															[works]														
 10. cat main.c | > output.txt mag wel																[not done not needed]
@@ -30,3 +30,4 @@
 14. Control + D exit status == 1 should be 0
 15.      f ; gdfgfdgfd;   bad acces
 16.       f;   g;          ˆˆˆˆˆˆˆ
+17. there are still leaks try echo $PWD / $PWDf / $PWD5 / $PWD> / $PWD
