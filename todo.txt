@@ -30,4 +30,4 @@
 14. Control + D exit status == 1 should be 0
 15.      f ; gdfgfdgfd;   bad acces
 16.       f;   g;          ˆˆˆˆˆˆˆ
-17. there are still leaks try echo $PWD / $PWDf / $PWD5 / $PWD> / $PWD
+17. there are still leaks try echo $PWD / $PWDf / $PWD5 / $PWD> / $PWD								[leaks are from readline]
