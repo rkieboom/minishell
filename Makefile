@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/09/08 15:23:52 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/09/09 15:06:41 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -118,15 +118,6 @@ SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_commands.c \
 SRCS.FREE =				free/free_all.c \
 						free/free_commands.c \
 
-SRCS.PARSING =			parsing/parse.c \
-						parsing/parse_split.c \
-						parsing/split_spaces.c \
-						parsing/functions/double_quote.c \
-						parsing/functions/single_quote.c \
-						parsing/functions/dollar.c \
-						parsing/tokens.c \
-						parsing/tokens_utils.c \
-
 SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/parse_arraysize.c \
 						newparsing/splitting/parse_split_spaces.c \
@@ -136,6 +127,7 @@ SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/createstring.c \
 						newparsing/tokens.c \
 						newparsing/heredoc/heredoc_functions.c \
+						newparsing/heredoc/heredoc_parsing.c \
 						newparsing/check_chars.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
