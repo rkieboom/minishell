@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/05 13:35:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 13:55:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/08 17:23:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int	set_redir(t_list *list, t_newcommand *v)
 		if (redir_left(list, v))
 			return (1);
 	}
+	// if (v->tokens->double_redirection_left)
+	// {
+		
+	// }
 	if (v->tokens->last_r >= 0)
 		redir_right(list, v);
 	return (0);

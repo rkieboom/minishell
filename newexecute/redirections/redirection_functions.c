@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:45:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 13:34:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/09 00:19:16 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,9 @@ int	single_redirection_left(t_newcommand *v, int i)
 	close(v->tokens->stdin_fd);
 	v->tokens->last_l = v->tokens->token_pos[i];
 	return (0);
+}
+
+void	double_redirection_left(t_newcommand *v, int i)//miss nog dingen toevoegen
+{
+	v->tokens->last_l = v->tokens->token_pos[i];
 }
