@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/29 14:08:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/29 14:29:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/08 15:24:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,5 @@ void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 		vars.temp = vars.temp->next;
 		vars.token_local_c = 0;
 	}
+	set_heredoc_tokens(v, pipes, k);
 }
