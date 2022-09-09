@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/09/05 13:53:20 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/09/08 15:23:52 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ ifeq ($(DEBUG),2)
 CFLAGS	+= -g3 -fsanitize=address -fno-omit-frame-pointer
 endif
 ifeq ($(DEBUG),3)
+CC = /usr/local/opt/llvm@8/bin/clang
 CFLAGS	+= -g3 -fsanitize=leak
 endif
 
@@ -67,6 +68,7 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/check_input.c \
 						functions/read_input.c \
 						functions/syntax_error.c \
+						functions/array_thingy.c \
 
 SRCS.COMMANDS.CD =		commands/cd/cd.c \
 
@@ -126,12 +128,15 @@ SRCS.PARSING =			parsing/parse.c \
 						parsing/tokens_utils.c \
 
 SRCS.NEW.PARSING = 		newparsing/parse.c \
-						newparsing/parse_split_spaces.c \
-						newparsing/parse_split_commands.c \
-						newparsing/parse_split_tokens.c \
+						newparsing/parse_arraysize.c \
+						newparsing/splitting/parse_split_spaces.c \
+						newparsing/splitting/parse_split_commands.c \
+						newparsing/splitting/parse_split_tokens.c \
 						newparsing/checkword.c \
 						newparsing/createstring.c \
 						newparsing/tokens.c \
+						newparsing/heredoc/heredoc_functions.c \
+						newparsing/check_chars.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
 						cmd/declaring_values.c \
@@ -139,6 +144,7 @@ SRCS.CREATE.CMD =		cmd/create_cmd.c \
 						cmd/tokens_cmd/set_tokens.c \
 						cmd/tokens_cmd/init_new_tokens.c \
 						cmd/tokens_cmd/count_tokens.c \
+						cmd/tokens_cmd/set_heredoc_tokens.c \
 
 # String manipulation magic
 SRC		:= $(notdir $(SRCS))
