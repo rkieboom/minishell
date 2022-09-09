@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 00:23:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/08 01:12:30 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/09 15:23:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ void	set_heredoc(t_list *list, int k)
 			get_heredoc_q(list, i);
 			get_heredoc_eof(list, i);
 			get_heredoc_input(list, i);
+			heredoc_parse(list, i);
 		}
 		i++;
 	}
