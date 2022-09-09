@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:39:19 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 13:38:30 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/09 00:19:33 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static int	loop_over(t_newcommand *v, int i, int total)
 {
 	while (i < total)
 	{
-		if (!ft_strncmp(v->tokens->token[i], "<", 2))
+		if (!ft_strncmp(v->tokens->token[i], "<<", 3))
+			double_redirection_left(v, i);
+		else if (!ft_strncmp(v->tokens->token[i], "<", 2))
 		{
 			if (single_redirection_left(v, i) < 0)
 				return (1);
