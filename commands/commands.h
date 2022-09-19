@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 17:07:57 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/09 23:54:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ int		check_permission(char *PATH);
 void	export_declare_list(t_env *v);
 void	ft_swap(char **s1, char **s2);
 void	signals(void);
+
 
 #endif

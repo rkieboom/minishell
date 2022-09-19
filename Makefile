@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/09/09 15:06:41 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/09/19 20:39:39 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,7 +106,7 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 						execute/redirections.c \
 						execute/exec_cmd_builtin_pipe.c \
 
-SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_commands.c \
+SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_cmd.c \
 						newexecute/run_cmd_redir.c \
 						newexecute/redirections/redirection_functions.c \
 						newexecute/redirections/redirections.c \
@@ -128,6 +128,11 @@ SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/tokens.c \
 						newparsing/heredoc/heredoc_functions.c \
 						newparsing/heredoc/heredoc_parsing.c \
+						newparsing/heredoc/heredoc_calc_len.c \
+						newparsing/heredoc/heredoc_exec_len.c \
+						newparsing/heredoc/heredoc_exec_str.c \
+						newparsing/heredoc/heredoc_cmd_exist.c \
+						newparsing/heredoc/heredoc_create_str.c \
 						newparsing/check_chars.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
