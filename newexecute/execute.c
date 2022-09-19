@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:05:03 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 13:33:43 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/19 20:39:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ void	execute(t_list *list, t_newcommand *v, int k)
 		temp = &v[i];
 		if ((!temp->next && (!temp->tokens || \
 		temp->tokens->total == 0)) && temp->command)
-			run_commands(list, temp);
+			run_cmd(list, temp);
 		else if (!temp->next)
 		{
-			if (!redirections(list, temp) && v->command)
+			if (!redirections(list, temp) && temp->command)
 				run_cmd_redir(list, temp);
 			reset_redirections(list, temp);
 		}

@@ -31,3 +31,4 @@
 15.      f ; gdfgfdgfd;   bad acces
 16.       f;   g;          ˆˆˆˆˆˆˆ
 17. there are still leaks try echo $PWD / $PWDf / $PWD5 / $PWD> / $PWD								[leaks are from readline]
+18. PWD not set at execute of shell

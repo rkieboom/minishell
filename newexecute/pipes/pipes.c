@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:17:04 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 13:32:36 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/20 00:26:50 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,8 @@ void	ft_pipes(t_list *list, t_newcommand *v)
 	{
 		setup_pipes(&var);
 		if (var.temp->tokens && var.temp->tokens->total > 0)
-			redirections(list, var.temp);
-		if (var.temp->command)
-			run_cmd_redir(list, var.temp);
+			if (!redirections(list, var.temp) && var.temp->command)
+				run_cmd_redir(list, var.temp);
 		if (var.temp->tokens && var.temp->tokens->total > 0)
 			reset_redirections(list, var.temp);
 		clear_pipes(&var);

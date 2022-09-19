@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   run_cmd_redir.c                                    :+:    :+:            */
+/*   run_cmd_heredoc.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/19 20:46:00 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/09/19 20:38:55 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/09/19 20:44:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,8 @@ char	**set_cmd(t_newcommand *cmd)
 	return (init_newcmd(cmd->command, i));
 }
 
-void	run_cmd_redir(t_list *list, t_newcommand *v)
+static int	run_cmd()
 {
-	char	**newcmd;
-
-	newcmd = set_cmd(v);
-	if (!newcmd)
-		ft_ret_exit(1, 0);
-	if (!newcmd[0])
-	{
-		free(newcmd);
-		return ;
-	}
 	if (!ft_strncmp(newcmd[0], "echo", 5))
 		g_ret = echo(newcmd);
 	else if (!ft_strncmp(newcmd[0], "cd", 3))
@@ -79,6 +69,18 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 		ft_exit(newcmd);
 	else
 		g_ret = ft_execve(list, newcmd, 0);
-	if (v->tokens && v->tokens->total > 0)
-		free(newcmd);
+}
+
+int	run_cmd_heredoc(t_newcommand *cmd)
+{
+	char **newcmd;
+	t_heredoc_data *temp;
+
+	newcmd = set_cmd(cmd);
+	while (temp)
+	{
+		temp->
+
+		temp = temp->next;
+	}
 }

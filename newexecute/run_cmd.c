@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   run_commands.c                                     :+:    :+:            */
+/*   run_cmd.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:06:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 17:08:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/19 20:39:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void	run_commands(t_list *list, t_newcommand *v)
+void	run_cmd(t_list *list, t_newcommand *v)
 {
 	if (!ft_strncmp(v->command[0], "echo", 5))
 		g_ret = echo(v->command);

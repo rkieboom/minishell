@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/09 12:12:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/16 14:29:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct s_heredoc
 	int				heredoc_q;
 	char			*eof;
 	t_heredoc_data	*data;
+
+	int				pipe[2];
 	char			*syntax_error;
 }				t_heredoc;
 
@@ -117,5 +119,7 @@ void	read_input(t_list *list, int option);
 void	check_input_quotes(t_list *list);
 
 int		create_cmd(t_list *v, int k);
+
+int		get_next_line(int fd, char **line);
 
 #endif
