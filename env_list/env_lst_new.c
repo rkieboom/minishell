@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/09 14:53:58 by spelle        #+#    #+#                 */
-/*   Updated: 2021/03/09 14:56:55 by spelle        ########   odam.nl         */
+/*   Updated: 2022/09/21 21:40:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env	*env_lst_new(void *name, void *content)
 {
 	t_env	*list;
 
-	list = malloc(sizeof(t_env));
+	list = ft_calloc(1, sizeof(t_env));
 	if (!list)
 		return (NULL);
 	list->name = name;
