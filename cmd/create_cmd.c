@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 12:47:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/27 03:24:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 21:30:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	create_cmd(t_list *v, int k)
 		k++;
 	v->cmd = ft_calloc(k, sizeof(t_newcommand));
 	if (!v->cmd)
-		ft_error("Malloc failed!\n");
+		ft_ret_exit(1, 1);
 	while (i < k)
 	{
 		pipes = v->tokens[i].pipe;

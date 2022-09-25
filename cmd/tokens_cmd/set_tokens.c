@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/29 14:08:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/08 15:24:44 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:13:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,74 +23,61 @@ typedef struct s_vars
 
 static char	*ret_token(t_list *v, int k, int token_count)
 {
+	int	count;
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (i - j != token_count)
+	count = 0;
+	while (count != token_count)
 	{
-		if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
-			j++;
-		i++;
-	}
-	if (token_count == 0)
-	{
-		while (1)
-		{
-			if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
-				j++;
-			else
-				return (v->tokens[k].token[i]);
+		if (v->tokens[k].token[i] && \
+		!ft_strncmp(v->tokens[k].token[i], "|", 2))
 			i++;
+		else
+		{
+			count++;
+			if (count != token_count)
+				i++;
 		}
+		if (!v->tokens[k].token[i])
+			ft_error("Something went wrong in func: ret_token\n");
 	}
 	return (v->tokens[k].token[i]);
 }
 
-static int	get_token_pos_null(t_list *v, int k)
+static int	get_resetter(t_list *v, int k, int i)
 {
-	int	i;
-	int	j;
-	int	resetter;
-
-	i = 0;
-	j = 0;
-	resetter = 0;
-	while (1)
+	while (i > 0)
 	{
+		i--;
 		if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
-		{
-			resetter = v->tokens[k].token_pos[i] + 1;
-			j++;
-		}
-		else
-			return (v->tokens[k].token_pos[i] - resetter);
-		i++;
+			return (v->tokens[k].token_pos[i] + 1);
 	}
+	return (0);
 }
 
 static int	get_token_pos(t_list *v, int k, int token_count)
 {
 	int	i;
-	int	j;
-	int	resetter;
+	int	count;
 
 	i = 0;
-	j = 0;
-	resetter = 0;
-	while (i - j != token_count)
+	count = 0;
+	while (count != token_count)
 	{
-		if (!ft_strncmp(v->tokens[k].token[i], "|", 2))
+		if (v->tokens[k].token[i] && \
+		!ft_strncmp(v->tokens[k].token[i], "|", 2))
+			i++;
+		else
 		{
-			resetter = v->tokens[k].token_pos[i] + 1;
-			j++;
+			count++;
+			if (count != token_count)
+				i++;
 		}
-		i++;
+		if (!v->tokens[k].token[i])
+			ft_error("Something went wrong in func: get_token_pos\n");
 	}
-	if (token_count == 0)
-		return (get_token_pos_null(v, k));
-	return (v->tokens[k].token_pos[i] - resetter);
+	return (v->tokens[k].token_pos[i] - get_resetter(v, k, i));
 }
 
 void	set_tokens(t_list *v, t_newcommand *pipes, int k)
@@ -106,11 +93,11 @@ void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 		while (vars.tokens)
 		{
 			vars.temp->tokens->token[vars.token_local_c] = \
-			ft_strdup(ret_token(v, k, vars.token_c));
+			ft_strdup(ret_token(v, k, vars.token_c + 1));
 			if (!vars.temp->tokens->token[vars.token_local_c])
 				ft_ret_exit(1, 1);
 			vars.temp->tokens->token_pos[vars.token_local_c] = \
-			get_token_pos(v, k, vars.token_c);
+			get_token_pos(v, k, vars.token_c + 1);
 			vars.token_c++;
 			vars.token_local_c++;
 			vars.tokens--;

@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/03 16:07:54 by spelle        #+#    #+#                 */
-/*   Updated: 2022/04/14 17:23:05 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 21:37:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ void	export_declare_list(t_env *v)
 
 	length = env_lstsize(v);
 	array = ft_calloc(length + 1, sizeof(char *));
+	if (!array)
+		ft_ret_exit(1, 1);
 	create_declare_list(v, array);
 	sort_list(array, length);
 	print_declare_list(array, v);

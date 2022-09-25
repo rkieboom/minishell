@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/14 23:34:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/17 13:28:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 21:33:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*add_new_line(char *str)
 	char	*result;
 
 	length = ft_strlen(str);
-	result = malloc(length + 2);
+	result = ft_calloc(length + 2, sizeof(char));
+	if (!result)
+		ft_ret_exit(1, 1);
 	ft_strlcpy(result, str, length + 1);
 	result[length] = '\n';
 	result[length + 1] = '\0';
