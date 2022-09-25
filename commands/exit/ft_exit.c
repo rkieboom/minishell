@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/04 12:03:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 11:31:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/22 14:24:45 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ void	check_errors(char **str, int i)
 {
 	if (all_num(str[1]))
 	{
-		ft_putstr_fd("minishell: exit: ", 2);
+		ft_putstr_fd("minishell-4.2$: exit: ", 2);
 		ft_putstr_fd(str[1], 2);
 		print_and_exit(": numeric argument required", 255);
 	}
 	if (i > 2)
-		print_and_exit("minishell: exit: too many arguments", 1);
+		print_and_exit("minishell-4.2$: exit: too many arguments", 1);
 	if (ft_atoi(str[1]) != ft_atoi_l(str[1]))
 	{
-		ft_putstr_fd("minishell: exit: ", 2);
+		ft_putstr_fd("minishell-4.2$: exit: ", 2);
 		ft_putstr_fd(str[1], 2);
 		print_and_exit(": numeric argument required", 255);
 	}

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 16:22:43 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/22 14:24:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ char	*relative_path(char *PATH, t_env *env)
 	newpath = get_path(PATH, search_env(env, "PATH", 4));
 	if (!newpath)
 	{
-		ft_putstr_fd("minishell: ", 2);
+		ft_putstr_fd("minishell-4.2$: ", 2);
 		ft_putstr_fd(PATH, 2);
 		ft_putendl_fd(": command not found", 2);
 		return (NULL);

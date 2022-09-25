@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 13:14:16 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/08/27 03:24:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/22 13:46:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ static void	first_cmd(t_list *v, t_newcommand *temp, int k)
 	i = 0;
 	j = pipe_location(v, k, 0);
 	if (j == -1)
-		ft_error("Something went wrong in creating cmd!\n");
+		ft_error("Something went wrong func first_cmd!\n");
 	temp->command = ft_calloc(j + 1, sizeof(char *));
 	if (!temp->command)
-		ft_error("Malloc failed!\n");
+		ft_ret_exit(1, 1);
 	while (j)
 	{
 		temp->command[i] = ft_strdup(v->parse.commands[k][i]);
 		if (!temp->command[i])
-			ft_error("Malloc failed!\n");
+			ft_ret_exit(1, 1);
 		j--;
 		i++;
 	}
@@ -62,13 +62,13 @@ static void	middle_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 
 	i = pipe_location(v, k, pipes - 1);
 	if (i == -1)
-		ft_error("Something went wrong in creating cmd!\n");
+		ft_error("Something went wrong in func middle_cmd\n");
 	j = pipe_location(v, k, pipes);
 	if (j == -1)
-		ft_error("Something went wrong in creating cmd!\n");
+		ft_error("Something went wrong in func middle_cmd\n");
 	temp->command = ft_calloc(j - i, sizeof(char *));
 	if (!temp->command)
-		ft_error("Malloc failed!\n");
+		ft_ret_exit(1, 1);
 	j = j - i - 1;
 	i++;
 	l = 0;
@@ -76,7 +76,7 @@ static void	middle_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 	{
 		temp->command[l] = ft_strdup(v->parse.commands[k][i]);
 		if (!temp->command[l])
-			ft_error("Malloc failed!\n");
+			ft_ret_exit(1, 1);
 		l++;
 		i++;
 		j--;
@@ -92,13 +92,13 @@ static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 	i = 0;
 	j = pipe_location(v, k, pipes);
 	if (!j)
-		ft_error("Something went wrong in creating cmd!\n");
+		ft_error("Something went wrong in func last_cmd\n");
 	while (v->parse.commands[k][i + j])
 		i++;
 	i += j;
 	temp->command = ft_calloc(i - j, sizeof(char *));
 	if (!temp->command)
-		ft_error("Malloc failed!\n");
+		ft_ret_exit(1, 1);
 	j = i - j - 1;
 	i = 0;
 	l = pipe_location(v, k, pipes) + 1;
@@ -106,7 +106,7 @@ static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 	{
 		temp->command[i] = ft_strdup(v->parse.commands[k][l + i]);
 		if (!temp->command[i])
-			ft_error("Malloc failed!\n");
+			ft_ret_exit(1, 1);
 		i++;
 		j--;
 	}
