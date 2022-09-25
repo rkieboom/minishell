@@ -6,20 +6,44 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:32:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 11:19:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/22 14:36:54 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-void	check_input_quotes(t_list *list)
+static void	quote(t_list *list)
 {
 	char	*newstr;
+	char	*temp;
+
+	newstr = ft_strdup(list->gnl.buf);
+	if (!newstr)
+		ft_ret_exit(1, 1);
+	read_input(list, 1);
+	if (!list->gnl.buf)
+	{
+		free(newstr);
+		return ;
+	}
+	temp = list->gnl.buf;
+	newstr = add_new_line(newstr);
+	list->gnl.buf = ft_strjoin(newstr, list->gnl.buf);
+	if (!list->gnl.buf)
+		ft_ret_exit(1, 1);
+	free(temp);
+	free(newstr);
+}
+
+void	check_input_quotes(t_list *list)
+{
 	int		i;
 
 	i = 0;
 	while (1)
 	{
+		if (!list->gnl.buf)
+			return ;
 		list->parse.comma1 = 0;
 		list->parse.comma2 = 0;
 		while (list->gnl.buf[i])
@@ -28,15 +52,21 @@ void	check_input_quotes(t_list *list)
 			i++;
 		}
 		if (list->parse.comma1 == 1 || list->parse.comma2 == 1)
-		{
-			newstr = ft_strdup(list->gnl.buf);
-			read_input(list, 1);
-			list->gnl.buf = ft_strjoin(add_new_line(newstr), list->gnl.buf);
-		}
+			quote(list);
 		else
 			break ;
 		i = 0;
 	}
+}
+
+static int	check_ret_error(t_list *v)
+{
+	ft_putendl_fd("minishell-4.2$: \
+syntax error near unexpected token ;", 2);
+	free(v->gnl.buf);
+	v->gnl.buf = 0;
+	g_ret = 258;
+	return (1);
 }
 
 int	check_input(t_list *v)
@@ -52,13 +82,7 @@ int	check_input(t_list *v)
 		if (!str[i])
 			return (1);
 		if (str[i] == ';')
-		{
-			ft_putendl_fd("minishell-4.2$: \
-syntax error near unexpected token ;", 2);
-			free(v->gnl.buf);
-			v->gnl.buf = 0;
-			return (258);
-		}
+			return (check_ret_error(v));
 		else
 			while (str[i] && str[i] != ';')
 				i++;

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:45:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/09 00:19:16 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:06:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	single_redirection_left(t_newcommand *v, int i)
 	return (0);
 }
 
-void	double_redirection_left(t_newcommand *v, int i)//miss nog dingen toevoegen
+void	double_redirection_left(t_newcommand *v, int i)
 {
 	v->tokens->last_l = v->tokens->token_pos[i];
 }

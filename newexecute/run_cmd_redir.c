@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/19 20:46:00 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 03:57:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,7 @@ void	run_cmd_redir(t_list *list, t_newcommand *v)
 		free(newcmd);
 		return ;
 	}
-	if (!ft_strncmp(newcmd[0], "echo", 5))
-		g_ret = echo(newcmd);
-	else if (!ft_strncmp(newcmd[0], "cd", 3))
-		g_ret = cd(list, newcmd);
-	else if (!ft_strncmp(newcmd[0], "pwd", 4))
-		g_ret = pwd();
-	else if (!ft_strncmp(newcmd[0], "export", 7))
-		g_ret = export(list->env, newcmd);
-	else if (!ft_strncmp(newcmd[0], "unset", 6))
-		g_ret = unset(list->env, newcmd);
-	else if (!ft_strncmp(newcmd[0], "env", 4))
-		g_ret = env(list->env);
-	else if (!ft_strncmp(newcmd[0], "exit", 5))
-		ft_exit(newcmd);
-	else
-		g_ret = ft_execve(list, newcmd, 0);
+	run_cmd(list, newcmd);
 	if (v->tokens && v->tokens->total > 0)
 		free(newcmd);
 }

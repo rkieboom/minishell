@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/07 01:03:10 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/25 18:28:26 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ void	free_all(t_list *list)
 	totalcommands = 0;
 	while (list->parse.commands[totalcommands])
 		totalcommands++;
+	free_gnl_buf(list);
+	free_heredoc(list, totalcommands);
 	free_tokens(list);
 	free_parse_commands(list);
-	free_gnl_buf(list);
 	free_commands(list, 0, 0, totalcommands);
-	// free_heredoc();
+	list->cmd = 0;
+	list->tokens = 0;
 }

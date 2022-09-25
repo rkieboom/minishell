@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 10:47:25 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/22 16:47:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,20 @@ static int	check_spaces(t_list *list)
 	return (1);
 }
 
+static void	reset_buf(t_list *list)
+{
+	if (list->gnl.buf)
+	{
+		free(list->gnl.buf);
+		list->gnl.buf = 0;
+	}
+}
+
 void	read_input(t_list *list, int option)
 {
 	signal(SIGINT, sighandler);
 	signal(SIGQUIT, SIG_IGN);
+	reset_buf(list);
 	if (option == 0)
 	{
 		while (!list->gnl.buf)
@@ -50,16 +60,20 @@ void	read_input(t_list *list, int option)
 			if (!list->gnl.buf)
 				exit(1);
 			if (list->gnl.buf && check_spaces(list))
-			{
-				free(list->gnl.buf);
-				list->gnl.buf = 0;
-			}
+				reset_buf(list);
 		}
 	}
 	else
 	{
 		list->gnl.buf = readline("> ");
 		if (list->gnl.buf == NULL)
-			ft_ret_exit(1, 1);
+		{
+			ft_putstr_fd(\
+"minishell-4.2$: unexpected EOF while looking for matching `", 2);
+			if (list->parse.comma1)
+				ft_putstr_fd("''\n", 2);
+			else
+				ft_putstr_fd("\"'\n", 2);
+		}
 	}
 }
