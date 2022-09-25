@@ -6,11 +6,9 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/09/19 20:39:39 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/09/21 04:11:15 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
-
-# ================================ VARIABLES ================================= #
 
 # The name of your executable
 NAME		= minishell
@@ -108,15 +106,19 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 
 SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_cmd.c \
 						newexecute/run_cmd_redir.c \
+						newexecute/run_cmd_heredoc.c \
 						newexecute/redirections/redirection_functions.c \
 						newexecute/redirections/redirections.c \
 						newexecute/redirections/set_redirections.c \
+						newexecute/redirections/get_last_redir.c \
+						newexecute/pipes/heredoc_pipes.c \
 						newexecute/pipes/pipes.c \
 						newexecute/pipes/setup_pipes.c \
 						newexecute/pipes/clear_pipes.c \
 
 SRCS.FREE =				free/free_all.c \
 						free/free_commands.c \
+						free/free_heredoc.c \
 
 SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/parse_arraysize.c \
@@ -127,11 +129,9 @@ SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/createstring.c \
 						newparsing/tokens.c \
 						newparsing/heredoc/heredoc_functions.c \
+						newparsing/heredoc/heredoc_functions2.c \
 						newparsing/heredoc/heredoc_parsing.c \
 						newparsing/heredoc/heredoc_calc_len.c \
-						newparsing/heredoc/heredoc_exec_len.c \
-						newparsing/heredoc/heredoc_exec_str.c \
-						newparsing/heredoc/heredoc_cmd_exist.c \
 						newparsing/heredoc/heredoc_create_str.c \
 						newparsing/check_chars.c \
 
