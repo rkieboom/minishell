@@ -6,29 +6,30 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/09 12:18:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/19 17:22:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:50:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse.h"
 
-static void	heredoc_parse_str(t_list *list, t_heredoc *heredoc) //double $$ or space ?+?
+static void	heredoc_parse_str(t_list *list, t_heredoc *heredoc)
 {
-	int	i;
-	int	newlength;
+	int				i;
+	int				newlength;
+	t_heredoc_data	*temp;
 
 	i = 0;
-	while (heredoc->data != NULL)
+	temp = heredoc->data;
+	while (temp != NULL)
 	{
-		while (heredoc->data != NULL && !ft_strchr(heredoc->data->str, '$'))
-			heredoc->data = heredoc->data->next;
-		if (!heredoc->data)
+		while (temp != NULL && !ft_strchr(temp->str, '$'))
+			temp = temp->next;
+		if (!temp)
 			return ;
-		newlength = heredoc_get_str_len(list, heredoc->data->str, heredoc);
-		if (!heredoc->syntax_error)
-			heredoc->data->str = heredoc_create_str(list, heredoc, heredoc->data->str, newlength);
+		newlength = heredoc_get_str_len(list, temp->str);
+		temp->str = heredoc_create_str(list, temp->str, newlength);
 		i++;
-		heredoc->data = heredoc->data->next;
+		temp = temp->next;
 	}
 }
 
