@@ -6,79 +6,63 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/14 21:21:20 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/16 16:25:44 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 17:49:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse.h"
 
-
-// static void	run_and_copy_exec(t_list *list, char *str, int *str_c)
-// {
-// 	int	bracket;
-
-// 	bracket = 0;
-// 	while (str[*str_c] && str[])
-// }
-
-char	*heredoc_create_str(t_list *list, t_heredoc *heredoc, char *str, int length)
+typedef struct s_vars
 {
 	int		i;
 	int		j;
-	int		str_c;
 	char	*newstr;
 	char	*temp;
+}				t_vars;
 
-	int bracket = 0;
-
-	i = 0;
-	j = 0;
-	str_c = 0;
-	newstr = ft_calloc(length + 1, sizeof(char));
-	if (!newstr)
-		ft_ret_exit(1, 1);
-	while (str[str_c])
+static void	found_dollar_sign(t_list *list, t_vars *vars, char *str)
+{
+	vars->i++;
+	if (str[vars->i] \
+	&& (ft_isalnum(str[vars->i]) \
+	|| str[vars->i] == '_'))
 	{
-		if (str[str_c] == '$')
-		{
-			str_c++;
-			if (str[str_c] && (ft_isalnum(str[str_c]) || str[str_c] == '_' || str[str_c] == '('))
-			{
-				if (str[str_c] == '(')
-				{
-					temp = heredoc_exec_str(list, heredoc, str, &str_c);
-					if (temp)
-						j += ft_strlcpy(newstr + i + j, temp, ft_strlen(temp) + 1);
-					while (str[str_c] && str[str_c] == '(')
-					{
-						str_c++;
-						bracket++;
-					}
-					while (str[str_c] && str[str_c] != ')' && bracket)
-					{
-						str_c++;
-						bracket--;
-					}
-				}
-				else
-				{
-					temp = search_env(list->env, str + i, 0);
-					j += ft_strlcpy(newstr + i + j, temp, ft_strlen(temp) + 1) - 1;
-					while (str[str_c] && (ft_isalnum(str[str_c]) || str[str_c] == '_'))
-						str_c++;
-				}
-			}
-			else
-				str_c--;
-		}
+		vars->temp = search_env(list->env, str + vars->i, 0);
+		vars->j += ft_strlcpy(\
+		vars->newstr + vars->j, \
+		vars->temp, ft_strlen(vars->temp) + 1);
+		while (str[vars->i] \
+		&& (ft_isalnum(str[vars->i]) \
+		|| str[vars->i] == '_'))
+			vars->i++;
+	}
+	else
+	{
+		vars->newstr[vars->j] = str[vars->i - 1];
+		vars->j++;
+	}
+}
+
+char	*heredoc_create_str(t_list *list, char *str, int length)
+{
+	t_vars	vars;
+
+	ft_bzero(&vars, sizeof(t_vars));
+	vars.newstr = ft_calloc(length + 1, sizeof(char));
+	if (!vars.newstr)
+		ft_ret_exit(1, 1);
+	while (str[vars.i])
+	{
+		if (str[vars.i] == '$')
+			found_dollar_sign(list, &vars, str);
 		else
 		{
-			newstr[i + j] = str[str_c];
-			str_c++;
-			i++;
+			vars.newstr[vars.j] = str[vars.i];
+			vars.i++;
+			vars.j++;
 		}
 	}
 	free(str);
-	newstr[length] = 0;
-	return (newstr);
+	vars.newstr[length] = 0;
+	return (vars.newstr);
 }
