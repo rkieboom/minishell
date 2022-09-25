@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/07 02:00:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/23 16:53:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ static void	init_allocate(t_list *list, t_vars *vars)
 	vars->splitted = parse_split_commands(list, ';');
 	while (vars->splitted[vars->length])
 		vars->length++;
-	list->parse.commands = \
-	(char ***)malloc((vars->length + 1) * sizeof(char **));
+	list->parse.commands = ft_calloc(vars->length + 1, sizeof(char **));
 	if (!list->parse.commands)
 		ft_ret_exit(1, 1);
 	list->parse.commands[vars->length] = 0;
@@ -74,7 +73,7 @@ static void	init_allocate(t_list *list, t_vars *vars)
 		ft_ret_exit(1, 1);
 }
 
-void	new_parse(t_list *list)
+int	new_parse(t_list *list)
 {
 	t_vars	vars;
 
@@ -94,7 +93,10 @@ void	new_parse(t_list *list)
 	tokens(list);
 	while (vars.splitted[vars.length])
 		vars.length++;
+	if (syntax_error_parse(list))
+		return (1);
 	set_heredoc(list, vars.length);
 	freemem(vars.splitted);
 	parsing(list);
+	return (0);
 }
