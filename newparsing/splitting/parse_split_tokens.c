@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 21:28:23 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/07 00:57:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/21 21:36:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	init_vars(t_vars *vars, int size)
 	vars->i = 0;
 	vars->j = 0;
 	vars->x = 0;
-	vars->newstr = (char **)malloc(sizeof(char *) * (size + 1));
+	vars->newstr = ft_calloc(size + 1, sizeof(char *));
 	if (!vars->newstr)
 		ft_ret_exit(1, 1);
 	vars->newstr[size] = 0;

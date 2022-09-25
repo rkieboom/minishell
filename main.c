@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 14:11:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/23 17:37:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,25 @@
 #include <stdio.h>
 #include <signal.h>
 
+int	g_ret = 0;
+
 static void	loop(t_list *list)
 {
 	while (1)
 	{
 		read_input(list, 0);
 		check_input_quotes(list);
+		if (!list->gnl.buf)
+			continue ;
 		add_history(list->gnl.buf);
 		if (check_input(list))
 			continue ;
-		new_parse(list);
-		create_cmd(list, 0);
-		if (!syntax_error(list->cmd, 0))
-			execute(list, list->cmd, 0);
+		if (!new_parse(list))
+		{
+			create_cmd(list, 0);
+			if (!syntax_error(list->cmd, 0))
+				execute(list, list->cmd, 0);
+		}
 		free_all(list);
 	}
 }
