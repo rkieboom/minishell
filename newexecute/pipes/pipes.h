@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:31:29 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 13:33:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/20 01:56:50 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,8 @@ typedef struct s_vars
 
 void	setup_pipes(t_vars *vars);
 void	clear_pipes(t_vars *vars);
+
+void	set_pipe_heredoc(t_heredoc *heredoc, t_heredoc_data *data);
+void	clear_pipe_heredoc(t_heredoc *heredoc);
 
 #endif
