@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:01:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/15 20:13:43 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/23 16:55:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../header.h"
 
-void	new_parse(t_list *list);
+int		new_parse(t_list *list);
 int		parse_arraysize(char **str, t_list *list);
 
 char	**parse_split_commands(t_list *list, char c);
@@ -31,14 +31,14 @@ int		check_char_str(t_list *list, char *str);
 int		check_char(char *c);
 int		check_exist(char *PATH);
 
-
-int	heredoc_cmd_exist(char *PATH, t_env *env, int msg);
 void	set_heredoc(t_list *list, int k);
 void	heredoc_parse(t_list *list, int k);
-int		heredoc_get_str_len(t_list *list, char *str, t_heredoc *heredoc);
-int		heredoc_exec_len(t_list *list, t_heredoc *heredoc, char *str, int *i);
-char	*heredoc_exec_str(t_list *list, t_heredoc *heredoc, char *str, int *i);
-char	*heredoc_create_str(t_list *list, t_heredoc *heredoc, char *str, int length);
+int		heredoc_get_str_len(t_list *list, char *str);
+char	*heredoc_create_str(t_list *list, char *str, int length);
+
+void	get_heredoc_eof(t_list *list, int k);
+void	get_heredoc_input(t_list *list, int k);
+void	get_heredoc_q(t_list *list, int k);
 
 int		array_thingy(int *p);
 
