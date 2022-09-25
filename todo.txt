@@ -32,3 +32,25 @@
 16.       f;   g;          ˆˆˆˆˆˆˆ
 17. there are still leaks try echo $PWD / $PWDf / $PWD5 / $PWD> / $PWD								[leaks are from readline]
 18. PWD not set at execute of shell
+19. echo hallo > text.txt | cat | > out.txt			[fixed]
+20. echo hallo > out.txt | wc -c > out				[fixed]
+21. echo hallo > out.txt | wc -c | > out			[fixed]
+22. $EEF $$ yo
+
+
+
+
+
+
+24. cat | << yo
+25. Heredoc without cmd
+26. Syntax_parse check moet voor Heredoc input reading komen [done]
+
+cat << EOF |              //heap use after free
+
+cat | << EOF
+cat | <<
+
+
+
+cat << |
