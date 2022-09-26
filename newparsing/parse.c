@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 16:53:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/26 13:34:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 typedef struct s_vars
 {
 	int		i;
-	int		j;
 	int		length;
 	char	**splitted;
 }				t_vars;
@@ -84,9 +83,6 @@ int	new_parse(t_list *list)
 		parse_split_spaces(list, vars.splitted[vars.i], ' ');
 		parse_split_tokens(list, \
 		parse_arraysize(list->parse.commands[vars.i], list), vars.i);
-		while (list->parse.commands[vars.i][vars.j])
-			vars.j++;
-		vars.j = 0;
 		vars.length--;
 		vars.i++;
 	}
@@ -94,9 +90,13 @@ int	new_parse(t_list *list)
 	while (vars.splitted[vars.length])
 		vars.length++;
 	if (syntax_error_parse(list))
+	{
+		freemem(vars.splitted);
 		return (1);
-	set_heredoc(list, vars.length);
+	}
+	allocate_heredoc(list, vars.length);
 	freemem(vars.splitted);
 	parsing(list);
+	set_heredoc(list, vars.length);
 	return (0);
 }
