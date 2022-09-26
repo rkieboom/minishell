@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 03:13:14 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/22 17:43:11 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/26 15:20:05 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,24 @@ static void	free_and_get_data(t_list *list, int k)
 		list->gnl.buf = ft_strdup(list->tokens[k].heredoc->eof);
 }
 
+static void	allocate(t_heredoc_data **temp, t_heredoc_data **head)
+{
+	if (!*temp)
+	{
+		*temp = ft_calloc(sizeof(t_heredoc_data), 1);
+		if (!*temp)
+			ft_ret_exit(1, 1);
+		*head = *temp;
+	}
+	else
+	{
+		(*temp)->next = ft_calloc(sizeof(t_heredoc_data), 1);
+		if (!(*temp)->next)
+			ft_ret_exit(1, 1);
+		*temp = (*temp)->next;
+	}
+}
+
 static void	set_heredoc_data(t_list *list, int k, int i)
 {
 	t_heredoc_data	*temp;
@@ -37,20 +55,7 @@ static void	set_heredoc_data(t_list *list, int k, int i)
 	while (ft_strncmp(list->gnl.buf, \
 	list->tokens[k].heredoc[i].eof, ft_strlen(list->tokens[k].heredoc[i].eof)))
 	{
-		if (!temp)
-		{
-			temp = ft_calloc(sizeof(t_heredoc_data), 1);
-			if (!temp)
-				ft_ret_exit(1, 1);
-			head = temp;
-		}
-		else
-		{
-			temp->next = ft_calloc(sizeof(t_heredoc_data), 1);
-			if (!temp->next)
-				ft_ret_exit(1, 1);
-			temp = temp->next;
-		}
+		allocate(&temp, &head);
 		if (!temp)
 			ft_ret_exit(1, 1);
 		temp->str = ft_strdup(list->gnl.buf);
@@ -94,27 +99,5 @@ void	get_heredoc_input(t_list *list, int k)
 	{
 		set_heredoc_data(list, k, i);
 		i++;
-	}
-}
-
-void	get_heredoc_eof(t_list *list, int k)
-{
-	int	total;
-	int	c;
-	int	token_c;
-
-	c = 0;
-	token_c = 0;
-	total = list->tokens[k].double_redirection_left;
-	while (total)
-	{
-		if (!ft_strncmp(list->tokens[k].token[token_c], "<<", 3))
-		{
-			list->tokens[k].heredoc[c].eof = \
-			list->parse.commands[k][list->tokens[k].token_pos[token_c] + 1];
-			total--;
-			c++;
-		}
-		token_c++;
 	}
 }
