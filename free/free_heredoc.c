@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 04:04:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/25 18:03:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/25 23:01:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,25 @@ static void	free_heredoc_data(t_heredoc_data *data)
 void	free_heredoc(t_list *list, int totalcommands)
 {
 	int				i;
-	t_newcommand	*temp;
+	int				j;
 
 	i = 0;
-	while (i < totalcommands)
+	while (totalcommands)
 	{
-		temp = &list->cmd[i];
-		if (temp && temp->tokens && temp->tokens->heredoc)
+		j = 0;
+		while (list->tokens != NULL && &list->tokens[i] != NULL && \
+		list->tokens[i].double_redirection_left)
 		{
-			if (temp->tokens->heredoc->data)
-				free_heredoc_data(temp->tokens->heredoc->data);
+			if (list->tokens != NULL && &list->tokens[i] != NULL && \
+			list->tokens[i].heredoc && list->tokens[i].heredoc[j].data)
+				free_heredoc_data(list->tokens[i].heredoc[j].data);
+			list->tokens[i].double_redirection_left--;
+			j++;
 		}
-		if (list->tokens[i].heredoc)
+		if (list->tokens != NULL && \
+		&list->tokens[i] != NULL && list->tokens[i].heredoc)
 			free(list->tokens[i].heredoc);
 		i++;
+		totalcommands--;
 	}
 }
