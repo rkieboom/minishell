@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/04 19:50:14 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/25 18:04:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/25 22:30:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
-static void	free_cmd(t_newcommand *temp, int j)
+static void	free_cmd(t_newcommand *temp, int j, int k)
 {
 	while (temp->command[j])
 	{
@@ -34,8 +34,8 @@ static void	free_cmd(t_newcommand *temp, int j)
 		free(temp->tokens->token_pos);
 		free(temp->tokens);
 	}
-	// if (k != 0)
-	// 	free(temp);//moet dit?????
+	if (k != 0)
+		free(temp);
 }
 
 void	free_commands(t_list *list, t_newcommand *temp, \
@@ -52,7 +52,7 @@ void	free_commands(t_list *list, t_newcommand *temp, \
 		while (temp)
 		{
 			temp2 = temp->next;
-			free_cmd(temp, 0);
+			free_cmd(temp, 0, k);
 			temp = temp2;
 			k++;
 		}
