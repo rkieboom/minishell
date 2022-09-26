@@ -6,11 +6,19 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 10:21:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 17:29:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/26 15:04:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
+
+typedef struct s_vars
+{
+	int	i;
+	int	j;
+	int	k;
+	int	temp;
+}				t_vars;
 
 int	cmd_len(char **str)
 {
@@ -22,49 +30,64 @@ int	cmd_len(char **str)
 	return (i);
 }
 
+static int	loop_over_tokens(t_vars *vars, t_list *list)
+{
+	while (vars->j < list->tokens[vars->i].total)
+	{
+		if (list->tokens[vars->i].token_pos[vars->j] + 1 == \
+		list->tokens[vars->i].token_pos[vars->j + 1] && \
+		ft_strncmp(list->tokens[vars->i].token[vars->j], "|", 2))
+		{
+			ft_putstr_fd(\
+"minishell-4.2$: syntax error near unexpected token `", 2);
+			ft_putstr_fd(list->tokens[vars->i].token[vars->j + 1], 2);
+			ft_putendl_fd("'", 2);
+			g_ret = 258;
+			return (1);
+		}
+		j++;
+	}
+	return (0);
+}
+
+static int	first(t_vars *vars, t_list *list)
+{
+	j = 0;
+	while (i < k && (&list->tokens[i] == NULL \
+	|| list->tokens[i].total == 0))
+		i++;
+	if (i == k)
+		return (1);
+	if (!ft_strncmp(list->tokens[i].token[0], "|", 2) \
+	&& list->tokens[i].token_pos[j] == 0)
+	{
+		ft_putendl_fd(\
+"minishell-4.2$: syntax error near unexpected token `|'", 2);
+		g_ret = 258;
+		return (2);
+	}
+	return (3);
+}
+
 int	syntax_error_parse(t_list *list)
 {
-	int	i;
-	int	j;
-	int	k;
+	t_vars	vars;
 
-	i = 0;
-	k = 0;
+	ft_bzero(&vars, sizeof(t_vars));
 	while (list->parse.commands[k])
 		k++;
 	while (i < k)
 	{
-		j = 0;
-		while (i < k && (&list->tokens[i] == NULL || list->tokens[i].total == 0))
-			i++;
-		if (i == k)
+		temp = first(&vars, list);
+		if (temp == 1)
 			return (0);
-		if (!ft_strncmp(list->tokens[i].token[0], "|", 2) \
-		&& list->tokens[i].token_pos[j] == 0)
-		{
-			ft_putendl_fd(\
-"minishell-4.2$: syntax error near unexpected token `|'\n", 2);
-			g_ret = 258;
+		else if (temp == 2)
 			return (1);
-		}
-		while (j < list->tokens[i].total)
-		{
-			if (list->tokens[i].token_pos[j] + 1 == \
-			list->tokens[i].token_pos[j + 1] && \
-			ft_strncmp(list->tokens[i].token[j], "|", 2))
-			{
-				ft_putstr_fd(\
-"minishell-4.2$: syntax error near unexpected token `", 2);
-				ft_putstr_fd(list->tokens[i].token[j + 1], 2);
-				ft_putendl_fd("'\n", 2);
-				g_ret = 258;
-				return (1);
-			}
-			j++;
-		}
+		if (loop_over_tokens(&vars, list))
+			return (1);
 		if (!list->parse.commands[i][list->tokens[i].token_pos[j] + 1])
 		{
-			ft_putstr_fd(\
+			ft_putendl_fd(\
 "minishell-4.2$: syntax error near unexpected token `newline'", 2);
 			g_ret = 258;
 			return (1);
