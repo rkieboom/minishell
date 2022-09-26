@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 10:21:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/26 15:04:20 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/26 18:27:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,21 @@ static int	loop_over_tokens(t_vars *vars, t_list *list)
 			g_ret = 258;
 			return (1);
 		}
-		j++;
+		vars->j++;
 	}
 	return (0);
 }
 
 static int	first(t_vars *vars, t_list *list)
 {
-	j = 0;
-	while (i < k && (&list->tokens[i] == NULL \
-	|| list->tokens[i].total == 0))
-		i++;
-	if (i == k)
+	vars->j = 0;
+	while (vars->i < vars->k && (&list->tokens[vars->i] == NULL \
+	|| list->tokens[vars->i].total == 0))
+		vars->i++;
+	if (vars->i == vars->k)
 		return (1);
-	if (!ft_strncmp(list->tokens[i].token[0], "|", 2) \
-	&& list->tokens[i].token_pos[j] == 0)
+	if (!ft_strncmp(list->tokens[vars->i].token[0], "|", 2) \
+	&& list->tokens[vars->i].token_pos[vars->j] == 0)
 	{
 		ft_putendl_fd(\
 "minishell-4.2$: syntax error near unexpected token `|'", 2);
@@ -74,25 +74,26 @@ int	syntax_error_parse(t_list *list)
 	t_vars	vars;
 
 	ft_bzero(&vars, sizeof(t_vars));
-	while (list->parse.commands[k])
-		k++;
-	while (i < k)
+	while (list->parse.commands[vars.k])
+		vars.k++;
+	while (vars.i < vars.k)
 	{
-		temp = first(&vars, list);
-		if (temp == 1)
+		vars.temp = first(&vars, list);
+		if (vars.temp == 1)
 			return (0);
-		else if (temp == 2)
+		else if (vars.temp == 2)
 			return (1);
 		if (loop_over_tokens(&vars, list))
 			return (1);
-		if (!list->parse.commands[i][list->tokens[i].token_pos[j] + 1])
+		if (!list->parse.commands \
+		[vars.i][list->tokens[vars.i].token_pos[vars.j] + 1])
 		{
 			ft_putendl_fd(\
 "minishell-4.2$: syntax error near unexpected token `newline'", 2);
 			g_ret = 258;
 			return (1);
 		}
-		i++;
+		vars.i++;
 	}
 	return (0);
 }
