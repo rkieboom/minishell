@@ -52,5 +52,9 @@ cat | << EOF
 cat | <<
 
 
-
+cat << | yo
 cat << |
+
+
+heredoc Quotes fixen
+normen
