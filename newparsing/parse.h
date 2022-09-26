@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:01:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 16:55:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/26 13:36:03 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		check_char_str(t_list *list, char *str);
 int		check_char(char *c);
 int		check_exist(char *PATH);
 
+void	allocate_heredoc(t_list *list, int k);
 void	set_heredoc(t_list *list, int k);
 void	heredoc_parse(t_list *list, int k);
 int		heredoc_get_str_len(t_list *list, char *str);
