@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:55:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/25 18:53:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/25 23:01:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ static char	**splitter(t_list *list, char c, char **result, int i)
 	arrayindex = 0;
 	while (arrayindex != arraysize(list->gnl.buf, c, list))
 	{
-		printf("In here now!\n");
 		findstart(list->gnl.buf, c, &i, &start);
 		while (list->gnl.buf[i] && (list->gnl.buf[i] != c || \
 				(list->parse.comma1 == 1 || list->parse.comma2 == 1)))
@@ -65,7 +64,6 @@ static char	**splitter(t_list *list, char c, char **result, int i)
 			i++;
 			strlength++;
 		}
-		printf("str = [%s]-[%i]\n", list->gnl.buf + start, strlength);
 		result[arrayindex] = ft_substr(list->gnl.buf, start, strlength);
 		if (!result[arrayindex])
 			ft_ret_exit(1, 1);
@@ -83,9 +81,7 @@ char	**parse_split_commands(t_list *list, char c)
 
 	if (!list->gnl.buf)
 		return (NULL);
-	int arr = arraysize(list->gnl.buf, c, list) + 1;
-	printf("arr=[%i]\n", arr);
-	result = ft_calloc(arr, sizeof(char *));
+	result = ft_calloc(arraysize(list->gnl.buf, c, list) + 1, sizeof(char *));
 	if (!result)
 		ft_ret_exit(1, 1);
 	result = splitter(list, c, result, 0);
