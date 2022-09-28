@@ -6,11 +6,47 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:06:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 17:34:10 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/28 14:52:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "execute.h"
+#include "pipes/pipes.h"
+
+static void	go(t_list *list, t_newcommand *cmd, char **newcmd)
+{
+	t_heredoc_data	*data;
+
+	data = cmd->tokens->heredoc->data;
+	while (data)
+	{
+		set_pipe_heredoc(cmd->tokens->heredoc, data);
+		if (!redirections(list, cmd))
+		{
+			run_cmd(list, newcmd);
+			if (write(1, "\n", 1) < 0)
+				ft_ret_exit(1, 1);
+		}
+		reset_redirections(list, cmd);
+		clear_pipe_heredoc(cmd->tokens->heredoc);
+		data = data->next;
+	}
+}
+
+void	run_cmd_heredoc(t_list *list, t_newcommand *cmd)
+{
+	char	**newcmd;
+
+	newcmd = set_cmd(cmd);
+	if (!newcmd)
+		ft_ret_exit(1, 0);
+	if (!newcmd[0])
+	{
+		free(newcmd);
+		return ;
+	}
+	go(list, cmd, newcmd);
+	free(newcmd);
+}
 
 void	run_cmd(t_list *list, char **cmd)
 {
@@ -32,4 +68,19 @@ void	run_cmd(t_list *list, char **cmd)
 		ft_exit(cmd);
 	else
 		g_ret = ft_execve(list, cmd, 0);
+}
+
+void	run_cmd_redir(t_list *list, t_newcommand *v)
+{
+	char	**newcmd;
+
+	newcmd = set_cmd(v);
+	if (!newcmd[0])
+	{
+		free(newcmd);
+		return ;
+	}
+	run_cmd(list, newcmd);
+	if (v->tokens && v->tokens->total > 0)
+		free(newcmd);
 }
