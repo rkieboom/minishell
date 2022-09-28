@@ -64,5 +64,5 @@ normen
 some issues we found : Command not found error code should be 127       [done]
  ˆC should not show up when ctrl-Cing on empty line.					[Fixed by doing] = "stty -echoctl"
  cd does not check for directory.										[done]
- This test case: "< Makefile cat | wc -l > outfile.txt" doesn't work for redirecting input.
+ This test case: "< Makefile cat | wc -l > outfile.txt" doesn't work for redirecting input. [fixed]
  The rest looks great! no crashes. thanks for explaining it all.

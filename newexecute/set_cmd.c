@@ -1,48 +1,84 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   run_cmd_redir.c                                    :+:    :+:            */
+/*   set_cmd.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/27 19:23:45 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/28 15:00:04 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-int	is_token(t_newcommand *cmd)
+typedef struct s_vars
+{
+	int		i;
+	int		j;
+	int		length;
+	char	**newcmd;
+}				t_vars;
 
-static char	**init_newcmd_s(char **cmd, int k)
+int	is_token(t_newcommand *cmd, int k)
 {
 	int	i;
-	char	**newcmd;
 
 	i = 0;
-	while (cmd[i])
+	while (i < cmd->tokens->total)
 	{
-		if (!ft_strncmp(cmd[i], "<<", 3) \
-		!ft_strncmp(cmd[i], ">>", 3) \
-		!ft_strncmp(cmd[i], ">", 2) \
-		!ft_strncmp(cmd[i], "<", 2))
-		{//nog verder kijken of het een token is
-			i++;
-			if (!cmd[i])
-			{
-				newcmd = ft_calloc(1, sizeof(char *));
-				if (!newcmd)
-					ft_ret_exit(1, 1);
-				newcmd[0] = 0;
-				return (newcmd);
-			}
-			i++;
+		if (cmd->tokens->token_pos[i] == k)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static void	count_len(t_vars *vars, t_newcommand *cmd)
+{
+	while (cmd->command[vars->i + vars->length])
+	{
+		if (is_token(cmd, vars->i))
+		{
+			vars->i++;
+			if (!cmd->command[vars->i])
+				return ;
+			vars->i++;
 		}
 		else
 		{
-			while () //terwijl cmd[i] niet gelijk is aan een token.
+			while (cmd->command[vars->i + vars->length] \
+			&& is_token(cmd, vars->i + vars->length) == 0)
+				vars->length++;
+			return ;
 		}
 	}
+}	
+
+static char	**init_newcmd_s(t_newcommand *cmd)
+{
+	t_vars	vars;
+
+	ft_bzero(&vars, sizeof(t_vars));
+	count_len(&vars, cmd);
+	if (!cmd->command[vars.i] || vars.length == 0)
+	{
+		vars.newcmd = ft_calloc(1, sizeof(char *));
+		if (!vars.newcmd)
+			ft_ret_exit(1, 1);
+		vars.newcmd[0] = 0;
+		return (vars.newcmd);
+	}
+	vars.newcmd = ft_calloc(vars.length + 1, sizeof(char *));
+	if (!vars.newcmd)
+		ft_ret_exit(1, 1);
+	while (vars.j < vars.length)
+	{
+		vars.newcmd[vars.j] = cmd->command[vars.i + vars.j];
+		vars.j++;
+	}
+	vars.newcmd[vars.length] = 0;
+	return (vars.newcmd);
 }
 
 static char	**init_newcmd(char **cmd, int k)
@@ -82,21 +118,6 @@ char	**set_cmd(t_newcommand *cmd)
 	}
 	i = cmd->tokens->token_pos[i];
 	if (i == 0)
-		return (init_newcmd_s(cmd->command, i));
+		return (init_newcmd_s(cmd));
 	return (init_newcmd(cmd->command, i));
-}
-
-void	run_cmd_redir(t_list *list, t_newcommand *v)
-{
-	char	**newcmd;
-
-	newcmd = set_cmd(v);
-	if (!newcmd[0])
-	{
-		free(newcmd);
-		return ;
-	}
-	run_cmd(list, newcmd);
-	if (v->tokens && v->tokens->total > 0)
-		free(newcmd);
 }
