@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 21:32:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/27 16:23:19 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ int	ft_execve(t_list *list, char **str, int ret)
 		else
 			path = relative_path(str[0], list->env);
 		if (path && execve(path, str, envp) < 0)
-			ft_ret_exit(127, 1);
+			ft_ret_exit(1, 1);
 		else
-			ft_ret_exit(1, 0);
+			ft_ret_exit(127, 0);
 	}
 	else
 		waitpid(pid, &ret, 0);
