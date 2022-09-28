@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 17:17:15 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/27 18:30:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,19 @@ static int	cd_1_arg(t_list *v)
 	return (0);
 }
 
+static int	cd_check_dir(char *str)
+{
+	struct stat	path_stat;
+
+	stat(str, &path_stat);
+	if (S_ISREG(path_stat.st_mode))
+	{
+		ft_putendl_fd("minishell-4.2$: Not a directory", 2);
+		return (1);
+	}
+	return (0);
+}
+
 int	cd(t_list *v, char **str)
 {
 	int		ret;
@@ -75,7 +88,8 @@ int	cd(t_list *v, char **str)
 
 	if (!str[1])
 		return (cd_1_arg(v));
-	if (cd_check_exist(str[1]) || cd_check_permission(str[1]))
+	if (cd_check_exist(str[1]) || cd_check_dir(str[1]) \
+	|| cd_check_permission(str[1]))
 		return (1);
 	env_change_content(v->env, "OLDPWD", getcwd(cwd, 1024));
 	ret = chdir(str[1]);
