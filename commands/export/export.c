@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 14:07:09 by spelle        #+#    #+#                 */
-/*   Updated: 2021/11/04 16:39:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/30 00:32:10 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_error(char **str, int i, int *j, int *error)
 	*j = 0;
 	while ((str[i][*j] && str[i][*j] != '=') || *j == 0)
 	{
-		if (!ft_isalnum(str[i][*j]))
+		if (!ft_isalnum(str[i][*j]) && str[i][*j] != '_')
 		{
 			*error = invalid_identifier(str[i]);
 			return (1);
