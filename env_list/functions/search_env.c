@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/11/24 14:38:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/30 00:27:43 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,26 +36,28 @@ void	env_change_content(t_env *v, char *envname, char *envcontent)
 
 char	*search_env(t_env *v, char *name, int length)
 {
-	int	min;
-
-	min = 1;
+	char 	*temp;
 	if (length == 0)
 	{
-		min = 0;
 		if (*name == '$')
 			name++;
 		while (name[length] && (ft_isdigit(name[length]) || \
 				ft_isalpha(name[length]) || (name[length] == '_')))
 			length++;
-		if (!name[length])
-			min = 1;
 	}
+	temp = ft_substr(name, 0, length);
+	if (!temp)
+		ft_ret_exit(1, 1);
 	while (v)
 	{
-		if (ft_strncmp(name, v->name, length + min) == 0)
+		if (ft_strncmp(temp, v->name, length + 1) == 0)
+		{
+			free(temp);
 			return (v->content);
+		}
 		v = v->next;
 	}
+	free(temp);
 	return ("");
 }
 
