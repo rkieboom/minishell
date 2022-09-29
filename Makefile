@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/09/28 14:53:26 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/09/30 00:35:37 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ LIBFTDIR = libft/
 
 LIBFTLIB = $(LIBFTDIR)/libft.a
 
-INCLUDES_MAC = -I/usr/local/Cellar/readline/8.1.2/include
+INCLUDES_MAC = -I/opt/homebrew/opt/readline/include
 
 INCLUDES_L = -L./libft/.
 
@@ -171,7 +171,7 @@ linux : $(LIBFTLIB) $(SRCS)  $(OBJS)
 
 mac : $(LIBFTLIB) $(SRCS)  $(OBJS)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
-	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L /usr/local/Cellar/readline/8.1.2/lib
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L /opt/homebrew/opt/readline/lib
 	
 # Compiling
 $(OBJDIR)%.o : %.c
