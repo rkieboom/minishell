@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2019/11/02 16:04:43 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/03/09 15:51:07 by spelle        ########   odam.nl         */
+/*   Updated: 2022/09/30 00:24:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	i = 0;
 	if (n == 0)
 		return (0);
-	while (str1[i] == str2[i] && str1[i] && str2[i] && i < n - 1)
+	while (str1[i] && str2[i] && str1[i] == str2[i] && i < n - 1)
 		i++;
 	return (str1[i] - str2[i]);
 }
