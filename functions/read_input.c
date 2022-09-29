@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/25 23:09:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/09/30 00:15:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,10 @@ void	read_input(t_list *list, int option)
 		{
 			list->gnl.buf = readline("minishell-4.2$ ");
 			if (!list->gnl.buf)
-				exit(1);
+			{
+				ft_putendl_fd("exit", 1);
+				exit(0);
+			}
 			if (list->gnl.buf && check_spaces(list))
 				reset_buf(list);
 		}
