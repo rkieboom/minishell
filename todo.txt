@@ -66,3 +66,22 @@ some issues we found : Command not found error code should be 127       [done]
  cd does not check for directory.										[done]
  This test case: "< Makefile cat | wc -l > outfile.txt" doesn't work for redirecting input. [fixed]
  The rest looks great! no crashes. thanks for explaining it all.
+
+
+
+echo ehllo > file1 < file2 >> file1  [fixed] = small if statement forgotten :(
+then crtl+D, says exit. 			[done]
+bash: cd/bin: No such file or directory so put all the headers into one folder [???? dont understand]
+
+
+
+
+
+place comments to understand the code, for example, the input/output.
+this is higher level coding. this way someone can read the header without having to read the code and still understand.
+bash-3.2$ cd /bin/ls/ls/ls bash: cd: /bin/ls/ls/ls: Not a directory 
+bash-3.2$ cdg /bin/ls/ls/ls 
+bash: cdg: command not found 
+echo hello < fole6 							[fixed]
+echo "hello i am $HOME" HOMEBREW_TEMP      [nog testen op codam]
+overall great work for a one man project. now ask the school if you can start cpp
