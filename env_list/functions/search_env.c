@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/30 00:27:43 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/03 12:19:26 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	env_change_content(t_env *v, char *envname, char *envcontent)
 
 char	*search_env(t_env *v, char *name, int length)
 {
-	char 	*temp;
+	char	*temp;
+
 	if (length == 0)
 	{
 		if (*name == '$')
