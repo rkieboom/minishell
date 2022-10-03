@@ -85,3 +85,14 @@ bash: cdg: command not found
 echo hello < fole6 							[fixed]
 echo "hello i am $HOME" HOMEBREW_TEMP      [nog testen op codam]
 overall great work for a one man project. now ask the school if you can start cpp
+
+
+SOME STUFF TO TAKE A LOOK:
+ls | top, or anything before top
+cat | cat | cat | ls
+Signals in heretic citric
+Crtlc prints smth C
+Error code after cartel c on empty line
+Environment variable without export
+ps aux doesn’t work at all
+lsof -p process_id (file descriptors not used anymore should be closed) -> depends on how you fork
