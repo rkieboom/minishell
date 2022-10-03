@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 14:07:09 by spelle        #+#    #+#                 */
-/*   Updated: 2022/09/30 00:32:10 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/03 12:21:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,14 @@ static void	set_env_name_and_content(t_env *v, char **str, int i, int j)
 
 	envcontent = NULL;
 	envname = ft_substr(str[i], 0, j);
+	if (!envname)
+		ft_ret_exit(1, 1);
 	if (ft_strchr(str[i], '=') == NULL)
 		envcontent = ft_strdup("");
 	else
 		envcontent = ft_strdup(ft_strchr(str[i], '=') + 1);
+	if (!envcontent)
+		ft_ret_exit(1, 1);
 	if (!ft_strncmp(search_envname_returnenvname(v, envname), "", 1))
 		env_lstadd_back(&v, env_lst_new(envname, envcontent));
 	else

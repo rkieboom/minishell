@@ -1,0 +1,50 @@
+/bin/ls
+/bin/expr $? + $?
+
+   	   /bin/ls -la
+
+echo -nnn doei
+   echo hallooooooo dit is een test
+echo "my PWD='$PWD'"
+echo 'My PWD="$PWD"'
+
+exit 25 54
+exit doei
+exit 42
+
+cat gnugufnd
+echo $?
+
+ls -la 
+echo $?
+
+echo "cat lol.c | cat > lol.c"
+
+env 
+
+export HALLO=doei
+export HOME=/
+
+cd
+
+cd directory
+
+unset HOME
+
+cd
+
+pwd 
+
+unset PATH
+
+try commands
+
+cat main.c > main_copy.c 
+
+cat < Makefile > Makefilecopy
+
+cat < Makefile | cat > out
+
+cat header.h | grep int
+
+cat main.c | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat  | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat| cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
