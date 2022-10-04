@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/09/30 00:35:37 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/04 23:40:04 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,14 +34,16 @@ SRCDIR	= ./
 OBJDIR	= bin/
 LIBFTDIR = libft/
 
+INCLUDES = header.h newparsing/parse.h newexecute/execute.h newexecute/pipes/pipes.h \
+libft/libft.h env_list/env_list.h commands/commands.h cmd/cmd.h cmd/tokens_cmd/tokens.h
+
 LIBFTLIB = $(LIBFTDIR)/libft.a
 
-INCLUDES_MAC = -I/opt/homebrew/opt/readline/include
+INCLUDES_MAC = -I/opt/homebrew/Cellar/readline/8.1.2/include
 
 INCLUDES_L = -L./libft/.
 
-SRCS =					functions.c \
-						main.c \
+SRCS =					main.c \
 						$(FUNCTIONS) \
 						$(SRCS.COMMANDS.CD) \
 						$(SRCS.COMMANDS.ECHO) \
@@ -67,6 +69,8 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/read_input.c \
 						functions/syntax_error.c \
 						functions/array_thingy.c \
+						functions/functions.c \
+						functions/signal_handler.c \
 
 SRCS.COMMANDS.CD =		commands/cd/cd.c \
 
@@ -85,7 +89,6 @@ SRCS.COMMANDS.EXECVE =	commands/execve/execve.c \
 						commands/execve/commands.c \
 						commands/execve/relative_path.c \
 						commands/execve/absolute_path.c \
-						commands/execve/signals.c
 
 SRCS.COMMANDS.EXIT = 	commands/exit/ft_exit.c \
 						commands/exit/ret_exit.c \
@@ -132,6 +135,7 @@ SRCS.NEW.PARSING = 		newparsing/parse.c \
 						newparsing/heredoc/heredoc_parsing.c \
 						newparsing/heredoc/heredoc_calc_len.c \
 						newparsing/heredoc/heredoc_create_str.c \
+						newparsing/heredoc/signal_handler_hdoc.c \
 						newparsing/check_chars.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
@@ -171,10 +175,10 @@ linux : $(LIBFTLIB) $(SRCS)  $(OBJS)
 
 mac : $(LIBFTLIB) $(SRCS)  $(OBJS)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
-	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L /opt/homebrew/opt/readline/lib
+	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L /opt/homebrew/Cellar/readline/8.1.2/lib/
 	
 # Compiling
-$(OBJDIR)%.o : %.c
+$(OBJDIR)%.o : %.c $(INCLUDES)
 	@mkdir -p $(OBJDIR)
 	@printf "$(GR)+$(RC)"
 	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
