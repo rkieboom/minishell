@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:03:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/06 01:12:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 18:29:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_vars
 
 static void	return_ret_status(t_vars *vars)
 {
-	vars->temp = ft_itoa(g_ret);
+	vars->temp = ft_itoa(g_global.status);
 	if (!vars->temp)
 		ft_ret_exit(1, 1);
 	ft_memcpy(vars->newstr + vars->x, vars->temp, ft_strlen(vars->temp));
