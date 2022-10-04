@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 13:14:16 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/22 13:46:01 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:36:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,11 @@ static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 
 	i = 0;
 	j = pipe_location(v, k, pipes);
-	if (!j)
-		ft_error("Something went wrong in func last_cmd\n");
 	while (v->parse.commands[k][i + j])
 		i++;
 	i += j;
+	if (i - j == 1)
+		return ;
 	temp->command = ft_calloc(i - j, sizeof(char *));
 	if (!temp->command)
 		ft_ret_exit(1, 1);
