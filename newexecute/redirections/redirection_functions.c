@@ -6,32 +6,40 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:45:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:06:44 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:48:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execute.h"
 
-void	single_redirection_right(t_newcommand *v, int i)
+int	single_redirection_right(t_newcommand *v, int i)
 {
 	v->tokens->stdout_fd = open(\
 	v->command[v->tokens->token_pos[i] + 1] \
 	, O_RDWR | O_TRUNC | O_CREAT, 0644);
 	if (v->tokens->stdout_fd < 0)
-		ft_ret_exit(1, 1);
+	{
+		ft_ret_exit(0, 1);
+		return (1);
+	}
 	close(v->tokens->stdout_fd);
 	v->tokens->last_r = v->tokens->token_pos[i];
+	return (0);
 }
 
-void	double_redirection_right(t_newcommand *v, int i)
+int	double_redirection_right(t_newcommand *v, int i)
 {
 	v->tokens->stdout_fd = open(\
 	v->command[v->tokens->token_pos[i] + 1] \
 	, O_RDWR | O_APPEND | O_CREAT, 0644);
 	if (v->tokens->stdout_fd < 0)
-		ft_ret_exit(1, 1);
+	{
+		ft_ret_exit(0, 1);
+		return (1);
+	}
 	close(v->tokens->stdout_fd);
 	v->tokens->last_r = v->tokens->token_pos[i];
+	return (0);
 }
 
 int	single_redirection_left(t_newcommand *v, int i)
@@ -43,7 +51,7 @@ int	single_redirection_left(t_newcommand *v, int i)
 		ft_putstr_fd("no such file or directory: ", 2);
 		ft_putstr_fd(v->command[v->tokens->token_pos[i] + 1], 2);
 		ft_putchar_fd('\n', 2);
-		return (-1);
+		return (1);
 	}
 	close(v->tokens->stdin_fd);
 	v->tokens->last_l = v->tokens->token_pos[i];
