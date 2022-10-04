@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 01:18:00 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 04:13:36 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:50:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,19 @@ int	get_last_redir(t_newcommand *v, int i, int total)
 			double_redirection_left(v, i);
 		else if (!ft_strncmp(v->tokens->token[i], "<", 2))
 		{
-			if (single_redirection_left(v, i) < 0)
+			if (single_redirection_left(v, i))
 				return (1);
 		}
 		else if (!ft_strncmp(v->tokens->token[i], ">>", 3))
-			double_redirection_right(v, i);
+		{
+			if (double_redirection_right(v, i))
+				return (1);
+		}
 		else if (!ft_strncmp(v->tokens->token[i], ">", 2))
-			single_redirection_right(v, i);
+		{
+			if (single_redirection_right(v, i))
+				return (1);
+		}
 		i++;
 	}
 	return (0);

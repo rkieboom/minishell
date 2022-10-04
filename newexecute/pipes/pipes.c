@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:17:04 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 17:06:25 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:09:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,22 @@ static void	init_vars(t_vars *var, t_newcommand *v)
 	var->fd_stdout_cpy = dup(1);
 }
 
+static void	close_fds(t_vars *var)
+{
+	if (var->fd_stdin_cpy >= 0)
+		close(var->fd_stdin_cpy);
+	if (var->fd_stdout_cpy >= 0)
+		close(var->fd_stdout_cpy);
+}
+
 static void	go(t_list *list, t_vars *vars)
 {
 	setup_pipes(vars);
 	if (vars->temp->tokens && vars->temp->tokens->total > 0)
 	{
+		if (vars->temp->tokens->heredoc)
+			write_to_pipe(vars->temp->tokens->heredoc, \
+			vars->temp->tokens->heredoc->data);
 		if (!redirections(list, vars->temp) && vars->temp->command)
 			run_cmd_redir(list, vars->temp);
 	}
@@ -39,6 +50,8 @@ static void	go(t_list *list, t_vars *vars)
 		run_cmd_redir(list, vars->temp);
 	if (vars->temp->tokens && vars->temp->tokens->total > 0)
 		reset_redirections(list, vars->temp);
+	if (vars->temp->tokens->heredoc)
+		clear_pipe_heredoc(vars->temp->tokens->heredoc);
 	clear_pipes(vars);
 }
 
@@ -54,16 +67,11 @@ void	ft_pipes(t_list *list, t_newcommand *v)
 			vars.temp = vars.temp->next;
 			continue ;
 		}
-		if (vars.temp->tokens->heredoc)
-		{
-			setup_pipes(&vars);
-			run_cmd_heredoc(list, vars.temp);
-			clear_pipes(&vars);
-		}
 		else
 			go(list, &vars);
 		vars.i++;
 		vars.size--;
 		vars.temp = vars.temp->next;
 	}
+	close_fds(&vars);
 }
