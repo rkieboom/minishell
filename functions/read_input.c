@@ -6,24 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/30 00:15:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:06:15 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 #include <readline/readline.h>
 #include <readline/history.h>
-
-static void	sighandler(int sig)
-{
-	if (sig == SIGINT)
-	{
-		write(1, "\n", 1);
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-	}
-}
 
 static int	check_spaces(t_list *list)
 {
@@ -57,11 +46,18 @@ static void	print_error(t_list *list)
 		ft_putstr_fd("\"'\n", 2);
 }
 
-void	read_input(t_list *list, int option)
+static void	setup(t_list *list)
 {
-	signal(SIGINT, sighandler);
+	g_global.heredoc_break = 0;
+	tcsetattr(0, 0, &g_global.termios_new);
+	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, SIG_IGN);
 	reset_buf(list);
+}
+
+void	read_input(t_list *list, int option)
+{
+	setup(list);
 	if (option == 0)
 	{
 		while (!list->gnl.buf)
@@ -70,6 +66,7 @@ void	read_input(t_list *list, int option)
 			if (!list->gnl.buf)
 			{
 				ft_putendl_fd("exit", 1);
+				tcsetattr(0, 0, &g_global.termios_save);
 				exit(0);
 			}
 			if (list->gnl.buf && check_spaces(list))
