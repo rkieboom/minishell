@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:32:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/22 14:36:54 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 18:29:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static int	check_ret_error(t_list *v)
 syntax error near unexpected token ;", 2);
 	free(v->gnl.buf);
 	v->gnl.buf = 0;
-	g_ret = 258;
+	g_global.status = 258;
 	return (1);
 }
 
