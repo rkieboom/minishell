@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/20 09:15:36 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/27 18:33:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:46:58 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,5 +19,9 @@ void	ft_ret_exit(int ret, int print)
 		ft_putstr_fd("minishell-4.2$: ", 2);
 		ft_putendl_fd(strerror(errno), 2);
 	}
-	exit(ret);
+	if (ret != 0)
+	{
+		tcsetattr(0, 0, &g_global.termios_save);
+		exit(ret);
+	}
 }
