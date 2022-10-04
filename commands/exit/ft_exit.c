@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/04 12:03:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/22 14:24:45 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 22:56:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static int	all_num(char *str)
 
 static void	print_and_exit(char *str, int ret)
 {
+	tcsetattr(0, 0, &g_global.termios_save);
 	ft_putendl_fd(str, 2);
 	exit(ret);
 }
@@ -60,6 +61,7 @@ void	ft_exit(char **str)
 	i = 0;
 	while (str[i])
 		i++;
+	tcsetattr(0, 0, &g_global.termios_save);
 	if (i == 1)
 		exit(0);
 	check_errors(str, i);
