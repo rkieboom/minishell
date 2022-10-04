@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 03:13:14 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/26 15:20:05 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 21:56:12 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,16 @@ static void	set_heredoc_data(t_list *list, int k, int i)
 	head = 0;
 	if (!list->tokens[k].heredoc->eof)
 		return ;
+	signal(SIGINT, signal_handler_hdoc);
+	signal(SIGQUIT, SIG_IGN);
+	if (g_global.heredoc_break == 1)
+		return ;
 	free_and_get_data(list, k);
 	while (ft_strncmp(list->gnl.buf, \
 	list->tokens[k].heredoc[i].eof, ft_strlen(list->tokens[k].heredoc[i].eof)))
 	{
+		if (g_global.heredoc_break == 1)
+			return ;
 		allocate(&temp, &head);
 		if (!temp)
 			ft_ret_exit(1, 1);
