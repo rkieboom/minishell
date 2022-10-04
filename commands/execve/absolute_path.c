@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:02:42 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/22 14:24:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:02:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,18 @@ char	*absolute_path(char *PATH)
 	if (check_permission(PATH))
 		return (NULL);
 	return (ft_strdup(PATH));
+}
+
+int	is_absolute_path(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '/')
+			return (1);
+		i++;
+	}
+	return (0);
 }
