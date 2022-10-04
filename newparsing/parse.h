@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:01:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/26 13:36:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 21:48:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ void	get_heredoc_q(t_list *list, int k);
 int		array_thingy(int *p);
 
 int		ft_execve(t_list *list, char **str, int ret);
+void	signal_handler_hdoc(int signum);
 
 #endif
