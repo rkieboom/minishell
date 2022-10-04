@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/04 19:50:14 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/25 22:30:36 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:15:30 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 static void	free_cmd(t_newcommand *temp, int j, int k)
 {
-	while (temp->command[j])
+	while (temp->command && temp->command[j])
 	{
 		free(temp->command[j]);
 		j++;
 	}
-	free(temp->command);
+	if (temp->command)
+		free(temp->command);
 	if (temp->tokens && temp->tokens->total == 0)
 		free(temp->tokens);
 	else if (temp->tokens)
