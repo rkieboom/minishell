@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/27 16:23:19 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:05:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,45 +74,37 @@ static char	**recreate_envp(t_env *env)
 	return (envp);
 }
 
-int	is_absolute_path(char *str)
+static void	run_child(t_list *list, char **str)
 {
-	int	i;
+	char	*path;
+	char	**envp;
 
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '/')
-			return (1);
-		i++;
-	}
-	return (0);
+	signal(SIGINT, SIG_DFL);
+	signal(SIGQUIT, SIG_DFL);
+	envp = recreate_envp(list->env);
+	if (is_absolute_path(str[0]))
+		path = absolute_path(str[0]);
+	else
+		path = relative_path(str[0], list->env);
+	if (path && execve(path, str, envp) < 0)
+		ft_ret_exit(1, 1);
+	else
+		ft_ret_exit(127, 0);
 }
 
 int	ft_execve(t_list *list, char **str, int ret)
 {
-	char	**envp;
-	char	*path;
-	pid_t	pid;
-
-	signals();
-	pid = fork();
-	if (pid < 0)
-		ft_ret_exit(pid, 1);
-	if (pid == 0)
-	{
-		envp = recreate_envp(list->env);
-		if (is_absolute_path(str[0]))
-			path = absolute_path(str[0]);
-		else
-			path = relative_path(str[0], list->env);
-		if (path && execve(path, str, envp) < 0)
-			ft_ret_exit(1, 1);
-		else
-			ft_ret_exit(127, 0);
-	}
+	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
+	g_global.pid = fork();
+	if (g_global.pid < 0)
+		ft_ret_exit(g_global.pid, 1);
+	if (g_global.pid == 0)
+		run_child(list, str);
 	else
-		waitpid(pid, &ret, 0);
-	if (g_ret == 130 || g_ret == 131)
-		return (g_ret);
-	return (WEXITSTATUS(ret));
+		waitpid(g_global.pid, &ret, 0);
+	if (WIFSIGNALED(ret))
+		return (g_global.status);
+	else
+		return (WEXITSTATUS(ret));
 }
