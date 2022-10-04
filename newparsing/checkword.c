@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/05 14:52:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 18:29:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_list *list, char *str, int *i, int *length)
 	}
 	else
 	{
-		temp = ft_itoa(g_ret);
+		temp = ft_itoa(g_global.status);
 		if (!temp)
 			ft_ret_exit(1, 1);
 		(*length) += ft_strlen(temp);
