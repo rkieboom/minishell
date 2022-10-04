@@ -46,7 +46,7 @@
 25. Heredoc without cmd
 26. Syntax_parse check moet voor Heredoc input reading komen [done]
 
-cat << EOF |              //heap use after free
+cat << EOF |              //heap use after free !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 cat | << EOF
 cat | <<
@@ -88,11 +88,10 @@ overall great work for a one man project. now ask the school if you can start cp
 
 
 SOME STUFF TO TAKE A LOOK:
-ls | top, or anything before top
-cat | cat | cat | ls
-Signals in heretic citric
-Crtlc prints smth C
-Error code after cartel c on empty line
-Environment variable without export
-ps aux doesn’t work at all
-lsof -p process_id (file descriptors not used anymore should be closed) -> depends on how you fork
+ls | top, or anything before top 																		[Behaves the same as bash]
+cat | cat | cat | ls                       																	[not doing that ;/]
+Signals in heretic citric																					[fixed kindoff]				
+Crtlc prints smth C																							[fixed]
+Error code after cartel c on empty line																		[fixed]
+ps aux doesn’t work at all																					[????? not sure why]
+lsof -p process_id (file descriptors not used `anymore should be closed) -> depends on how you fork			[fixed fd leak]`
