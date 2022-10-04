@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 17:37:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:24:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <signal.h>
 
-int	g_ret = 0;
+t_global	g_global;
 
 static void	loop(t_list *list)
 {
@@ -27,7 +27,7 @@ static void	loop(t_list *list)
 		add_history(list->gnl.buf);
 		if (check_input(list))
 			continue ;
-		if (!new_parse(list))
+		if (!new_parse(list) && g_global.heredoc_break == 0)
 		{
 			create_cmd(list, 0);
 			if (!syntax_error(list->cmd, 0))
@@ -58,8 +58,12 @@ int	main(int argc, char **argv, char **envp)
 	(void)argc;
 	(void)argv;
 	ft_bzero(&list, sizeof(t_list));
+	ft_bzero(&g_global, sizeof(t_global));
 	list.env = create_envp(list.env, envp);
 	increase_shlvl(&list);
+	tcgetattr(0, &g_global.termios_save);
+	g_global.termios_new = g_global.termios_save;
+	g_global.termios_new.c_lflag &= ~ECHOCTL;
 	loop(&list);
 	return (0);
 }
