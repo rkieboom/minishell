@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/23 17:36:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/04 23:41:10 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@
 # include <stdio.h>
 # include <dirent.h>
 # include <signal.h>
+# include <termios.h>
 
 # include <readline/readline.h>
 # include <readline/history.h>
-
-extern int	g_ret;
 
 typedef struct s_parse
 {
@@ -98,6 +97,17 @@ typedef struct s_list
 	t_newcommand	*cmd;
 }				t_list;
 
+typedef struct s_global
+{
+	int				status;
+	pid_t			pid;
+	struct termios	termios_save;
+	struct termios	termios_new;
+	int				heredoc_break;
+}				t_global;
+
+extern t_global	g_global;
+
 int		new_parse(t_list *list);
 
 void	free_all(t_list *list);
@@ -120,5 +130,7 @@ void	read_input(t_list *list, int option);
 void	check_input_quotes(t_list *list);
 
 int		create_cmd(t_list *v, int k);
+
+void	sig_handler(int sign_num);
 
 #endif
