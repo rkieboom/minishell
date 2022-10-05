@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 13:14:16 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:36:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/05 13:04:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ void	declaring_values(t_list *v, t_newcommand *pipes_cmd, int pipes, int k)
 			temp->next = ft_calloc(1, sizeof(t_newcommand));
 			if (!temp->next)
 				ft_ret_exit(1, 1);
+			temp->next->prev = temp;
 			temp = temp->next;
 		}
 	}

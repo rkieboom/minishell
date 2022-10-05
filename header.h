@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:41:10 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/05 13:01:25 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_tokens
 	int			pipe;
 	int			last_l;
 	int			last_r;
+	int			error;
 	t_heredoc	*heredoc;
 }				t_tokens;
 
@@ -83,6 +84,7 @@ typedef struct s_newcommand
 	char					**command;
 	struct s_tokens			*tokens;
 	struct s_newcommand		*next;
+	struct s_newcommand		*prev;
 }				t_newcommand;
 
 typedef struct s_list
@@ -124,6 +126,7 @@ int		skipspaces(const char *str);
 
 void	check_quote(t_list *list, char *c);
 char	*add_new_line(char *str);
+int		cmd_len(char **str);
 
 int		check_input(t_list *v);
 void	read_input(t_list *list, int option);
