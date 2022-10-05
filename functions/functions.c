@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:56:29 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 22:56:47 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/05 12:52:00 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,16 @@ int	env_str_length(char *str)
 		i++;
 	while (str[i] && (ft_isdigit(str[i]) || \
 	ft_isalpha(str[i]) || str[i] == '_'))
+		i++;
+	return (i);
+}
+
+int	cmd_len(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
 		i++;
 	return (i);
 }

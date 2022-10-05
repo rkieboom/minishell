@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 10:21:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/05 00:22:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/05 12:54:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,19 @@ typedef struct s_vars
 	int	temp;
 }				t_vars;
 
-int	cmd_len(char **str)
+static int	check_double_pipe_error(t_vars *vars, t_list *list)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (list->tokens[vars->i].token_pos[vars->j] + 1 == \
+	list->tokens[vars->i].token_pos[vars->j + 1] && \
+	!ft_strncmp(list->tokens[vars->i].token[vars->j], "|", 2) && \
+	!ft_strncmp(list->tokens[vars->i].token[vars->j + 1], "|", 2))
+	{
+		ft_putstr_fd(\
+"minishell-4.2$: syntax error near unexpected token `|'\n", 2);
+		g_global.status = 258;
+		return (1);
+	}
+	return (0);
 }
 
 static int	loop_over_tokens(t_vars *vars, t_list *list)
@@ -45,16 +50,8 @@ static int	loop_over_tokens(t_vars *vars, t_list *list)
 			g_global.status = 258;
 			return (1);
 		}
-		else if (list->tokens[vars->i].token_pos[vars->j] + 1 == \
-		list->tokens[vars->i].token_pos[vars->j + 1] && \
-		!ft_strncmp(list->tokens[vars->i].token[vars->j], "|", 2) &&\
-		!ft_strncmp(list->tokens[vars->i].token[vars->j + 1], "|", 2))
-		{
-			ft_putstr_fd(\
-"minishell-4.2$: syntax error near unexpected token `|'\n", 2);
-			g_global.status = 258;
+		else if (check_double_pipe_error(vars, list))
 			return (1);
-		}
 		vars->j++;
 	}
 	return (0);

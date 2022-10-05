@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:17:04 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/05 01:04:11 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/05 13:27:26 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ static void	go(t_list *list, t_vars *vars)
 		if (vars->temp->tokens->heredoc)
 			write_to_pipe(vars->temp->tokens->heredoc, \
 			vars->temp->tokens->heredoc->data);
-		if (!redirections(list, vars->temp) && vars->temp->command && vars->error == 0)
+		if (!redirections(list, vars->temp) && \
+		vars->temp->command && vars->error == 0)
 			run_cmd_redir(list, vars->temp);
 	}
 	else if (vars->error == 0)
@@ -65,12 +66,16 @@ void	ft_pipes(t_list *list, t_newcommand *v)
 	while (vars.temp)
 	{
 		if (get_last_redir(vars.temp, 0, vars.temp->tokens->total))
+		{
 			vars.error = 1;
+			vars.temp->tokens->error = 1;
+		}
 		else
 			go(list, &vars);
 		vars.i++;
 		vars.size--;
 		vars.temp = vars.temp->next;
+		vars.error = 0;
 	}
 	close_fds(&vars);
 }
