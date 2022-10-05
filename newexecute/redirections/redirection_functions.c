@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/04/10 18:45:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:48:36 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/05 00:55:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	single_redirection_left(t_newcommand *v, int i)
 	v->command[v->tokens->token_pos[i] + 1], O_RDONLY);
 	if (v->tokens->stdin_fd < 0)
 	{
-		ft_putstr_fd("no such file or directory: ", 2);
+		ft_putstr_fd("minishell-4.2$: no such file or directory: ", 2);
 		ft_putstr_fd(v->command[v->tokens->token_pos[i] + 1], 2);
 		ft_putchar_fd('\n', 2);
 		return (1);

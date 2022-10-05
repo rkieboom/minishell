@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 16:31:29 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:09:49 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/05 01:01:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_vars
 	int				newpipes[2];
 	int				fd_stdin_cpy;
 	int				fd_stdout_cpy;
+	int				error;
 
 	t_newcommand	*temp;
 }				t_vars;
