@@ -1,0 +1,6 @@
+1,2c1,2
+< src/functions_bash_error.sh: line 64: ..: command not found
+< 127
+---
+> minishell-4.2$: Permission denied
+> 1
