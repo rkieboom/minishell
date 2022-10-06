@@ -1,0 +1,4 @@
+1c1
+< src/functions_bash_error.sh: line 54: $: command not found
+---
+> minishell-4.2$: $: command not found
