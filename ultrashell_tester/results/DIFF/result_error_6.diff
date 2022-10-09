@@ -1,4 +1,0 @@
-1c1
-< src/functions_bash_error.sh: line 39: random_cmd: command not found
----
-> minishell-4.2$: random_cmd: command not found

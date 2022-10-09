@@ -1,4 +1,0 @@
-1c1
-< src/functions_bash_error.sh: line 49: ./utils/non_exe_file.sh: No such file or directory
----
-> minishell-4.2$: ./utils/non_exe_file.sh: command not found

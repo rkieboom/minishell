@@ -1,5 +1,0 @@
-1,2c1
-< cat: ultrashell.sh: No such file or directory
-< src/functions_bash_error.sh: line 69: cd: hoi: No such file or directory
----
-> minishell-4.2$: cd: hoi0: No such file or directory

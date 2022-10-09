@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/16 22:47:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/22 00:16:57 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/08 22:53:46 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	pwd(void)
 {
-	char	buf[1024];
+	char	buf[4096];
 
-	ft_putendl_fd(getcwd(buf, 1024), 1);
+	ft_putendl_fd(getcwd(buf, 4096), 1);
 	return (0);
 }

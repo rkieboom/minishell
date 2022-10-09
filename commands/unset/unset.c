@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 20:01:05 by spelle        #+#    #+#                 */
-/*   Updated: 2022/10/03 12:17:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/09 00:14:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ int	unset(t_env *v, char **str)
 {
 	int		i;
 
-	if (str[1] == NULL)
-		return (1);
 	i = 1;
+	if (str[i] == NULL)
+		return (1);
 	while (str[i] != NULL)
 	{
 		if (!ft_strncmp(search_envname_returnenvname(v, str[i]), "", 1))

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/27 18:30:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/09 17:13:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,24 @@
 
 static int	cd_check_exist(char *PATH)
 {
-	struct stat	stats;
-	int			fd;
+	DIR	*directory;
 
-	fd = open(PATH, O_RDONLY);
-	if (fd < 0)
+	directory = opendir(PATH);
+	if (!directory)
 	{
-		if (stat(PATH, &stats) == 0)
-			return (0);
 		ft_putstr_fd("minishell-4.2$: cd: ", 2);
 		ft_putstr_fd(PATH, 2);
 		ft_putendl_fd(": No such file or directory", 2);
 		return (1);
 	}
-	close(fd);
-	return (0);
-}
-
-static int	cd_check_permission(char *PATH)
-{
-	struct stat	stats;
-
-	if (stat(PATH, &stats) != 0)
-		return (1);
-	else if (!(stats.st_mode & X_OK))
-	{
-		ft_putstr_fd("minishell-4.2$: cd: ", 2);
-		ft_putstr_fd(PATH, 2);
-		ft_putendl_fd(": Permission denied", 2);
-		return (1);
-	}
+	if (closedir(directory) < 0)
+		ft_ret_exit(1, 1);
 	return (0);
 }
 
 static int	cd_1_arg(t_list *v)
 {
 	int		ret;
-	char	cwd[1024];
 
 	if (!ft_strncmp(search_env(v->env, "HOME", 0), "", 1))
 	{
@@ -59,42 +40,94 @@ static int	cd_1_arg(t_list *v)
 	}
 	else
 	{
-		env_change_content(v->env, "OLDPWD", getcwd(cwd, 1024));
+		env_change_content(v->env, "OLDPWD", search_env(v->env, "PWD", 3));
 		ret = chdir(search_env(v->env, "HOME", 0));
 		if (ret < 0)
-			ft_ret_exit(ret, 1);
-		env_change_content(v->env, "PWD", getcwd(cwd, 1024));
+			ft_ret_exit(0, 1);
+		env_change_content(v->env, "PWD", search_env(v->env, "HOME", 4));
 	}
 	return (0);
 }
 
-static int	cd_check_dir(char *str)
+static int	cd_check_if_dir_and_perms(char *path)
 {
 	struct stat	path_stat;
 
-	stat(str, &path_stat);
+	if (stat(path, &path_stat) != 0)
+		ft_ret_exit(1, 1);
 	if (S_ISREG(path_stat.st_mode))
 	{
 		ft_putendl_fd("minishell-4.2$: Not a directory", 2);
 		return (1);
 	}
+	else if (!(path_stat.st_mode & X_OK))
+	{
+		ft_putstr_fd("minishell-4.2$: cd: ", 2);
+		ft_putstr_fd(path, 2);
+		ft_putendl_fd(": Permission denied", 2);
+		return (1);
+	}
 	return (0);
+}
+
+static char*	add_path(char *str, char *path)
+{
+	char *newstr;
+
+	newstr = ft_calloc(sizeof(char), ft_strlen(str) + ft_strlen(path) + 1);
+	if (!newstr)
+		ft_ret_exit(1, 1);
+	ft_strlcpy(newstr, str, ft_strlen(str) + 1);
+	ft_strlcpy(newstr + ft_strlen(str), path, ft_strlen(path) + 1);
+	return (newstr);
+}
+
+static int	nonworkingdir(t_list *v, char *path)
+{
+	char	*newstr;
+
+	ft_putendl_fd( \
+"cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory", 2);
+	if (chdir(path) < 0)
+		ft_ret_exit(0, 1);
+	else
+	{
+		env_change_content(v->env, "OLDPWD", search_env(v->env, "PWD", 3));
+		newstr = add_path(search_env(v->env, "PWD", 3), path);
+		env_change_content(v->env, "PWD", newstr);
+		free(newstr);
+		free(path);
+		return (0);
+	}
+	free(path);
+	return (1);
 }
 
 int	cd(t_list *v, char **str)
 {
 	int		ret;
-	char	cwd[1024];
+	char	*newpath;
+	char	cwd[4096];
 
+	check_pwd_oldpwd(v->env);
 	if (!str[1])
 		return (cd_1_arg(v));
-	if (cd_check_exist(str[1]) || cd_check_dir(str[1]) \
-	|| cd_check_permission(str[1]))
+	newpath = cd_tilde_expansion(v, str[1]);
+	if (!newpath)
 		return (1);
-	env_change_content(v->env, "OLDPWD", getcwd(cwd, 1024));
-	ret = chdir(str[1]);
+	if (cd_check_exist(newpath) || cd_check_if_dir_and_perms(newpath))
+	{
+		free(newpath);
+		return (1);
+	}
+	if (!getcwd(cwd, 4096))
+		return (nonworkingdir(v, newpath));
+	env_change_content(v->env, "OLDPWD", cwd);
+	ret = chdir(newpath);
 	if (ret < 0)
-		ft_ret_exit(ret, 1);
-	env_change_content(v->env, "PWD", getcwd(cwd, 1024));
+		ft_ret_exit(0, 1);
+	if (getcwd(cwd, 4096))
+		env_change_content(v->env, "PWD", cwd);
+	free(newpath);
 	return (0);
 }
