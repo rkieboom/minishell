@@ -1,6 +1,0 @@
-1,2c1,2
-< src/functions_bash_error.sh: line 79: test1: No such file or directory
-< 1
----
-> minishell-4.2$: no such file or directory: test2
-> 0

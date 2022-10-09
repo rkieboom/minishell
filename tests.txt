@@ -1,9 +1,16 @@
+# SYNTAX ERROR
+exec_test ';; test'
+exec_test '| test'
+exec_test 'echo > <'
+exec_test 'echo | |'
+exec_test '<'
+
 /bin/ls
 /bin/expr $? + $?
 
-   	   /bin/ls -la
+   /bin/ls -la
 
-echo -nnn doei
+echo -nnnnnn doei
    echo hallooooooo dit is een test
 echo "my PWD='$PWD'"
 echo 'My PWD="$PWD"'
@@ -38,6 +45,8 @@ pwd
 unset PATH
 
 try commands
+
+cat main.c >
 
 cat main.c > main_copy.c 
 

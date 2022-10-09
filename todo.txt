@@ -95,3 +95,12 @@ Crtlc prints smth C																							[fixed]
 Error code after cartel c on empty line																		[fixed]
 ps aux doesn’t work at all																					[????? not sure why]
 lsof -p process_id (file descriptors not used `anymore should be closed) -> depends on how you fork			[fixed fd leak]`
+
+
+
+cd crashing mkdir a/b;cd  a/b; rm -rf ../../a; cd .. = segfault
+
+cd ~
+
+
+cd  

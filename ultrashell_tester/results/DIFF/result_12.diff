@@ -1,4 +1,0 @@
-1c1
-< hello -n0
----
-> -nnn hello -n0

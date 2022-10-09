@@ -1,4 +1,0 @@
-1c1
-< src/functions_bash_error.sh: line 10: cd: Eyooooo: No such file or directory
----
-> minishell-4.2$: cd: Eyooooo: No such file or directory

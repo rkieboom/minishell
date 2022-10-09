@@ -1,4 +1,0 @@
-1c1
-< src/functions_bash_error.sh: line 5: cd: HOME not set
----
-> minishell-4.2$: cd: HOME not set

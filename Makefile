@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/04 23:40:04 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/09 00:38:59 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ ifeq ($(DEBUG),2)
 CFLAGS	+= -g3 -fsanitize=address -fno-omit-frame-pointer
 endif
 ifeq ($(DEBUG),3)
-CC = /usr/local/opt/llvm@8/bin/clang
 CFLAGS	+= -g3 -fsanitize=leak
 endif
 
@@ -73,6 +72,8 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/signal_handler.c \
 
 SRCS.COMMANDS.CD =		commands/cd/cd.c \
+						commands/cd/cd_tilde_expansion.c \
+						commands/cd/check_pwd_oldpwd.c \
 
 SRCS.COMMANDS.ECHO =	commands/echo/echo.c \
 
@@ -184,7 +185,7 @@ $(OBJDIR)%.o : %.c $(INCLUDES)
 	@$(CC) $(CFLAGS) -c $< -o $@  $(INCLUDES_MAC) -I/Users/$(USER)/.brew/opt/readline/include/
 
 # Linking
-$(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS)
+$(NAME)	: $(LIBFTLIB) $(SRCS)  $(OBJS) $(INCLUDES)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
 	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) -lreadline -L/Users/$(USER)/.brew/opt/readline/lib
 
