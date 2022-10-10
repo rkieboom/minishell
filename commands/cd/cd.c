@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/09 17:13:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/10 13:23:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,39 +68,6 @@ static int	cd_check_if_dir_and_perms(char *path)
 		return (1);
 	}
 	return (0);
-}
-
-static char*	add_path(char *str, char *path)
-{
-	char *newstr;
-
-	newstr = ft_calloc(sizeof(char), ft_strlen(str) + ft_strlen(path) + 1);
-	if (!newstr)
-		ft_ret_exit(1, 1);
-	ft_strlcpy(newstr, str, ft_strlen(str) + 1);
-	ft_strlcpy(newstr + ft_strlen(str), path, ft_strlen(path) + 1);
-	return (newstr);
-}
-
-static int	nonworkingdir(t_list *v, char *path)
-{
-	char	*newstr;
-
-	ft_putendl_fd( \
-"cd: error retrieving current directory: getcwd: cannot access parent directories: No such file or directory", 2);
-	if (chdir(path) < 0)
-		ft_ret_exit(0, 1);
-	else
-	{
-		env_change_content(v->env, "OLDPWD", search_env(v->env, "PWD", 3));
-		newstr = add_path(search_env(v->env, "PWD", 3), path);
-		env_change_content(v->env, "PWD", newstr);
-		free(newstr);
-		free(path);
-		return (0);
-	}
-	free(path);
-	return (1);
 }
 
 int	cd(t_list *v, char **str)

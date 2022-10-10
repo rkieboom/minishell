@@ -1,9 +1,9 @@
 # SYNTAX ERROR
-exec_test ';; test'
-exec_test '| test'
-exec_test 'echo > <'
-exec_test 'echo | |'
-exec_test '<'
+;; test
+| test
+echo > <
+echo | |
+<
 
 /bin/ls
 /bin/expr $? + $?
