@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/09 00:38:59 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/10 13:24:20 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,6 +74,8 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 SRCS.COMMANDS.CD =		commands/cd/cd.c \
 						commands/cd/cd_tilde_expansion.c \
 						commands/cd/check_pwd_oldpwd.c \
+						commands/cd/non_working_dir_except.c \
+						
 
 SRCS.COMMANDS.ECHO =	commands/echo/echo.c \
 
