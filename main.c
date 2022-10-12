@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/06 19:35:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/11 22:53:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	loop(t_list *list)
 		{
 			create_cmd(list, 0);
 			if (!syntax_error(list->cmd, 0))
-				execute(list, list->cmd, 0);
+				execution(list, list->cmd, 0);
 		}
 		free_all(list);
 	}

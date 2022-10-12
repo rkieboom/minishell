@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:05:07 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/12 01:07:59 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,19 +92,10 @@ static void	run_child(t_list *list, char **str)
 		ft_ret_exit(127, 0);
 }
 
-int	ft_execve(t_list *list, char **str, int ret)
+void	ft_execve(t_list *list, char **str)
 {
 	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, sig_handler);
-	g_global.pid = fork();
-	if (g_global.pid < 0)
-		ft_ret_exit(g_global.pid, 1);
-	if (g_global.pid == 0)
-		run_child(list, str);
-	else
-		waitpid(g_global.pid, &ret, 0);
-	if (WIFSIGNALED(ret))
-		return (g_global.status);
-	else
-		return (WEXITSTATUS(ret));
+
+	run_child(list, str);
 }

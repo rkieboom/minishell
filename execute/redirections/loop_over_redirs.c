@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   redirection_functions.c                            :+:    :+:            */
+/*   loop_over_redirs.c                                 :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/10 18:45:10 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/05 00:55:27 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/11 21:58:05 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/10/12 00:36:26 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execute.h"
 
-int	single_redirection_right(t_newcommand *v, int i)
+static int	single_redirection_right(t_newcommand *v, int i)
 {
 	v->tokens->stdout_fd = open(\
 	v->command[v->tokens->token_pos[i] + 1] \
@@ -27,7 +27,7 @@ int	single_redirection_right(t_newcommand *v, int i)
 	return (0);
 }
 
-int	double_redirection_right(t_newcommand *v, int i)
+static int	double_redirection_right(t_newcommand *v, int i)
 {
 	v->tokens->stdout_fd = open(\
 	v->command[v->tokens->token_pos[i] + 1] \
@@ -42,7 +42,7 @@ int	double_redirection_right(t_newcommand *v, int i)
 	return (0);
 }
 
-int	single_redirection_left(t_newcommand *v, int i)
+static int	single_redirection_left(t_newcommand *v, int i)
 {
 	v->tokens->stdin_fd = open(\
 	v->command[v->tokens->token_pos[i] + 1], O_RDONLY);
@@ -58,7 +58,40 @@ int	single_redirection_left(t_newcommand *v, int i)
 	return (0);
 }
 
-void	double_redirection_left(t_newcommand *v, int i)
+static void	double_redirection_left(t_newcommand *v, int i)
 {
 	v->tokens->last_l = v->tokens->token_pos[i];
+}
+
+static void	init_vars(t_tokens *tokens)
+{
+	tokens->last_l = -1;
+	tokens->last_r = -1;
+}
+
+int	loop_over_redirs(t_newcommand *v, int i, int total)
+{
+	init_vars(v->tokens);
+	while (i < total)
+	{
+		if (!ft_strncmp(v->tokens->token[i], "<<", 3))
+			double_redirection_left(v, i);
+		else if (!ft_strncmp(v->tokens->token[i], "<", 2))
+		{
+			if (single_redirection_left(v, i))
+				return (1);
+		}
+		else if (!ft_strncmp(v->tokens->token[i], ">>", 3))
+		{
+			if (double_redirection_right(v, i))
+				return (1);
+		}
+		else if (!ft_strncmp(v->tokens->token[i], ">", 2))
+		{
+			if (single_redirection_right(v, i))
+				return (1);
+		}
+		i++;
+	}
+	return (0);
 }

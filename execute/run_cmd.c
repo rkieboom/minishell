@@ -5,12 +5,12 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/04/10 18:06:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:32:31 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/11 15:34:15 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/10/12 01:20:05 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipes/pipes.h"
+#include "execute.h"
 
 void	run_cmd(t_list *list, char **cmd)
 {
@@ -31,22 +31,5 @@ void	run_cmd(t_list *list, char **cmd)
 	else if (!ft_strncmp(cmd[0], "exit", 5))
 		ft_exit(cmd);
 	else
-		g_global.status = ft_execve(list, cmd, 0);
-}
-
-void	run_cmd_redir(t_list *list, t_newcommand *v)
-{
-	char	**newcmd;
-
-	if (!v->command)
-		return ;
-	newcmd = set_cmd(v);
-	if (!newcmd[0])
-	{
-		free(newcmd);
-		return ;
-	}
-	run_cmd(list, newcmd);
-	if (v->tokens && v->tokens->total > 0)
-		free(newcmd);
+		ft_execve(list, cmd);
 }

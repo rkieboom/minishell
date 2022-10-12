@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/10 13:24:20 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/12 01:09:32 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ SRCDIR	= ./
 OBJDIR	= bin/
 LIBFTDIR = libft/
 
-INCLUDES = header.h newparsing/parse.h newexecute/execute.h newexecute/pipes/pipes.h \
+INCLUDES = header.h newparsing/parse.h execute/execute.h \
 libft/libft.h env_list/env_list.h commands/commands.h cmd/cmd.h cmd/tokens_cmd/tokens.h
 
 LIBFTLIB = $(LIBFTDIR)/libft.a
@@ -58,7 +58,7 @@ SRCS =					main.c \
 						$(SRCS.GNL) \
 						$(SRCS.NEW.PARSING) \
 						$(SRCS.CREATE.CMD) \
-						$(SRCS.NEWEXECUTE)
+						$(SRCS.EXECUTE)
 						
 						
 FUNCTIONS =				functions/ft_skipspaces.c \
@@ -109,6 +109,18 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 						execute/execute.c \
 						execute/redirections.c \
 						execute/exec_cmd_builtin_pipe.c \
+
+SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
+						execute/set_cmd.c \
+						execute/pipes/setup_pipes.c \
+						execute/pipes/clean_pipes.c \
+						execute/pipes/setup_tokens_child.c \
+						execute/pipes/clean_tokens_child.c \
+						execute/redirections/loop_over_redirs.c \
+						execute/redirections/redirections.c \
+						execute/setup_single_cmd.c \
+						execute/setup_pipes_cmd.c \
+						
 
 SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_cmd.c \
 						newexecute/set_cmd.c \
