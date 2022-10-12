@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:26:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 04:13:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/12 15:52:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 // 	close(list->stdin_cpy);
 // 	dup2(list->stdout_cpy, 1);
 // 	close(list->stdout_cpy);
-	
 // }
 
 void	execution(t_list *list, t_newcommand *cmd, int k)

@@ -6,39 +6,66 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 21:55:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 03:29:30 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/12 16:58:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execute.h"
 
-static	void	first(t_newcommand *cmd)
+static	void	first(t_list *list, t_newcommand *cmd)
 {
 	if (cmd->tokens->last_l != -1)
-		close(STDIN_FILENO);
-	close(STDOUT_FILENO);
+	{
+		dup2(list->stdin_cpy, STDIN_FILENO);
+		close(list->stdin_cpy);
+	}
+	dup2(list->stdout_cpy, STDOUT_FILENO);
+	close(list->stdout_cpy);
 }
 
-static	void	middle()
+static	void	middle(t_list *list)
 {
-	close(STDIN_FILENO);
-	close(STDOUT_FILENO);
+	dup2(list->stdin_cpy, STDIN_FILENO);
+	dup2(list->stdout_cpy, STDOUT_FILENO);
+	close(list->stdin_cpy);
+	close(list->stdout_cpy);
+	// close(STDIN_FILENO);
+	// close(STDOUT_FILENO);
 }
 
-static	void last(t_newcommand *cmd)
+static	void last(t_list *list, t_newcommand *cmd)
 {
-	close(STDIN_FILENO);
+	dup2(list->stdin_cpy, STDIN_FILENO);
+	close(list->stdin_cpy);
+	// close(STDIN_FILENO);
 	if (cmd->tokens->last_r != -1)
-		close(STDOUT_FILENO);
+	{
+		dup2(list->stdout_cpy, STDOUT_FILENO);
+		close(list->stdout_cpy);
+	}
+		// close(STDOUT_FILENO);
 }
 
-
-void	clean_tokens_child(t_newcommand *cmd)
+void	clean_tokens_child(t_list *list, t_newcommand *cmd)
 {
+	(void)list;
+
 	if (cmd->id == 0)
-		first(cmd);
+	{
+		dprintf(2, "IN FIRST CLOSING\n");
+		fflush(0);
+		first(list, cmd);
+	}
 	else if (!cmd->next)
-		last(cmd);
+	{
+		dprintf(2, "IN LAST CLOSING\n");
+		fflush(0);
+		last(list, cmd);
+	}
 	else
-		middle();
+	{
+		dprintf(2, "IN MID CLOSING\n");
+		fflush(0);
+		middle(list);
+	}
 }

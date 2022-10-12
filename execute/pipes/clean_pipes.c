@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 21:45:26 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 02:33:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/12 15:36:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,14 @@ static void	last(t_newcommand *cmd)
 
 void	clean_pipes(t_newcommand *cmd)
 {
-	if (cmd->id == 0)
-		first(cmd);
-	else if (!cmd->next)
-		last(cmd);
-	else
-		middle(cmd);
+	while (cmd)
+	{
+		if (cmd->id == 0)
+			first(cmd);
+		else if (!cmd->next)
+			last(cmd);
+		else
+			middle(cmd);
+		cmd = cmd->next;
+	}
 }

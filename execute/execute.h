@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:33:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 03:30:01 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/12 15:51:36 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 void	run_cmd(t_list *list, char **cmd);
 void	run_cmd_tokens(t_list *list, t_newcommand *cmd);
 
-int		setup_tokens_child(t_newcommand *cmd);
-void	clean_tokens_child(t_newcommand *command);
+int		setup_tokens_child(t_list *list, t_newcommand *cmd);
+void	clean_tokens_child(t_list *list, t_newcommand *command);
 
 void	setup_pipes(t_newcommand *cmd);
 void	clean_pipes(t_newcommand *cmd);
