@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:26:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 15:52:20 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/12 20:16:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,8 @@ void	execution(t_list *list, t_newcommand *cmd, int k)
 		if (!cmd[i].next)
 			setup_single_cmd(list, cmd);
 		else
-		{
-			// save_fds(list);
-			setup_pipe_cmd(list, &cmd[i]);
-			// reset_fds(list);
-		}
+			setup_pipe_cmd(list, cmd);
 		i++;
 	}
+	dprintf(2, "DONE WITH ALL\n");
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/11 22:53:01 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/12 18:07:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ typedef struct s_newcommand
 	int						pipes[2];
 	int						read_pipe;
 	char					**command;
+	int						*fd;
 	struct s_tokens			*tokens;
 	struct s_newcommand		*next;
 	struct s_newcommand		*prev;
