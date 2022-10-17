@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/17 12:05:21 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/17 12:54:59 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -114,6 +114,7 @@ SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
 						execute/set_cmd.c \
 						execute/redirections/loop_over_redirs.c \
 						execute/redirections/redirections.c \
+						execute/redirections/heredoc.c \
 						execute/setup_single_cmd.c \
 						execute/setup_pipes_cmd.c \
 						execute/exit_status.c \

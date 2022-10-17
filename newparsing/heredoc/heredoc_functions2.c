@@ -6,13 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 03:13:14 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 21:56:12 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 13:31:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse.h"
 
-static void	free_and_get_data(t_list *list, int k)
+static void	free_and_get_data(t_list *list, int k, int i)
 {
 	if (list->gnl.buf)
 	{
@@ -21,7 +21,7 @@ static void	free_and_get_data(t_list *list, int k)
 	}
 	list->gnl.buf = readline("> ");
 	if (!list->gnl.buf)
-		list->gnl.buf = ft_strdup(list->tokens[k].heredoc->eof);
+		list->gnl.buf = ft_strdup(list->tokens[k].heredoc[i].eof);
 }
 
 static void	allocate(t_heredoc_data **temp, t_heredoc_data **head)
@@ -55,7 +55,7 @@ static void	set_heredoc_data(t_list *list, int k, int i)
 	signal(SIGQUIT, SIG_IGN);
 	if (g_global.heredoc_break == 1)
 		return ;
-	free_and_get_data(list, k);
+	free_and_get_data(list, k, i);
 	while (ft_strncmp(list->gnl.buf, \
 	list->tokens[k].heredoc[i].eof, ft_strlen(list->tokens[k].heredoc[i].eof)))
 	{
@@ -65,7 +65,7 @@ static void	set_heredoc_data(t_list *list, int k, int i)
 		if (!temp)
 			ft_ret_exit(1, 1);
 		temp->str = ft_strdup(list->gnl.buf);
-		free_and_get_data(list, k);
+		free_and_get_data(list, k, i);
 	}
 	list->tokens[k].heredoc[i].data = head;
 }

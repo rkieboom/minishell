@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 22:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/11 22:47:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 13:01:15 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ int	redir_left(t_newcommand *v)
 {
 	if (!ft_strncmp(v->command[v->tokens->last_l], "<<", 3))
 	{
-		if (dup2(v->tokens->heredoc->pipe[0], 0) < 0)
+		heredoc_set_pipe(&v->tokens->heredoc[v->tokens->double_redirection_left - 1], v->tokens->heredoc[v->tokens->double_redirection_left - 1].data);
+		if (dup2(v->tokens->heredoc[v->tokens->double_redirection_left - 1].pipe[0], 0) < 0)
 			ft_ret_exit(1, 1);
-		close(v->tokens->heredoc->pipe[0]);
+		close(v->tokens->heredoc[v->tokens->double_redirection_left - 1].pipe[0]);
 		return (0);
 	}
 	v->tokens->stdin_fd = open(v->command[v->tokens->last_l + 1], O_RDONLY);
