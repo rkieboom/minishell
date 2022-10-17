@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 18:21:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:07:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 12:07:56 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void	process(int sign_num)
 	{
 		if (sign_num == SIGQUIT)
 		{
-			ft_putstr_fd("Quit: 3\n", 1);
+			ft_putstr_fd("Quit: 3\n", 2);
 			rl_on_new_line();
 			rl_replace_line("", 0);
 			g_global.status = 131;
 		}
 		else if (sign_num == SIGINT)
 		{
-			write(1, "\n", 1);
+			ft_putstr_fd("\n", 2);
 			rl_on_new_line();
 			rl_replace_line("", 0);
 			g_global.status = 130;
@@ -33,7 +33,7 @@ static void	process(int sign_num)
 	}
 	else if (sign_num == SIGINT)
 	{
-		write(1, "\n", 1);
+		ft_putstr_fd("\n", 2);
 		rl_on_new_line();
 		rl_replace_line("", 0);
 		rl_redisplay();
@@ -50,11 +50,17 @@ void	sig_handler(int sign_num)
 	{
 		if (sign_num == SIGINT)
 		{
-			write(1, "\n", 1);
+			ft_putstr_fd("\n", 2);
 			rl_on_new_line();
 			rl_replace_line("", 0);
 			rl_redisplay();
 			g_global.status = 1;
 		}
 	}
+}
+
+void	signals(void)
+{
+	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
 }

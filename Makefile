@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/12 01:09:32 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/17 12:05:21 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,14 +112,11 @@ SRCS.EXECUTE =			execute/checkcommand.c \
 
 SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
 						execute/set_cmd.c \
-						execute/pipes/setup_pipes.c \
-						execute/pipes/clean_pipes.c \
-						execute/pipes/setup_tokens_child.c \
-						execute/pipes/clean_tokens_child.c \
 						execute/redirections/loop_over_redirs.c \
 						execute/redirections/redirections.c \
 						execute/setup_single_cmd.c \
 						execute/setup_pipes_cmd.c \
+						execute/exit_status.c \
 						
 
 SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_cmd.c \

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 00:44:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 01:06:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/16 21:01:33 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ static void	setup_builtin(t_list *list, t_newcommand *cmd, char **command)
 
 static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 {
-	int	status;
+	int	status = 0;
 
 	g_global.pid = fork();
 	if (g_global.pid == 0)
@@ -86,6 +86,7 @@ static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 	}
 	else
 		waitpid(g_global.pid, &status, 0);
+	g_global.status = exit_status(status);
 }
 
 void	setup_single_cmd(t_list *list, t_newcommand *cmd)
