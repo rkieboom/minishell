@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:33:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 15:40:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/18 01:30:25 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include "../commands/commands.h"
+# include "../builtin/commands.h"
 # include "../header.h"
 
 void	run_cmd(t_list *list, char **cmd);

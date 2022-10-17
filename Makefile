@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/17 18:04:08 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/18 01:31:06 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ SRCDIR	= ./
 OBJDIR	= bin/
 LIBFTDIR = libft/
 
-INCLUDES = header.h newparsing/parse.h execute/execute.h \
-libft/libft.h env_list/env_list.h commands/commands.h cmd/cmd.h cmd/tokens_cmd/tokens.h
+INCLUDES = header.h parsing/parse.h execute/execute.h \
+libft/libft.h env_list/env_list.h builtin/commands.h cmd/cmd.h cmd/tokens_cmd/tokens.h
 
 LIBFTLIB = $(LIBFTDIR)/libft.a
 
@@ -56,7 +56,7 @@ SRCS =					main.c \
 						$(SRCS.ENV.LIST.FUNC) \
 						$(SRCS.FREE) \
 						$(SRCS.GNL) \
-						$(SRCS.NEW.PARSING) \
+						$(SRCS.PARSING) \
 						$(SRCS.CREATE.CMD) \
 						$(SRCS.EXECUTE)
 						
@@ -71,30 +71,30 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/functions.c \
 						functions/signal_handler.c \
 
-SRCS.COMMANDS.CD =		commands/cd/cd.c \
-						commands/cd/cd_tilde_expansion.c \
-						commands/cd/check_pwd_oldpwd.c \
-						commands/cd/non_working_dir_except.c \
+SRCS.COMMANDS.CD =		builtin/cd/cd.c \
+						builtin/cd/cd_tilde_expansion.c \
+						builtin/cd/check_pwd_oldpwd.c \
+						builtin/cd/non_working_dir_except.c \
 						
 
-SRCS.COMMANDS.ECHO =	commands/echo/echo.c \
+SRCS.COMMANDS.ECHO =	builtin/echo/echo.c \
 
-SRCS.COMMANDS.ENV =		commands/env/env.c \
+SRCS.COMMANDS.ENV =		builtin/env/env.c \
 
-SRCS.COMMANDS.PWD =		commands/pwd/pwd.c \
+SRCS.COMMANDS.PWD =		builtin/pwd/pwd.c \
 
-SRCS.COMMANDS.EXPORT =	commands/export/export.c \
-						commands/export/export_utils.c \
+SRCS.COMMANDS.EXPORT =	builtin/export/export.c \
+						builtin/export/export_utils.c \
 
-SRCS.COMMANDS.UNSET =	commands/unset/unset.c \
+SRCS.COMMANDS.UNSET =	builtin/unset/unset.c \
 
-SRCS.COMMANDS.EXECVE =	commands/execve/execve.c \
-						commands/execve/commands.c \
-						commands/execve/relative_path.c \
-						commands/execve/absolute_path.c \
+SRCS.COMMANDS.EXECVE =	builtin/execve/execve.c \
+						builtin/execve/commands.c \
+						builtin/execve/relative_path.c \
+						builtin/execve/absolute_path.c \
 
-SRCS.COMMANDS.EXIT = 	commands/exit/ft_exit.c \
-						commands/exit/ret_exit.c \
+SRCS.COMMANDS.EXIT = 	builtin/exit/ft_exit.c \
+						builtin/exit/ret_exit.c \
 
 SRCS.ENV.LIST =			env_list/env_lst_new.c \
 						env_list/env_lstadd_back.c \
@@ -104,13 +104,6 @@ SRCS.ENV.LIST =			env_list/env_lst_new.c \
 SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
 						env_list/functions/search_env.c \
 
-SRCS.EXECUTE =			execute/checkcommand.c \
-						execute/createcommand_pipe.c \
-						execute/execute.c \
-						execute/redirections.c \
-						execute/exec_cmd_builtin_pipe.c \
-						execute/setup_builtin.c \
-
 SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
 						execute/set_cmd.c \
 						execute/redirections/loop_over_redirs.c \
@@ -119,6 +112,7 @@ SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
 						execute/setup_single_cmd.c \
 						execute/setup_pipes_cmd.c \
 						execute/exit_status.c \
+						execute/setup_builtin.c \
 						
 
 SRCS.NEWEXECUTE =		newexecute/execute.c newexecute/run_cmd.c \
@@ -136,21 +130,21 @@ SRCS.FREE =				free/free_all.c \
 						free/free_commands.c \
 						free/free_heredoc.c \
 
-SRCS.NEW.PARSING = 		newparsing/parse.c \
-						newparsing/parse_arraysize.c \
-						newparsing/splitting/parse_split_spaces.c \
-						newparsing/splitting/parse_split_commands.c \
-						newparsing/splitting/parse_split_tokens.c \
-						newparsing/checkword.c \
-						newparsing/createstring.c \
-						newparsing/tokens.c \
-						newparsing/heredoc/heredoc_functions.c \
-						newparsing/heredoc/heredoc_functions2.c \
-						newparsing/heredoc/heredoc_parsing.c \
-						newparsing/heredoc/heredoc_calc_len.c \
-						newparsing/heredoc/heredoc_create_str.c \
-						newparsing/heredoc/signal_handler_hdoc.c \
-						newparsing/check_chars.c \
+SRCS.PARSING =			parsing/parse.c \
+						parsing/parse_arraysize.c \
+						parsing/splitting/parse_split_spaces.c \
+						parsing/splitting/parse_split_commands.c \
+						parsing/splitting/parse_split_tokens.c \
+						parsing/checkword.c \
+						parsing/createstring.c \
+						parsing/tokens.c \
+						parsing/heredoc/heredoc_functions.c \
+						parsing/heredoc/heredoc_functions2.c \
+						parsing/heredoc/heredoc_parsing.c \
+						parsing/heredoc/heredoc_calc_len.c \
+						parsing/heredoc/heredoc_create_str.c \
+						parsing/heredoc/signal_handler_hdoc.c \
+						parsing/check_chars.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
 						cmd/declaring_values.c \

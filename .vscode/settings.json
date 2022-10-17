@@ -13,7 +13,8 @@
 		"__locale": "c",
 		"__hash_table": "c",
 		"__string": "c",
-		"locale": "c"
+		"locale": "c",
+		"commands.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
