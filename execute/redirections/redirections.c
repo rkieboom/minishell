@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 22:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 14:14:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 15:40:32 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ v->tokens->heredoc[v->tokens->double_redirection_left - 1].data);
 	return (0);
 }
 
-void	redir_right(t_newcommand *v)
+int	redir_right(t_newcommand *v)
 {
 	if (!strncmp(v->command[v->tokens->last_r], ">>", 3))
 		v->tokens->stdout_fd = open(\
@@ -49,8 +49,12 @@ void	redir_right(t_newcommand *v)
 		v->tokens->stdout_fd = open(\
 		v->command[v->tokens->last_r + 1], O_RDWR | O_TRUNC | O_CREAT, 0644);
 	if (v->tokens->stdout_fd < 0)
-		ft_ret_exit(1, 1);
+	{
+		ft_ret_exit(0, 1);
+		return (1);
+	}
 	if (dup2(v->tokens->stdout_fd, 1) < 0)
 		ft_ret_exit(1, 1);
 	close(v->tokens->stdout_fd);
+	return (0);
 }

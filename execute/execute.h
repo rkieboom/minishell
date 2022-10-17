@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:33:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 14:14:54 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 15:40:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ void	heredoc_set_pipe(t_heredoc *heredoc, t_heredoc_data *data);
 int		loop_over_redirs(t_newcommand *v, int i, int total);
 
 int		redir_left(t_newcommand *v);
-void	redir_right(t_newcommand *v);
+int		redir_right(t_newcommand *v);
 
 char	**set_cmd(t_newcommand *cmd);
 
+void	setup_builtin(t_list *list, \
+t_newcommand *cmd, char **command, int token_exist);
 void	setup_single_cmd(t_list *list, t_newcommand *cmd);
 void	setup_pipe_cmd(t_list *list, t_newcommand *cmd);
 

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 00:44:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 14:22:12 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 15:33:12 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,30 +41,6 @@ static int	tokens_exist(t_newcommand *cmd)
 		return (0);
 }
 
-static void	setup_builtin(t_list *list, t_newcommand *cmd, char **command)
-{
-	list->stdin_cpy = dup(0);
-	list->stdout_cpy = dup(1);
-	if (list->stdin_cpy < 0 || list->stdout_cpy < 0)
-		ft_ret_exit(1, 1);
-	if (tokens_exist(cmd) && loop_over_redirs(cmd, 0, cmd->tokens->total))
-		ft_ret_exit(1, 1);
-	if (tokens_exist(cmd) && cmd->tokens->last_l != -1)
-	{
-		if (redir_left(cmd))
-			ft_ret_exit(1, 1);
-	}
-	if (tokens_exist(cmd) && cmd->tokens->last_r != -1)
-		redir_right(cmd);
-	run_cmd(list, command);
-	if (tokens_exist(cmd) && cmd->tokens->last_l != -1)
-		dup2(list->stdin_cpy, STDIN_FILENO);
-	if (tokens_exist(cmd) && cmd->tokens->last_r != -1)
-		dup2(list->stdout_cpy, STDOUT_FILENO);
-	close(list->stdin_cpy);
-	close(list->stdout_cpy);
-}
-
 static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 {
 	int	status;
@@ -74,11 +50,11 @@ static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 	if (g_global.pid == 0)
 	{
 		if (tokens_exist(cmd) && loop_over_redirs(cmd, 0, cmd->tokens->total))
-			ft_ret_exit(1, 1);
+			ft_ret_exit(1, 0);
 		if (tokens_exist(cmd) && cmd->tokens->last_l != -1)
 		{
 			if (redir_left(cmd))
-				ft_ret_exit(1, 1);
+				ft_ret_exit(1, 0);
 		}
 		if (tokens_exist(cmd) && cmd->tokens->last_r != -1)
 			redir_right(cmd);
@@ -95,7 +71,7 @@ void	setup_single_cmd(t_list *list, t_newcommand *cmd)
 
 	command = set_cmd(cmd);
 	if (is_builtin(command[0]))
-		setup_builtin(list, cmd, command);
+		setup_builtin(list, cmd, command, tokens_exist(cmd));
 	else
 		setup_execve(list, cmd, command);
 	if (command && tokens_exist(cmd))
