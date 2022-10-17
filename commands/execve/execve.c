@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 01:07:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:10:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ void	ft_execve(t_list *list, char **str)
 {
 	signal(SIGINT, sig_handler);
 	signal(SIGQUIT, sig_handler);
-
 	run_child(list, str);
 }

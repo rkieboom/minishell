@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 01:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 12:26:36 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:16:13 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ static void	init_fd(t_newcommand *cmd)
 	cmd->fd[1] = 1;
 }
 
-void			setup_pipe_stuff(t_newcommand *cmd)
+void	setup_pipe_stuff(t_newcommand *cmd)
 {
 	int	pip[2];
-	int	save = 0;
+	int	save;
 
+	save = 0;
 	while (cmd)
 	{
 		init_fd(cmd);
@@ -40,7 +41,7 @@ void			setup_pipe_stuff(t_newcommand *cmd)
 
 static void	child(t_list *list, t_newcommand *cmd)
 {
-	char **command;
+	char	**command;
 
 	command = set_cmd(cmd);
 	if (loop_over_redirs(cmd, 0, cmd->tokens->total))
@@ -57,7 +58,7 @@ static void	child(t_list *list, t_newcommand *cmd)
 	}
 	else if (!cmd->next && cmd->tokens->last_r != -1)
 		redir_right(cmd);
-	if (cmd->tokens->last_l != -1) //one way to do it
+	if (cmd->tokens->last_l != -1)
 		if (redir_left(cmd))
 			exit(1);
 	run_cmd(list, command);

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 21:58:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/12 00:36:26 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:13:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,15 +63,10 @@ static void	double_redirection_left(t_newcommand *v, int i)
 	v->tokens->last_l = v->tokens->token_pos[i];
 }
 
-static void	init_vars(t_tokens *tokens)
-{
-	tokens->last_l = -1;
-	tokens->last_r = -1;
-}
-
 int	loop_over_redirs(t_newcommand *v, int i, int total)
 {
-	init_vars(v->tokens);
+	v->tokens->last_l = -1;
+	v->tokens->last_r = -1;
 	while (i < total)
 	{
 		if (!ft_strncmp(v->tokens->token[i], "<<", 3))

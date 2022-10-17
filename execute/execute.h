@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:33:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 12:52:25 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:14:54 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**set_cmd(t_newcommand *cmd);
 void	setup_single_cmd(t_list *list, t_newcommand *cmd);
 void	setup_pipe_cmd(t_list *list, t_newcommand *cmd);
 
-void	setup_pipe_stuff(t_newcommand  *cmd);
+void	setup_pipe_stuff(t_newcommand *cmd);
 int		exit_status(int status);
 
 #endif

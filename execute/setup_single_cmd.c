@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 00:44:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/16 21:01:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/17 14:22:12 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	setup_builtin(t_list *list, t_newcommand *cmd, char **command)
 {
 	list->stdin_cpy = dup(0);
 	list->stdout_cpy = dup(1);
-
 	if (list->stdin_cpy < 0 || list->stdout_cpy < 0)
 		ft_ret_exit(1, 1);
 	if (tokens_exist(cmd) && loop_over_redirs(cmd, 0, cmd->tokens->total))
@@ -68,8 +67,9 @@ static void	setup_builtin(t_list *list, t_newcommand *cmd, char **command)
 
 static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 {
-	int	status = 0;
+	int	status;
 
+	status = 0;
 	g_global.pid = fork();
 	if (g_global.pid == 0)
 	{
