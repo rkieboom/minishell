@@ -104,3 +104,11 @@ cd ~
 
 
 cd  
+
+
+
+
+
+
+cat | ;s                SYNTAX ERROR NOG FIXEN
+

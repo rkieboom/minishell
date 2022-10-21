@@ -6,29 +6,39 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/04 16:19:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/18 22:55:34 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "../commands.h"
 
-static void	ft_newlineoption(int *i, int *newlineoption, char **str)
+static int	newline_and_start(char **str, int *newlineoption)
 {
-	*newlineoption = 0;
-	*i = 1;
-	if (str[1][0] == '-')
+	int	s;
+	int	i;
+
+	s = 1;
+	while (str[s])
 	{
-		while (str[1][*i] == 'n')
-			(*i)++;
-		if (str[1][*i] != '\0')
-			*i = 1;
-		else
+		i = 0;
+		if (str[s][i] == '-')
 		{
-			*i = 2;
-			*newlineoption = 1;
+			i++;
+			if (!str[s][i])
+				return (s);
+			while (str[s][i] && str[s][i] == 'n')
+				i++;
+			if (!str[s][i])
+				*newlineoption = 1;
+			else
+				return (s);
 		}
+		else
+			return (s);
+		s++;
 	}
+	return (s);
 }
 
 int	echo(char **str)
@@ -36,12 +46,13 @@ int	echo(char **str)
 	int	i;
 	int	newlineoption;
 
+	newlineoption = 0;
 	if (!str[1])
 	{
 		ft_putchar_fd('\n', 1);
 		return (0);
 	}
-	ft_newlineoption(&i, &newlineoption, str);
+	i = newline_and_start(str, &newlineoption);
 	while (str[i])
 	{
 		ft_putstr_fd(str[i], 1);

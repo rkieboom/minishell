@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:01:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 21:48:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/19 17:27:35 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int		array_thingy(int *p);
 
 int		ft_execve(t_list *list, char **str, int ret);
 void	signal_handler_hdoc(int signum);
+
+char	*search_env(t_env *v, char *name, int length);
 
 #endif

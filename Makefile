@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/18 01:31:06 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/20 00:59:01 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,9 +73,7 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 
 SRCS.COMMANDS.CD =		builtin/cd/cd.c \
 						builtin/cd/cd_tilde_expansion.c \
-						builtin/cd/check_pwd_oldpwd.c \
-						builtin/cd/non_working_dir_except.c \
-						
+						builtin/cd/cd_check_permissions.c \
 
 SRCS.COMMANDS.ECHO =	builtin/echo/echo.c \
 
@@ -102,7 +100,7 @@ SRCS.ENV.LIST =			env_list/env_lst_new.c \
 						env_list/env_lstsize.c \
 
 SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
-						env_list/functions/search_env.c \
+						env_list/functions/env_functions.c \
 
 SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
 						execute/set_cmd.c \
@@ -145,6 +143,7 @@ SRCS.PARSING =			parsing/parse.c \
 						parsing/heredoc/heredoc_create_str.c \
 						parsing/heredoc/signal_handler_hdoc.c \
 						parsing/check_chars.c \
+						parsing/search_env.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
 						cmd/declaring_values.c \
@@ -184,7 +183,7 @@ linux : $(LIBFTLIB) $(SRCS)  $(OBJS)
 mac : $(LIBFTLIB) $(SRCS)  $(OBJS)
 	@printf "\n$(GR)=== Compiled [$(CC) $(CFLAGS)] ===\n--- $(SRC)$(RC)\n"
 	@$(CC) $(CFLAGS) $(LIBFTLIB) $(OBJS) -o $(NAME) $(INCLUDES_MAC) -lreadline -L /opt/homebrew/Cellar/readline/8.1.2/lib/
-	
+
 # Compiling
 $(OBJDIR)%.o : %.c $(INCLUDES)
 	@mkdir -p $(OBJDIR)

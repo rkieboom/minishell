@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/16 18:50:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/18 03:23:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,10 @@ void	ft_exit(char **str);
 ###
 */
 
-int		nonworkingdir(t_list *v, char *path);
-char	*cd_tilde_expansion(t_list *list, char *str);
-void	check_pwd_oldpwd(t_env *env);
+int		cd_check_permissions(char *path);
+int		exec_cmd(t_env *env, char *path);
+int		cd_tilde_expansion(t_list *list, char *str);
+
 char	*add_new_line(char *str);
 char	*relative_path(char *PATH, t_env *env);
 char	*absolute_path(char *PATH);

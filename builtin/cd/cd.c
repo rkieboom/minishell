@@ -6,95 +6,127 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/10 13:23:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/20 00:59:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-static int	cd_check_exist(char *PATH)
+static void	change_pwds(t_env *env, char *oldpwd)
 {
-	DIR	*directory;
-
-	directory = opendir(PATH);
-	if (!directory)
+	char	*pwd;
+	if (oldpwd && env_exist(env, "OLDPWD"))
 	{
-		ft_putstr_fd("minishell-4.2$: cd: ", 2);
-		ft_putstr_fd(PATH, 2);
-		ft_putendl_fd(": No such file or directory", 2);
-		return (1);
+		env_change_content(env, "OLDPWD", oldpwd);
 	}
-	if (closedir(directory) < 0)
-		ft_ret_exit(1, 1);
-	return (0);
+	if (env_exist(env, "PWD"))
+	{
+		pwd = getcwd(0, 0);
+		if (!pwd)
+			return ;
+		env_change_content(env, "PWD", pwd);
+		free(pwd);
+	}
 }
 
-static int	cd_1_arg(t_list *v)
+static int	go_home(t_env *env)
 {
-	int		ret;
+	char	*home;
+	char	*oldpwd;
 
-	if (!ft_strncmp(search_env(v->env, "HOME", 0), "", 1))
+	if (!env_exist(env, "HOME"))
 	{
-		ft_putstr_fd("minishell-4.2$: cd: HOME not set\n", 2);
+		ft_putendl_fd("minishell-4.2$: cd HOME not set", 2);
 		return (1);
 	}
 	else
+		home = env_get_content(env, "HOME");
+	oldpwd = getcwd(0, 0);
+	if (chdir(home) < 0)
 	{
-		env_change_content(v->env, "OLDPWD", search_env(v->env, "PWD", 3));
-		ret = chdir(search_env(v->env, "HOME", 0));
-		if (ret < 0)
-			ft_ret_exit(0, 1);
-		env_change_content(v->env, "PWD", search_env(v->env, "HOME", 4));
+		ft_ret_exit(0, 1);
+		if (oldpwd)
+			free(oldpwd);
+		return (1);
 	}
+	change_pwds(env, oldpwd);
+	if (oldpwd)
+			free(oldpwd);
 	return (0);
 }
 
-static int	cd_check_if_dir_and_perms(char *path)
+static int	is_tilde(char *str)
 {
-	struct stat	path_stat;
-
-	if (stat(path, &path_stat) != 0)
-		ft_ret_exit(1, 1);
-	if (S_ISREG(path_stat.st_mode))
+	if (str[0] == '~')
 	{
-		ft_putendl_fd("minishell-4.2$: Not a directory", 2);
-		return (1);
-	}
-	else if (!(path_stat.st_mode & X_OK))
-	{
-		ft_putstr_fd("minishell-4.2$: cd: ", 2);
-		ft_putstr_fd(path, 2);
-		ft_putendl_fd(": Permission denied", 2);
-		return (1);
+		if (str[1] && (str[1] == ':' || str[1] == '/'))
+			return (1);
+		else if (!str[1])
+			return (1);
 	}
 	return (0);
 }
+
+static	int	go_old_pwd(t_env *env)
+{
+	char	*oldpwd;
+	char	*newold;
+
+	if (!env_exist(env, "OLDPWD"))
+	{
+		ft_putendl_fd("minishell-4.2$: cd: OLDPWD not set", 2);
+		return (1);
+	}
+	newold = getcwd(0, 0);
+	if (chdir(oldpwd) < 0)
+	{
+		if (newold)
+			free(newold);
+		ft_ret_exit(0, 1);
+		return (1);
+	}
+	change_pwds(env, newold);
+	if (newold)
+		free(newold);
+	return (0);
+}
+
+int	exec_cmd(t_env *env, char *path)
+{
+	char	*oldpwd;
+
+	oldpwd = getcwd(NULL, 0);
+	if (!oldpwd)
+		ft_putendl_fd(\
+"cd: error retrieving current directory: \
+getcwd: cannot access parent directories: No such file or directory", 2);
+
+	if (chdir(path) < 0)
+	{
+		if (oldpwd)
+			free(oldpwd);
+		ft_ret_exit(0, 1);
+		return (1);
+	}
+	change_pwds(env, oldpwd);
+	if (oldpwd)
+		free(oldpwd);
+	return (0);
+}
+
+
 
 int	cd(t_list *v, char **str)
 {
-	int		ret;
-	char	*newpath;
-	char	cwd[4096];
-
-	check_pwd_oldpwd(v->env);
 	if (!str[1])
-		return (cd_1_arg(v));
-	newpath = cd_tilde_expansion(v, str[1]);
-	if (!newpath)
+		return (go_home(v->env));
+	else if (!ft_strncmp(str[1], "-", 2))
+		return (go_old_pwd(v->env));
+	else if (!str[1][0])
+		return (0);
+	else if (is_tilde(str[1]))
+		return (cd_tilde_expansion(v, str[1]));
+	else if (cd_check_permissions(str[1]))
 		return (1);
-	if (cd_check_exist(newpath) || cd_check_if_dir_and_perms(newpath))
-	{
-		free(newpath);
-		return (1);
-	}
-	if (!getcwd(cwd, 4096))
-		return (nonworkingdir(v, newpath));
-	env_change_content(v->env, "OLDPWD", cwd);
-	ret = chdir(newpath);
-	if (ret < 0)
-		ft_ret_exit(0, 1);
-	if (getcwd(cwd, 4096))
-		env_change_content(v->env, "PWD", cwd);
-	free(newpath);
-	return (0);
+	return (exec_cmd(v->env, str[1]));
 }

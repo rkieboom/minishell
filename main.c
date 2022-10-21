@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/11 22:53:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/19 17:17:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ static void	increase_shlvl(t_list *list)
 	int		shlvl;
 	char	*newnum;
 
-	shlvl = ft_atoi(search_env(list->env, "SHLVL", 5));
+	if (!env_exist(list->env, "SHLVL") && env_has_data(list->env, "SHLVL"))
+		return ;
+	shlvl = ft_atoi(env_get_content(list->env, "SHLVL"));
 	shlvl++;
 	newnum = ft_itoa(shlvl);
 	if (!newnum)

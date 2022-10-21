@@ -6,25 +6,20 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 19:36:56 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/10 14:07:36 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/20 01:01:01 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-static char	*add_home_env(t_list *list, char *str)
+static char	*add_home_env(t_env *env, char *str)
 {
 	int		length;
 	char	*home;
 	char	*newstr;
 
 	length = 0;
-	home = search_env(list->env, "HOME", 4);
-	if (!ft_strncmp(home, "", 1))
-	{
-		ft_putstr_fd("minishell-4.2$: cd: HOME not set\n", 2);
-		return (0);
-	}
+	home = env_get_content(env, "HOME");
 	length += ft_strlen(home);
 	length += ft_strlen(str);
 	newstr = ft_calloc(sizeof(char), length + 1);
@@ -35,43 +30,34 @@ static char	*add_home_env(t_list *list, char *str)
 	return (newstr);
 }
 
-static char	*ret_home(t_list *list)
+static int	home_exist(t_env *env)
 {
-	char	*newstr;
-
-	if (!ft_strncmp(search_envname_returnenvname(\
-	list->env, "HOME"), "", 1))
+	if (!env_exist(env, "HOME"))
 	{
-		ft_putstr_fd("minishell-4.2$: cd: HOME not set\n", 2);
+		ft_putendl_fd("minishell-4.2$: cd: HOME not set", 2);
 		return (0);
 	}
-	newstr = ft_strdup(search_env(list->env, "HOME", 4));
-	if (!newstr)
-		ft_ret_exit(1, 1);
-	return (newstr);
+	return (1);
 }
 
-char	*cd_tilde_expansion(t_list *list, char *str)
+int	cd_tilde_expansion(t_list *list, char *str)
 {
-	char	*newstr;
+	int		ret;
+	char	*newpath;
 
-	if (!ft_strchr(str, '~'))
-		newstr = ft_strdup(str);
-	else if (str[0] == '~')
+	if (!home_exist(list->env) || !env_has_data(list->env, "HOME"))
+		return (1);
+	if (!str[1])
 	{
-		if (str[1])
-		{
-			if (str[1] == ':' || str[1] == '/')
-				return (add_home_env(list, str));
-			else
-				newstr = ft_strdup(str);
-		}
-		else
-			return (ret_home(list));
+		newpath = ft_strdup(env_get_content(list->env, "HOME"));
+		if (!newpath)
+			ft_ret_exit(1, 1);
 	}
+	else if (str[1] == ':' || str[1] == '/')
+		newpath = add_home_env(list->env, str);
 	else
-		newstr = ft_strdup(str);
-	if (!newstr)
-		ft_ret_exit(1, 1);
-	return (newstr);
+		newpath = str; //NOG NA KIJKEN HERSENLOOS GESCHREVEN
+	ret = exec_cmd(list->env, newpath);
+	free(newpath);
+	return (ret);
 }

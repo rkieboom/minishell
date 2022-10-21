@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 14:10:52 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/20 00:11:59 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ static char	**recreate_envp(t_env *env)
 	temp = env;
 	while (temp)
 	{
-		length++;
+		if (temp->content)
+			length++;
 		temp = temp->next;
 	}
 	envp = ft_calloc(length + 1, sizeof(char *));
@@ -67,9 +68,12 @@ static char	**recreate_envp(t_env *env)
 	length = 0;
 	while (env)
 	{
-		envp[length] = get_full_env(env);
+		if (env->content)
+		{
+			envp[length] = get_full_env(env);
+			length++;
+		}
 		env = env->next;
-		length++;
 	}
 	return (envp);
 }
@@ -79,8 +83,8 @@ static void	run_child(t_list *list, char **str)
 	char	*path;
 	char	**envp;
 
-	signal(SIGINT, SIG_DFL);
-	signal(SIGQUIT, SIG_DFL);
+	// signal(SIGINT, SIG_DFL);
+	// signal(SIGQUIT, SIG_DFL);
 	envp = recreate_envp(list->env);
 	if (is_absolute_path(str[0]))
 		path = absolute_path(str[0]);
@@ -94,7 +98,7 @@ static void	run_child(t_list *list, char **str)
 
 void	ft_execve(t_list *list, char **str)
 {
-	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, sig_handler);
+	// signal(SIGINT, sig_handler);
+	// signal(SIGQUIT, sig_handler);
 	run_child(list, str);
 }

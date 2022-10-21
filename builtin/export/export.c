@@ -6,77 +6,79 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 14:07:09 by spelle        #+#    #+#                 */
-/*   Updated: 2022/10/03 12:21:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/20 01:01:15 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
 
-static int	invalid_identifier(char *str)
+static int	valid_identifier(char *str)
 {
-	ft_putstr_fd("export: \'", 2);
-	ft_putstr_fd(str, 2);
-	ft_putendl_fd("\': not a valid identifier", 2);
-	return (1);
-}
+	int	i;
 
-static int	check_error(char **str, int i, int *j, int *error)
-{
-	*j = 0;
-	while ((str[i][*j] && str[i][*j] != '=') || *j == 0)
+	i = 0;
+	if (ft_isalpha(str[0]) || str[0] == '_')
 	{
-		if (!ft_isalnum(str[i][*j]) && str[i][*j] != '_')
-		{
-			*error = invalid_identifier(str[i]);
+		while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
+			i++;
+		if (!str[i] || str[i] == '=')
 			return (1);
-		}
-		(*j)++;
 	}
+	ft_putstr_fd("minishell-4.2$: export: `", 2);
+	ft_putstr_fd(str, 2);
+	ft_putendl_fd("': not a valid identifier", 2);
 	return (0);
 }
 
-static void	set_env_name_and_content(t_env *v, char **str, int i, int j)
+static void	get_attr(t_env *env, char *str)
 {
-	char	*envname;
-	char	*envcontent;
+	int		i;
+	char	*name;
+	char	*content;
 
-	envcontent = NULL;
-	envname = ft_substr(str[i], 0, j);
-	if (!envname)
+	i = 0;
+	while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
+		i++;
+	name = ft_substr(str, 0, i);
+	if (!name)
 		ft_ret_exit(1, 1);
-	if (ft_strchr(str[i], '=') == NULL)
-		envcontent = ft_strdup("");
-	else
-		envcontent = ft_strdup(ft_strchr(str[i], '=') + 1);
-	if (!envcontent)
-		ft_ret_exit(1, 1);
-	if (!ft_strncmp(search_envname_returnenvname(v, envname), "", 1))
-		env_lstadd_back(&v, env_lst_new(envname, envcontent));
+	if (!str[i])
+		content = 0;
 	else
 	{
-		env_change_content(v, envname, envcontent);
-		free(envname);
-		free(envcontent);
+		str += i + 1;
+		content = ft_substr(str, 0, ft_strlen(str));
+		if (!content)
+			ft_ret_exit(1, 1);
 	}
+	if (env_exist(env, name))
+		env_change_content(env, name, content);
+	else
+		env_add_content(env, name, content);
+	free(name);
+	if (content)
+		free(content);
 }
 
 int	export(t_env *v, char **str)
 {
-	int		i;
-	int		j;
-	int		error;
+	int	i;
+	int	error;
 
-	error = 0;
-	if (str[1] == NULL)
-	{
-		export_declare_list(v);
-	}
 	i = 1;
-	while (str[i] != NULL)
+	error = 0;
+	if (!str[1])
+		export_declare_list(v);
+	else
 	{
-		if (!check_error(str, i, &j, &error))
-			set_env_name_and_content(v, str, i, j);
-		i++;
+		while (str[i])
+		{
+			if (valid_identifier(str[i]))
+				get_attr(v, str[i]);
+			else
+				error = 1;
+			i++;
+		}
 	}
 	return (error);
 }

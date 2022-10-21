@@ -6,23 +6,23 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:34:02 by rkieboom      #+#    #+#                 */
-/*   Updated: 2021/05/13 13:00:05 by spelle        ########   odam.nl         */
+/*   Updated: 2022/10/19 20:26:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
-#include <unistd.h>
-
-int	ft_putstr(char *str);
 
 int	env(t_env *v)
 {
 	while (v)
 	{
-		ft_putstr(v->name);
-		ft_putstr("=");
-		ft_putstr(v->content);
-		ft_putstr("\n");
+		if (v->content)
+		{
+			ft_putstr_fd(v->name, 1);
+			ft_putstr_fd("=", 1);
+			ft_putstr_fd(v->content, 1);
+			ft_putstr_fd("\n", 1);
+		}
 		v = v->next;
 	}
 	return (0);
