@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 23:06:15 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/22 16:28:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,23 @@ static void	print_error(t_list *list)
 		ft_putstr_fd("\"'\n", 2);
 }
 
+static void sighandler(int signum)
+{
+	if (signum == SIGINT)
+	{
+		ft_putstr_fd("\n", 2);
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+		g_global.status = 130;
+	}
+}
+
 static void	setup(t_list *list)
 {
 	g_global.heredoc_break = 0;
 	tcsetattr(0, 0, &g_global.termios_new);
-	signal(SIGINT, sig_handler);
+	signal(SIGINT, sighandler);
 	signal(SIGQUIT, SIG_IGN);
 	reset_buf(list);
 }

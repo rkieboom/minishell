@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/20 00:59:41 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/22 13:50:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ static	int	go_old_pwd(t_env *env)
 		ft_putendl_fd("minishell-4.2$: cd: OLDPWD not set", 2);
 		return (1);
 	}
+	else
+		oldpwd = env_get_content(env, "OLDPWD");
 	newold = getcwd(0, 0);
 	if (chdir(oldpwd) < 0)
 	{

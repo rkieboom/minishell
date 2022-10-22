@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/19 17:17:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/22 17:28:38 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,38 @@ static void	increase_shlvl(t_list *list)
 	free(newnum);
 }
 
+void	sighand()
+{
+	if (g_global.__dup__ == 1)
+	{
+		g_global.__dup__ = 0;
+		return ;
+	}
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_list	list;
 
 	(void)argc;
 	(void)argv;
+	signal(SIGUSR1, sighand);
 	ft_bzero(&list, sizeof(t_list));
 	ft_bzero(&g_global, sizeof(t_global));
 	list.env = create_envp(list.env, envp);
+	if (env_exist(list.env, "___DUP___")) //[M0]->[M1]
+	{
+		g_global.__dup__ = 1;
+		//unset
+	}
+	kill(g_global.pid, SIGUSR1);
 	increase_shlvl(&list);
 	tcgetattr(0, &g_global.termios_save);
 	g_global.termios_new = g_global.termios_save;
 	g_global.termios_new.c_lflag &= ~ECHOCTL;
 	loop(&list);
 	return (0);
-}
+}//[M]->[M]->cat

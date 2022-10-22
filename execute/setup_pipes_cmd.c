@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 01:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/22 12:31:50 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/22 13:43:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	start_commands(t_list *list, t_newcommand *temp)
 		g_global.pid = fork();
 		if (!g_global.pid)
 		{
+			signal(SIGINT, SIG_DFL);
+			signal(SIGQUIT, SIG_DFL);
 			// Setup writing pipe
 			dup2(temp->fd[1], STDOUT_FILENO);
 			close(temp->fd[1]);
@@ -50,6 +52,8 @@ static int	last_command(t_list *list, t_newcommand *temp)
 	g_global.pid = fork();
 	if (!g_global.pid)
 	{
+		signal(SIGINT, SIG_DFL);
+		signal(SIGQUIT, SIG_DFL);
 		dup2(temp->read_pipe, 0);
 		close(temp->read_pipe);
 		run_cmd(list, set_cmd(temp));
@@ -68,6 +72,8 @@ static int	last_command(t_list *list, t_newcommand *temp)
 
 void	setup_pipe_cmd(t_list *list, t_newcommand *cmd)
 {
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
 	start_commands(list, cmd);
 	g_global.status = last_command(list, cmd);
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/13 02:11:37 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/22 15:01:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_global
 	struct termios	termios_save;
 	struct termios	termios_new;
 	int				heredoc_break;
+	int				__dup__;
 }				t_global;
 
 extern t_global	g_global;
