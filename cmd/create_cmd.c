@@ -6,32 +6,35 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 12:47:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 21:30:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:27:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
-static void	create_command(t_list *v, t_newcommand *pipes_cmd, int k)
+//If there is no pipes we just create one simpe CMD
+static void	create_command(t_list *v, t_newcommand *cmd, int k)
 {
 	int	i;
 
 	i = 0;
 	while (v->parse.commands[k][i])
 		i++;
-	pipes_cmd->command = ft_calloc(i + 1, sizeof(char *));
-	if (!pipes_cmd->command)
+	cmd->command = ft_calloc(i + 1, sizeof(char *));
+	if (!cmd->command)
 		ft_ret_exit(1, 1);
 	i = 0;
 	while (v->parse.commands[k][i])
 	{
-		pipes_cmd->command[i] = ft_strdup(v->parse.commands[k][i]);
-		if (!pipes_cmd->command[i])
+		cmd->command[i] = ft_strdup(v->parse.commands[k][i]);
+		if (!cmd->command[i])
 			ft_ret_exit(1, 1);
 		i++;
 	}
 }
 
+//Move all information to new CMD Struct
+//To execute the commands
 int	create_cmd(t_list *v, int k)
 {
 	int	i;
