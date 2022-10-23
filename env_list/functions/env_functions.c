@@ -6,14 +6,14 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/17 12:47:05 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/19 20:44:09 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 02:05:04 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../env_list.h"
 #include <stdio.h>
 
-void	env_add_content(t_env *v, char *envname, char *envcontent)
+void	env_add_content(t_env **v, char *envname, char *envcontent)
 {
 	char *name;
 	char *content;
@@ -29,7 +29,7 @@ void	env_add_content(t_env *v, char *envname, char *envcontent)
 	}
 	else
 		content = 0;
-	env_lstadd_back(&v, env_lst_new(name, content));
+	env_lstadd_back(v, env_lst_new(name, content));
 }
 
 void	env_change_content(t_env *v, char *envname, char *envcontent)
@@ -110,6 +110,37 @@ int	env_exist(t_env *v, char *find)
 		v = v->next;
 	}
 	return (0);
+}
+
+void	env_remove(t_env **v, char *envname)
+{
+	t_env	*current;
+	t_env	*prev;
+	int		i = 0;
+
+	if (!env_exist(*v, envname))
+		return ;
+	current = *v;
+	prev = *v;
+	while (current->next != NULL \
+			&& ft_strncmp(current->name, envname, ft_strlen(envname) + 1))
+	{
+		prev = current;
+		current = current->next;
+		i++;
+	}
+	if (!ft_strncmp(current->name, envname, ft_strlen(envname) + 1))
+	{
+		if (i == 0)
+			*v = current->next;
+		if (prev->next && prev->next->next)
+			prev->next = prev->next->next;
+		else
+			prev->next = NULL;
+		free(current->name);
+		free(current->content);
+		free(current);
+	}
 }
 
 //alles kijken waar het word opgeroepen. Het returned NULL nu
