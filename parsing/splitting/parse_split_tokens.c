@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 21:28:23 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 21:36:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:13:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ static void	func(t_list *list, t_vars *vars, int k)
 	vars->i++;
 }
 
+//Seperate tokens
+//Example: echo hallo>out = echo hallo > out
 void	parse_split_tokens(t_list *list, int size, int k)
 {
 	t_vars	vars;

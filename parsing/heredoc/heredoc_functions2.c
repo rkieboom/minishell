@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/21 03:13:14 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 13:31:09 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:23:04 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	allocate(t_heredoc_data **temp, t_heredoc_data **head)
 	}
 }
 
+//Saving the actual data
 static void	set_heredoc_data(t_list *list, int k, int i)
 {
 	t_heredoc_data	*temp;
@@ -70,6 +71,10 @@ static void	set_heredoc_data(t_list *list, int k, int i)
 	list->tokens[k].heredoc[i].data = head;
 }
 
+/*We see if the EOF is in between quotes
+If it is we should not expand anything
+We do this here because after the parsing 
+it removes the quotes*/
 void	get_heredoc_q(t_list *list, int k)
 {
 	int	i;
@@ -94,6 +99,8 @@ void	get_heredoc_q(t_list *list, int k)
 	}
 }
 
+//We read the input for heredoc
+//and save it in heredoc data structure
 void	get_heredoc_input(t_list *list, int k)
 {
 	int	i;

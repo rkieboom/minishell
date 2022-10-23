@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/09 12:18:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:50:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:24:45 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ static void	heredoc_parse_str(t_list *list, t_heredoc *heredoc)
 	}
 }
 
+//Expand data if there were no quotes
 void	heredoc_parse(t_list *list, int k)
 {
 	int	i;

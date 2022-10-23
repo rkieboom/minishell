@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 21:36:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 01:19:08 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static char	**splitter(t_list *list, const char *str, char **result)
 	return (result);
 }
 
+//Splits on spaces
 char	**parse_split_spaces(t_list *list, const char *str, char c)
 {
 	int		length;

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 00:34:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/06 00:36:39 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:14:06 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	check_len(t_list *list, t_vars *vars, char **str)
 	}
 }
 
+//Calculates what the size should be
 int	parse_arraysize(char **str, t_list *list)
 {
 	t_vars	vars;

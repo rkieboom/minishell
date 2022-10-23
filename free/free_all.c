@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/29 10:34:48 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/25 18:28:26 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 01:36:19 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static void	free_gnl_buf(t_list *list)
 	}
 }
 
+//Frees all stuff
 void	free_all(t_list *list)
 {
 	int	totalcommands;

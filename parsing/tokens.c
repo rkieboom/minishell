@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/30 00:29:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 21:38:54 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:14:40 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ static void	identify_tokens(t_list *list)
 	}
 }
 
+//It saves wich word is a token
+//And it saves the location of the token
 void	tokens(t_list *list)
 {
 	allocate_tokens_vars(list);

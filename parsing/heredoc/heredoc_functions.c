@@ -6,12 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/06 00:23:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/26 15:21:13 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:22:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../parse.h"
 
+//Allocates heredoc struct * the double redir left
 static void	heredoc_allocation(t_list *list, int k)
 {
 	int	i;
@@ -31,6 +32,7 @@ static void	heredoc_allocation(t_list *list, int k)
 	}
 }
 
+//sets the EOF in the heredoc struct
 void	get_heredoc_eof(t_list *list, int k)
 {
 	int	total;
@@ -53,6 +55,8 @@ void	get_heredoc_eof(t_list *list, int k)
 	}
 }
 
+//Allocates the heredoc struct
+//And sets if the EOF has quotes
 void	allocate_heredoc(t_list *list, int k)
 {
 	int	i;
@@ -67,6 +71,7 @@ void	allocate_heredoc(t_list *list, int k)
 	}
 }
 
+//Here we set all heredoc information
 void	set_heredoc(t_list *list, int k)
 {
 	int	i;

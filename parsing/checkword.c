@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 18:29:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:21:17 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ static int	calculate_length(t_list *list, char *str, int i, int length)
 	return (length);
 }
 
+//Expands string to new value
 char	*checkword(t_list *list, char *str)
 {
 	int		length;

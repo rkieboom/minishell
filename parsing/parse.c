@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/26 13:34:32 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:20:37 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_vars
 	char	**splitted;
 }				t_vars;
 
+//Free the temporily struct
 static void	freemem(char **result)
 {
 	int	i;
@@ -33,6 +34,7 @@ static void	freemem(char **result)
 		free(result);
 }
 
+//The actual big parsing and expanding
 static void	parsing(t_list *list)
 {
 	int	i;
@@ -57,6 +59,8 @@ static void	parsing(t_list *list)
 	}
 }
 
+//Splits on ';'
+//Allocate and set all values to 0
 static void	init_allocate(t_list *list, t_vars *vars)
 {
 	ft_bzero(vars, sizeof(t_vars));
@@ -72,6 +76,7 @@ static void	init_allocate(t_list *list, t_vars *vars)
 		ft_ret_exit(1, 1);
 }
 
+//Ehhmm i mean its parses ?_?
 int	new_parse(t_list *list)
 {
 	t_vars	vars;

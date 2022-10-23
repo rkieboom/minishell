@@ -6,12 +6,16 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:26:49 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/22 16:56:58 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 01:35:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
+//This is were we execute our Command
+/**
+ * todo Redirections in pipes
+**/
 void	execution(t_list *list, t_newcommand *cmd, int k)
 {
 	int	i;
