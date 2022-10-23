@@ -6,25 +6,13 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/08 15:13:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 14:10:41 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 01:10:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tokens.h"
 
-int	get_cmd_count(t_newcommand *temp)
-{
-	int	c;
-
-	c = 0;
-	while (temp)
-	{
-		temp = temp->next;
-		c++;
-	}
-	return (c);
-}
-
+//Init heredoc tokens
 void	set_heredoc_tokens(t_list *list, t_newcommand *cmd, int k)
 {
 	int	i;
