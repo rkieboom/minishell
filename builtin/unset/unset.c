@@ -6,35 +6,11 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 20:01:05 by spelle        #+#    #+#                 */
-/*   Updated: 2022/10/19 20:28:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 02:35:57 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../commands.h"
-
-static void	remove_env(t_env *v, char *envname)
-{
-	t_env	*current;
-	t_env	*prev;
-
-	if (!env_exist(v, envname))
-		return ;
-	current = v;
-	prev = v;
-	while (current->next != NULL \
-			&& ft_strncmp(current->name, envname, ft_strlen(envname) + 1))
-	{
-		prev = current;
-		current = current->next;
-	}
-	if (!ft_strncmp(current->name, envname, ft_strlen(envname) + 1))
-	{
-		prev->next = prev->next->next;
-		free(current->name);
-		free(current->content);
-		free(current);
-	}
-}
 
 static int	valid_identifier(char *str)
 {
@@ -54,21 +30,23 @@ static int	valid_identifier(char *str)
 	return (0);
 }
 
-int	unset(t_env *v, char **str)
+int	unset(t_env **v, char **str)
 {
 	int	i;
 	int	error;
 
-	i = 0;
+	i = 1;
 	error = 0;
-
 	while (str[i])
 	{
 		if (valid_identifier(str[i]))
-			remove_env(v, str[i]);
+			env_lst_remove(v, str[i]);
 		else
 			error = 1;
 		i++;
 	}
 	return (error);
 }
+
+
+// TERM_SESSION_ID SSH_AUTH_SOCK LC_TERMINAL_VERSION COLORFGBG ITERM_PROFILE XPC_FLAGS PWD SHELL __CFBundleIdentifier LC_CTYPE TERM_PROGRAM_VERSION TERM_PROGRAM PATH LC_TERMINAL COLORTERM COMMAND_MODE TERM HOME TMPDIR USER XPC_SERVICE_NAME LOGNAME ITERM_SESSION_ID __CF_USER_TEXT_ENCODING SHLVL OLDPWD HOMEBREW_PREFIX HOMEBREW_CELLAR HOMEBREW_REPOSITORY MANPATH INFOPATH P9K_TTY _P9K_TTY ZSH PAGER LESS LSCOLORS P9K_SSH 

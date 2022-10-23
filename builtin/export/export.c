@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 14:07:09 by spelle        #+#    #+#                 */
-/*   Updated: 2022/10/20 01:01:15 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 02:06:56 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	valid_identifier(char *str)
 	return (0);
 }
 
-static void	get_attr(t_env *env, char *str)
+static void	get_attr(t_env **env, char *str)
 {
 	int		i;
 	char	*name;
@@ -51,8 +51,8 @@ static void	get_attr(t_env *env, char *str)
 		if (!content)
 			ft_ret_exit(1, 1);
 	}
-	if (env_exist(env, name))
-		env_change_content(env, name, content);
+	if (env_exist(*env, name))
+		env_change_content(*env, name, content);
 	else
 		env_add_content(env, name, content);
 	free(name);
@@ -60,7 +60,7 @@ static void	get_attr(t_env *env, char *str)
 		free(content);
 }
 
-int	export(t_env *v, char **str)
+int	export(t_env **v, char **str)
 {
 	int	i;
 	int	error;
@@ -68,7 +68,7 @@ int	export(t_env *v, char **str)
 	i = 1;
 	error = 0;
 	if (!str[1])
-		export_declare_list(v);
+		export_declare_list(*v);
 	else
 	{
 		while (str[i])
