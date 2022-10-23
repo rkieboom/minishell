@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/20 00:59:01 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/23 02:34:54 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ NAME		= minishell
 
 # Compiler and compiling flags
 CC	= gcc
-CFLAGS	= -Wall -Werror -Wextra
+SPECIAL_FLAGS = -Wundef -Wshadow -Wunreachable-code -Waggregate-return -Wstrict-overflow=5 -Wcast-align -Wpointer-arith
+CFLAGS	= -Wall -Werror -Wextra $(SPECIAL_FLAGS)
 
-# Debug, use with`make DEBUG=1`
+# Debug, use with`make DEBUG=1` undefined kan ook als optie
 ifeq ($(DEBUG),1)
 CFLAGS	+= -g3
 endif
@@ -25,6 +26,7 @@ ifeq ($(DEBUG),2)
 CFLAGS	+= -g3 -fsanitize=address -fno-omit-frame-pointer
 endif
 ifeq ($(DEBUG),3)
+
 CFLAGS	+= -g3 -fsanitize=leak
 endif
 
@@ -63,7 +65,6 @@ SRCS =					main.c \
 						
 FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/add_new_line.c \
-						functions/ft_swap.c \
 						functions/check_input.c \
 						functions/read_input.c \
 						functions/syntax_error.c \
@@ -98,8 +99,9 @@ SRCS.ENV.LIST =			env_list/env_lst_new.c \
 						env_list/env_lstadd_back.c \
 						env_list/env_lstlast.c \
 						env_list/env_lstsize.c \
+						env_lst_remove.c \
 
-SRCS.ENV.LIST.FUNC =	env_list/functions/init.c \
+SRCS.ENV.LIST.FUNC =	env_list/functions/env_init.c \
 						env_list/functions/env_functions.c \
 
 SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
