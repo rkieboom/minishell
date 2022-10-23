@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/12 19:04:45 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/22 15:01:11 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 01:45:20 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
+# define __DUP__ "MINISHELL_DUP_537425"
+
 typedef struct s_parse
 {
 	char		***commands;
@@ -38,12 +40,6 @@ typedef struct s_gnl
 	int			fd;
 	char		*buf;
 }				t_gnl;
-
-typedef struct s_dir
-{
-	DIR				*dir;
-	struct dirent	*dp;
-}					t_dir;
 
 typedef struct s_heredoc_data
 {
@@ -95,7 +91,6 @@ typedef struct s_list
 	int				stdin_cpy;
 	t_parse			parse;
 	t_gnl			gnl;
-	t_dir			dir;
 	t_env			*env;
 	t_tokens		*tokens;
 	t_newcommand	*cmd;
