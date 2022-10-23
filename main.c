@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/22 17:28:38 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 02:10:48 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 
 t_global	g_global;
 
+//Loop where minishell will be in continous
 static void	loop(t_list *list)
 {
 	while (1)
@@ -37,12 +38,15 @@ static void	loop(t_list *list)
 	}
 }
 
+//Increases the ENV SHLVL
 static void	increase_shlvl(t_list *list)
 {
 	int		shlvl;
 	char	*newnum;
 
-	if (!env_exist(list->env, "SHLVL") && env_has_data(list->env, "SHLVL"))
+	if (!list->env)
+		return ;
+	if (!env_exist(list->env, "SHLVL") && !env_has_data(list->env, "SHLVL"))
 		return ;
 	shlvl = ft_atoi(env_get_content(list->env, "SHLVL"));
 	shlvl++;
@@ -53,7 +57,8 @@ static void	increase_shlvl(t_list *list)
 	free(newnum);
 }
 
-void	sighand()
+//Handles SIGUSR1 SIGNAL
+static void	sighand()
 {
 	if (g_global.__dup__ == 1)
 	{
@@ -62,7 +67,18 @@ void	sighand()
 	}
 	signal(SIGINT, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
-	
+}
+
+//Fixing signals in multiple minishells
+static void	fix_signals(t_env **env)
+{
+	signal(SIGUSR1, sighand);
+	if (env_exist(*env, __DUP__))
+	{
+		g_global.__dup__ = 1;
+		env_lst_remove(env, __DUP__);
+	}
+	kill(g_global.pid, SIGUSR1);
 }
 
 int	main(int argc, char **argv, char **envp)
@@ -71,20 +87,14 @@ int	main(int argc, char **argv, char **envp)
 
 	(void)argc;
 	(void)argv;
-	signal(SIGUSR1, sighand);
 	ft_bzero(&list, sizeof(t_list));
 	ft_bzero(&g_global, sizeof(t_global));
 	list.env = create_envp(list.env, envp);
-	if (env_exist(list.env, "___DUP___")) //[M0]->[M1]
-	{
-		g_global.__dup__ = 1;
-		//unset
-	}
-	kill(g_global.pid, SIGUSR1);
+	fix_signals(&list.env);
 	increase_shlvl(&list);
 	tcgetattr(0, &g_global.termios_save);
 	g_global.termios_new = g_global.termios_save;
 	g_global.termios_new.c_lflag &= ~ECHOCTL;
 	loop(&list);
 	return (0);
-}//[M]->[M]->cat
+}
