@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 00:44:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/22 17:30:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 01:34:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 	g_global.pid = fork();
 	if (g_global.pid == 0)
 	{
-		signal(SIGINT, SIG_DFL);
-		signal(SIGQUIT, SIG_DFL);
-		env_lstadd_back(&list->env, env_lst_new(ft_strdup("___DUP___"), 0));
+		signals_DFL();
+		env_lstadd_back(&list->env, env_lst_new(ft_strdup(__DUP__), ft_strdup("")));
 		if (tokens_exist(cmd) && loop_over_redirs(cmd, 0, cmd->tokens->total))
 			ft_ret_exit(1, 0);
 		if (tokens_exist(cmd) && cmd->tokens->last_l != -1)
@@ -69,6 +68,7 @@ static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 	g_global.status = exit_status(status);
 }
 
+//Executes one command no Pipes
 void	setup_single_cmd(t_list *list, t_newcommand *cmd)
 {
 	char	**command;
