@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:37:44 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/22 16:28:20 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:09:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void	setup(t_list *list)
 	reset_buf(list);
 }
 
+//Reads input and saves it in list->gnl.buf
 void	read_input(t_list *list, int option)
 {
 	setup(list);

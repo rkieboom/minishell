@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:32:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 18:29:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:11:05 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static void	quote(t_list *list)
 	free(newstr);
 }
 
+//Checks if quotes are closed
 void	check_input_quotes(t_list *list)
 {
 	int		i;
@@ -69,6 +70,8 @@ syntax error near unexpected token ;", 2);
 	return (1);
 }
 
+
+//Checking semicolons syntax error
 int	check_input(t_list *v)
 {
 	int		i;

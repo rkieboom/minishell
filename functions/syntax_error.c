@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 10:21:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/05 12:54:24 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 01:24:21 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_vars
 	int	temp;
 }				t_vars;
 
+//Checks for double tokens
 static int	check_double_pipe_error(t_vars *vars, t_list *list)
 {
 	if (list->tokens[vars->i].token_pos[vars->j] + 1 == \
@@ -35,6 +36,7 @@ static int	check_double_pipe_error(t_vars *vars, t_list *list)
 	return (0);
 }
 
+//Checks if 2 tokens are next to each other
 static int	loop_over_tokens(t_vars *vars, t_list *list)
 {
 	while (vars->j < list->tokens[vars->i].total)
@@ -57,6 +59,7 @@ static int	loop_over_tokens(t_vars *vars, t_list *list)
 	return (0);
 }
 
+//Checks if CMD arg0 = '|'
 static int	first(t_vars *vars, t_list *list)
 {
 	vars->j = 0;
@@ -76,6 +79,7 @@ static int	first(t_vars *vars, t_list *list)
 	return (3);
 }
 
+//Check for syntax errors otherwise quit
 int	syntax_error_parse(t_list *list)
 {
 	t_vars	vars;
@@ -105,6 +109,7 @@ int	syntax_error_parse(t_list *list)
 	return (0);
 }
 
+//Checks syntax errors for tokens
 int	syntax_error(t_newcommand *cmd, int i)
 {
 	if (!cmd->tokens || cmd->tokens->total == 0)
