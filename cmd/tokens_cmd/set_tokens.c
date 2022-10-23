@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/08/29 14:08:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:13:14 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:51:29 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_vars
 	int				token_local_c;
 }				t_vars;
 
+//Return the token we are at
 static char	*ret_token(t_list *v, int k, int token_count)
 {
 	int	count;
@@ -56,6 +57,14 @@ static int	get_resetter(t_list *v, int k, int i)
 	return (0);
 }
 
+/**
+ * @param token_pos = Is the x token we want
+ * 
+ * *		 [-1] [-1] [0] [-1][1] [-1] [2][-1]
+ * *Example: cat main.c >  out  <  out2 > Makefile
+ * *token_pos = 0 will return >
+ * *token_pos = 1 will return <
+**/
 static int	get_token_pos(t_list *v, int k, int token_count)
 {
 	int	i;
@@ -80,6 +89,7 @@ static int	get_token_pos(t_list *v, int k, int token_count)
 	return (v->tokens[k].token_pos[i] - get_resetter(v, k, i));
 }
 
+//Set the token values
 void	set_tokens(t_list *v, t_newcommand *pipes, int k)
 {
 	t_vars	vars;

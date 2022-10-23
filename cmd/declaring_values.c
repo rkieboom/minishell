@@ -6,12 +6,23 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 13:14:16 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/05 13:04:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 00:44:25 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cmd.h"
 
+//Returns location of the pipe
+// 
+
+/**
+ * @param token_pos = Is the x token we want
+ * 
+ * *		 [0]  [1]  [2][3][4][5][6][7]
+ * *Example: cat main.c > out | cat | head
+ * *token_pos = 0 will return 4
+ * *token_pos = 1 will return 6
+**/
 int	pipe_location(t_list *v, int k, int token_pos)
 {
 	int	i;
@@ -32,6 +43,7 @@ int	pipe_location(t_list *v, int k, int token_pos)
 	return (-1);
 }
 
+//Creates the first CMD
 static void	first_cmd(t_list *v, t_newcommand *temp, int k)
 {
 	int	i;
@@ -54,6 +66,7 @@ static void	first_cmd(t_list *v, t_newcommand *temp, int k)
 	}
 }
 
+//Creates all CMD's in the middle
 static void	middle_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 {
 	int	i;
@@ -83,6 +96,7 @@ static void	middle_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 	}
 }
 
+//Creates the last CMD
 static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 {
 	int	i;
@@ -112,6 +126,7 @@ static void	last_cmd(t_list *v, t_newcommand *temp, int pipes, int k)
 	}
 }
 
+//Make multiple commands
 void	declaring_values(t_list *v, t_newcommand *pipes_cmd, int pipes, int k)
 {
 	int				i;
