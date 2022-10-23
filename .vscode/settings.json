@@ -14,7 +14,8 @@
 		"__hash_table": "c",
 		"__string": "c",
 		"locale": "c",
-		"commands.h": "c"
+		"commands.h": "c",
+		"wait.h": "c"
 	},
 	"C_Cpp.errorSquiggles": "Disabled"
 }
