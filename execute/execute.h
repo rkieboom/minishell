@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:33:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 01:43:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:01:16 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../builtin/commands.h"
 # include "../header.h"
+# include <sys/wait.h>
 
 /**
  * 
@@ -24,7 +25,7 @@
 
 void	setup_single_cmd(t_list *list, t_newcommand *cmd);
 void	setup_pipe_cmd(t_list *list, t_newcommand *cmd);
-void	run_cmd(t_list *list, char **cmd);
+void	run_cmd(t_list *list, char **cmd, int quit);
 
 /**
  * 

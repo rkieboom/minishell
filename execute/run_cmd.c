@@ -6,15 +6,17 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 15:34:15 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 02:07:09 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:07:00 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "execute.h"
 
-void	run_cmd(t_list *list, char **cmd)
+void	run_cmd(t_list *list, char **cmd, int quit)
 {
-	if (!cmd || !cmd[0])
+	if (!cmd || !cmd[0] && quit == 1)
+		exit(0);
+	else if (!cmd || !cmd[0])
 		return ;
 	if (!ft_strncmp(cmd[0], "echo", 5))
 		g_global.status = echo(cmd);
@@ -32,4 +34,6 @@ void	run_cmd(t_list *list, char **cmd)
 		ft_exit(cmd);
 	else
 		ft_execve(list, cmd);
+	if (quit)
+		exit(g_global.status);
 }

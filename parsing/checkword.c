@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 00:21:17 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 22:03:11 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,7 @@ t_list *list, char *str, int *i, int *length)
 {
 	char	*temp;
 
-	if (str[*i + 1] != '?')
-	{
-		*length += ft_strlen(search_env(list->env, str + *i, 0));
-		(*length)--;
-		(*i)++;
-		while (str[*i] && (ft_isdigit(str[*i]) || \
-		ft_isalpha(str[*i]) || (str[*i] == '_')))
-			(*i)++;
-		(*i)--;
-	}
-	else
+	if (str[*i + 1] && str[*i + 1] == '?')
 	{
 		temp = ft_itoa(g_global.status);
 		if (!temp)
@@ -36,6 +26,23 @@ t_list *list, char *str, int *i, int *length)
 		free(temp);
 		(*i)++;
 		(*length)--;
+	}
+	else if (str[*i + 1] == '\0' || \
+	(!ft_isdigit(str[*i + 1]) && \
+	!ft_isalpha(str[*i + 1]) && str[*i + 1] != '_'))
+	{
+		(*i)++;
+		(*length)++;
+	}
+	else
+	{
+		*length += ft_strlen(search_env(list->env, str + *i, 0));
+		(*length)--;
+		(*i)++;
+		while (str[*i] && (ft_isdigit(str[*i]) || \
+		ft_isalpha(str[*i]) || (str[*i] == '_')))
+			(*i)++;
+		(*i)--;
 	}
 }
 
@@ -67,7 +74,7 @@ static void	single_quote(t_list *list, char *str, int *i, int *length)
 
 static int	calculate_length(t_list *list, char *str, int i, int length)
 {
-	while (str[i] == ' ' && str[i])
+	while (str[i] && str[i] == ' ')
 		i++;
 	while (str[i])
 	{

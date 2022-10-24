@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/20 00:11:59 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 22:57:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,26 @@ static char	*get_full_env(t_env *env)
 	return (str);
 }
 
-static char	**recreate_envp(t_env *env)
+static	int	get_length(t_env *temp)
 {
-	char	**envp;
-	t_env	*temp;
-	int		length;
+	int	length;
 
 	length = 0;
-	temp = env;
 	while (temp)
 	{
 		if (temp->content)
 			length++;
 		temp = temp->next;
 	}
+	return (length);
+}
+
+static char	**recreate_envp(t_env *env)
+{
+	char	**envp;
+	int		length;
+
+	length = get_length(env);
 	envp = ft_calloc(length + 1, sizeof(char *));
 	if (!envp)
 		ft_ret_exit(1, 1);
@@ -78,13 +84,11 @@ static char	**recreate_envp(t_env *env)
 	return (envp);
 }
 
-static void	run_child(t_list *list, char **str)
+void	ft_execve(t_list *list, char **str)
 {
 	char	*path;
 	char	**envp;
 
-	// signal(SIGINT, SIG_DFL);
-	// signal(SIGQUIT, SIG_DFL);
 	envp = recreate_envp(list->env);
 	if (is_absolute_path(str[0]))
 		path = absolute_path(str[0]);
@@ -93,12 +97,5 @@ static void	run_child(t_list *list, char **str)
 	if (path && execve(path, str, envp) < 0)
 		ft_ret_exit(1, 1);
 	else
-		ft_ret_exit(127, 0);
-}
-
-void	ft_execve(t_list *list, char **str)
-{
-	// signal(SIGINT, sig_handler);
-	// signal(SIGQUIT, sig_handler);
-	run_child(list, str);
+		ft_ret_exit(g_global.status, 0);
 }

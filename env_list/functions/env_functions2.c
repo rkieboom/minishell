@@ -1,42 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   absolute_path.c                                    :+:    :+:            */
+/*   env_functions2.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/09/07 10:02:42 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 22:44:29 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/23 22:52:25 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/10/24 08:28:41 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../commands.h"
+#include "../env_list.h"
 
-char	*absolute_path(char *PATH)
+int	env_has_data(t_env *v, char *find)
 {
-	if (check_exist(PATH))
+	while (v)
 	{
-		ft_putstr_fd("minishell-4.2$: ", 2);
-		ft_putstr_fd(PATH, 2);
-		ft_putendl_fd(": No such file or directory", 2);
-		g_global.status = 127;
-		return (NULL);
+		if (!ft_strncmp(v->name, find, ft_strlen(find) + 1))
+		{
+			if (v->content)
+				return (1);
+			else
+				return (0);
+		}
+		v = v->next;
 	}
-	if (check_permission(PATH))
-		return (NULL);
-	return (ft_strdup(PATH));
+	return (0);
 }
 
-int	is_absolute_path(char *str)
+int	env_exist(t_env *v, char *find)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
+	while (v)
 	{
-		if (str[i] == '/')
+		if (!ft_strncmp(v->name, find, ft_strlen(find) + 1))
 			return (1);
-		i++;
+		v = v->next;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/23 02:34:54 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/23 22:58:25 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME		= minishell
 # Compiler and compiling flags
 CC	= gcc
 SPECIAL_FLAGS = -Wundef -Wshadow -Wunreachable-code -Waggregate-return -Wstrict-overflow=5 -Wcast-align -Wpointer-arith
-CFLAGS	= -Wall -Werror -Wextra $(SPECIAL_FLAGS)
+CFLAGS	= #-Wall -Werror -Wextra $(SPECIAL_FLAGS)
 
 # Debug, use with`make DEBUG=1` undefined kan ook als optie
 ifeq ($(DEBUG),1)
@@ -103,6 +103,7 @@ SRCS.ENV.LIST =			env_list/env_lst_new.c \
 
 SRCS.ENV.LIST.FUNC =	env_list/functions/env_init.c \
 						env_list/functions/env_functions.c \
+						env_list/functions/env_functions2.c \
 
 SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
 						execute/set_cmd.c \

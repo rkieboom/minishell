@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/11 16:35:27 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 02:05:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 23:01:52 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_exit(char **str);
 */
 
 int		cd_check_permissions(char *path);
-int		exec_cmd(t_env *env, char *path);
+int		cd_exec_cmd(t_env *env, char *path);
 int		cd_tilde_expansion(t_list *list, char *str);
 
 char	*relative_path(char *PATH, t_env *env);
@@ -48,6 +48,6 @@ int		check_permission(char *PATH);
 void	export_declare_list(t_env *v);
 void	ft_swap(char **s1, char **s2);//Not ness
 void	signals(void);
-void	signals_DFL(void);
+void	signals_dfl(void);
 
 #endif

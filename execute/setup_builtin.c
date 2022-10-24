@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/17 15:28:34 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/17 15:46:29 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 08:59:57 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	with_tokens(t_list *list, t_newcommand *cmd, char **command)
 		g_global.status = 1;
 		return ;
 	}
-	run_cmd(list, command);
+	run_cmd(list, command, 0);
 	reset_fds(list, cmd);
 }
 
@@ -61,5 +61,5 @@ t_newcommand *cmd, char **command, int token_exist)
 	if (token_exist)
 		with_tokens(list, cmd, command);
 	else
-		run_cmd(list, command);
+		run_cmd(list, command, 0);
 }

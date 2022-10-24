@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/09/07 10:17:11 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/22 14:24:33 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 22:44:43 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	check_permission(char *PATH)
 		ft_putstr_fd("minishell-4.2$: ", 2);
 		ft_putstr_fd(PATH, 2);
 		ft_putendl_fd(": Permission denied", 2);
+		g_global.status = 126;
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/30 00:29:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 00:14:40 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:24:00 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ static void	set_tokens(t_list *list)
 	}
 }
 
+// Counts occurence of every token
 static void	identify_tokens(t_list *list)
 {
 	int	i;

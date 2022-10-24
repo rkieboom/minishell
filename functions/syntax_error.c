@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/18 10:21:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 01:24:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:11:34 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,14 +96,6 @@ int	syntax_error_parse(t_list *list)
 			return (1);
 		if (loop_over_tokens(&vars, list))
 			return (1);
-		if (!list->parse.commands \
-		[vars.i][list->tokens[vars.i].token_pos[vars.j] + 1])
-		{
-			ft_putendl_fd(\
-"minishell-4.2$: syntax error near unexpected token `newline'", 2);
-			g_global.status = 258;
-			return (1);
-		}
 		vars.i++;
 	}
 	return (0);
@@ -120,7 +112,8 @@ int	syntax_error(t_newcommand *cmd, int i)
 		{
 			if (cmd->tokens->token_pos[i] == cmd_len(cmd->command) - 1)
 			{
-				ft_putendl_fd("minishell-4.2$: syntax error near newline", 2);
+				ft_putendl_fd(\
+"minishell-4.2$: syntax error near unexpected token `newline'", 2);
 				g_global.status = 258;
 				return (1);
 			}

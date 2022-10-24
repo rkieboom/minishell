@@ -6,12 +6,15 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:32:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 00:11:05 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:21:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
 
+
+// Called when user input has unclosed quotes.
+// Stores current gnl.buf and prompts user for input again using read_input()
 static void	quote(t_list *list)
 {
 	char	*newstr;
@@ -35,7 +38,8 @@ static void	quote(t_list *list)
 	free(newstr);
 }
 
-//Checks if quotes are closed
+// Checks if gnl.buf contains unclosed quotes.
+// User remains in this function unrtil input has closed quotes.
 void	check_input_quotes(t_list *list)
 {
 	int		i;
@@ -70,8 +74,7 @@ syntax error near unexpected token ;", 2);
 	return (1);
 }
 
-
-//Checking semicolons syntax error
+// Checking semicolons syntax error
 int	check_input(t_list *v)
 {
 	int		i;

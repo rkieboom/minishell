@@ -6,7 +6,7 @@
 /*   By: spelle <spelle@student.codam.nl>             +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/19 14:07:09 by spelle        #+#    #+#                 */
-/*   Updated: 2022/10/23 02:06:56 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 22:51:43 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	valid_identifier(char *str)
 	int	i;
 
 	i = 0;
-	if (ft_isalpha(str[0]) || str[0] == '_')
+	if ((ft_isalpha(str[0]) || str[0] == '_') && ft_strncmp(str, "", 1) != 0)
 	{
 		while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
 			i++;
@@ -30,13 +30,11 @@ static int	valid_identifier(char *str)
 	return (0);
 }
 
-static void	get_attr(t_env **env, char *str)
+static void	get_attr(t_env **env, char *str, int i)
 {
-	int		i;
 	char	*name;
 	char	*content;
 
-	i = 0;
 	while (str[i] && (ft_isalnum(str[i]) || str[i] == '_'))
 		i++;
 	name = ft_substr(str, 0, i);
@@ -74,7 +72,7 @@ int	export(t_env **v, char **str)
 		while (str[i])
 		{
 			if (valid_identifier(str[i]))
-				get_attr(v, str[i]);
+				get_attr(v, str[i], 0);
 			else
 				error = 1;
 			i++;

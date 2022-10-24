@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/06 19:36:56 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/20 01:01:01 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 22:42:12 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int	cd_tilde_expansion(t_list *list, char *str)
 	else if (str[1] == ':' || str[1] == '/')
 		newpath = add_home_env(list->env, str);
 	else
-		newpath = str; //NOG NA KIJKEN HERSENLOOS GESCHREVEN
-	ret = exec_cmd(list->env, newpath);
+		newpath = ft_strdup(str);
+	ret = cd_exec_cmd(list->env, newpath);
 	free(newpath);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 01:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 02:34:25 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:00:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	get_cmd_len(t_newcommand *temp)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (temp)
@@ -34,7 +34,7 @@ static void	start_commands(t_list *list, t_newcommand *temp, pid_t *pids, int i)
 		pids[i] = fork();
 		if (!pids[i])
 		{
-			signals_DFL();
+			signals_dfl();
 			// Setup writing pipe
 			dup2(temp->fd[1], STDOUT_FILENO);
 			close(temp->fd[1]);
@@ -43,7 +43,20 @@ static void	start_commands(t_list *list, t_newcommand *temp, pid_t *pids, int i)
 			//Setup reading from pipe
 			dup2(temp->read_pipe, 0);
 			close(temp->read_pipe);
-			run_cmd(list, set_cmd(temp));
+
+			if (loop_over_redirs(temp, 0, temp->tokens->total))
+				ft_ret_exit(1, 0);
+			if (temp->tokens->last_l != -1)
+			{
+				if (redir_left(temp))
+					ft_ret_exit(1, 0);
+			}
+			if (temp->tokens->last_r != -1)
+			{
+				if (redir_right(temp))
+					ft_ret_exit(1, 0);
+			}
+			run_cmd(list, set_cmd(temp), 1);
 		}
 		else
 		{
@@ -67,10 +80,10 @@ static int	last_command(t_list *list, t_newcommand *temp, pid_t *pids, int len)
 	pids[len] = fork();
 	if (!pids[len])
 	{
-		signals_DFL();
+		signals_dfl();
 		dup2(temp->read_pipe, 0);
 		close(temp->read_pipe);
-		run_cmd(list, set_cmd(temp));
+		run_cmd(list, set_cmd(temp), 1);
 	}
 	else
 	{

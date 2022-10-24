@@ -5,8 +5,8 @@
 /*                                                     +:+                    */
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2020/11/11 00:01:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 02:10:48 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/23 22:40:21 by rkieboom      #+#    #+#                 */
+/*   Updated: 2022/10/24 08:50:15 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ static void	increase_shlvl(t_list *list)
 }
 
 //Handles SIGUSR1 SIGNAL
-static void	sighand()
+static void	sighand(int signum)
 {
+	(void)signum;
 	if (g_global.__dup__ == 1)
 	{
 		g_global.__dup__ = 0;

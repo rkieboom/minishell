@@ -20,7 +20,7 @@
 7. heredoc maken																					      <------
 8. ;;;;;;; = crash ||    ;   ;   ;   = crash  														[done]
 9. cat main.c | cat todo.txt >> test.txt															[works]														
-10. cat main.c | > output.txt mag wel																[not done not needed]
+10. cat main.c | > output.txt mag wel			!!!!!!!!!!!!!!!!!!!!!!!!!!!!													[not done not needed]
 	cat main.c > > output.txt mag niet
 	syntax_error aanpassen!
 
@@ -111,4 +111,13 @@ cd
 
 
 cat | ;s                SYNTAX ERROR NOG FIXEN
+Permission denied   =====                 ret status should be 126
 
+
+cat < Makefile > out | cat < main.c > out2 | cat 
+cat << EOF > out | cat < Makefile > text.txt
+
+# Mithras added todo's
+echo $"HOME"
+	BASH: HOME
+	MS:		$HOME

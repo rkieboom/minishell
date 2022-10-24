@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/04 12:03:50 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/19 23:28:21 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 18:52:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	print_and_exit(char *str, int ret)
 
 int	check_errors(char **str, int i)
 {
-	if (all_num(str[1]))
+	if (all_num(str[1]) || !ft_strncmp(str[1], "-", 2))
 	{
 		ft_putstr_fd("minishell-4.2$: exit: ", 2);
 		ft_putstr_fd(str[1], 2);
@@ -45,7 +45,7 @@ int	check_errors(char **str, int i)
 	}
 	if (i > 2)
 	{
-		ft_putstr_fd("minishell-4.2$: exit: too many arguments", 2);
+		ft_putendl_fd("minishell-4.2$: exit: too many arguments", 2);
 		return (1);
 	}
 	if (ft_atoi(str[1]) != ft_atoi_l(str[1]))

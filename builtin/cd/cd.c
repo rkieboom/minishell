@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/22 13:50:41 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 08:36:28 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 static void	change_pwds(t_env *env, char *oldpwd)
 {
 	char	*pwd;
+
 	if (oldpwd && env_exist(env, "OLDPWD"))
-	{
 		env_change_content(env, "OLDPWD", oldpwd);
-	}
 	if (env_exist(env, "PWD"))
 	{
 		pwd = getcwd(0, 0);
@@ -51,7 +50,7 @@ static int	go_home(t_env *env)
 	}
 	change_pwds(env, oldpwd);
 	if (oldpwd)
-			free(oldpwd);
+		free(oldpwd);
 	return (0);
 }
 
@@ -93,31 +92,6 @@ static	int	go_old_pwd(t_env *env)
 	return (0);
 }
 
-int	exec_cmd(t_env *env, char *path)
-{
-	char	*oldpwd;
-
-	oldpwd = getcwd(NULL, 0);
-	if (!oldpwd)
-		ft_putendl_fd(\
-"cd: error retrieving current directory: \
-getcwd: cannot access parent directories: No such file or directory", 2);
-
-	if (chdir(path) < 0)
-	{
-		if (oldpwd)
-			free(oldpwd);
-		ft_ret_exit(0, 1);
-		return (1);
-	}
-	change_pwds(env, oldpwd);
-	if (oldpwd)
-		free(oldpwd);
-	return (0);
-}
-
-
-
 int	cd(t_list *v, char **str)
 {
 	if (!str[1])
@@ -130,5 +104,5 @@ int	cd(t_list *v, char **str)
 		return (cd_tilde_expansion(v, str[1]));
 	else if (cd_check_permissions(str[1]))
 		return (1);
-	return (exec_cmd(v->env, str[1]));
+	return (cd_exec_cmd(v->env, str[1]));
 }

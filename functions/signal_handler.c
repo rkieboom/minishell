@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/04 18:21:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 01:31:55 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/23 23:01:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	signals(void)
 }
 
 //Setting all signals to IGN
-void	signals_DFL(void)
+void	signals_dfl(void)
 {
 	signal(SIGINT, SIG_DFL);
 	signal(SIGQUIT, SIG_DFL);
