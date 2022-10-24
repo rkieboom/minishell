@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/03/02 14:14:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/18 22:55:34 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 11:53:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ int	echo(char **str)
 	i = newline_and_start(str, &newlineoption);
 	while (str[i])
 	{
+		while (str[i] && !str[i][0])
+			i++;
+		if (!str[i])
+			break ;
 		ft_putstr_fd(str[i], 1);
 		i++;
 		if (str[i])

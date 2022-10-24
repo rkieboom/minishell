@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/05/25 17:00:06 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 22:57:53 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 12:12:56 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,5 @@ void	ft_execve(t_list *list, char **str)
 		ft_ret_exit(1, 1);
 	else
 		ft_ret_exit(g_global.status, 0);
+	exit(0);
 }

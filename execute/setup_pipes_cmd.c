@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 01:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 10:20:09 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 12:06:02 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void	start_commands(t_list *list, t_newcommand *temp, pid_t *pids, int i)
 {
 	while (temp->next)
 	{
-		pipe(temp->fd);
-		pids[i] = fork();
+		ft_pipe(temp);
+		ft_fork(&pids[i]);
 		if (!pids[i])
 		{
 			signals_dfl();
@@ -71,7 +71,7 @@ static int	last_command(t_list *list, t_newcommand *temp, pid_t *pids, int len)
 	i = 0;
 	while (temp->next)
 		temp = temp->next;
-	pids[len] = fork();
+	ft_fork(&pids[len]);
 	if (!pids[len])
 	{
 		signals_dfl();
@@ -103,4 +103,5 @@ void	setup_pipe_cmd(t_list *list, t_newcommand *cmd)
 	cmd->read_pipe = dup(0);
 	start_commands(list, cmd, pids, 0);
 	g_global.status = last_command(list, cmd, pids, len - 1);
+	free(pids);
 }

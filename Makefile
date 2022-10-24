@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/24 11:03:25 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/24 12:17:48 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,7 @@ SRCS.ENV.LIST.FUNC =	env_list/functions/env_init.c \
 						env_list/functions/env_functions2.c \
 
 SRCS.EXECUTE =			execute/execute.c execute/run_cmd.c \
+						execute/exec_functions.c \
 						execute/set_cmd.c \
 						execute/redirections/loop_over_redirs.c \
 						execute/redirections/redirections.c \
