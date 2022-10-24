@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 00:44:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 09:00:13 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 10:13:08 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,33 +33,21 @@ static int	is_builtin(char *cmd)
 	return (0);
 }
 
-static int	tokens_exist(t_newcommand *cmd)
-{
-	if (cmd->tokens && cmd->tokens->total > 0)
-		return (1);
-	else
-		return (0);
-}
-
 static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 {
 	int	status;
 
 	status = 0;
 	g_global.pid = fork();
+	if (g_global.pid < 0)
+		ft_ret_exit(1, 1);
 	if (g_global.pid == 0)
 	{
 		signals_dfl();
-		env_lstadd_back(&list->env, env_lst_new(ft_strdup(__DUP__), ft_strdup("")));
-		if (tokens_exist(cmd) && loop_over_redirs(cmd, 0, cmd->tokens->total))
+		env_lstadd_back(&list->env, \
+		env_lst_new(ft_strdup(__DUP__), ft_strdup("")));
+		if (redirections(cmd))
 			ft_ret_exit(1, 0);
-		if (tokens_exist(cmd) && cmd->tokens->last_l != -1)
-		{
-			if (redir_left(cmd))
-				ft_ret_exit(1, 0);
-		}
-		if (tokens_exist(cmd) && cmd->tokens->last_r != -1)
-			redir_right(cmd);
 		run_cmd(list, command, 1);
 	}
 	else

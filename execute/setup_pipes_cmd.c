@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 01:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 09:00:07 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 10:20:09 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	get_cmd_len(t_newcommand *temp)
 
 static void	start_commands(t_list *list, t_newcommand *temp, pid_t *pids, int i)
 {
-	temp->read_pipe = dup(0);
 	while (temp->next)
 	{
 		pipe(temp->fd);
@@ -35,27 +34,13 @@ static void	start_commands(t_list *list, t_newcommand *temp, pid_t *pids, int i)
 		if (!pids[i])
 		{
 			signals_dfl();
-			// Setup writing pipe
 			dup2(temp->fd[1], STDOUT_FILENO);
 			close(temp->fd[1]);
 			close(temp->fd[0]);
-			
-			//Setup reading from pipe
 			dup2(temp->read_pipe, 0);
 			close(temp->read_pipe);
-
-			if (loop_over_redirs(temp, 0, temp->tokens->total))
+			if (redirections(temp))
 				ft_ret_exit(1, 0);
-			if (temp->tokens->last_l != -1)
-			{
-				if (redir_left(temp))
-					ft_ret_exit(1, 0);
-			}
-			if (temp->tokens->last_r != -1)
-			{
-				if (redir_right(temp))
-					ft_ret_exit(1, 0);
-			}
 			run_cmd(list, set_cmd(temp), 1);
 		}
 		else
@@ -67,6 +52,15 @@ static void	start_commands(t_list *list, t_newcommand *temp, pid_t *pids, int i)
 		}
 		temp = temp->next;
 	}
+}
+
+static int	return_status(int status)
+{
+	if (WIFEXITED(status))
+		return (WEXITSTATUS(status));
+	else if (WIFSIGNALED(status))
+		return (WTERMSIG(status) + 128);
+	return (1);
 }
 
 static int	last_command(t_list *list, t_newcommand *temp, pid_t *pids, int len)
@@ -83,22 +77,18 @@ static int	last_command(t_list *list, t_newcommand *temp, pid_t *pids, int len)
 		signals_dfl();
 		dup2(temp->read_pipe, 0);
 		close(temp->read_pipe);
+		if (redirections(temp))
+			ft_ret_exit(1, 0);
 		run_cmd(list, set_cmd(temp), 1);
 	}
 	else
 	{
 		close(temp->read_pipe);
 		while (i < (len + 1))
-		{
-			waitpid(pids[i], &status, WUNTRACED);
+			waitpid(pids[i++], &status, WUNTRACED);
 			i++;
-		}
 	}
-	if (WIFEXITED(status))
-		return (WEXITSTATUS(status));
-	else if (WIFSIGNALED(status))
-		return (WTERMSIG(status) + 128);
-	return (1);
+	return (return_status(status));
 }
 
 //Multiple commands with Pipes execution
@@ -110,6 +100,7 @@ void	setup_pipe_cmd(t_list *list, t_newcommand *cmd)
 	pids = ft_calloc(len, sizeof(pid_t));
 	if (!pids)
 		ft_ret_exit(1, 1);
+	cmd->read_pipe = dup(0);
 	start_commands(list, cmd, pids, 0);
 	g_global.status = last_command(list, cmd, pids, len - 1);
 }

@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:01:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/19 17:27:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:49:51 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	parse_split_tokens(t_list *list, int size, int k);
 
 void	tokens(t_list *list);
 char	*checkword(t_list *list, char *str);
+int		checkword_calclen(t_list *list, char *str, int i, int length);
 char	*createstring(t_list *list, char *str, int length);
 
 void	check_quote(t_list *list, char *c);
@@ -46,6 +47,6 @@ int		array_thingy(int *p);
 int		ft_execve(t_list *list, char **str, int ret);
 void	signal_handler_hdoc(int signum);
 
-char	*search_env(t_env *v, char *name, int length);
+char	*search_env(t_env *v, char *name, int length, char *temp);
 
 #endif

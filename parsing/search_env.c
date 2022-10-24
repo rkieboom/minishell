@@ -6,16 +6,14 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/19 17:27:24 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 23:04:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:51:55 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse.h"
 
-char	*search_env(t_env *v, char *name, int length)
+char	*search_env(t_env *v, char *name, int length, char *temp)
 {
-	char	*temp;
-
 	if (length == 0)
 	{
 		if (*name == '$')

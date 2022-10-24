@@ -6,12 +6,11 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/02/02 17:32:12 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 09:21:23 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:42:08 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header.h"
-
 
 // Called when user input has unclosed quotes.
 // Stores current gnl.buf and prompts user for input again using read_input()

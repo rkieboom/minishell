@@ -6,11 +6,19 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/11 22:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 15:10:39 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 10:19:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../execute.h"
+
+int	tokens_exist(t_newcommand *cmd)
+{
+	if (cmd->tokens && cmd->tokens->total > 0)
+		return (1);
+	else
+		return (0);
+}
 
 int	redir_left(t_newcommand *v)
 {
@@ -56,5 +64,22 @@ int	redir_right(t_newcommand *v)
 	if (dup2(v->tokens->stdout_fd, 1) < 0)
 		ft_ret_exit(1, 1);
 	close(v->tokens->stdout_fd);
+	return (0);
+}
+
+int	redirections(t_newcommand *cmd)
+{
+	if (tokens_exist(cmd) && loop_over_redirs(cmd, 0, cmd->tokens->total))
+		return (1);
+	if (tokens_exist(cmd) && cmd->tokens->last_l != -1)
+	{
+		if (redir_left(cmd))
+			return (1);
+	}
+	if (tokens_exist(cmd) && cmd->tokens->last_r != -1)
+	{
+		if (redir_right(cmd))
+			return (1);
+	}
 	return (0);
 }

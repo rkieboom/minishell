@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/23 22:58:25 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/24 09:48:12 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,6 +137,7 @@ SRCS.PARSING =			parsing/parse.c \
 						parsing/splitting/parse_split_commands.c \
 						parsing/splitting/parse_split_tokens.c \
 						parsing/checkword.c \
+						parsing/checkword_calclen.c \
 						parsing/createstring.c \
 						parsing/tokens.c \
 						parsing/heredoc/heredoc_functions.c \

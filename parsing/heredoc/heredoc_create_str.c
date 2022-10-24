@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/09/14 21:21:20 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/21 17:49:35 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:50:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	found_dollar_sign(t_list *list, t_vars *vars, char *str)
 	&& (ft_isalnum(str[vars->i]) \
 	|| str[vars->i] == '_'))
 	{
-		vars->temp = search_env(list->env, str + vars->i, 0);
+		vars->temp = search_env(list->env, str + vars->i, 0, 0);
 		vars->j += ft_strlcpy(\
 		vars->newstr + vars->j, \
 		vars->temp, ft_strlen(vars->temp) + 1);

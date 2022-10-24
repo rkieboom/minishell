@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/28 15:03:53 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/04 18:29:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:51:39 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void	return_ret_status(t_vars *vars)
 static void	set_env_value(t_list *list, t_vars *vars)
 {
 	vars->length -= ft_strlen(\
-	search_env(list->env, vars->str + vars->i, 0));
+	search_env(list->env, vars->str + vars->i, 0, 0));
 	vars->length++;
-	vars->temp = ft_strdup(search_env(list->env, vars->str + vars->i, 0));
+	vars->temp = ft_strdup(search_env(list->env, vars->str + vars->i, 0, 0));
 	if (!vars->temp)
 		ft_ret_exit(1, 1);
 	ft_memcpy(vars->newstr + vars->x, vars->temp, ft_strlen(vars->temp));
