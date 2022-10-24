@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/07 15:57:41 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 08:41:19 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 13:23:27 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,56 @@ char	**set_cmd(t_newcommand *cmd)
 	if (i == 0)
 		return (init_newcmd_s(cmd));
 	return (init_newcmd(cmd->command, i));
+}
+
+static int	calc_len(t_newcommand *cmd)
+{
+	int	i;
+
+	i = 0;
+	while (cmd->command[i])
+		i++;
+	return (i - (cmd->tokens->total * 2));
+}
+
+static char*	get_str(t_newcommand *cmd, int i)
+{
+	int	token_c = 0;
+	int	c = 0;
+	int	s = 0;
+
+	while (cmd->command[c + s])
+	{
+		if (token_c < cmd->tokens->total && \
+		((c + s) == cmd->tokens->token_pos[token_c]))
+		{
+			s += 2;
+			token_c++;
+		}
+		if (c == i)
+			return (cmd->command[c + s]);
+		c++;
+	}
+	return (0);
+}
+//echo hou oke >> naam1 doei >> naam2 doei
+
+char	**set_newcmd(t_newcommand *cmd)
+{
+	int		i;
+	int		length;
+	char	**newstr;
+
+	i = 0;
+	if (!cmd->tokens || cmd->tokens->total == 0)
+		return (cmd->command);
+	length = calc_len(cmd);
+	newstr = ft_calloc(length + 1, sizeof(char *));
+	while (i < length)
+	{
+		newstr[i] = get_str(cmd, i);
+		i++;
+	}
+	newstr[length] = 0;
+	return (newstr);
 }

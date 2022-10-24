@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 12:20:06 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 12:24:24 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ static void	init_allocate(t_list *list, t_vars *vars)
 		vars->i++;
 	}
 }
-
-//str + 1 = \0 || ' ' || ':' || '/' THEN Expand tilde if HOME exists
 
 // (1) scans input and allocates memory
 // (2) adjusts input for easy parsing

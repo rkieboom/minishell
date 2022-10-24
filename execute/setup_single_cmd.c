@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 00:44:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 10:13:08 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 13:04:44 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	setup_single_cmd(t_list *list, t_newcommand *cmd)
 {
 	char	**command;
 
-	command = set_cmd(cmd);
+	command = set_newcmd(cmd);
 	if (is_builtin(command[0]))
 		setup_builtin(list, cmd, command, tokens_exist(cmd));
 	else
