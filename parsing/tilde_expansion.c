@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   tilde_expansion.c                                  :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: mikuiper <mikuiper@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/24 10:39:04 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 10:58:42 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/24 14:35:52 by mikuiper      #+#    #+#                 */
+/*   Updated: 2022/10/24 14:35:53 by mikuiper      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

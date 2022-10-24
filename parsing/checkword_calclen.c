@@ -3,12 +3,13 @@
 /*                                                        ::::::::            */
 /*   checkword_calclen.c                                :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: mikuiper <mikuiper@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/24 09:47:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 10:07:27 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/24 14:35:23 by mikuiper      #+#    #+#                 */
+/*   Updated: 2022/10/24 14:35:24 by mikuiper      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "parse.h"
 

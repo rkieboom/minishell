@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   parse_split_spaces.c                               :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: mikuiper <mikuiper@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/05/18 22:08:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 01:19:08 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/24 14:35:06 by mikuiper      #+#    #+#                 */
+/*   Updated: 2022/10/24 14:35:07 by mikuiper      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

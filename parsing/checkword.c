@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   checkword.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: mikuiper <mikuiper@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/28 15:02:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 09:51:05 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/24 14:35:44 by mikuiper      #+#    #+#                 */
+/*   Updated: 2022/10/24 14:35:45 by mikuiper      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

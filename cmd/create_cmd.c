@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/03/17 12:47:40 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/23 00:27:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 14:26:23 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ static void	create_command(t_list *v, t_newcommand *cmd, int k)
 	}
 }
 
-//Move all information to new CMD Struct
-//To execute the commands
+// Creates a command struct with the data from the parse and token structs.
+// Used to execute the commands
 int	create_cmd(t_list *v, int k)
 {
 	int	i;

@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   check_chars.c                                      :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: mikuiper <mikuiper@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/09/06 00:55:32 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/09/06 00:55:58 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/24 14:35:16 by mikuiper      #+#    #+#                 */
+/*   Updated: 2022/10/24 14:35:18 by mikuiper      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 

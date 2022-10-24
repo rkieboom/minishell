@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   parse.c                                            :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
+/*   By: mikuiper <mikuiper@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 12:24:24 by rkieboom      ########   odam.nl         */
+/*   Created: 2022/10/24 14:34:50 by mikuiper      #+#    #+#                 */
+/*   Updated: 2022/10/24 14:34:52 by mikuiper      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
