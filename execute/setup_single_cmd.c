@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 00:44:55 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 13:04:44 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 14:04:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,13 @@ static void	setup_execve(t_list *list, t_newcommand *cmd, char **command)
 	g_global.status = exit_status(status);
 }
 
-//Executes one command no Pipes
+// Executes one command no Pipes
+// Command is the temp command with the redirections removed as arguments
 void	setup_single_cmd(t_list *list, t_newcommand *cmd)
 {
 	char	**command;
 
-	command = set_newcmd(cmd);
+	command = set_cmd(cmd);
 	if (is_builtin(command[0]))
 		setup_builtin(list, cmd, command, tokens_exist(cmd));
 	else

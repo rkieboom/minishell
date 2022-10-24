@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/24 12:17:48 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/24 14:06:53 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME		= minishell
 # Compiler and compiling flags
 CC	= gcc
 SPECIAL_FLAGS = -Wundef -Wshadow -Wunreachable-code -Waggregate-return -Wstrict-overflow=5 -Wcast-align -Wpointer-arith
-CFLAGS	= #-Wall -Werror -Wextra $(SPECIAL_FLAGS)
+CFLAGS	= -Wall -Werror -Wextra $(SPECIAL_FLAGS)
 
 # Debug, use with`make DEBUG=1` undefined kan ook als optie
 ifeq ($(DEBUG),1)

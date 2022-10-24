@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 01:09:17 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 12:06:02 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 14:08:10 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,11 @@ static int	return_status(int status)
 
 static int	last_command(t_list *list, t_newcommand *temp, pid_t *pids, int len)
 {
-	int	status;
 	int	i;
+	int	status;
 
 	i = 0;
+	status = 0;
 	while (temp->next)
 		temp = temp->next;
 	ft_fork(&pids[len]);

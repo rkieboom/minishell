@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 11:42:03 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 14:07:18 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,6 @@ static int	go_home(t_env *env)
 	change_pwds(env, oldpwd);
 	if (oldpwd)
 		free(oldpwd);
-	return (0);
-}
-
-static int	is_tilde(char *str)
-{
-	if (str[0] == '~')
-	{
-		if (str[1] && (str[1] == ':' || str[1] == '/'))
-			return (1);
-		else if (!str[1])
-			return (1);
-	}
 	return (0);
 }
 

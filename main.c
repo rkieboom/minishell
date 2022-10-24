@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/23 22:40:21 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 10:07:12 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 14:09:47 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	sighand(int signum)
 	signal(SIGQUIT, SIG_IGN);
 }
 
-//Fixing signals in multiple minishells
+// Fixing signals in multiple minishells
 static void	fix_signals(t_env **env)
 {
 	signal(SIGUSR1, sighand);
