@@ -6,10 +6,9 @@
 /*   By: mikuiper <mikuiper@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/24 14:35:23 by mikuiper      #+#    #+#                 */
-/*   Updated: 2022/10/24 14:35:24 by mikuiper      ########   odam.nl         */
+/*   Updated: 2022/10/24 14:36:29 by mikuiper      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "parse.h"
 
