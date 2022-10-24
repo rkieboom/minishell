@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 09:22:27 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 09:32:22 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,22 @@ int	new_parse(t_list *list)
 	tokens(list);
 	while (vars.splitted[vars.length])
 		vars.length++;
+	//Tilde here
+	void parse_tilde_expansion(t_list *list, length)
+	{
+		int k = 0;
+		int i;
+		while (k < length)
+		{
+			i = 0;
+			while (list->parse.commands[k][i])
+			{
+				list->parse.commands[k][i] = expand();
+			}
+			
+		}
+		
+	}
 	if (syntax_error_parse(list))
 	{
 		freemem(vars.splitted);
