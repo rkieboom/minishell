@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/29 14:29:46 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 08:36:28 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 11:03:14 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,6 @@ int	cd(t_list *v, char **str)
 		return (go_old_pwd(v->env));
 	else if (!str[1][0])
 		return (0);
-	else if (is_tilde(str[1]))
-		return (cd_tilde_expansion(v, str[1]));
 	else if (cd_check_permissions(str[1]))
 		return (1);
 	return (cd_exec_cmd(v->env, str[1]));

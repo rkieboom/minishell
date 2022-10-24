@@ -6,7 +6,7 @@
 #    By: rkieboom <rkieboom@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/02/03 16:05:06 by rkieboom      #+#    #+#                  #
-#    Updated: 2022/10/24 09:48:12 by rkieboom      ########   odam.nl          #
+#    Updated: 2022/10/24 11:03:25 by rkieboom      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,6 @@ FUNCTIONS =				functions/ft_skipspaces.c \
 						functions/signal_handler.c \
 
 SRCS.COMMANDS.CD =		builtin/cd/cd.c \
-						builtin/cd/cd_tilde_expansion.c \
 						builtin/cd/cd_check_permissions.c \
 
 SRCS.COMMANDS.ECHO =	builtin/echo/echo.c \
@@ -148,6 +147,7 @@ SRCS.PARSING =			parsing/parse.c \
 						parsing/heredoc/signal_handler_hdoc.c \
 						parsing/check_chars.c \
 						parsing/search_env.c \
+						parsing/tilde_expansion.c \
 
 SRCS.CREATE.CMD =		cmd/create_cmd.c \
 						cmd/declaring_values.c \

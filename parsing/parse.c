@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:00:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 09:32:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 11:00:53 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static void	parsing(t_list *list)
 static void	init_allocate(t_list *list, t_vars *vars)
 {
 	ft_bzero(vars, sizeof(t_vars));
-	//Tilde expansion here
 	vars->splitted = parse_split_commands(list, ';');
 	while (vars->splitted[vars->length])
 		vars->length++;
@@ -99,6 +98,7 @@ int	new_parse(t_list *list)
 	tokens(list);
 	while (vars.splitted[vars.length])
 		vars.length++;
+	tilde_expansion(list, vars.length);
 	if (syntax_error_parse(list))
 	{
 		freemem(vars.splitted);

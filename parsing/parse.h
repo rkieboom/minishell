@@ -6,7 +6,7 @@
 /*   By: rkieboom <rkieboom@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/11/27 15:01:52 by rkieboom      #+#    #+#                 */
-/*   Updated: 2022/10/24 09:49:51 by rkieboom      ########   odam.nl         */
+/*   Updated: 2022/10/24 10:59:07 by rkieboom      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ int		ft_execve(t_list *list, char **str, int ret);
 void	signal_handler_hdoc(int signum);
 
 char	*search_env(t_env *v, char *name, int length, char *temp);
+void	tilde_expansion(t_list *list, int length);
 
 #endif
